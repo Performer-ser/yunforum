@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" th:src="@{/jquery-3.3.1.js}"></script>
+    <title>Title</title>
+</head>
+<body>
+<!--<tr>
+    <th>编号</th>
+    <th>名称</th>
+    <th>密码</th>
+    <th>操作/删修</th>
+</tr>-->
+<!--<tr th:each="music : ${list}"><br>
+    <td th:text="${music.uuid}"></td>
+    <td th:text="${music.uname}"></td>
+    <td th:text="${music.pwd}"></td>
+    <td><a th:href="|javascript:del(${music.uuid})|">删除</a></td>
+    &lt;!&ndash;<td><a th:href="|query1?uuid=${music.uuid}|">修改</a></td>&ndash;&gt;
+</tr>-->
+<!--<th><p th:text="${list}"></p></th>-->
+
+<tr>
+    <th>编号</th>
+    <th>名称</th>
+    <th>图片</th>
+    <th>操作/删修</th>
+</tr>
+<tr th:each="l:${list}"><br/>
+    <td th:text="${l.qlableid}"></td>
+    <td th:text="${l.qlabelname}"></td>
+    <td th:text="${l.qlablepic}"></td>
+</tr>
+</body>
+</html>

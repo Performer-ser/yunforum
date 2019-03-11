@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:fragment="header">
+    
+    <title>MarkDown</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/editormd/examples/css/style.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/editormd/css/editormd.css}" />
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
+
+  </head>
+  <style>
+      #test-editormd{
+          position: relative;
+          top:250px;
+      }
+  </style>
+  <body>
+    <div>
+        <input type="text" id="title"> <input type="submit" value="提交" onclick="tijiao()"/>
+    </div>
+    <div id="layout">
+            <header></header>
+            <div id="test-editormd">
+                <textarea style="display:none;" class="editormd-html-textarea" id="editormd"></textarea>
+				<textarea class="editormd-html-textarea" name="text" id="editormdhtml"></textarea>
+            </div>
+            
+        </div>
+        
+        <script th:src="@{/editormd/examples/js/jquery.min.js}"></script>
+        <script th:src="@{/editormd/editormd.js}"></script>
+        <script type="text/javascript" th:inline="javascript">
+			var testEditor;
+            $(function() {
+                testEditor = editormd("test-editormd", {
+                    width   : "90%",
+                    height  : 400,
+                    syncScrolling : "single",
+                    path    : "http://localhost/editormd/lib/",
+                    imageUpload : true,
+                    imageFormats : ["jpg","jpeg","gif","png","bmp","webp"],
+                    imageUploadURL : "http://localhost/write/pic",
+                    saveHTMLToTextarea : true
+                });
+           
+                /*
+                // or
+                testEditor = editormd({
+                    id      : "test-editormd",
+                    width   : "90%",
+                    height  : 640,
+                    path    : "../lib/"
+                });
+                */
+            });
+            
+            function tijiao(){
+            	var htmlco = $("#editormd").val();
+            	var title=$("#title").val();
+            	//alert(htmlco);
+            	$.ajax(
+            		{data:{'text':htmlco,'title':title},
+            		  dataType:'text',
+            		  success: function(data){
+            		  	alert(data);
+            		  },
+            		  type:'post',
+            		  url:'http://localhost/write/text'
+            		}
+            	);
+            }
+        </script>
+
+  </body>
+</html>

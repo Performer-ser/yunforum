@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>admire</title>
+    <script th:src="@{/editormd/examples/js/jquery.min.js}"></script>
+</head>
+<body>
+    <input type="button" value="点赞" id="admire">
+</body>
+<script type="text/javascript" th:inline="javascript">
+    $(function(){
+    $.ajax(
+        {data:{'type_id':1,'type':1,"userid":1},
+            dataType:"json",
+            success: function(data){
+                $("#admire").val("点赞x"+data["count"]);
+                console.log(data["status"]);
+                if(data["status"]==0){
+                    $("#admire").css("color","#28ff28");
+                }
+            },
+            type:'post',
+            url:'http://localhost/admire/query'
+        }
+    )})
+
+    $("#admire").click(function(){
+        alert("点赞");
+    });
+</script>
+</html>

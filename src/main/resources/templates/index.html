@@ -1,9 +1,39 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <!DOCTYPE html>
+
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script th:src="@{/editormd/examples/js/jquery.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/editormd/css/editormd.preview.min.css}" />
+    <link rel="stylesheet" th:href="@{/editormd/css/editormd.css}" />
+    <!-- 因为我们使用了dark主题，所以在容器div上加上dark的主题类，实现我们自定义的代码样式 -->
+
+    <script th:src="@{/editormd/lib/marked.min.js}"></script>
+    <script th:src="@{/editormd/lib/prettify.min.js}"></script>
+    <script th:src="@{/editormd/editormd.min.js}"></script>
+
 </head>
 <body>
-sdfsdf发生的发生的
-</body></html>
+
+<div id="layout"  class="editor">
+    <div id="test-editormd" >
+        <textarea></textarea>
+    </div>
+</div>
+<script type="text/javascript" th:inline="javascript">
+    testEditor = editormd.markdownToHTML("test-editormd", {
+        markdown:[[${aaa}]],
+        htmlDecode      : "style,script,iframe",  // you can filter tags decode
+        emoji           : true,
+        taskList        : true,
+        tex             : true,  // 默认不解析
+        flowChart       : true,  // 默认不解析
+        sequenceDiagram : true,  // 默认不解析
+    });
+
+</script>
+
+</body>
+</html>
