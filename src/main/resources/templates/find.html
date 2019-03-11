@@ -1,0 +1,323 @@
+﻿<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta name="renderer" content="webkit"/>
+    <meta property="qc:admins" content="15317273575564615446375"/>
+    <meta property="og:image" content="https://static.segmentfault.com/v-5c78d357/global/img/touch-icon.png"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta name="alexaVerifyID" content="LkzCRJ7rPEUwt6fVey2vhxiw1vQ"/>
+    <meta name="apple-itunes-app" content="app-id=958101793, app-argument=">
+    <title>技术圈 - SegmentFault 思否</title>
+    <meta name="description" content="SegmentFault 思否 为开发者提供问答、学习与交流编程知识的平台，创造属于开发者的时代！"/>
+    <meta name="keywords"
+          content="SegmentFault,思否,javascript,php,python,java,mysql,ios,android,vue.js,node.js,html,css,ruby,git,docker,前端"/>
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="SegmentFault"/>
+    <link rel="shortcut icon" href="https://static.segmentfault.com/v-5c78d357/global/img/favicon.ico"/>
+    <link rel="apple-touch-icon" href="https://static.segmentfault.com/v-5c78d357/global/img/touch-icon.png">
+    <meta name="msapplication-TileColor" content="#009a61"/>
+    <meta name="msapplication-square150x150logo"
+          content="https://static.segmentfault.com/v-5c78d357/global/img/touch-icon.png"/>
+    <meta name="baidu_union_verify" content="bcf7fd80dca60d53d46d5b46e1b990ca">
+    <link rel="alternate" type="application/atom+xml" title="SegmentFault 最新问题" href="/feeds/questions">
+    <link rel="alternate" type="application/atom+xml" title="SegmentFault 最新文章" href="/feeds/blogs">
+    <link rel="stylesheet" th:href="@{../css/global.css}"/>
+    <link rel="stylesheet" th:href="@{../css/group.css}"/>
+    <link rel="stylesheet" th:href="@{../css/responsive.css}"/>
+    <script type='text/javascript' th:src="@{../js/spcjs.js}"></script>
+</head>
+<body data-mod="group" class="group-detail ">
+    <img id="icon4weChat" style="height: 0;width: 0;" th:src="@{../picture/touch-icon-512.png}">
+<div id="gridMapHoverBox" style="position:absolute; border: 1px solid #009a61; z-index:99; font-size: 10px; background:#fff"></div>
+<div class="global-nav sf-header sf-header--index">
+    <div class="bottom-nav visible-xs visible-sm ">
+        <div class="opts">
+            <a class="opts-group " href="/"><i class="fa fa-home" aria-hidden="true"></i><span>首页</span></a>
+            <a class="opts-group " href="/questions"><i class="fa fa-comments"  aria-hidden="true"></i><span>问答</span></a>
+            <a class="opts-group " href="/blogs"><i class="fa fa-pencil-square" aria-hidden="true"></i><span>专栏</span></a>
+            <a class="opts-group " href="/lives"><i class="fa fa-play-circle" aria-hidden="true"></i><span>讲堂</span></a>
+            <div class="opts-group">
+                <div class="btn-group dropup">
+                    <i class="fa fa-bars dropdown hoverDropdown" data-toggle="dropdown" aria-hidden="true"><span>更多</span></i>
+                    <ul class="dropdown-menu">
+                        <li><a href="/jobs">职位</a></li>
+                        <li><a href="/events">活动</a></li>
+                        <li><a href="/tags">标签</a></li>
+                        <li><a href="/badges">徽章</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="container nav">
+        <div class="visible-xs visible-sm header-response"><a href="/search" style="display:block">
+            <i class="fa fa-search" aria-hidden="true"></i></a>
+            <div class="sf-header__logo sf-header__logo--response">
+                <h1><a href="/" style="height:24px; background-size: auto 24px;"></a></h1>
+            </div>
+            <a href="/user/login" class="pull-right login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+        </div>
+        <script>
+            mobileScroll(
+                function (direction) {
+                    try {
+                        if (direction === 'down') {
+                            document.querySelector('.bottom-nav').classList.add('hidden')
+                        } else {
+                            document.querySelector('.bottom-nav').classList.remove('hidden')
+                        }
+                    } catch (err) {
+                    }
+                }
+            );
+
+            function mobileScroll(fn) {
+                var beforeScrollTop = document.documentElement.scrollTop || document.body.scrollTop,
+                    fn = fn || function () {
+                    };
+                window.addEventListener("scroll", function () {
+                    var afterScrollTop = document.documentElement.scrollTop || document.body.scrollTop,
+                        delta = afterScrollTop - beforeScrollTop;
+                    if (delta === 0) return false;
+                    fn(delta > 0 ? "down" : "up");
+                    beforeScrollTop = afterScrollTop;
+                }, false);
+            }
+        </script>
+        <div class="row hidden-xs hidden-sm">
+            <div class="col-sm-8 col-md-9 col-lg-9">
+                <div class="sf-header__logo"><h1><a href="/">SegmentFault</a></h1></div>
+                <div>
+                    <ul class="menu list-inline pull-left hidden-xs">
+                        <li class="menu__item"><a href="/" class="">首页</a></li>
+                        <li class="menu__item"><a href="/questions" class="">问答</a></li>
+                        <li class="menu__item"><a href="/blogs" class="">专栏</a></li>
+                        <li class="menu__item"><a href="circle" class="active-nav">圈子</a></li>
+                        <li class="menu__item visible-sm-inline-block"><a href="/search">
+                            <span class="glyphicon glyphicon-search" style="vertical-align: middle;"></span></a></li>
+                    </ul>
+                    <form action="/search" class="header-search  hidden-sm hidden-xs pull-right">
+                        <button class="btn btn-link">
+                            <span class="sr-only">搜索</span>
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        <input id="searchBox" name="q" type="text" placeholder="搜索问题或关键字" class="form-control" value=""/>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-3 col-lg-3 text-right">
+                <ul class="opts list-inline hidden-xs">
+                    <li class="opts__item">
+                        <a href="/user/login" class="SFRegister btn-signin" style="margin-bottom:2px;">立即登录</a>
+                        <a href="/user/register" class="SFLogin ml10 btn-signup"  onClick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">免费注册</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="index mt30">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-xs-12 mb20">
+                <ol class="breadcrumb mb15">
+                    <li><a href="circle">圈子</a></li>
+                    <li class="active">发现圈子</li>
+                </ol>
+                <div class="panel panel-default" th:each="nets:${clable}">
+                    <div class="panel-heading">
+                        <h3 class="panel-title" th:text="@{${nets['tname']}}"></h3>
+                    </div>
+                    <div class="panel-body pb5">
+                        <div class="row">
+                            <!--th:if="${nets['rname'] ==}"-->
+                            <div class="col-md-4 mb10" th:each="pc:${pci}" th:if="${nets['tname']} eq ${pc['tname']}">
+                                <div class="Media">
+                                    <a  th:href="@{'/circle/q/'+${pc['clablename']}}">
+                                        <img class="Media-figure" th:src="@{${pc['cpic']}}" alt=""></a>
+                                    <div class="Media-body">
+                                        <a th:href="@{'/circle/q/'+${pc['clablename']}}"  th:text="@{${pc['clablename']}}"></a>
+                                        <small class="text-muted" th:text="@{${pc['count']}}+条圈子"></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-3 mb20 mt30">
+                <div class="list-group mb20 hidden-xs">
+                    <a href="/groups/all" class="list-group-item active">全部圈子</a>
+                    <a href="/groups/joined" class="list-group-item ">我关注的圈子</a>
+                    <a href="/groups/started" class="list-group-item ">我管理的圈子</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        <div class="row hidden-xs">
+            <dl class="col-sm-2 site-link">
+                <dt>产品</dt>
+
+                <dd>
+                    <a href="/questions/hottest?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=product&utm_content=footer-links-hottest-questions&utm_term=热门问答">热门问答</a>
+                </dd>
+                <dd>
+                    <a href="/blogs/hottest?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=product&utm_content=footer-links-hottest-questions&utm_term=热门专栏">热门专栏</a>
+                </dd>
+                <dd>
+                    <a href="/lives?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=product&utm_content=footer-links-hottest-questions&utm_term=热门讲堂">热门讲堂</a>
+                </dd>
+                <dd>
+                    <a href="/events?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=product&utm_content=footer-links-hottest-questions&utm_term=最新活动">最新活动</a>
+                </dd>
+                <dd>
+                    <a href="/groups?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=product&utm_content=footer-links-hottest-questions&utm_term=圈子">圈子</a>
+                </dd>
+                <dd>
+                    <a href="/jobs?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=product&utm_content=footer-links-hottest-questions&utm_term=找工作">找工作</a>
+                </dd>
+                <dd>
+                    <a href="/app?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=product&utm_content=footer-links-hottest-questions&utm_term=app">移动客户端</a>
+                </dd>
+
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>资源</dt>
+                <dd>
+                    <a href="/weekly?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=resource&utm_content=footer-links-weekly&utm_term=每周精选">每周精选</a>
+                </dd>
+                <dd>
+                    <a href="/users?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=resource&utm_content=footer-links-users&utm_term=用户排行榜">用户排行榜</a>
+                </dd>
+                <dd>
+                    <a href="/badges?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=resource&utm_content=footer-links-badges&utm_term=徽章">徽章</a>
+                </dd>
+                <dd>
+                    <a href="/faq?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=resource&utm_content=footer-links-faq&utm_term=帮助中心">帮助中心</a>
+                </dd>
+                <dd>
+                    <a href="/repu?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=resource&utm_content=footer-links-repu&utm_term=声望与权限">声望与权限</a>
+                </dd>
+                <dd>
+                    <a href="/community?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=resource&utm_content=footer-links-community&utm_term=社区服务中心">社区服务中心</a>
+                </dd>
+                <dd>
+                    <a href="https://docs.segmentfault.com?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=resource&utm_content=footer-links-docs&utm_term=开发手册">开发手册</a>
+                </dd>
+
+
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>商务</dt>
+                <dd>
+                    <a href="https://business.segmentfault.com/services?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=business&utm_content=footer-links-services-rencai&utm_term=人才服务"
+                       target="_blank">人才服务</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/services?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=business&utm_content=footer-links-services-qiyeneixun&utm_term=企业服务"
+                       target="_blank">企业培训</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/services?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=business&utm_content=footer-links-services-huodongcehua&utm_term=活动策划"
+                       target="_blank">活动策划</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/ads?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=business&utm_content=footer-links-ads&utm_term=广告投放"
+                       target="_blank">广告投放</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/bc?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=business&utm_content=footer-links-bc&utm_term=区块链解决方案"
+                       target="_blank">区块链解决方案</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/contact?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=business&utm_content=footer-links-contact&utm_term=合作联系"
+                       target="_blank">合作联系</a></dd>
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>关于</dt>
+                <dd>
+                    <a href="https://about.segmentfault.com/?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=about&utm_content=about-index&utm_term=关于我们">关于我们</a>
+                </dd>
+                <dd>
+                    <a href="https://about.segmentfault.com/careers.html?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=about&utm_content=about-careers&utm_term=加入我们">加入我们</a>
+                </dd>
+                <dd>
+                    <a href="https://about.segmentfault.com/contact.html?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=about&utm_content=about-contact&utm_term=联系我们">联系我们</a>
+                </dd>
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>关注</dt>
+                <dd><a href="//segmentfault.com/blog/segmentfault" target="_blank">产品技术日志</a></dd>
+                <dd><a href="//segmentfault.com/blog/community_admin" target="_blank">社区运营日志</a></dd>
+                <dd><a href="//segmentfault.com/blog/segmentfault_news" target="_blank">市场运营日志</a></dd>
+                <dd><a href="//segmentfault.com/blog/segmentfault_team" target="_blank">团队日志</a></dd>
+                <dd><a href="//segmentfault.com/blog/interview" target="_blank">社区访谈</a></dd>
+                <dd>
+                    <ul class="sn-inline">
+                        <li>
+                            <a class="entypo-wechart icon-sn-weixin weixin-popover-qrcode" data-toggle="popover"
+                               data-placement="top" data-content="">微信</a>
+                        </li>
+                        <li>
+                            <a href="http://weibo.com/segmentfault" target="_blank" class="entypo-weibo icon-sn-weibo">新浪微博</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/SegmentFault" target="_blank"
+                               class="entypo-facebook icon-sn-github">Github</a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/segment_fault" target="_blank"
+                               class="entypo-twitter icon-sn-twitter">Twitter</a>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+
+            <dl class="col-sm-2 site-link" id="license">
+                <dt>条款</dt>
+                <dd><a href="/tos">服务条款</a></dd>
+                <dd><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">内容许可</a></dd>
+                <dd>
+                    <a href="/app" class="clearfix mt10 block"><img src="../picture/appqrcode.png"
+                                                                    class="app-qrcode"></a>
+                    <div class="app-download-desc">
+                        <p>扫一扫下载 App</p>
+                    </div>
+
+                </dd>
+            </dl>
+        </div>
+        <div class="copyright">
+            Copyright &copy; 2011-2019 SegmentFault. 当前呈现版本 19.02.27<br>
+            <a href="http://www.miibeian.gov.cn/" rel="nofollow">浙ICP备 15005796号-2</a> &nbsp;
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602002000"
+               rel="nofollow">浙公网安备 33010602002000号</a>
+            <span class="ml5">杭州堆栈科技有限公司版权所有</span>
+            <P class="mt30">CDN 存储服务由 <a target="_blank"
+                                         href="https://www.upyun.com/?utm_source=segmentfault&utm_medium=link&utm_campaign=upyun&md=segmentfault">又拍云</a>
+                赞助提供 </p>
+        </div>
+        <p class="text-center">
+            <a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="mobile" href="javascript:;">移动版</a>
+            <a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="desktop"
+               href="javascript:;">桌面版</a>
+        </p>
+    </div>
+</footer>
+
+<div id="fixedTools" class="hidden-xs hidden-sm">
+    <a id="backtop" class="hidden border-bottom" href="#">回顶部</a>
+</div>
+
+
+<script>
+    window.serverTime = 1551940874000;
+</script>
+<script crossorigin th:src="@{../js/assets.js}"></script>
+<script th:src="@{../js/ads.min.js}" type="text/javascript"></script>
+</body>
+</html>
