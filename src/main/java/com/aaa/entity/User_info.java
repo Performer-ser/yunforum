@@ -15,8 +15,9 @@ public class User_info {
     private String head;
     private Date createuser;
     private Integer userstatus;
+    private String signature;
 
-    public User_info(Integer userid, String username, Integer sex, Date birthday, String phone, String address, String idcard, String truename, Integer rank, String head, Date createuser, Integer userstatus) {
+    public User_info(Integer userid, String username, Integer sex, Date birthday, String phone, String address, String idcard, String truename, Integer rank, String head, Date createuser, Integer userstatus, String signature) {
         this.userid = userid;
         this.username = username;
         this.sex = sex;
@@ -29,6 +30,11 @@ public class User_info {
         this.head = head;
         this.createuser = createuser;
         this.userstatus = userstatus;
+        this.signature = signature;
+    }
+
+    public String getSignature() {
+        return signature;
     }
 
     public User_info() {
@@ -145,6 +151,7 @@ public class User_info {
                 ", head='" + head + '\'' +
                 ", createuser=" + createuser +
                 ", userstatus=" + userstatus +
+                ", signature='" + signature + '\'' +
                 '}';
     }
 }

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta property="qc:admins" content="15317273575564615446375">
+    <meta property="og:image" content="https://cdn.segmentfault.com/v-5c8b4d77/global/img/touch-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="alexaVerifyID" content="LkzCRJ7rPEUwt6fVey2vhxiw1vQ">
+    <meta name="apple-itunes-app" content="app-id=958101793, app-argument=">
+    <title>(18) SegmentFault 思否</title>
+    <meta name="description" content="SegmentFault 思否 为开发者提供问答、学习与交流编程知识的平台，创造属于开发者的时代！">
+    <meta name="keywords"
+          content="SegmentFault,思否,javascript,php,python,java,mysql,ios,android,vue.js,node.js,html,css,ruby,git,docker,前端">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://segmentfault.com/opensearch.xml"
+          title="SegmentFault">
+    <link rel="shortcut icon" href="https://cdn.segmentfault.com/v-5c8b4d77/global/img/favicon.ico">
+    <link rel="apple-touch-icon" href="https://cdn.segmentfault.com/v-5c8b4d77/global/img/touch-icon.png">
+    <meta name="msapplication-TileColor" content="#009a61">
+    <meta name="msapplication-square150x150logo"
+          content="https://cdn.segmentfault.com/v-5c8b4d77/global/img/touch-icon.png">
+    <meta name="baidu_union_verify" content="bcf7fd80dca60d53d46d5b46e1b990ca">
+    <meta name="userId" value="1030000018349112" id="SFUserId">
+    <meta name="userRank" value="0" id="SFUserRank">
+    <link rel="alternate" type="application/atom+xml" title="SegmentFault 最新问题"
+          href="https://segmentfault.com/feeds/questions">
+    <link rel="alternate" type="application/atom+xml" title="SegmentFault 最新文章"
+          href="https://segmentfault.com/feeds/blogs">
+    <link rel="stylesheet" th:href="@{/css/global.css}"/>
+    <link rel="stylesheet" th:href="@{/css/group.css}"/>
+    <link rel="stylesheet" th:href="@{/css/responsive.css}"/>
+    <script type='text/javascript' th:src="@{/js/hm.js}"></script>
+    <script type='text/javascript' th:src="@{/js/fl.js}"></script>
+</head>
+<body data-mod="group" class="group-detail ">
+<img id="icon4weChat" style="height: 0;width: 0;" data-src="https://cdn.segmentfault.com/v-5c8b4d77/global/img/touch-icon-512.png">
+<div id="gridMapHoverBox" style="position:absolute; border: 1px solid #009a61; z-index:99; font-size: 10px; background:#fff"></div>
+<div class="global-nav sf-header sf-header--index">
+    <div class="bottom-nav visible-xs visible-sm">
+        <div class="opts">
+            <a class="opts-group " href="https://segmentfault.com/">
+                <i class="fa fa-home" aria-hidden="true"></i><span>首页</span>
+            </a>
+            <a class="opts-group " href="https://segmentfault.com/questions">
+                <i class="fa fa-comments" aria-hidden="true"></i>
+                <span>问答</span>
+            </a>
+            <a class="opts-group " href="https://segmentfault.com/blogs">
+                <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                <span>专栏</span>
+            </a>
+            <a class="opts-group " href="https://segmentfault.com/lives">
+                <i class="fa fa-play-circle" aria-hidden="true"></i>
+                <span>讲堂</span>
+            </a>
+            <div class="opts-group">
+                <div class="btn-group dropup">
+                    <i class="fa fa-bars dropdown hoverDropdown" data-toggle="dropdown" aria-hidden="true">
+                        <span>更多</span>
+                    </i>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://segmentfault.com/jobs">职位</a></li>
+                        <li><a href="https://segmentfault.com/events">活动</a></li>
+                        <li><a href="https://segmentfault.com/tags">标签</a></li>
+                        <li><a href="https://segmentfault.com/badges">徽章</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="container nav">
+        <div class="visible-xs visible-sm header-response">
+            <a href="https://segmentfault.com/search" style="display:block">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            <div class="sf-header__logo sf-header__logo--response">
+                <h1>
+                    <a href="https://segmentfault.com/" style="height:24px; background-size: auto 24px;"></a>
+                </h1>
+            </div>
+            <div class="opts">
+                <li class="opts__item user dropdown hoverDropdown">
+                    <a class="dropdownBtn user-avatar" data-toggle="dropdown" style="background-image: url(&#39;https://cdn.segmentfault.com/v-5c8b4d77/global/img/user-64.png&#39;);"
+                       href="https://segmentfault.com/u/shansong_5c78849c3c77d">
+                    </a>
+                    <div class="has-unread__count has-unread__count-avatar">
+                        <span class="redpoint"></span>
+                    </div>
+                    <div class="dropdown-avatar-menu hidden">
+                        <div class="menu-score">
+                            <span class="score pull-left ml20 mr10">0 声望</span>
+                            <div class="">
+                                <span class="badge badge--o badge--sf badge--gold"><i class="badge__icon"></i></span>
+                                <span class="profile__sidebar--award-badge-count">0</span>
+                                <span class="badge badge--o badge--sf badge--silver"><i class="badge__icon"></i></span>
+                                <span class="profile__sidebar--award-badge-count">0</span>
+                                <span class="badge badge--o badge--sf badge--bronze"><i class="badge__icon"></i></span>
+                                <span class="profile__sidebar--award-badge-count">1</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="container-fluid">
+                            <div class="menu-list row">
+                                <div class="col-md-6 col-xs-6 pl0 pr0">
+                                    <ul>
+                                        <li class="message-response visible-xs">
+                                            <a href="https://segmentfault.com/user/notifications" id="messageCount-response">
+                                                通知提醒
+                                                <span class="redpoint-response">18</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/u/shansong_5c78849c3c77d/notes">我的笔记</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/u/shansong_5c78849c3c77d/bookmarks">我的收藏</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/user/invited">受邀回答</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/experts">付费问答</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 col-xs-6 pl0 pr0">
+                                    <ul>
+                                        <li class="letter-response  visible-xs">
+                                            <a href="https://segmentfault.com/user/messages" id="letterCount-response">私信消息</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/u/shansong_5c78849c3c77d">我的主页</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/u/shansong_5c78849c3c77d/about">我的档案</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/user/finance">我的资产</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/user/settings">个人设置</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/api/user/logout?_=987a9146309a3a87fcfc9bb4bb96bee0">退出</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="menu-footer">
+                            <a class="js__action--complain" href="javascript:void(0);"><span>用户申诉</span></a>
+                            · <a href="https://segmentfault.com/g/1570000009280187"><span>建议反馈</span></a>
+                            · <a href="https://segmentfault.com/user/invitation"><span>邀请朋友</span></a></div>
+                    </div>
+                    <script type="text/template" id="js__action--complain-tpl">
+                        <form class="complain__form" method="post" action="/api/appeals/add">
+                        <div class="form-group">
+                            <label>理由</label>
+                            <textarea name="description" class="form-control" rows="3"></textarea>
+                        </div>
+                        </form>
+                    </script>
+                </li>
+                <li class="opts__item dropdown hoverDropdown write-btns mt0">
+                    <a class="dropdownBtn" data-toggle="dropdown" href="https://segmentfault.com/ask">
+                        <i class="fa fa-plus" aria-hidden="true" style="margin-top: 7px"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right ">
+                        <li><a href="https://segmentfault.com/ask">提问题</a></li>
+                        <li><a href="https://segmentfault.com/submit">发头条</a></li>
+                        <li><a href="https://segmentfault.com/write">写文章</a></li>
+                        <li><a href="https://segmentfault.com/record">记笔记</a></li>
+                        <li class="divider"></li>
+                        <li><a href="https://segmentfault.com/user/draft">草稿箱</a></li>
+                    </ul>
+                </li>
+            </div>
+        </div>
+        <script>
+            mobileScroll(
+                function (direction) {
+                    try {
+                        if (direction === 'down') {
+                            document.querySelector('.bottom-nav').classList.add('hidden')
+                        } else {
+                            document.querySelector('.bottom-nav').classList.remove('hidden')
+                        }
+                    } catch (err) {
+                    }
+                }
+            );
+
+            function mobileScroll(fn) {
+                var beforeScrollTop = document.documentElement.scrollTop || document.body.scrollTop,
+                    fn = fn || function () {
+                    };
+                window.addEventListener("scroll", function () {
+                    var afterScrollTop = document.documentElement.scrollTop || document.body.scrollTop,
+                        delta = afterScrollTop - beforeScrollTop;
+                    if (delta === 0) return false;
+                    fn(delta > 0 ? "down" : "up");
+                    beforeScrollTop = afterScrollTop;
+                }, false);
+            }
+        </script>
+        <div class="row hidden-xs hidden-sm">
+            <div class="col-sm-8 col-md-9 col-lg-9">
+                <div class="sf-header__logo">
+                    <h1><a href="https://segmentfault.com/">SegmentFault</a></h1>
+                </div>
+                <div>
+                    <ul class="menu list-inline pull-left hidden-xs">
+                        <li class="menu__item"><a href="https://segmentfault.com/" class="">首页</a></li>
+                        <li class="menu__item"><a href="https://segmentfault.com/questions" class="">问答</a></li>
+                        <li class="menu__item"><a href="https://segmentfault.com/blogs" class="">专栏</a></li>
+                        <li class="menu__item"><a href="https://segmentfault.com/groups" class="active-nav">圈子</a></li>
+                        <li class="menu__item menu__item--more dropdown">
+                            <a href="https://segmentfault.com/g/1570000010557000/users##"
+                               class="dropdown-toggle dropdownBtn" data-toggle="dropdown">
+                            发现<i class="fa fa-caret-down" style="font-size: 14px;margin-left: 5px;" aria-hidden="true"></i>
+                            </a>
+                            <div class="dropdown-block hidden">
+                                <ul class="dropdown-content-menu">
+                                    <li><a href="https://segmentfault.com/events">活动</a></li>
+                                    <li><a href="https://segmentfault.com/tags">标签</a></li>
+                                    <li><a href="https://segmentfault.com/g/jobs">酷工作</a></li>
+                                    <li><a href="https://segmentfault.com/users">排行榜</a></li>
+                                    <li><a href="https://segmentfault.com/badges">徽章</a></li>
+                                    <li><a href="https://segmentfault.com/notes">笔记</a></li>
+                                    <li><a href="https://docs.segmentfault.com/" target="_blank">开发手册<i
+                                            style="line-height: 20px;font-size: 12px;color: #F5A623;"
+                                            class="ml10 fa fa-external-link-square"></i></a></li>
+                                    <li><a href="https://business.segmentfault.com/ads?utm_source=sf-header"
+                                           target="_blank">广告投放<i
+                                            style="line-height: 20px;font-size: 12px;color: #F5A623;"
+                                            class="ml10 fa fa-external-link-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="menu__item visible-sm-inline-block">
+                            <a href="https://segmentfault.com/search">
+                                <span class="glyphicon glyphicon-search" style="vertical-align: middle;"></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <form action="https://segmentfault.com/search" class="header-search  hidden-sm hidden-xs pull-right">
+                        <button class="btn btn-link">
+                            <span class="sr-only">搜索</span>
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        <input id="searchBox" name="q" type="text" placeholder="搜索问题或关键字" class="form-control" value="">
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-3 col-lg-3 text-right">
+                <ul class="opts list-inline hidden-xs">
+                    <li class="opts__item dropdown hoverDropdown write-btns visible-lg-inline-block">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                创建 <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://segmentfault.com/ask">提问题</a></li>
+                                <li><a href="https://segmentfault.com/submit">发头条</a></li>
+                                <li><a href="https://segmentfault.com/write">写文章</a></li>
+                                <li><a href="https://segmentfault.com/record">记笔记</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="https://segmentfault.com/user/draft">草稿箱</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="opts__item dropdown hoverDropdown write-btns visible-md-inline-block">
+                        <a class="dropdownBtn" data-toggle="dropdown" href="https://segmentfault.com/ask">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right ">
+                            <li><a href="https://segmentfault.com/ask">提问题</a></li>
+                            <li><a href="https://segmentfault.com/submit">发头条</a></li>
+                            <li><a href="https://segmentfault.com/write">写文章</a></li>
+                            <li><a href="https://segmentfault.com/record">记笔记</a></li>
+                            <li class="divider"></li>
+                            <li><a href="https://segmentfault.com/user/draft">草稿箱</a></li>
+                        </ul>
+                    </li>
+                    <li class="opts__item message has-unread hidden-sm ml10">
+                        <a id="dLabel" class="dropdown-toggle-message" href="https://segmentfault.com/user/notifications">
+                            <span class="sr-only">消息</span>
+                            <span id="messageCount" class="fa fa-bell-o"></span>
+                            <span class="has-unread__count">18</span>
+                        </a>
+                        <div class="opts__item--message hide">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <ul class="nav nav-tabs nav-tabs-message">
+                                        <li role="presentation" class="active">
+                                            <a href="https://segmentfault.com/g/1570000010557000/users#messageGeneral"
+                                                id="home-tab" role="tab" data-toggle="tab" aria-controls="home"
+                                                aria-expanded="true">
+                                                <i class="fa fa-bullhorn"></i>
+                                                <span class="notice-dot hide notice-dot-general"></span>
+                                            </a>
+                                        </li>
+                                        <li role="presentation" class="">
+                                            <a href="https://segmentfault.com/g/1570000010557000/users#messageComment"
+                                                id="home-tab" role="tab" data-toggle="tab" aria-controls="home"
+                                                aria-expanded="true">
+                                                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                                                <span class="notice-dot hide notice-dot-comment"></span>
+                                            </a>
+                                        </li>
+                                        <li role="presentation" class=""><a
+                                                href="https://segmentfault.com/g/1570000010557000/users#messageRanked"
+                                                id="home-tab" role="tab" data-toggle="tab" aria-controls="home"
+                                                aria-expanded="true"><i class="fa fa-thumbs-o-up"></i><span
+                                                class="notice-dot hide notice-dot-ranked"></span></a></li>
+                                        <li role="presentation" class=""><a
+                                                href="https://segmentfault.com/g/1570000010557000/users#messageFollowed"
+                                                id="home-tab" role="tab" data-toggle="tab" aria-controls="home"
+                                                aria-expanded="true"><i class="fa fa-user-plus"></i><span
+                                                class="notice-dot hide notice-dot-followed"></span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active" id="messageGeneral"></div>
+                                        <div role="tabpanel" class="tab-pane" id="messageComment"></div>
+                                        <div role="tabpanel" class="tab-pane" id="messageRanked"></div>
+                                        <div role="tabpanel" class="tab-pane" id="messageFollowed"></div>
+                                        <script type="text/template" id="messageGeneralTpl">
+                                            <ul
+                                            class="mCustomScrollbar-message" data-proto="general"  data-mcs-theme="minimal-dark"><% _.each(general,function(d){ %>
+                                            <li class="<%= d.viewed >0 ?'':'bg-warning'%>"><%= d.sentence %>&nbsp;<a
+                                                    href="<%= d.url %>"><%= d.excerpt %></a>&nbsp<%= d.appendSentence %>
+                                            </li><% }) %></ul></script>
+                                        <script type="text/template"
+                                                id="item--general"><% _.each(general,function(d){ %>
+                                        <li class="<%= d.viewed>0 ?'':'bg-warning'%>"><%= d.sentence %>&nbsp;<a
+                                                href="<%= d.url %>"><%= d.excerpt %></a></li><% }) %></script>
+                                        <script type="text/template" id="messageCommentTpl">
+                                            <ul
+                                            class="mCustomScrollbar-message" data-proto="comment"  data-mcs-theme="minimal-dark"><% _.each(comment,function(d){ %>
+                                            <li class="<%= d.viewed>0 ?'':'bg-warning'%>"><%= d.sentence %>&nbsp;<a
+                                                    href="<%= d.url %>"><%= d.excerpt %></a>&nbsp<%= d.appendSentence %>
+                                            </li><% }) %></ul></script>
+                                        <script type="text/template"
+                                                id="item--comment"><% _.each(comment,function(d){ %>
+                                        <li class="<%= d.viewed>0 ?'':'bg-warning'%>"><%= d.sentence %>&nbsp;<a
+                                                href="<%= d.url %>"><%= d.excerpt %></a></li><% }) %></script>
+                                        <script type="text/template" id="messageRankedTpl">
+                                            <ul
+                                            class="mCustomScrollbar-message" data-proto="ranked"  data-mcs-theme="minimal-dark"><% _.each(ranked,function(d){ %>
+                                            <li class="<%= d.viewed>0 ?'':'bg-warning'%>"><span class="badge
+                                                    <% if(d.voted && d.voted.rank!=0){ %><%= d.voted.rank > 0 ? 'green':'red' %><% } else { %> transparent <% } %>"><% if(d.voted){ %><%= d.voted.rank > 0 ? '+'+d.voted.rank:d.voted.rank %><% } %></span>
+                                                <div class="rank-desc"><%= d.sentence %>&nbsp;<a href="<%= d.url %>"><%=
+                                                    d.excerpt %></a></div>
+                                            </li><% }) %></ul></script>
+                                        <script type="text/template" id="item--ranked"><% _.each(ranked,function(d){ %>
+                                        <li class="<%= d.viewed>0 ?'':'bg-warning'%>"><span class="badge
+                                                    <% if(d.voted && d.voted.rank!=0){ %><%= d.voted.rank > 0 ? 'green':'red' %><% } else { %> transparent <% } %>"><% if(d.voted){ %><%= d.voted.rank > 0 ? '+'+d.voted.rank:d.voted.rank %><% } %></span>
+                                            <div class="rank-desc"><%= d.sentence %>&nbsp;<a href="<%= d.url %>"><%=
+                                                d.excerpt %></a></div>
+                                        </li><% }) %></script>
+                                        <script type="text/template" id="messageFollowedTpl">
+                                            <ul
+                                            class="mCustomScrollbar-message" data-proto="followed"  data-mcs-theme="minimal-dark">
+                                            <p class="follow-tips">他们最近关注了你</p><% _.each(followed,function(d){ %>
+                                            <li class="<%= d.viewed>0 ?'':'bg-warning'%>"><img
+                                                    class="follower__img avatar-32"
+                                                    src="<%= d.triggerUser[0] ? d.triggerUser[0].avatarUrl : '' %>">
+                                                <div class="follower__info"><% if(d.triggerUser[0] ?
+                                                    d.triggerUser[0].isFollowed : ''){ %>
+                                                    <button data-id="<%= d.triggerUser[0] ? d.triggerUser[0].id : '' %>"
+                                                            class="btn btn-default btn-xs message__btn--unfollow pull-right active">
+                                                        已关注
+                                                    </button>
+                                                    <% }else{ %>
+                                                    <button data-id="<%= d.triggerUser[0] ? d.triggerUser[0].id : '' %>"
+                                                            class="btn btn-default btn-xs message__btn--follow pull-right">
+                                                        关注
+                                                    </button>
+                                                    <% } %><a
+                                                            href="<%= d.triggerUser[0] ? d.triggerUser[0].url : '' %>"><%=d.triggerUser[0]
+                                                        ? d.triggerUser[0].name : ''%></a><br><span><%= d.triggerUser[0] ? d.triggerUser[0].rank : '' %> 声望</span>
+                                                </div>
+                                            </li><% }) %></ul></script>
+                                        <script type="text/template"
+                                                id="item--followed"><% _.each(followed,function(d){ %>
+                                        <li class="<%= d.viewed>0 ?'':'bg-warning'%>"><img
+                                                class="follower__img avatar-32"
+                                                src="<%= d.triggerUser[0] ? d.triggerUser[0].avatarUrl : '' %>">
+                                            <div class="follower__info"><% if(d.triggerUser[0] &&
+                                                d.triggerUser[0].isFollowed){ %>
+                                                <button data-id="<%= d.triggerUser[0] ? d.triggerUser[0].id : '' %>"
+                                                        class="btn btn-default btn-xs message__btn--unfollow pull-right active">
+                                                    已关注
+                                                </button>
+                                                <% }else{ %>
+                                                <button data-id="<%= d.triggerUser[0] ? d.triggerUser[0].id : '' %>"
+                                                        class="btn btn-default btn-xs message__btn--follow pull-right">
+                                                    关注
+                                                </button>
+                                                <% } %><a href="<%= d.triggerUser[0] ? d.triggerUser[0].url : '' %>"><%=
+                                                    d.triggerUser[0].name
+                                                    %></a><br><span><%= d.triggerUser[0].rank %> 声望</span></div>
+                                        </li><% }) %></script>
+                                    </div>
+                                    <p class="opts__item--message-loading follow-tips">loading</p></div>
+                                <div class="panel-footer">
+                                    <div class="row">
+                                        <div class="col-sm-6"><a href="javascript:;"
+                                                                 class="message-ingore-all hide"><span
+                                                class="glyphicon glyphicon-ok-sign"></span>
+                                            全部标记为已读</a></div>
+                                        <div class="col-sm-6"><a class="opts__item--message-view-all"
+                                                                 href="https://segmentfault.com/user/notifications">查看全部
+                                            »</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="opts__item letter has-unread hidden-sm"><a id="dLabel" class="dropdown-toggle-letter"
+                                                                          href="https://segmentfault.com/user/messages"><span
+                            class="sr-only">私信</span><span id="letterCount" class="fa fa-envelope-o"></span></a>
+                        <div class="opts__item--letter hide">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <ul class="nav nav-tabs nav-tabs-letter">
+                                        <li role="presentation" class="active"><span class="opts__item--letter-heading">最近的私信</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="tab-content">
+                                        <div id="messageInbox"></div>
+                                        <script type="text/template" id="messageInboxTpl">
+                                            <ul
+                                            class="mCustomScrollbar-message" data-proto="inbox" data-mcs-theme="minimal-dark"><% _.each(inboxes,function(d){ %>
+                                            <li class="<%= d.viewed>0 ?'':'bg-warning'%>" data-click="<%= d.url %>"><img
+                                                    class="follower__img avatar-32"
+                                                    src="<%= d.targetUser.avatarUrl %>">
+                                                <div class="follower__info"><a href="<%= d.url %>"><%= d.targetUser.name
+                                                    %></a><br><% if (d.lastMessage.content){ %><span
+                                                        class="ellipsis inline-block" style="width: 245px;"><%= d.lastMessage.content.content %></span><%
+                                                    } %>
+                                                </div>
+                                            </li><% }) %><% if(inboxes.length ==0){ %><p class="text-center">
+                                                没有人给你发私信</p><% } %></ul></script>
+                                        <script type="text/template"
+                                                id="item--inboxes"><% _.each(inboxes,function(d){ %>
+                                        <li class="<%= d.viewed>0 ?'':'bg-warning'%>" data-click="<%= d.url %>"><img
+                                                class="follower__img avatar-32"
+                                                src="<%= d.targetUser.avatarUrl %>">
+                                            <div class="follower__info"><a href="<%= d.targetUser.url %>"><%=
+                                                d.targetUser.name
+                                                %></a><br><span class="ellipsis inline-block" style="width: 245px;"><%= d.content %></span>
+                                            </div>
+                                        </li><% }) %></script>
+                                    </div>
+                                    <p class="opts__item--letter-loading follow-tips">loading</p></div>
+                                <div class="panel-footer">
+                                    <div class="row">
+                                        <div class="col-sm-6"><a href="javascript:;"
+                                                                 class="message-ingore-all hide"><span
+                                                class="glyphicon glyphicon-ok-sign"></span>
+                                            全部标记为已读</a></div>
+                                        <div class="col-sm-6"><a class="opts__item--message-view-all"
+                                                                 href="https://segmentfault.com/user/messages">查看全部
+                                            »</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <style>
+                        @media (max-width: 1200px) {
+                            .trialCenter-wrapper {
+                                display: none !important;
+                            }
+                        }
+                    </style>
+                    <li class="opts__item user dropdown hoverDropdown ml0"><a class="avatar-* dropdownBtn user-avatar"
+                                                                              data-toggle="dropdown"
+                                                                              style="background-image: url(&#39;https://cdn.segmentfault.com/v-5c8b4d77/global/img/user-64.png&#39;)"
+                                                                              href="https://segmentfault.com/u/shansong_5c78849c3c77d"
+                                                                              src="https://cdn.segmentfault.com/v-5c8b4d77/global/img/user-64.png"></a>
+                        <div class="has-unread__count has-unread__count-avatar"><span class="redpoint"></span></div>
+                        <div class="dropdown-avatar-menu hidden">
+                            <div class="menu-score"><span class="score pull-left ml20 mr10">0 声望</span>
+                                <div class=""><span class="badge badge--o badge--sf badge--gold"><i
+                                        class="badge__icon"></i></span><span
+                                        class="profile__sidebar--award-badge-count">0</span><span
+                                        class="badge badge--o badge--sf badge--silver"><i
+                                        class="badge__icon"></i></span><span
+                                        class="profile__sidebar--award-badge-count">0</span><span
+                                        class="badge badge--o badge--sf badge--bronze"><i
+                                        class="badge__icon"></i></span><span
+                                        class="profile__sidebar--award-badge-count">1</span></div>
+                            </div>
+                            <hr>
+                            <div class="container-fluid">
+                                <div class="menu-list row">
+                                    <div class="col-md-6 col-xs-6 pl0 pr0">
+                                        <ul>
+                                            <li class="message-response visible-xs"><a
+                                                    href="https://segmentfault.com/user/notifications"
+                                                    id="messageCount-response">通知提醒</a></li>
+                                            <li>
+                                                <a href="https://segmentfault.com/u/shansong_5c78849c3c77d/notes">我的笔记</a>
+                                            </li>
+                                            <li><a href="https://segmentfault.com/u/shansong_5c78849c3c77d/bookmarks">我的收藏</a>
+                                            </li>
+                                            <li><a href="https://segmentfault.com/user/invited">受邀回答</a></li>
+                                            <li><a href="https://segmentfault.com/experts">付费问答</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 pl0 pr0">
+                                        <ul>
+                                            <li class="letter-response  visible-xs"><a
+                                                    href="https://segmentfault.com/user/messages"
+                                                    id="letterCount-response">私信消息</a></li>
+                                            <li><a href="https://segmentfault.com/u/shansong_5c78849c3c77d">我的主页</a>
+                                            </li>
+                                            <li>
+                                                <a href="https://segmentfault.com/u/shansong_5c78849c3c77d/about">我的档案</a>
+                                            </li>
+                                            <li><a href="https://segmentfault.com/user/finance">我的资产</a></li>
+                                            <li><a href="https://segmentfault.com/user/settings">个人设置</a></li>
+                                            <li>
+                                                <a href="https://segmentfault.com/api/user/logout?_=987a9146309a3a87fcfc9bb4bb96bee0">退出</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="menu-footer"><a class="js__action--complain" href="javascript:void(0);"><span>用户申诉</span></a>
+                                · <a href="https://segmentfault.com/g/1570000009280187"><span>建议反馈</span></a>
+                                · <a href="https://segmentfault.com/user/invitation"><span>邀请朋友</span></a></div>
+                        </div>
+
+                        <script type="text/template" id="js__action--complain-tpl">
+                            <form
+                            class="complain__form" method="post" action="/api/appeals/add">
+                            <div class="form-group"><label>理由</label><textarea name="description" class="form-control"
+                                                                               rows="3"></textarea></div></form>
+                        </script>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="mt30">
+    <div class="container group-user-list" data-groupid="1570000010557000">
+        <div class="row">
+            <ol class="breadcrumb ml15 mb15">
+                <li><a href="https://segmentfault.com/groups">圈子</a></li>
+                <li><a href="https://segmentfault.com/g/Vue.js">Vue.js 技术圈</a></li>
+                <li class="active">成员列表</li>
+            </ol>
+            <div class="col-md-9 col-xs-12 mb20">
+                <table class="member--list table">
+                    <thead>
+                    <tr>
+                        <th style="">最近加入</th>
+                        <th style="">主题数</th>
+                        <th style="">回帖数</th>
+                        <th style="">加入时间</th>
+                        <th style=""></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="nets:${list}" class="group__detail--member mt15">
+                        <td>
+                            <img th:src="@{${nets.head}}" class="img-circle" style="width:32px">
+                            <div class="member--info mt5">
+                                <span class="user-member-name">
+                                    <a th:href="@{'/circle/personal/'+${nets.userid}}" th:text="${nets.username}"></a>
+                                </span>
+                            </div>
+                        </td>
+                        <td th:text="${nets.topic}"></td>
+                        <td th:text="${nets.comments}"></td>
+                        <td th:text="${#dates.format(nets.ctime, 'yyyy-MM-dd')}"></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    <ul class="pagination">
+                        <li class="active"><a href="javascript:void(0);">1</a></li>
+                        <li><a href="https://segmentfault.com/g/1570000010557000/users?page=2">2</a></li>
+                        <li><a href="https://segmentfault.com/g/1570000010557000/users?page=3">3</a></li>
+                        <li><a href="https://segmentfault.com/g/1570000010557000/users?page=4">4</a></li>
+                        <li><a href="https://segmentfault.com/g/1570000010557000/users?page=5">5</a></li>
+                        <li class="disabled"><span>…</span></li>
+                        <li class="next"><a rel="next" href="https://segmentfault.com/g/1570000010557000/users?page=2">下一页</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12">
+                <div class="input-group mb20"><input type="text" class="form-control group-user-search-ipt"
+                                                     placeholder="搜索圈子成员" value=""><span class="input-group-btn"><button
+                        class="btn btn-default group-user-search" type="button">搜索</button></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        <div class="row hidden-xs">
+            <dl class="col-sm-2 site-link">
+                <dt>产品</dt>
+
+                <dd>
+                    <a href="https://segmentfault.com/questions/hottest?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E7%83%AD%E9%97%A8%E9%97%AE%E7%AD%94">热门问答</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/blogs/hottest?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E7%83%AD%E9%97%A8%E4%B8%93%E6%A0%8F">热门专栏</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/lives?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E7%83%AD%E9%97%A8%E8%AE%B2%E5%A0%82">热门讲堂</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/events?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E6%9C%80%E6%96%B0%E6%B4%BB%E5%8A%A8">最新活动</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/groups?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E5%9C%88%E5%AD%90">圈子</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/jobs?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E6%89%BE%E5%B7%A5%E4%BD%9C">找工作</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/app?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=app">移动客户端</a>
+                </dd>
+
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>资源</dt>
+                <dd>
+                    <a href="https://segmentfault.com/weekly?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-weekly&amp;utm_term=%E6%AF%8F%E5%91%A8%E7%B2%BE%E9%80%89">每周精选</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/users?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-users&amp;utm_term=%E7%94%A8%E6%88%B7%E6%8E%92%E8%A1%8C%E6%A6%9C">用户排行榜</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/badges?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-badges&amp;utm_term=%E5%BE%BD%E7%AB%A0">徽章</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/faq?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-faq&amp;utm_term=%E5%B8%AE%E5%8A%A9%E4%B8%AD%E5%BF%83">帮助中心</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/repu?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-repu&amp;utm_term=%E5%A3%B0%E6%9C%9B%E4%B8%8E%E6%9D%83%E9%99%90">声望与权限</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/community?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-community&amp;utm_term=%E7%A4%BE%E5%8C%BA%E6%9C%8D%E5%8A%A1%E4%B8%AD%E5%BF%83">社区服务中心</a>
+                </dd>
+                <dd>
+                    <a href="https://docs.segmentfault.com/?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-docs&amp;utm_term=%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C">开发手册</a>
+                </dd>
+
+
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>商务</dt>
+                <dd>
+                    <a href="https://business.segmentfault.com/services?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-services-rencai&amp;utm_term=%E4%BA%BA%E6%89%8D%E6%9C%8D%E5%8A%A1"
+                       target="_blank">人才服务</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/services?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-services-qiyeneixun&amp;utm_term=%E4%BC%81%E4%B8%9A%E6%9C%8D%E5%8A%A1"
+                       target="_blank">企业培训</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/services?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-services-huodongcehua&amp;utm_term=%E6%B4%BB%E5%8A%A8%E7%AD%96%E5%88%92"
+                       target="_blank">活动策划</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/ads?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-ads&amp;utm_term=%E5%B9%BF%E5%91%8A%E6%8A%95%E6%94%BE"
+                       target="_blank">广告投放</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/bc?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-bc&amp;utm_term=%E5%8C%BA%E5%9D%97%E9%93%BE%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"
+                       target="_blank">区块链解决方案</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/contact?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-contact&amp;utm_term=%E5%90%88%E4%BD%9C%E8%81%94%E7%B3%BB"
+                       target="_blank">合作联系</a></dd>
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>关于</dt>
+                <dd>
+                    <a href="https://about.segmentfault.com/?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=about&amp;utm_content=about-index&amp;utm_term=%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC">关于我们</a>
+                </dd>
+                <dd>
+                    <a href="https://about.segmentfault.com/careers.html?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=about&amp;utm_content=about-careers&amp;utm_term=%E5%8A%A0%E5%85%A5%E6%88%91%E4%BB%AC">加入我们</a>
+                </dd>
+                <dd>
+                    <a href="https://about.segmentfault.com/contact.html?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=about&amp;utm_content=about-contact&amp;utm_term=%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC">联系我们</a>
+                </dd>
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>关注</dt>
+                <dd><a href="https://segmentfault.com/blog/segmentfault" target="_blank">产品技术日志</a></dd>
+                <dd><a href="https://segmentfault.com/blog/community_admin" target="_blank">社区运营日志</a></dd>
+                <dd><a href="https://segmentfault.com/blog/segmentfault_news" target="_blank">市场运营日志</a></dd>
+                <dd><a href="https://segmentfault.com/blog/segmentfault_team" target="_blank">团队日志</a></dd>
+                <dd><a href="https://segmentfault.com/blog/interview" target="_blank">社区访谈</a></dd>
+                <dd>
+                    <ul class="sn-inline">
+                        <li>
+                            <a class="entypo-wechart icon-sn-weixin weixin-popover-qrcode" data-toggle="popover"
+                               data-placement="top" data-content="" data-original-title="" title="">微信</a>
+                        </li>
+                        <li>
+                            <a href="http://weibo.com/segmentfault" target="_blank" class="entypo-weibo icon-sn-weibo">新浪微博</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/SegmentFault" target="_blank"
+                               class="entypo-facebook icon-sn-github">Github</a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/segment_fault" target="_blank"
+                               class="entypo-twitter icon-sn-twitter">Twitter</a>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+
+            <dl class="col-sm-2 site-link" id="license">
+                <dt>条款</dt>
+                <dd><a href="https://segmentfault.com/tos">服务条款</a></dd>
+                <dd><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">内容许可</a></dd>
+                <dd>
+                    <a href="https://segmentfault.com/app" class="clearfix mt10 block"><img
+                            src="./(18) SegmentFault 思否_files/appQrcode.png" class="app-qrcode"></a>
+                    <div class="app-download-desc">
+                        <p>扫一扫下载 App</p>
+                    </div>
+
+                </dd>
+            </dl>
+        </div>
+        <div class="copyright">
+            Copyright © 2011-2019 SegmentFault. 当前呈现版本 19.02.27<br>
+            <a href="http://www.miibeian.gov.cn/" rel="nofollow">浙ICP备 15005796号-2</a> &nbsp;
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602002000"
+               rel="nofollow">浙公网安备 33010602002000号</a>
+            <span class="ml5">杭州堆栈科技有限公司版权所有</span>
+            <p class="mt30">CDN 存储服务由 <a target="_blank"
+                                         href="https://www.upyun.com/?utm_source=segmentfault&amp;utm_medium=link&amp;utm_campaign=upyun&amp;md=segmentfault">又拍云</a>
+                赞助提供 </p>
+        </div>
+        <p class="text-center">
+            <a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="mobile" href="javascript:;">移动版</a>
+            <a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="desktop"
+               href="javascript:;">桌面版</a>
+        </p>
+    </div>
+</footer>
+<div id="fixedTools" class="hidden-xs hidden-sm">
+    <a id="backtop" class="border-bottom hidden" href="https://segmentfault.com/g/1570000010557000/users#">回顶部</a>
+</div>
+<script>
+    window.serverTime = 1552872844000;
+</script>
+<script crossorigin=""th:src="@{/js/assets.js}"></script>
+<!--<script crossorigin=""th:src="@{/js/detail.min.js}"></script>-->
+<script th:src="@{/js/ads.min.js}"type="text/javascript"></script>
+<div id="UGTKzPZbRoOS" style="display: none;"></div>
+</body>
+</html>

@@ -10,5 +10,8 @@ import java.util.List;
 public interface ReviewDao {
     @Select("select * from review where composeid = #{param1} ")
     public List<Review> queryByComposeid(Integer composeid);
+    @Select("select * from review where userid = #{param1}")
+    public List<Review> queryByUserid(Integer userid);
+
 
 }

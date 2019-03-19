@@ -14,4 +14,7 @@ public class ReviewService {
     public List<Review> queryByComposeid(Integer composeid){
         return  rd.queryByComposeid(composeid);
     }
+    public List<Review> queryByUserid(Integer userid){
+        return  rd.queryByUserid(userid);
+    }
 }

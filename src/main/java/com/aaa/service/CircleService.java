@@ -37,4 +37,7 @@ public class CircleService {
     public Integer querycountByClableid(Integer clableid){
         return cd.querycountByClableid(clableid);
     }
+    public List<Circle> queryByUserid(Integer userid){
+        return cd.queryByUserid(userid);
+    }
 }

@@ -19,4 +19,6 @@ public interface CircleDao {
     public List<Circle> queryByClableid(Integer clableid);
     @Select("select count(*) count from circle where clableid = #{param1}")
     public Integer querycountByClableid(Integer clableid);
+    @Select("select * from circle where userid = #{param1}")
+    public List<Circle> queryByUserid(Integer userid);
 }

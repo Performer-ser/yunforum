@@ -23,14 +23,16 @@
     <meta name="baidu_union_verify" content="bcf7fd80dca60d53d46d5b46e1b990ca">
     <link rel="alternate" type="application/atom+xml" title="SegmentFault 最新问题" href="/feeds/questions">
     <link rel="alternate" type="application/atom+xml" title="SegmentFault 最新文章" href="/feeds/blogs">
-    <link rel="stylesheet" th:href="@{/../css/global.css}"/>
-    <link rel="stylesheet" th:href="@{/../css/group.css}"/>
-    <link rel="stylesheet" th:href="@{/../css/responsive.css}"/>
-    <script type='text/javascript' th:src="@{/../js/spcjs.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/global.css}"/>
+    <link rel="stylesheet" th:href="@{/css/group.css}"/>
+    <link rel="stylesheet" th:href="@{/css/responsive.css}"/>
+    <script type='text/javascript' th:src="@{/js/spcjs.js}"></script>
+    <script type='text/javascript' th:src="@{/js/jquery-3.3.1.js}"></script>
 </head>
 <body data-mod="group" class="group-detail ">
-<img id="icon4weChat" style="height: 0;width: 0;" data-src="static/picture/touch-icon-512.png">
-<div id="gridMapHoverBox" style="position:absolute; border: 1px solid #009a61; z-index:99; font-size: 10px; background:#fff"></div>
+<img id="icon4weChat" style="height: 0;width: 0;" th:src="@{/picture/touch-icon-512.png}">
+<div id="gridMapHoverBox"
+     style="position:absolute; border: 1px solid #009a61; z-index:99; font-size: 10px; background:#fff"></div>
 <div class="global-nav sf-header sf-header--index">
     <div class="bottom-nav visible-xs visible-sm ">
         <div class="opts"><a class="opts-group " href="/">
@@ -38,10 +40,12 @@
             <a class="opts-group " href="/questions">
                 <i class="fa fa-comments" aria-hidden="true"></i><span>问答</span>
             </a>
-            <a class="opts-group " href="/blogs"><i class="fa fa-pencil-square" aria-hidden="true"></i><span>专栏</span></a>
+            <a class="opts-group " href="/blogs"><i class="fa fa-pencil-square"
+                                                    aria-hidden="true"></i><span>专栏</span></a>
             <div class="opts-group">
                 <div class="btn-group dropup">
-                    <i class="fa fa-bars dropdown hoverDropdown" data-toggle="dropdown" aria-hidden="true"><span>更多</span></i>
+                    <i class="fa fa-bars dropdown hoverDropdown" data-toggle="dropdown"
+                       aria-hidden="true"><span>更多</span></i>
                     <ul class="dropdown-menu">
                         <li><a href="/jobs">职位</a></li>
                         <li><a href="/events">活动</a></li>
@@ -73,6 +77,7 @@
                     }
                 }
             );
+
             function mobileScroll(fn) {
                 var beforeScrollTop = document.documentElement.scrollTop || document.body.scrollTop,
                     fn = fn || function () {
@@ -97,7 +102,8 @@
                         <li class="menu__item"><a href="/groups" class="active-nav">圈子</a></li>
                         <li class="menu__item menu__item--more dropdown">
                             <a href="##" class="dropdown-toggle dropdownBtn" data-toggle="dropdown">
-                            发现<i class="fa fa-caret-down" style="font-size: 14px;margin-left: 5px;" aria-hidden="true"></i>
+                                发现<i class="fa fa-caret-down" style="font-size: 14px;margin-left: 5px;"
+                                     aria-hidden="true"></i>
                             </a>
                             <div class="dropdown-block hidden">
                                 <ul class="dropdown-content-menu">
@@ -108,7 +114,8 @@
                                     <li><a href="/badges">徽章</a></li>
                                     <li><a href="/notes">笔记</a></li>
                                     <li><a href="https://docs.segmentfault.com" target="_blank">开发手册
-                                        <i style="line-height: 20px;font-size: 12px;color: #F5A623;"  class="ml10 fa fa-external-link-square"></i></a>
+                                        <i style="line-height: 20px;font-size: 12px;color: #F5A623;"
+                                           class="ml10 fa fa-external-link-square"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -121,7 +128,8 @@
                         <button class="btn btn-link"><span class="sr-only">搜索</span>
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
-                        <input id="searchBox" name="q" type="text" placeholder="搜索问题或关键字" class="form-control" value=""/>
+                        <input id="searchBox" name="q" type="text" placeholder="搜索问题或关键字" class="form-control"
+                               value=""/>
                     </form>
                 </div>
             </div>
@@ -129,7 +137,8 @@
                 <ul class="opts list-inline hidden-xs">
                     <li class="opts__item">
                         <a href="/user/login" class="SFRegister btn-signin" style="margin-bottom:2px;">立即登录</a>
-                        <a href="/user/register" class="SFLogin ml10 btn-signup" onClick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">免费注册</a>
+                        <a href="/user/register" class="SFLogin ml10 btn-signup"
+                           onClick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">免费注册</a>
                     </li>
                 </ul>
             </div>
@@ -137,25 +146,36 @@
     </nav>
 </div>
 <div id="detailData" class="group__warp mt30" data-groupid="1570000014908485" data-price="0" data-isjoin="">
+
     <div class="container">
+        <br/>
         <ol class="breadcrumb ml15">
             <li><a href="/groups">圈子</a></li>
-            <li class="active">职业生涯</li>
+            <li class="active" th:text="@{${list.clablename}}"></li>
         </ol>
         <div class="col-md-9 col-xs-12">
             <div class="group__detail--wrapper">
                 <a href="/g/career">
-                    <img class="pull-left group__detail--cover" th:src="@{/../picture/5df2cb85397346cfa693c7b7ccbbc635.gif}" style="border-radius:3px">
+                    <img class="pull-left group__detail--cover" th:src="@{${list.cpic}}" style="border-radius:3px">
                 </a>
-                <a href="/g/career"><h3 class="group__detail--title">职业生涯</h3></a>
+                <a href="/g/career">
+                    <h3 class="group__detail--title" th:text="@{${list.clablename}}"></h3>
+                </a>
                 <h3 class="group__detail--title ml0">
                     <button class="btn btn-success  group__detail--fee group__addgroup-btn SFLogin">关注圈子</button>
                 </h3>
-                <div class="group__detail--description"><p>分享你在职业发展上的经验或者困惑供大家探讨</p></div>
-                <div class="group__detail--footnote"><span class="group__detail-creatdate">创建于 2018-05-17</span></div>
+                <div class="group__detail--description">
+                    <p th:text="@{${list.synopsis}}"></p>
+                </div>
+                <div th:each="nets:${lists}"></div>
+                <div class="group__detail--footnote">
+                    <span class="group__detail-creatdate" th:text="'创建于'+${#dates.format(list.foundtime, 'yyyy-MM-dd')}"></span>
+                </div>
             </div>
             <div class="group__discuss mt30">
-                <div class="group__discuss-heading"><h4>最近的帖子 </h4></div>
+                <div class="group__discuss-heading"><h4>最近的帖子
+                    <a href="javascript:mak();"id="makes" class="btn btn-xs btn-default discuss__post-btn" >+ 发新帖</a>
+                </h4></div>
                 <div class="group__discuss-content">
                     <div class="form hide form--discuss" action="/api/group/[id]/discussion/add">
                         <div class="form-group">
@@ -170,18 +190,23 @@
                         </div>
                     </div>
                     <div class="group__discuss-list">
-                        <div class="group__discuss-item" data-url="/g/1570000014908485/d/1560000017473999">
-                            <a class="group__discuss-avatar" target="_blank" href="/u/segmentfault">
-                                <img th:src="@{/../picture/f82e77cc0f7945df944560f643668780.gif}">
-                            </a>
-                            <div class="group__discuss-box"><span class="group__discuss-title">
-                                <i class="fa fa-thumb-tack" aria-hidden="true"></i>&nbsp;
-                                <a href="/g/1570000014908485/d/1560000017473999">一起来总结你的 2018 </a></span>
+                        <div class="group__discuss-item" th:each="nets:${cir}" data-url="/g/1570000014908485/d/1560000017473999">
+                            <a class="group__discuss-avatar" th:href="@{'/circle/personal/'+${nets['userid']}}" target="_blank">
+                                <img  class="avatar-40" th:src="@{${nets['head']}}"></a>
+                            <div class="group__discuss-box">
+                                    <span class="group__discuss-title" style="max-width:500px">
+                                        <i aria-hidden="true" class="fa fa-thumb-tack"></i>&nbsp;
+                                        <a th:href="@{'/circle/show/'+${nets['circleid']}}" th:text="${nets['title']}"></a>
+                                    </span>
                                 <span class="group__discuss-author">
-                                    <a href="/u/segmentfault">SegmentFault</a> · 1 天前
-                                </span>
+                                        <a th:href="@{'/circle/personal/'+${nets['userid']}}" th:text="${nets['username']}"></a>
+                                            <span th:text="${#dates.format(nets['rtime'], 'MM月-dd日')}"></span>
+                                            <span th:if="${nets['rname']}"> ·最后回复 </span>
+                                            <a th:href="@{'/circle/personal/'+${nets['userid']}}" th:text="${nets['rname']}"></a>
+                                    </span>
                                 <div class="group__discuss-comment">
-                                    <i class="fa fa-commenting mr5" aria-hidden="true"></i>88
+                                    <i class="fa fa-commenting mr5" aria-hidden="true"></i>
+                                    <h4 th:text="${nets['rcount']}"></h4>
                                 </div>
                             </div>
                         </div>
@@ -192,16 +217,22 @@
         </div>
         <div class="col-md-3 col-xs-12 hidden-xs">
             <div class="group__slide--card mb30"><h4 class="group__slide--title mt0">圈主</h4>
-                <div class="group__slide--card-content"><a href="/u/joyqi" target="_blank" style="dispaly:block"><img
-                        th:src="@{/../picture/0dfb552f9e92471c9b50d5c5c1ba3cc7.gif}" class="img-circle member--avater"
-                        style="border-radius:50%"></a>
-                    <div class="member--info"><span class="member--name"><a href="/u/joyqi"
-                                                                            target="_blank">joyqi</a></span><span
-                            class="member--desc" style="display:block">我的生涯一片无悔，想起那天夕阳下的奔跑，那是我逝去的青春</span></div>
+                <div class="group__slide--card-content">
+                    <a href="/u/joyqi" target="_blank" style="dispaly:block">
+                        <img th:src="@{/picture/0dfb552f9e92471c9b50d5c5c1ba3cc7.gif}" class="img-circle member--avater" style="border-radius:50%">
+                    </a>
+                    <div class="member--info">
+                        <span class="member--name">
+                            <a href="/u/joyqi" target="_blank" th:text="${list['user_infos'].username}"></a>
+                        </span>
+                        <span class="member--desc" style="display:block" th:text="${list['user_infos'].signature}"></span>
+                    </div>
                 </div>
             </div>
-            <div style="border-top: 1px solid #eee;"><h4 class="group__slide--title mt20"><a
-                    href="/g/1570000014908485/users">0</a> 人关注</h4>
+            <div style="border-top: 1px solid #eee;">
+                <h4 class="group__slide--title mt20">
+                    <a th:href="@{'/circle/attention/'+${list.clablename}}" th:text="${list.integer}"></a> 人关注
+                </h4>
                 <div class="group__slide--members mb30"></div>
             </div>
             <!--<div>
@@ -343,12 +374,12 @@
                 <dd><a href="/tos">服务条款</a></dd>
                 <dd><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">内容许可</a></dd>
                 <dd>
-                    <a href="/app" class="clearfix mt10 block"><img src="static/picture/appqrcode.png"
-                                                                    class="app-qrcode"></a>
+                    <a href="/app" class="clearfix mt10 block">
+                        <img th:src="@{/picture/appqrcode.png}" class="app-qrcode">
+                    </a>
                     <div class="app-download-desc">
                         <p>扫一扫下载 App</p>
                     </div>
-
                 </dd>
             </dl>
         </div>
@@ -375,8 +406,14 @@
 <script>
     window.serverTime = 1552014006000;
 </script>
-<script crossorigin th:src="@{/../js/assets.js}"></script>
-<script crossorigin th:src="@{/../js/detail.min.js}"></script>
-<script th:src="@{/../js/ads.min.js}" type="text/javascript"></script>
+<script crossorigin th:src="@{/js/assets.js}"></script>
+<script crossorigin th:src="@{/js/detail.min.js}"></script>
+<script th:src="@{/js/ads.min.js}" type="text/javascript"></script>
+<script type="text/javascript">
+    function mak(){
+        alert(1);
+        $("#group__discuss-content").show();
+    }
+</script>
 </body>
 </html>

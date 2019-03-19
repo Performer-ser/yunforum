@@ -1,0 +1,2621 @@
+﻿<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta name="renderer" content="webkit"/>
+    <meta property="qc:admins" content="15317273575564615446375"/>
+    <meta property="og:image" content="https://static.segmentfault.com/v-5c8b4d77/global/img/touch-icon.png"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta name="alexaVerifyID" content="LkzCRJ7rPEUwt6fVey2vhxiw1vQ"/>
+    <meta name="apple-itunes-app" content="app-id=958101793, app-argument=">
+    <title>职业生涯 - 一起来总结你的 2018 - 圈子 - SegmentFault 思否</title>
+    <meta name="description" content="SegmentFault 思否 为开发者提供问答、学习与交流编程知识的平台，创造属于开发者的时代！"/>
+    <meta name="keywords"
+          content="SegmentFault,思否,javascript,php,python,java,mysql,ios,android,vue.js,node.js,html,css,ruby,git,docker,前端"/>
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="SegmentFault"/>
+    <link rel="shortcut icon" href="https://static.segmentfault.com/v-5c8b4d77/global/img/favicon.ico"/>
+    <link rel="apple-touch-icon" href="https://static.segmentfault.com/v-5c8b4d77/global/img/touch-icon.png">
+    <meta name="msapplication-TileColor" content="#009a61"/>
+    <meta name="msapplication-square150x150logo"
+          content="https://static.segmentfault.com/v-5c8b4d77/global/img/touch-icon.png"/>
+    <meta name="baidu_union_verify" content="bcf7fd80dca60d53d46d5b46e1b990ca">
+    <link rel="alternate" type="application/atom+xml" title="SegmentFault 最新问题" href="/feeds/questions">
+    <link rel="alternate" type="application/atom+xml" title="SegmentFault 最新文章" href="/feeds/blogs">
+    <link rel="stylesheet" th:href="@{/css/global.css}"/>
+    <link rel="stylesheet" th:href="@{/css/group.css}"/>
+    <link rel="stylesheet" th:href="@{/css/responsive.css}"/>
+    <script type='text/javascript' th:src="@{/js/spcjs.js}"></script>
+</head>
+<body data-mod="group" sclass="group-detail ">
+<img id="icon4weChat" style="height: 0;width: 0;" data-src="static/picture/touch-icon-512.png">
+<div id="gridMapHoverBox" style="position:absolute; border: 1px solid #009a61; z-index:99; font-size: 10px; background:#fff"></div>
+<div class="global-nav sf-header sf-header--index">
+    <div class="bottom-nav visible-xs visible-sm ">
+        <div class="opts">
+            <a class="opts-group " href="/">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <span>首页</span>
+            </a>
+            <a class="opts-group " href="/questions">
+                <i class="fa fa-comments" aria-hidden="true"></i>
+                <span>问答</span>
+            </a>
+            <a class="opts-group " href="/blogs">
+                <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                <span>专栏</span>
+            </a>
+            <a class="opts-group " href="/lives">
+                <i class="fa fa-play-circle" aria-hidden="true"></i>
+                <span>讲堂</span>
+            </a>
+            <div class="opts-group">
+                <div class="btn-group dropup">
+                    <i class="fa fa-bars dropdown hoverDropdown" data-toggle="dropdown" aria-hidden="true">
+                        <span>更多</span>
+                    </i>
+                    <ul class="dropdown-menu">
+                        <li><a href="/jobs">职位</a></li>
+                        <li><a href="/events">活动</a></li>
+                        <li><a href="/tags">标签</a></li>
+                        <li><a href="/badges">徽章</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="container nav">
+        <div class="visible-xs visible-sm header-response">
+            <a href="/search" style="display:block">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            <div class="sf-header__logo sf-header__logo--response">
+                <h1><a href="/" style="height:24px; background-size: auto 24px;"></a></h1>
+            </div>
+            <a href="/user/login" class="pull-right login-btn">
+                <i class="fa fa-user" aria-hidden="true"></i>
+            </a>
+        </div>
+        <script>
+            mobileScroll(
+                function (direction) {
+                    try {
+                        if (direction === 'down') {
+                            document.querySelector('.bottom-nav').classList.add('hidden')
+                        } else {
+                            document.querySelector('.bottom-nav').classList.remove('hidden')
+                        }
+                    } catch (err) {
+                    }
+                }
+            );
+
+            function mobileScroll(fn) {
+                var beforeScrollTop = document.documentElement.scrollTop || document.body.scrollTop,
+                    fn = fn || function () {
+                    };
+                window.addEventListener("scroll", function () {
+                    var afterScrollTop = document.documentElement.scrollTop || document.body.scrollTop,
+                        delta = afterScrollTop - beforeScrollTop;
+                    if (delta === 0) return false;
+                    fn(delta > 0 ? "down" : "up");
+                    beforeScrollTop = afterScrollTop;
+                }, false);
+            }
+        </script>
+        <div class="row hidden-xs hidden-sm">
+            <div class="col-sm-8 col-md-9 col-lg-9">
+                <div class="sf-header__logo"><h1><a href="/">SegmentFault</a></h1></div>
+                <div>
+                    <ul class="menu list-inline pull-left hidden-xs">
+                        <li class="menu__item"><a href="/" class="">首页</a></li>
+                        <li class="menu__item"><a href="/questions" class="">问答</a></li>
+                        <li class="menu__item"><a href="/blogs" class="">专栏</a></li>
+                        <li class="menu__item"><a href="/groups" class="active-nav">圈子</a></li>
+                        <li class="menu__item menu__item--more dropdown">
+                            <a href="##" class="dropdown-toggle dropdownBtn" data-toggle="dropdown">
+                            发现<i class="fa fa-caret-down" style="font-size: 14px;margin-left: 5px;" aria-hidden="true"></i>
+                            </a>
+                            <div class="dropdown-block hidden">
+                                <ul class="dropdown-content-menu">
+                                    <li><a href="/events">活动</a></li>
+                                    <li><a href="/tags">标签</a></li>
+                                    <li><a href="/g/jobs">酷工作</a></li>
+                                    <li><a href="/users">排行榜</a></li>
+                                    <li><a href="/badges">徽章</a></li>
+                                    <li><a href="/notes">笔记</a></li>
+                                    <li>
+                                        <a href="https://docs.segmentfault.com" target="_blank">开发手册
+                                            <i style="line-height: 20px;font-size: 12px;color: #F5A623;" class="ml10 fa fa-external-link-square"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="menu__item visible-sm-inline-block">
+                            <a href="/search">
+                                <span class="glyphicon glyphicon-search" style="vertical-align: middle;"></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <form action="/search" class="header-search  hidden-sm hidden-xs pull-right">
+                        <button class="btn btn-link"><span class="sr-only">搜索</span>
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        <input id="searchBox" name="q" type="text" placeholder="搜索问题或关键字" class="form-control" value=""/>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-3 col-lg-3 text-right">
+                <ul class="opts list-inline hidden-xs">
+                    <li class="opts__item">
+                        <a href="/user/login" class="SFRegister btn-signin" style="margin-bottom:2px;">立即登录</a>
+                        <a href="/user/register" class="SFLogin ml10 btn-signup" onClick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">免费注册</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<div class="group__discuss-detail container" id="discussionData" data-id='1570000014908485' data-groupprice="0"
+     data-isjoin="" data-groupurl="/g/career">
+    <ol class="breadcrumb">
+        <li><a href="/groups">圈子</a></li>
+        <li><a href="/g/career">职业生涯</a></li>
+        <li class="active">讨论详情</li>
+    </ol>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="heading"><h3 class="heading__title">一起来总结你的 2018 </h3></div>
+            <div class="author">
+                <img src="static/picture/c55f99c5417d4ebeb87eedc44bf1454f.gif" class="avatar-24">
+                <a href="/u/segmentfault" target="_blank">
+                    <strong>SegmentFault</strong>
+                </a>
+                <span> ·  2018年12月21日</span>
+            </div>
+            <div class="content fmt">
+                <p>
+                    <span class="img-wrap">
+                    <img data-src="static/picture/64f13998d01d4a89841dcca7737ab6e1.gif"
+                         src="https://static.segmentfault.com/v-5c8b4d77/global/img/squares.svg"
+                         alt="回顾你2018年的编程之路" title="回顾你2018年的编程之路">
+                    </span>
+                </p>
+                <p>马上 2018 年就要过去了<br>2018 年发生了很多很多的事情<br>SegmentFault 也已经六岁了<br>大家可以通过专栏文章<strong>添加标签“<a
+                        href="https://segmentfault.com/t/2018%E6%80%BB%E7%BB%93">2018总结</a>”发布我的 2018 年的总结</strong><br>小编会把优质文章汇总并发出<br>小编忙完这几天也总结一下自己和
+                    SegmentFault 的 2018</p>
+                <p>文章发布后，也欢迎在此帖下面留言</p>
+                <h3>2018 总结 - 推荐阅读</h3>
+                <ul>
+                    <li>CrazyCodes - 《<a href="https://segmentfault.com/a/1190000017492042">2018 | 我的年度总结请查收</a>》</li>
+                    <li>皮小蛋 - 《<a href="https://segmentfault.com/a/1190000017523346">My 2018 - A year full of
+                        changes</a>》
+                    </li>
+                    <li>jrainlau - 《<a href="https://segmentfault.com/a/1190000017498971">My excellent 2018</a>》</li>
+                    <li>LNMPR源码研究 - 《<a href="https://segmentfault.com/a/1190000017476783">我们2018年的关键词-坚持学习</a>》</li>
+                    <li>littleLyon - 《<a href="https://segmentfault.com/a/1190000017477483">2018 所思所感</a>》</li>
+                    <li>BiaoChenXuYing -《<a href="https://segmentfault.com/a/1190000017441963">前端工程师的 2018 年总结</a>》</li>
+                    <li>前端小智 - 《<a href="https://segmentfault.com/a/1190000017462675">2018 年前端开发回顾</a>》</li>
+                    <li>fibos - 《<a href="https://segmentfault.com/a/1190000017472802">区块链行业 2018 年度盘点</a>》</li>
+                </ul>
+                <p>回顾：</p>
+                <ul>
+                    <li><a href="https://segmentfault.com/t/segmentfualt-welfare/blogs">2017 总结</a></li>
+                    <li><a href="https://segmentfault.com/a/1190000007917925">2016 总结</a></li>
+                </ul>
+            </div>
+           <!--
+            这个注释里面的是
+           <div class="form hide form&#45;&#45;discuss" action="/api/discussion/[id]/edit">
+                <div class="form-group">
+                    <input name="title" class="form-control" type="text" placeholder="标题"
+                           value="一起来总结你的 2018 ">
+                </div>
+                <div class="form-group">
+                    <div class="editor">
+                            <textarea id="discussEditor" name="text" class="form-control" rows="4"
+                                      placeholder="内容描述">![回顾你2018年的编程之路][1]
+
+马上 2018 年就要过去了
+2018 年发生了很多很多的事情
+SegmentFault 也已经六岁了
+大家可以通过专栏文章**添加标签“[2018总结][2]”发布我的 2018 年的总结**
+小编会把优质文章汇总并发出
+小编忙完这几天也总结一下自己和 SegmentFault 的 2018
+
+文章发布后，也欢迎在此帖下面留言
+
+### 2018 总结 - 推荐阅读
+
+ - CrazyCodes - 《[2018 | 我的年度总结请查收][3]》
+ - 皮小蛋 - 《[My 2018 - A year full of changes][4]》
+ - jrainlau - 《[My excellent 2018][5]》
+ - LNMPR源码研究 - 《[我们2018年的关键词-坚持学习][6]》
+ - littleLyon - 《[2018 所思所感][7]》
+ - BiaoChenXuYing -《[前端工程师的 2018 年总结][8]》
+ - 前端小智 - 《[2018 年前端开发回顾][9]》
+ - fibos - 《[区块链行业 2018 年度盘点][10]》
+
+回顾：
+
+ - [2017 总结][11]
+ - [2016 总结][12]
+
+
+  [1]: /img/bVblGba
+  [2]: https://segmentfault.com/t/2018%E6%80%BB%E7%BB%93
+  [3]: https://segmentfault.com/a/1190000017492042
+  [4]: https://segmentfault.com/a/1190000017523346
+  [5]: https://segmentfault.com/a/1190000017498971
+  [6]: https://segmentfault.com/a/1190000017476783
+  [7]: https://segmentfault.com/a/1190000017477483
+  [8]: https://segmentfault.com/a/1190000017441963
+  [9]: https://segmentfault.com/a/1190000017462675
+  [10]: https://segmentfault.com/a/1190000017472802
+  [11]: https://segmentfault.com/t/segmentfualt-welfare/blogs
+  [12]: https://segmentfault.com/a/1190000007917925</textarea>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <button type="button" class="btn btn-default discuss__cancel-btn">取消</button>
+                    <button type="button" class="btn btn-primary ml10 discuss__submit-btn">发布</button>
+                </div>
+            </div>
+-->
+
+            <div class="function js__content-ops" data-id="1560000017473999" data-module="discussion"
+                 data-typetext="帖子">
+
+                <a href="#911"
+                   data-toggle="modal"
+                   data-target="#911"
+                   data-action="report"
+                >举报</a>
+
+            </div>
+
+
+            <div class="comment--group">
+
+                <div class="comments--news comments--default comments--discussion
+    "
+                     data-id="1560000017473999" data-user-id="" data-author-id="1030000000094051 "
+                     data-is-admin="null" id="goToReplyArea">
+                    <div class="mb10 clearfix">
+                        <strong class="comments-stat pull-left mr10">88 条评论</strong>
+
+                        <div class="btn-group comments-sort">
+                            <button type="button" class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown">
+                                <span class="comments-sort-text">默认排序</span> <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="javascript:;" data-sort="default">默认排序</a></li>
+                                <li><a href="javascript:;" data-sort="asc">时间排序</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="comments-container">
+                        <div class="comments-list">
+                            <div class="comments-item" data-id="1050000017474870">
+                                <div class="pull-left">
+                                    <a href="/u/sunny" target="_blank"><img class="avatar-32 "
+                                                                            src="static/picture/9b17a45d95cf46dc9bf3f8f570c7adb2.gif"
+                                                                            alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017474870" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/sunny">高阳Sunny</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月21日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>2018 感觉时间过的好快啊 :)</p></div>
+
+                                    <form action="/api/comment/1050000017474870/edit">
+                                        <div class="form-group">
+                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
+                                                      name="text"
+                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">2018 感觉时间过的好快啊  :)</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value">+11</span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list ">
+
+
+                                        <div class="reply-item" data-id="1050000017553480">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value comment-showhide
+                                         islike0-10
+                                        ">
+                                        0
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>恭喜吧，祝心想事成吧</p></div>
+                                                <form action="/api/comment/1050000017553480/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">恭喜吧，祝心想事成吧</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000017553480"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/2006">
+                                            <strong>团结</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  2018年12月28日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item" data-id="1050000017783741">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value comment-showhide
+                                         islike0-10
+                                        ">
+                                        0
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>一起加油！</p></div>
+                                                <form action="/api/comment/1050000017783741/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">一起加油！</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000017783741"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/edagarli">
+                                            <strong>edagarli</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  1月6日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item" data-id="1050000017915077">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value comment-showhide
+                                         islike0-10
+                                        ">
+                                        0
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>2018 虽然学到了很多东西！但遗憾的是钱变少了~</p></div>
+                                                <form action="/api/comment/1050000017915077/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">2018 虽然学到了很多东西！但遗憾的是钱变少了~</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000017915077"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/diary">
+                                            <strong>灰色v碰触</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  1月16日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017475333">
+                                <div class="pull-left">
+                                    <a href="/u/qingcloud" target="_blank"><img class="avatar-32 "
+                                                                                src="static/picture/09e5b6c6ccad40bd9ff566d2b4affe94.gif"
+                                                                                alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017475333" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/qingcloud">青云QingCloud</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月21日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>真的好块呀，再见了 2018</p></div>
+
+                                    <form action="/api/comment/1050000017475333/edit">
+                                        <div class="form-group">
+                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
+                                                      name="text"
+                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">真的好块呀，再见了 2018</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value">+3</span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list ">
+
+
+                                        <div class="reply-item" data-id="1050000017824905">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value comment-showhide
+                                         islike0-10
+                                        ">
+                                        0
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>活着的？</p></div>
+                                                <form action="/api/comment/1050000017824905/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">活着的？</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000017824905"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/kumfo">
+                                            <strong>kumfo</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  1月9日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017475365">
+                                <div class="pull-left">
+                                    <a href="/u/crazycodes" target="_blank"><img class="avatar-32 "
+                                                                                 src="static/picture/08672eae8ba047bab5cc07931b50e634.gif"
+                                                                                 alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017475365" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/crazycodes">CrazyCodes</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月21日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>再见 2018 , Hello 2019</p></div>
+
+                                    <form action="/api/comment/1050000017475365/edit">
+                                        <div class="form-group">
+                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
+                                                      name="text"
+                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">再见 2018 , Hello 2019</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value">+5</span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list reply-list--empty">
+
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017475820">
+                                <div class="pull-left">
+                                    <a href="/u/winbug" target="_blank"><img class="avatar-32 "
+                                                                             src="static/picture/6a3321d1d8a6498e9a3699623109dde9.gif"
+                                                                             alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017475820" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/winbug">winbug</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月21日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>1月份0 → 4月份1 → 5月份0 → 9月份1 → 10月份 0 ~</p></div>
+
+                                    <form action="/api/comment/1050000017475820/edit">
+                                        <div class="form-group">
+                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
+                                                      name="text"
+                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">1月份0 →  4月份1 → 5月份0 → 9月份1 → 10月份 0 ~</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value">+1</span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list reply-list--empty">
+
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017476187">
+                                <div class="pull-left">
+                                    <a href="/u/tongpankt" target="_blank"><img class="avatar-32 "
+                                                                                src="static/picture/user-64.png" alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017476187" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/tongpankt">tongpankt</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月21日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>2018非常不顺。</p></div>
+
+                                    <form action="/api/comment/1050000017476187/edit">
+                                        <div class="form-group">
+                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
+                                                      name="text"
+                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">2018非常不顺。</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value"></span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list ">
+
+
+                                        <div class="reply-item" data-id="1050000017790785">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value comment-showhide
+                                         islike0-10
+                                        ">
+                                        0
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>会好的！</p></div>
+                                                <form action="/api/comment/1050000017790785/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">会好的！</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000017790785"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/koala_bear">
+                                            <strong>G_Koala_C</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  1月7日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item" data-id="1050000018230647">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value comment-showhide
+                                         islike0-10
+                                        ">
+                                        0
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>明天会更好</p></div>
+                                                <form action="/api/comment/1050000018230647/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">明天会更好</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000018230647"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/jiangshuai_5c2481e36a0c6">
+                                            <strong>将帅</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  2月21日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017476324">
+                                <div class="pull-left">
+                                    <a href="/u/quincyx" target="_blank"><img class="avatar-32 "
+                                                                              src="static/picture/f0f341dc0196483dbebed419bbeffffb.gif"
+                                                                              alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017476324" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/quincyx">QuincyX</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月21日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>又是一年就这么混过去了<br>明年多点耐心，多喝热水</p></div>
+
+                                    <form action="/api/comment/1050000017476324/edit">
+                                        <div class="form-group">
+                        <textarea class="editTextarea mono form-control mb10 hidden" rows="1" name="text"
+                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">又是一年就这么混过去了
+明年多点耐心，多喝热水</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value">+1</span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list ">
+
+
+                                        <div class="reply-item" data-id="1050000017790792">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value comment-showhide
+                                         islike0-10
+                                        ">
+                                        0
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>多运动，少吃肉！</p></div>
+                                                <form action="/api/comment/1050000017790792/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">多运动，少吃肉！</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000017790792"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/koala_bear">
+                                            <strong>G_Koala_C</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  1月7日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017476468">
+                                <div class="pull-left">
+                                    <a href="/u/haodongxi" target="_blank"><img class="avatar-32 "
+                                                                                src="static/picture/user-64.png" alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017476468" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/haodongxi">haodongxi</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月21日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>文明社会，理性评论</p></div>
+
+                                    <form action="/api/comment/1050000017476468/edit">
+                                        <div class="form-group">
+                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
+                                                      name="text"
+                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">文明社会，理性评论</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value"></span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list reply-list--empty">
+
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017476880">
+                                <div class="pull-left">
+                                    <a href="/u/chang1ng" target="_blank"><img class="avatar-32 "
+                                                                               src="static/picture/c809f04c3f1941eeb9c5a5bb8f59b593.gif"
+                                                                               alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017476880" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/chang1ng">Chang1ng</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月21日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>
+                                        这一年鼓起勇气离职，希望未来越来越好。今年给自己打80分吧。明年继续加油，往资深方向发展，每一个不曾起舞的日子都是对生命的辜负</p></div>
+
+                                    <form action="/api/comment/1050000017476880/edit">
+                                        <div class="form-group">
+                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
+                                                      name="text"
+                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">这一年鼓起勇气离职，希望未来越来越好。今年给自己打80分吧。明年继续加油，往资深方向发展，每一个不曾起舞的日子都是对生命的辜负</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value">+4</span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list reply-list--empty">
+
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017478775">
+                                <div class="pull-left">
+                                    <a href="/u/ershiyi_5a4f2f2b585f0" target="_blank"><img class="avatar-32 "
+                                                                                            src="static/picture/15a4a91d721440629ea33c47f109a42d.gif"
+                                                                                            alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017478775" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/ershiyi_5a4f2f2b585f0">二十一</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月22日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>
+                                        这一年我毕业了，可以说在学校浑浑噩噩过了三年，到毕业那一刻，走到社会的那一刻，莫名的恐慌，可是不管怎样还是得走，收拾完行李，毅然去了一个陌生的城市，随之而来的就是四个月没有任何结果，面对找工作和生活的压力，我选择到北京，来北京培训。现在的我正在培训的路上，2019希望给自己一个想要的结果，给家人一个满意的结果。加油！</p>
+                                    </div>
+
+                                    <form action="/api/comment/1050000017478775/edit">
+                                        <div class="form-group">
+                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
+                                                      name="text"
+                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">这一年我毕业了，可以说在学校浑浑噩噩过了三年，到毕业那一刻，走到社会的那一刻，莫名的恐慌，可是不管怎样还是得走，收拾完行李，毅然去了一个陌生的城市，随之而来的就是四个月没有任何结果，面对找工作和生活的压力，我选择到北京，来北京培训。现在的我正在培训的路上，2019希望给自己一个想要的结果，给家人一个满意的结果。加油！</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value">+3</span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list ">
+
+
+                                        <div class="reply-item" data-id="1050000017482302">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value comment-showhide
+                                         islike0-10
+                                        ">
+                                        0
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>加油，在 sf 多多跟同行交流跟大神学习，技术提升指日可待！</p></div>
+                                                <form action="/api/comment/1050000017482302/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">加油，在 sf 多多跟同行交流跟大神学习，技术提升指日可待！</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000017482302"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/sunny">
+                                            <strong>高阳Sunny</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  2018年12月22日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item" data-id="1050000017765879">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value comment-showhide
+                                         islike0-10
+                                        ">
+                                        0
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>你的头像跟小新好像啊, so Q</p></div>
+                                                <form action="/api/comment/1050000017765879/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">你的头像跟小新好像啊, so Q</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000017765879"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/supportlss">
+                                            <strong>supportlss</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  1月4日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item" data-id="1050000017766058">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value comment-showhide
+                                         islike0-10
+                                        ">
+                                        0
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>哈哈，有人也这么说</p></div>
+                                                <form action="/api/comment/1050000017766058/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">哈哈，有人也这么说</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000017766058"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/ershiyi_5a4f2f2b585f0">
+                                            <strong>二十一</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  1月4日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017479135">
+                                <div class="pull-left">
+                                    <a href="/u/huolang_5a14e07d2f2ff" target="_blank"><img class="avatar-32 "
+                                                                                            src="static/picture/e9fae9d42cdb4728ac76db4e93abb65a.gif"
+                                                                                            alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017479135" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/huolang_5a14e07d2f2ff">火狼</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月22日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>2018一直在关注sf<br>2019年持续关注sf,撸代码,挣钱,维护项目</p></div>
+
+                                    <form action="/api/comment/1050000017479135/edit">
+                                        <div class="form-group">
+                        <textarea class="editTextarea mono form-control mb10 hidden" rows="1" name="text"
+                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">2018一直在关注sf
+2019年持续关注sf,撸代码,挣钱,维护项目</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value">+1</span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list ">
+
+
+                                        <div class="reply-item" data-id="1050000017482297">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value 
+                                         islike0-10
+                                        ">
+                                        1
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>加油</p></div>
+                                                <form action="/api/comment/1050000017482297/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">加油</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000017482297"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/sunny">
+                                            <strong>高阳Sunny</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  2018年12月22日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item" data-id="1050000017483256">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value comment-showhide
+                                         islike0-10
+                                        ">
+                                        0
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>哈哈</p></div>
+                                                <form action="/api/comment/1050000017483256/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">哈哈</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000017483256"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/huolang_5a14e07d2f2ff">
+                                            <strong>火狼</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  2018年12月22日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item" data-id="1050000017483258">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value comment-showhide
+                                         islike0-10
+                                        ">
+                                        0
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>一起加油</p></div>
+                                                <form action="/api/comment/1050000017483258/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">一起加油</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000017483258"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/huolang_5a14e07d2f2ff">
+                                            <strong>火狼</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  2018年12月22日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017480349">
+                                <div class="pull-left">
+                                    <a href="/u/xx19941215" target="_blank"><img class="avatar-32 "
+                                                                                 src="static/picture/6c88046d75574df1ab57ee5ea28b51ed.gif"
+                                                                                 alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017480349" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/xx19941215">xx19941215</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月22日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>6月到10月陆续写了一些东西，获得了大家的一些收藏与赞同，声望涨了接近2k。希望来年可以继续坚持。</p></div>
+
+                                    <form action="/api/comment/1050000017480349/edit">
+                                        <div class="form-group">
+                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
+                                                      name="text"
+                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">6月到10月陆续写了一些东西，获得了大家的一些收藏与赞同，声望涨了接近2k。希望来年可以继续坚持。</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value">+3</span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list ">
+
+
+                                        <div class="reply-item" data-id="1050000017482306">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value comment-showhide
+                                         islike0-10
+                                        ">
+                                        0
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>棒棒哒</p></div>
+                                                <form action="/api/comment/1050000017482306/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">棒棒哒</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000017482306"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/sunny">
+                                            <strong>高阳Sunny</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  2018年12月22日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017487957">
+                                <div class="pull-left">
+                                    <a href="/u/sushengbuhuo" target="_blank"><img class="avatar-32 "
+                                                                                   src="static/picture/74d7b8962c2b41e2a0e86c555128db18.gif"
+                                                                                   alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017487957" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/sushengbuhuo">苏生不惑</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月23日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>这么快，又过去一年。</p></div>
+
+                                    <form action="/api/comment/1050000017487957/edit">
+                                        <div class="form-group">
+                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
+                                                      name="text"
+                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">这么快，又过去一年。</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value">+1</span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list reply-list--empty">
+
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017488246">
+                                <div class="pull-left">
+                                    <a href="/u/tomsun28" target="_blank"><img class="avatar-32 "
+                                                                               src="static/picture/c70bf96fef54431ebad150d5ed977a10.gif"
+                                                                               alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017488246" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/tomsun28">tomsun28</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月23日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>哎 后面这几个月有点浪了没有好好学习使用</p></div>
+
+                                    <form action="/api/comment/1050000017488246/edit">
+                                        <div class="form-group">
+                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
+                                                      name="text"
+                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">哎   后面这几个月有点浪了没有好好学习使用</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value">+1</span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list reply-list--empty">
+
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017490055">
+                                <div class="pull-left">
+                                    <a href="/u/dxhuii" target="_blank"><img class="avatar-32 "
+                                                                             src="static/picture/user-64.png"
+                                                                             alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017490055" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/dxhuii">dxhuii</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月24日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>明年要把体重减下来，要好好控制一下体重。</p></div>
+
+                                    <form action="/api/comment/1050000017490055/edit">
+                                        <div class="form-group">
+                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
+                                                      name="text"
+                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">明年要把体重减下来，要好好控制一下体重。</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value">+2</span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list reply-list--empty">
+
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017494331">
+                                <div class="pull-left">
+                                    <a href="/u/chenlixin" target="_blank"><img class="avatar-32 "
+                                                                                src="static/picture/fb6cb0b0530d49bb8f9663a9be7a4549.gif"
+                                                                                alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017494331" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/chenlixin">chenlixin</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月24日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>买了很多课程，还没看完，持续学习 :)</p></div>
+
+                                    <form action="/api/comment/1050000017494331/edit">
+                                        <div class="form-group">
+                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
+                                                      name="text"
+                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">买了很多课程，还没看完，持续学习 :)</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value">+1</span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list ">
+
+
+                                        <div class="reply-item" data-id="1050000017495727">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value comment-showhide
+                                         islike0-10
+                                        ">
+                                        0
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>加油，加油</p></div>
+                                                <form action="/api/comment/1050000017495727/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">加油，加油</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000017495727"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/sunny">
+                                            <strong>高阳Sunny</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  2018年12月24日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017494829">
+                                <div class="pull-left">
+                                    <a href="/u/yueliezuchang" target="_blank"><img class="avatar-32 "
+                                                                                    src="static/picture/user-64.png"
+                                                                                    alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017494829" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/yueliezuchang">月列组长</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月24日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>今天圣诞夜 这几个月除了学了点前端知识 和比起之前的学习有点惭愧</p></div>
+
+                                    <form action="/api/comment/1050000017494829/edit">
+                                        <div class="form-group">
+                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
+                                                      name="text"
+                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">今天圣诞夜   这几个月除了学了点前端知识  和比起之前的学习有点惭愧</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value"></span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list reply-list--empty">
+
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017495618">
+                                <div class="pull-left">
+                                    <a href="/u/xyshaokang" target="_blank"><img class="avatar-32 "
+                                                                                 src="static/picture/1e77a746b49b4f9e9afb46cf1b0a5c76.gif"
+                                                                                 alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017495618" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/xyshaokang">XYShaoKang</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月24日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>花了将近一年的时间从 0 开始学 js ,到年底了,感觉应该算入门了...[尴尬脸]</p></div>
+
+                                    <form action="/api/comment/1050000017495618/edit">
+                                        <div class="form-group">
+                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
+                                                      name="text"
+                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">花了将近一年的时间从 0 开始学 js ,到年底了,感觉应该算入门了...[尴尬脸]</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value"></span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list reply-list--empty">
+
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017495729">
+                                <div class="pull-left">
+                                    <a href="/u/kumfo" target="_blank"><img class="avatar-32 "
+                                                                            src="static/picture/f5f250da514e4969a037795e97851a31.gif"
+                                                                            alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017495729" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/kumfo">kumfo</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月24日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>今年没啥些博客的动力，感觉瞎折腾了一年，学了些新的编程语言，还是不到点上。</p></div>
+
+                                    <form action="/api/comment/1050000017495729/edit">
+                                        <div class="form-group">
+                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
+                                                      name="text"
+                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">今年没啥些博客的动力，感觉瞎折腾了一年，学了些新的编程语言，还是不到点上。</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value"></span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list ">
+
+
+                                        <div class="reply-item" data-id="1050000017503913">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value comment-showhide
+                                         islike0-10
+                                        ">
+                                        0
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>加油，加油</p></div>
+                                                <form action="/api/comment/1050000017503913/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">加油，加油</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000017503913"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/sunny">
+                                            <strong>高阳Sunny</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  2018年12月25日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item" data-id="1050000017504467">
+                            <span class="pull-left comment-ops " style="position:absolute;">
+                                <span class="mr20 comments-zan ">
+                                    <span class="comments-zan-value comment-showhide
+                                         islike0-10
+                                        ">
+                                        0
+                                    </span>
+                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                </span>
+                            </span>
+
+                                            <div class="reply-content-block">
+                                                <div class="reply-content"><p>围观大佬~</p></div>
+                                                <form action="/api/comment/1050000017504467/edit">
+                                                    <div class="form-group">
+                                                        <textarea class="editTextarea mono form-control mb10 hidden"
+                                                                  rows="1" name="text"
+                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">围观大佬~</textarea>
+                                                    </div>
+                                                </form>
+                                                <div class="comment-func inline-block">
+                                    
+
+                                    <span class="pull-right commentTools ml15">
+                                                                                                                                                                <a href="#911"
+                                                                                                                                                                   class="ml10"
+                                                                                                                                                                   data-toggle="modal"
+                                                                                                                                                                   data-target="#911"
+                                                                                                                                                                   data-module="comment"
+                                                                                                                                                                   data-id="1050000017504467"
+                                                                                                                                                                   data-action='report'
+                                                                                                                                                                   data-typetext="评论"
+                                                                                                                                                                   data-placement="top"
+                                                                                                                                                                   title="举报">
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                        </a>
+                                    </span>
+
+                                                    <span class="comment-meta inline-block">
+                                        <span> — </span>
+                                        <a target="_blank" href="/u/wallee">
+                                            <strong>瓦力</strong>
+                                        </a> 
+                                        <span class="comments-isAuthor hide">
+                                            
+                                        </span> 
+                                        <span class="text-muted-plus">  ·  2018年12月25日</span>
+                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017496438">
+                                <div class="pull-left">
+                                    <a href="/u/chenqiwen" target="_blank"><img class="avatar-32 "
+                                                                                src="static/picture/8cecbad99dd04e37af77d4301b85a394.gif"
+                                                                                alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017496438" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/chenqiwen">陈其文</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月24日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>最初学react，没学会，后来转vue，勉强能用。学习能力还是太差，需要多多锻炼。<br>今年又换了一个城市，明年也许还会换一个城市。<br>2018，搬砖的一年。
+                                    </p></div>
+
+                                    <form action="/api/comment/1050000017496438/edit">
+                                        <div class="form-group">
+                        <textarea class="editTextarea mono form-control mb10 hidden" rows="1" name="text"
+                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">最初学react，没学会，后来转vue，勉强能用。学习能力还是太差，需要多多锻炼。
+今年又换了一个城市，明年也许还会换一个城市。
+2018，搬砖的一年。</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value">+2</span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list reply-list--empty">
+
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="comments-item" data-id="1050000017499676">
+                                <div class="pull-left">
+                                    <a href="/u/wallee" target="_blank"><img class="avatar-32 "
+                                                                             src="static/picture/412a40f036e94264b8a86ea79482a593.gif"
+                                                                             alt=""></a>
+                                </div>
+                                <div class="comments-content">
+                                    <div class="comment-trigger">
+                                        <div class="pull-right comment-option">
+                                            <a href="#911" class="ml10" data-toggle="modal" data-target="#911"
+                                               data-action="report" data-action-text="举报" data-module="comment"
+                                               data-id="1050000017499676" data-typetext="评论" data-placement="top"
+                                               title="举报"><span class="glyphicon glyphicon-flag"
+                                                                aria-hidden="true"></span></a>
+                                        </div>
+                                        <strong><a target="_blank" href="/u/wallee">瓦力</a></strong>
+                                        <span class="comments-isAuthor hide"></span>
+                                        <span class="comments-date">  ·  2018年12月24日</span>
+                                    </div>
+
+                                    <div class="fmt mb10"><p>2018开始培养写博客的习惯；开始学习jvm的知识；了解了设计模式；温习了数据结构；<br>很多知识只是了解，没有深入；<br>2019继续努力吧；
+                                    </p></div>
+
+                                    <form action="/api/comment/1050000017499676/edit">
+                                        <div class="form-group">
+                        <textarea class="editTextarea mono form-control mb10 hidden" rows="1" name="text"
+                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">2018开始培养写博客的习惯；开始学习jvm的知识；了解了设计模式；温习了数据结构；
+很多知识只是了解，没有深入；
+2019继续努力吧；</textarea>
+                                        </div>
+                                    </form>
+
+                                    <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value">+4</span>
+                    </span>
+
+                                        <span class="ml15 comments-reply-btn">回复</span>
+
+                                        <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                                    </p>
+
+                                    <div class="reply-list reply-list--empty">
+
+
+                                        <div class="reply-item reply-item--ops" data-obj="obj">
+                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comments-loading hide">载入中...</div>
+                        <div class="comments-more "><a href="javascript:;">显示更多评论</a></div>
+
+
+                        <div class="comments-box" id="goToReplyEditor">
+                            <div class="pull-left">
+                                <img class="avatar-32 "
+                                     src="static/picture/user-128.png"
+                                     alt=""/>
+                            </div>
+                            <div class="comments-box-content">
+                                <form action="/api/discussion/1560000017473999/comments/add">
+                                    <div class="form-group mb0">
+                                        <textarea name="text" rows="3" class="form-control"
+                                                  placeholder="文明社会，理性评论"></textarea>
+                                        <div class="mt15 text-right">
+                                            <button type="button" class="hide"></button>
+                                            <button class=" btn btn-primary" type="button">发布评论</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <div class="mb25 hidden-md hidden-sm hidden-xs"><img src="static/picture/20190318.png" alt="Planets"
+                                                                 usemap="#gridsMap" width=255 height=136>
+                <map name="gridsMap" id="gridsMap"></map>
+                <div style="text-align: center;"><a style="text-align:center; color:#9E9E9E; font-size:12px"
+                                                    href="/sponsor">想在上方展示你的广告？</a></div>
+                <script async src="static/js/20190318.js"></script>
+            </div>
+            <div class="side">
+                <div class="related-discuss "><h4 class="related-discuss__heading">最新帖子<span
+                        class="related-discuss__heading-more"></span></h4>
+                    <div class="related-discuss__item"><a href="/g/1570000014908485/d/1560000018409028">第三方贷款公司，正规吗</a>
+                    </div>
+                    <div class="related-discuss__item"><a href="/g/1570000014908485/d/1560000018204716">找工作遇见培训机构</a>
+                    </div>
+                    <div class="related-discuss__item"><a href="/g/1570000014908485/d/1560000017299173">PHP进入了瓶颈期</a>
+                    </div>
+                    <div class="related-discuss__item"><a href="/g/1570000014908485/d/1560000016816406">分享个我自己维护的求职方面的项目</a></div>
+                    <div class="related-discuss__item"><a href="/g/1570000014908485/d/1560000016166749">程序员小胖子的心路历程之心得篇（不得不看的那些事）</a>
+                    </div>
+                    <div class="related-discuss__item"><a href="/g/1570000014908485/d/1560000015974641">最近在找工作，什么A轮融资、B轮融资到底对职业前途有没有影响啊</a>
+                    </div>
+                    <div class="related-discuss__item"><a href="/g/1570000014908485/d/1560000015931581">【小程序项目】做过游戏小程序的大佬请看过来~~</a>
+                    </div>
+                    <div class="related-discuss__item"><a href="/g/1570000014908485/d/1560000015917867">Java大佬们平时都逛什么网站，看哪些书啊</a>
+                    </div>
+                    <div class="related-discuss__item"><a href="/g/1570000014908485/d/1560000015831756">Java开发能力强和英文沟通流利，这两者冲突吗？为什么不能并存</a>
+                    </div>
+                    <div class="related-discuss__item"><a href="/g/1570000014908485/d/1560000015737356">有没有在找工作的PHP、Java、算法、web等等，地点在北京上地</a>
+                    </div>
+                </div>
+            </div>
+            <h4 class="related-discuss__heading mt30" style="font-size:14px; color: #333;">分享扩散</h4>
+            <div class="group__intro-share hidden-xs" data-title="职业生涯" data-author="joyqi"
+                 data-discussiontitle="一起来总结你的 2018 ">
+                <div class="widget-share__full" data-text=""
+                     data-url="https://segmentfault.com/g/career" data-shorturl="http://sfau.lt/cHbaIxB"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    window.refererUrl = '/g/1570000014908485/d/1560000017473999';
+</script>
+
+<div class="modal widget-911" id="911" tabindex='-1'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title"><span data-model="action"></span><span data-model="type"></span></h4>
+            </div>
+            <div class="modal-body">
+                <form id="reportForm">
+                    <!-- 后台返回信息 -->
+                    <p class="alert alert-warning" data-model="returnMsg"></p>
+                    <div data-role="base">
+                        <p>
+                            <strong class="required">我要<span data-model="action"></span>该<span data-model="type"></span>，理由是：</strong>
+                        </p>
+                        <ul class="list-unstyled" data-model="list"></ul>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-role="back" style="display:none">返回重选
+                </button>
+                <button class="btn btn-default" data-dismiss="modal" type="button">取消</button>
+                <button class="btn btn-primary" data-role="submit" type="button">提交</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<footer id="footer">
+    <div class="container">
+        <div class="row hidden-xs">
+            <dl class="col-sm-2 site-link">
+                <dt>产品</dt>
+
+                <dd>
+                    <a href="/questions/hottest?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=product&utm_content=footer-links-hottest-questions&utm_term=热门问答">热门问答</a>
+                </dd>
+                <dd>
+                    <a href="/blogs/hottest?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=product&utm_content=footer-links-hottest-questions&utm_term=热门专栏">热门专栏</a>
+                </dd>
+                <dd>
+                    <a href="/lives?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=product&utm_content=footer-links-hottest-questions&utm_term=热门讲堂">热门讲堂</a>
+                </dd>
+                <dd>
+                    <a href="/events?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=product&utm_content=footer-links-hottest-questions&utm_term=最新活动">最新活动</a>
+                </dd>
+                <dd>
+                    <a href="/groups?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=product&utm_content=footer-links-hottest-questions&utm_term=圈子">圈子</a>
+                </dd>
+                <dd>
+                    <a href="/g/jobs?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=product&utm_content=footer-links-hottest-questions&utm_term=找工作">酷工作</a>
+                </dd>
+                <dd>
+                    <a href="/app?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=product&utm_content=footer-links-hottest-questions&utm_term=app">移动客户端</a>
+                </dd>
+
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>资源</dt>
+                <dd>
+                    <a href="/weekly?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=resource&utm_content=footer-links-weekly&utm_term=每周精选">每周精选</a>
+                </dd>
+                <dd>
+                    <a href="/users?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=resource&utm_content=footer-links-users&utm_term=用户排行榜">用户排行榜</a>
+                </dd>
+                <dd>
+                    <a href="/badges?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=resource&utm_content=footer-links-badges&utm_term=徽章">徽章</a>
+                </dd>
+                <dd>
+                    <a href="/faq?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=resource&utm_content=footer-links-faq&utm_term=帮助中心">帮助中心</a>
+                </dd>
+                <dd>
+                    <a href="/repu?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=resource&utm_content=footer-links-repu&utm_term=声望与权限">声望与权限</a>
+                </dd>
+                <dd>
+                    <a href="/community?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=resource&utm_content=footer-links-community&utm_term=社区服务中心">社区服务中心</a>
+                </dd>
+                <dd>
+                    <a href="https://docs.segmentfault.com?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=resource&utm_content=footer-links-docs&utm_term=开发手册">开发手册</a>
+                </dd>
+
+
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>商务</dt>
+                <dd>
+                    <a href="https://business.segmentfault.com/services?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=business&utm_content=footer-links-services-rencai&utm_term=人才服务"
+                       target="_blank">人才服务</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/services?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=business&utm_content=footer-links-services-qiyeneixun&utm_term=企业服务"
+                       target="_blank">企业培训</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/services?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=business&utm_content=footer-links-services-huodongcehua&utm_term=活动策划"
+                       target="_blank">活动策划</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/ads?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=business&utm_content=footer-links-ads&utm_term=广告投放"
+                       target="_blank">广告投放</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/bc?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=business&utm_content=footer-links-bc&utm_term=区块链解决方案"
+                       target="_blank">区块链解决方案</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/contact?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=business&utm_content=footer-links-contact&utm_term=合作联系"
+                       target="_blank">合作联系</a></dd>
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>关于</dt>
+                <dd>
+                    <a href="https://about.segmentfault.com/?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=about&utm_content=about-index&utm_term=关于我们">关于我们</a>
+                </dd>
+                <dd>
+                    <a href="https://about.segmentfault.com/careers.html?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=about&utm_content=about-careers&utm_term=加入我们">加入我们</a>
+                </dd>
+                <dd>
+                    <a href="https://about.segmentfault.com/contact.html?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=about&utm_content=about-contact&utm_term=联系我们">联系我们</a>
+                </dd>
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>关注</dt>
+                <dd><a href="//segmentfault.com/blog/segmentfault" target="_blank">产品技术日志</a></dd>
+                <dd><a href="//segmentfault.com/blog/community_admin" target="_blank">社区运营日志</a></dd>
+                <dd><a href="//segmentfault.com/blog/segmentfault_news" target="_blank">市场运营日志</a></dd>
+                <dd><a href="//segmentfault.com/blog/segmentfault_team" target="_blank">团队日志</a></dd>
+                <dd><a href="//segmentfault.com/blog/interview" target="_blank">社区访谈</a></dd>
+                <dd>
+                    <ul class="sn-inline">
+                        <li>
+                            <a class="entypo-wechart icon-sn-weixin weixin-popover-qrcode" data-toggle="popover"
+                               data-placement="top" data-content="">微信</a>
+                        </li>
+                        <li>
+                            <a href="http://weibo.com/segmentfault" target="_blank" class="entypo-weibo icon-sn-weibo">新浪微博</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/SegmentFault" target="_blank"
+                               class="entypo-facebook icon-sn-github">Github</a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/segment_fault" target="_blank"
+                               class="entypo-twitter icon-sn-twitter">Twitter</a>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+
+            <dl class="col-sm-2 site-link" id="license">
+                <dt>条款</dt>
+                <dd><a href="/tos">服务条款</a></dd>
+                <dd><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">内容许可</a></dd>
+                <dd>
+                    <a href="/app" class="clearfix mt10 block"><img src="static/picture/appqrcode.png"
+                                                                    class="app-qrcode"></a>
+                    <div class="app-download-desc">
+                        <p>扫一扫下载 App</p>
+                    </div>
+
+                </dd>
+            </dl>
+        </div>
+        <div class="copyright">
+            Copyright &copy; 2011-2019 SegmentFault. 当前呈现版本 19.02.27<br>
+            <a href="http://www.miibeian.gov.cn/" rel="nofollow">浙ICP备 15005796号-2</a> &nbsp;
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602002000"
+               rel="nofollow">浙公网安备 33010602002000号</a>
+            <span class="ml5">杭州堆栈科技有限公司版权所有</span>
+            <P class="mt30">CDN 存储服务由 <a target="_blank"
+                                         href="https://www.upyun.com/?utm_source=segmentfault&utm_medium=link&utm_campaign=upyun&md=segmentfault">又拍云</a>
+                赞助提供 </p>
+        </div>
+        <p class="text-center">
+            <a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="mobile" href="javascript:;">移动版</a>
+            <a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="desktop"
+               href="javascript:;">桌面版</a>
+        </p>
+    </div>
+</footer>
+
+<div id="fixedTools" class="hidden-xs hidden-sm">
+    <a id="backtop" class="hidden border-bottom" href="#">回顶部</a>
+</div>
+
+
+<script>
+    window.serverTime = 1552895047000;
+</script>
+<script crossorigin th:src="@{/js/assets.js}"></script>
+<script crossorigin th:src="@{/js/detail.min.js}"></script>
+<script th:src="@{/js/ads.min.js}" type="text/javascript"></script>
+</body>
+</html>
