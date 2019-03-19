@@ -10,4 +10,6 @@ import java.util.List;
 public interface User_infoDao {
     @Select("select * from user_info where userid = #{param1}")
     public List<User_info> queryByUserId(Integer userId);
+
+
 }
