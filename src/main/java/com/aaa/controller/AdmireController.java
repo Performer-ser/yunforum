@@ -29,4 +29,23 @@ public class AdmireController {
         return map;
 
     }
+    @RequestMapping("update")
+    @ResponseBody
+    public Map<String,Object> update(Integer type_id, Integer type, Integer userid){
+        Map map=new HashMap();
+        int message=0;
+        Integer status=as.queryone(type_id,type,userid);
+        if(status==null){
+            message=as.add(type_id,type,userid);
+        }else if(status==0){
+            message=as.update(type_id,type,userid,1);
+        }else{
+            message=as.update(type_id,type,userid,0);
+        }
+        List<Map<String,Object>> lm=as.query(type_id,type,userid);
+        map.put("count",lm.get(0).get("count"));
+        map.put("status",lm.get(0).get("status"));
+
+        return map;
+    }
 }

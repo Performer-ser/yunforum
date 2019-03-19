@@ -36,10 +36,10 @@
                     width   : "90%",
                     height  : 400,
                     syncScrolling : "single",
-                    path    : "http://localhost/editormd/lib/",
+                    path    : "http://localhost:8080/yunforum/editormd/lib/",
                     imageUpload : true,
                     imageFormats : ["jpg","jpeg","gif","png","bmp","webp"],
-                    imageUploadURL : "http://localhost/write/pic",
+                    imageUploadURL : "http://localhost:8080/yunforum/write/pic",
                     saveHTMLToTextarea : true
                 });
            
@@ -65,7 +65,7 @@
             		  	alert(data);
             		  },
             		  type:'post',
-            		  url:'http://localhost/write/text'
+            		  url:'http://localhost:8080/yunforum/write/text'
             		}
             	);
             }

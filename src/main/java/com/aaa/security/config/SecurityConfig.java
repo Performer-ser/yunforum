@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // custom 403 access denied handler
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
+        http.headers().frameOptions().sameOrigin();
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/css/**", "/js/**", "/fonts/**").permitAll()  // 允许访问资源
@@ -43,6 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler);           //自定义异常处理
+
     }
 
 

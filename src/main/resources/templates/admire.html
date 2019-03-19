@@ -9,6 +9,50 @@
     <input type="button" value="点赞" id="admire">
 </body>
 <script type="text/javascript" th:inline="javascript">
+    var d=new Date();
+    var years = d.getFullYear();
+    var month = add_zero(d.getMonth()+1);
+    var days = add_zero(d.getDate());
+    var hours = add_zero(d.getHours());
+    var minutes = add_zero(d.getMinutes());
+    var seconds=add_zero(d.getSeconds());
+    var ndate = years+"-"+month+"-"+days+" "+hours+":"+minutes+":"+seconds;
+    function add_zero(temp)
+    {
+        if(temp<10) return "0"+temp;
+        else return temp;
+    }
+    console.log(GetDateDiff("2019-03-10 16:49:00",ndate,"hour"))
+    function GetDateDiff(startTime, endTime, diffType) {
+        //将xxxx-xx-xx的时间格式，转换为 xxxx/xx/xx的格式
+        startTime = startTime.replace(/\-/g, "/");
+        endTime = endTime.replace(/\-/g, "/");
+        //将计算间隔类性字符转换为小写
+        diffType = diffType.toLowerCase();
+        var sTime =new Date(startTime); //开始时间
+        var eTime =new Date(endTime); //结束时间
+        //作为除数的数字
+        var timeType =1;
+        switch (diffType) {
+            case"second":
+                timeType =1000;
+                break;
+            case"minute":
+                timeType =1000*60;
+                break;
+            case"hour":
+                timeType =1000*3600;
+                break;
+            case"day":
+                timeType =1000*3600*24;
+                break;
+            default:
+                break;
+        }
+        return parseInt((eTime.getTime() - sTime.getTime()) / parseInt(timeType));
+    }
+    console.log(ndate);
+    console.log("dasfsdfsadfdsfdasfsfsafsfdfdsadfsafasfds");
     $(function(){
     $.ajax(
         {data:{'type_id':1,'type':1,"userid":1},
@@ -16,17 +60,32 @@
             success: function(data){
                 $("#admire").val("点赞x"+data["count"]);
                 console.log(data["status"]);
-                if(data["status"]==0){
+                if(data["status"]==1){
                     $("#admire").css("color","#28ff28");
                 }
             },
             type:'post',
-            url:'http://localhost/admire/query'
+            url:'http://localhost:8080/yunforum/admire/query'
         }
     )})
 
     $("#admire").click(function(){
-        alert("点赞");
+        $.ajax(
+            {data:{'type_id':1,'type':1,"userid":1},
+                dataType:"json",
+                success: function(data){
+                    $("#admire").val("点赞x"+data["count"]);
+                    console.log(data["status"]);
+                    if(data["status"]==1){
+                        $("#admire").css("color","#28ff28");
+                    }else{
+                        $("#admire").css("color","black");
+                    }
+                },
+                type:'post',
+                url:'http://localhost:8080/yunforum/admire/update'
+            }
+        )
     });
 </script>
 </html>

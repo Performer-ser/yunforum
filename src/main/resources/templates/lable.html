@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/lib/layui/css/layui.css}" media="all">
+
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}"></script>
+</head>
+<body>
+<br/>
+<div>
+    <input type="button" class="layui-btn" onclick="add()" value="添加"/>
+</div>
+<table class="layui-hide" id="demo"  lay-filter="test">
+</table>
+<script th:src="@{/lib/layui/layui.js}" charset="utf-8"></script>
+<script type="text/html" id="barDemo" th:inline="javascript">
+    <a class="layui-btn layui-btn-xs" lay-event="update">修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="detail">删除</a>
+</script>
+<script th:inline="javascript">
+    layui.use('table', function(){
+        var table = layui.table;
+        table.render({
+            elem: '#demo'
+            ,url: 'lable/query'
+            ,width:1227
+            ,cols: [
+                [
+                {field: 'lablename', title: '标签名称', width:250, sort: true}
+                ,{field: 'lablepic', title: '标签图片', width:250}
+                ,{field: 'describe', title: '标签描述', width:250}
+                ,{field: 'latypeid', title: '标签所属', width:250}
+                ,{ width:220, align:'center', toolbar: '#barDemo',title:'操作'}
+            ]
+            ]
+        });
+        table.on('tool(test)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'update'){
+                urla='musictype/update';
+                layer.open({
+                    type: 1,
+                    area: ['400px','350px'],
+                    fix: false, //不固定
+                    offset: '100px',
+                    maxmin: true,
+                    anim: 4,
+                    shade:0.4,
+                    title: '修改',
+                    content:$("#fff")
+                });
+                $("#pl").val(data.mtid);
+                $("#pl").attr('readonly',true);
+            }
+            if(obj.event === 'detail'){
+                $.ajax({
+                    url:'musictype/del',
+                    type:'post',
+                    dataType:'json',
+                    data:{id:data.mtid},
+                    success:function(data){
+                        if(data == 1){
+                            layer.alert('成功',{
+                                anim: 4 ,
+                                offset: '100px',
+                                yes:function(){
+                                    location.reload();
+                                }
+                            });
+                        }
+                    }
+                })
+            }
+        });
+    });
+
+    var urla;
+    function add(){
+        urla='musictype/add';
+        $("#pl").attr("readonly",true);
+        $("#tishi").html("进行添加操作时编号自动生成");
+        layer.open({
+            type: 1,
+            area: ['400px','350px'],
+            fix: false, //不固定
+            offset: '100px',
+            maxmin: true,
+            anim: 4,
+            shade:0.4,
+            title: '添加',
+            content:$("#fff")
+        })
+    }
+    function send(){
+        $.ajax({
+            url:urla,
+            type:'post',
+            dataType:'json',
+            data:$("#fff").serialize(),
+            success:function(data){
+                if(data == 1){
+                    layer.alert('成功',{
+                        anim: 4 ,
+                        offset: '100px',
+                        yes:function(){
+                            location.reload();
+                        }
+                    });
+                }
+            }
+        })
+    }
+</script>
+<form class="layui-form" action=""  method="post" id="fff" style="display:none">
+    &nbsp;&nbsp;&nbsp;&nbsp;      <label id="tishi"></label><br>
+    <label class="layui-form-label">标签名称:</label><input type="text" class="layui-input" style="width:200px" name="lablename" id="pl"><br>
+    <label class="layui-form-label">标签图片:</label><input type="text" class="layui-input" style="width:200px" name="mtname"><br>
+    <label class="layui-form-label">标签所属:</label><input type="text" class="layui-input" style="width:200px" name="mtnum"><br>
+    <input type="button" class="layui-btn layui-btn-primary layui-btn-xs" value="提交" style="width:200px;height:40px;margin-left:100px" onclick="send()">
+</form>
+
+</body>
+</html>

@@ -164,7 +164,8 @@
                             {
                               if (json.success === 1)
                               {
-                                  dialog.find("[data-url]").val(json.url);
+                                  dialog.find("[data-url]").val(json.url);console.log(json.url+"adfasf    ");
+
                               }
                               else
                               {
