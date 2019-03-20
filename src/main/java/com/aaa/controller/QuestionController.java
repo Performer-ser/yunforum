@@ -1,6 +1,5 @@
 package com.aaa.controller;
 
-import com.aaa.entity.Qlable;
 import com.aaa.entity.Question;
 import com.aaa.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.aaa.dao;
 
-import com.aaa.entity.Qlable;
+
 import com.aaa.entity.Question;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
