@@ -539,15 +539,15 @@
                     <section th:each="l:${list}" class="stream-list__item highlight">
                         <div class="qa-rank">
                             <div class="votes hidden-xs">
-                                0
+                                <span th:text="${l.nums}"></span>
                                 <small>得票</small>
                             </div>
-                            <div class="answers ml10 mr10">
-                                0
+                            <div class="answers answered ml10 mr10">
+                                <span th:text="${l.rev}"></span>
                                 <small>回答</small>
                             </div>
                             <div class="views hidden-xs viewsword0to99">
-                                <span>0</span>
+                                <span th:text="${l.bro}"></span>
                                 <small>浏览</small>
                             </div>
                         </div>
