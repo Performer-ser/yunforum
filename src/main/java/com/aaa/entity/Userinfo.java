@@ -15,6 +15,15 @@ public class Userinfo {
     private Date createuser;
     private Integer userstatus;
     private String pwd;
+    private String head;
+
+    public String getHead() {
+        return head;
+    }
+
+    public void setHead(String head) {
+        this.head = head;
+    }
 
     public Integer getUserid() {
         return userid;
@@ -127,6 +136,7 @@ public class Userinfo {
                 ", createuser=" + createuser +
                 ", userstatus=" + userstatus +
                 ", pwd='" + pwd + '\'' +
+                ", head='" + head + '\'' +
                 '}';
     }
 }

@@ -5,7 +5,7 @@ public class Lable {
     private String lablename;
     private String lablepic;
     private String describe;
-    private Integer latypeid;
+    private String latypeid;
 
     public Integer getLableid() {
         return lableid;
@@ -39,14 +39,6 @@ public class Lable {
         this.describe = describe;
     }
 
-    public Integer getLatypeid() {
-        return latypeid;
-    }
-
-    public void setLatypeid(Integer latypeid) {
-        this.latypeid = latypeid;
-    }
-
     @Override
     public String toString() {
         return "Lable{" +
@@ -54,7 +46,15 @@ public class Lable {
                 ", lablename='" + lablename + '\'' +
                 ", lablepic='" + lablepic + '\'' +
                 ", describe='" + describe + '\'' +
-                ", latypeid=" + latypeid +
+                ", latypeid='" + latypeid + '\'' +
                 '}';
+    }
+
+    public String getLatypeid() {
+        return latypeid;
+    }
+
+    public void setLatypeid(String latypeid) {
+        this.latypeid = latypeid;
     }
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>个人详情</title>
+    <link rel="stylesheet" th:href="@{/lib/layui/css/layui.css}" media="all">
+
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}"></script>
+    <script th:src="@{/lib/layui/layui.js}" charset="utf-8"></script>
+</head>
+</head>
+<body>
+    <div>
+        <label class="layui-form-label">用户编号 :</label><label th:text="${lu.userid}" class="layui-form-label"> </label>
+        <label class="layui-form-label">用户名:</label><label th:text="${lu.username}" class="layui-form-label"> </label><br>
+        <label class="layui-form-label">性别:</label><label th:text="${lu.sex}==0?'男':'女'" class="layui-form-label"> </label>
+        <label class="layui-form-label" >用户名:</label><label th:text="${lu.username}"class="layui-form-label"> </label>
+        <!--<label >用户编号 :</label><label th:text="${lu.userid}" style="padding-right: 50px"> </label>-->
+        <!--<label >用户名:</label><label th:text="${lu.username}" style="padding-right: 50px"> </label><br>-->
+        <!---->
+        <!--<br>-->
+    </div>
+    <div style="position:absolute;top:20px;left:300px;" >
+
+    </div>
+</body>
+</html>
