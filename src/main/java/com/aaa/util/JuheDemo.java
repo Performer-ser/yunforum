@@ -1,6 +1,5 @@
 package com.aaa.util;
 
-import net.sf.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -32,7 +31,7 @@ public class JuheDemo {
     //配置您申请的KEY
     public static final String APPKEY ="3fa4acc97d44c40a61f68f1692776195";
 
-    //1.屏蔽词检查测
+    /*//1.屏蔽词检查测
     public static void getRequest1(){
         String result =null;
         String url ="http://v.juhe.cn/sms/black";//请求接口地址
@@ -52,7 +51,7 @@ public class JuheDemo {
             e.printStackTrace();
         }
     }
-
+*/
     //2.发送短信
     public static String getRequest2(String Phone,String StochasticNum){
         String result =null;

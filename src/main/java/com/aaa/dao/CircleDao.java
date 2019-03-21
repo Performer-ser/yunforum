@@ -1,6 +1,7 @@
 package com.aaa.dao;
 
 import com.aaa.entity.Circle;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -21,4 +22,6 @@ public interface CircleDao {
     public Integer querycountByClableid(Integer clableid);
     @Select("select * from circle where userid = #{param1}")
     public List<Circle> queryByUserid(Integer userid);
+    @Insert("insert into circle VALUES(null,#{clableid},#{title},#{content},#{userid},SYSDATE())")
+    public Integer add(Circle c);
 }
