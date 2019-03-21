@@ -28,8 +28,10 @@ public interface SpecialDao {
     public List<Map<String,Object>> queryByid(Integer specialid);
     /*@Select("select spe.specialid specialids,spe.title titles,spe.content contents,spe.time times,ui.username usernames from special spe inner join slable sla on spe.slableid =sla.slableid inner join user_info ui on ui.userid=spe.userid where sla.slableid=#{slableid}")
     public List<Map<String,Object>> query2(Integer slableid);*/
-
-
+    @Select("select count(*) dz,s.specialid,s.lableid,s.title,s.content,s.time,us.username,a.status\n" +
+            "from admire a left join special s on a.type_id = s.specialid left join user_info us on s.userid=us.userid\n" +
+            "where  a.status = 1  and a.type =2 group by s.specialid,s.lableid,s.title,s.content,s.userid,s.time,us.username,a.status order by dz desc")
+    public List<Map<String,Object>> querydz();
     /*public List<Map<String,Object>> queryByids(Integer )*/
     /*public List<Map<String,Object>> query2(Integer slableid);*/
 
