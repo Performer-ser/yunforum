@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-/*@RequestMapping("special")*/
+@RequestMapping("specials")
 public class SpecialController {
     @Autowired
     SpecialService ss;
@@ -46,7 +46,12 @@ public class SpecialController {
         System.out.println("---------------------------------------------*-*-*----------------------------");
         return "indexss";
     }
-
+    @RequestMapping("querydz")
+    public String querydz(Model m){
+        List<Map<String,Object>> list= ss.querydz();
+        m.addAttribute("list",list);
+        return "hottest";
+    }
    /* *//**
      * 最新内容
      * @param m

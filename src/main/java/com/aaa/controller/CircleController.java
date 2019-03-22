@@ -215,5 +215,33 @@ public class CircleController {
         System.out.println("访问圈子内容");
         return  "show";
     }
+    @RequestMapping(value = "write/{circleid}")
+    public String indexs(Model mv, @PathVariable Integer circleid){
+        List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> clm = new ArrayList<Map<String, Object>>();
+            List<Circletype> circletypes = cts.queryAll();
+            for (int i = 0; i < circletypes.size(); i++) {
+                Map<String, Object> map = new HashMap<String, Object>();
+                Integer tid = circletypes.get(i).getTid();
+                List<Clable> clables = cls.queryByTypeid(circletypes.get(i).getTid());
+                map.put("tname",circletypes.get(i).getTname());
+                map.put("tid",circletypes.get(i).getTid());
+                if(clables.size() != 0){
+                    for (int j = 0; j < clables.size(); j++) {
+                        Map<String, Object> cn = new HashMap<String, Object>();
+                        cn.put("tid",clables.get(j).getTypeid());
+                        cn.put("clablename",clables.get(j).getClablename());
+                        cn.put("clableid",clables.get(j).getClableid());
+                        clm.add(cn);
+                    }
+                }
+                resultList.add(map);
+            }
+            System.out.println(resultList.toString());
+            System.out.println(clm.toString());
+            mv.addAttribute("list",resultList);
+            mv.addAttribute("clms",clm);
+        return  "indexs";
+    }
 
 }

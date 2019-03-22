@@ -15,7 +15,7 @@
     <meta charset="UTF-8" xmlns:th="www.thymeleaf.org" />
     <script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="../js/load.min.js"></script>
-    <script type="text/javascript" th:src="@{../js/jquery-3.3.1.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}"></script>
     <style>
         html, body, #app {
             height: 100%;
@@ -3092,14 +3092,7 @@
                                     <button class="btn"> <span  id="submitBtn"><a href="javascript:dl()">登录</a></span></button>
                                 </div>
                             </div>
-                            <!--<div class="q-login-auth" style="display:;"><a href="" target="_self" class="auth-qq"><i
-                                                       class="frame-iconfont frame-icon-qq2"></i></a><a href="" target="_self"
-                                                                                                        class="auth-weibo"><i
-                                                       class="frame-iconfont frame-icon-weibo2"></i></a><a href="" target="_self"
-                                                                                                           class="auth-taobao"><i
-                                                       class="frame-iconfont frame-icon-taobao2"></i></a><a href="" target="_self"
-                                                                                                            class="auth-weixin"><i
-                                                       class="frame-iconfont frame-icon-wechat2"></i></a></div>-->
+
                             <div class="q-login-bottom">
                                 <span class="fl"><span>没有帐号？</span><a href="register">立即注册</a></span>
                             </div>
@@ -3113,7 +3106,7 @@
                                     $.post("users/login",{"phone":c,"pwd":s},function (data) {
                                         if(data==1){
                                             alert("登陆成功");
-                                            window.location.href="query";
+                                            window.location.href="specials/query";
                                         }else{
                                             alert(data);
                                             alert("密码错误");

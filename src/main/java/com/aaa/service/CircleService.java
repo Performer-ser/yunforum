@@ -40,4 +40,7 @@ public class CircleService {
     public List<Circle> queryByUserid(Integer userid){
         return cd.queryByUserid(userid);
     }
+    public Integer add(Circle c){
+        return cd.add(c);
+    }
 }

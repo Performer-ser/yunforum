@@ -1,10 +1,8 @@
 package com.aaa.controller;
-import com.aaa.entity.Question;
-import com.aaa.service.QuestionService;
+import com.aaa.entity.Circle;
+import com.aaa.service.CircleService;
 import com.aaa.util.ForFlie;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,27 +20,31 @@ import java.util.Map;
 @Controller
 @RequestMapping("write")
 public class WriteController{
-
     @Autowired
-    QuestionService qs;
+    CircleService cs;
 
     @RequestMapping("text")
     @ResponseBody
-    public void text(String text,String title){
-       if(ForFlie.createFile(title,text)){
-           Question q=new Question();
-           q.setTitle(title);
-           q.setContent(title);
-           qs.add(q);
+    public int text(String text,String title,Integer clableid) throws IOException{
+        int add = 0;
+        if(ForFlie.createFile(title,text)){
+           Circle c = new Circle();
+           c.setClableid(clableid);
+           c.setContent(text);
+           c.setTitle(title);
+           /*从session里面获取，后期添加*/
+           c.setUserid(1);
+           add = cs.add(c);
+           System.out.println(add);
        }
-
+        return add;
     }
 
     @RequestMapping("pic")
     @ResponseBody
     public Map<String,Object> pic(@RequestParam("editormd-image-file") MultipartFile files, HttpServletRequest request, HttpServletResponse response) throws  IOException {
         String originalFilename = files.getOriginalFilename();
-        String fileName="C:\\Users\\25059\\Downloads\\picture";
+        String fileName="D:\\S3\\ggg\\segmentfault.com\\text";
         File file=new File(fileName);
         if(!file.exists()){
             file.mkdirs();

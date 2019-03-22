@@ -4,6 +4,7 @@ import com.aaa.dao.SpecialDao;
 
 import com.aaa.entity.Lable;
 import com.aaa.entity.Slable;
+import com.sun.corba.se.spi.ior.ObjectKey;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -46,5 +47,8 @@ public class SpecialService {
         list.put("list",sd.query(slableid));
         System.out.println(list);
         return list;
+    }
+    public List<Map<String,Object>> querydz(){
+        return sd.querydz();
     }
 }

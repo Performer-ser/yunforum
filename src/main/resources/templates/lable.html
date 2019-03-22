@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>详细标签</title>
+    <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
     <link rel="stylesheet" th:href="@{/lib/layui/css/layui.css}" media="all">
 
     <script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}"></script>
@@ -13,6 +14,7 @@
     <input type="button" class="layui-btn" onclick="add()" value="添加"/>
 </div>
 <table class="layui-hide" id="demo"  lay-filter="test">
+
 </table>
 <script th:src="@{/lib/layui/layui.js}" charset="utf-8"></script>
 <script type="text/html" id="barDemo" th:inline="javascript">
@@ -24,12 +26,18 @@
         var table = layui.table;
         table.render({
             elem: '#demo'
-            ,url: 'lable/query'
+            ,url: 'http://localhost:8080/yunforum/lable/query'
             ,width:1227
             ,cols: [
                 [
                 {field: 'lablename', title: '标签名称', width:250, sort: true}
-                ,{field: 'lablepic', title: '标签图片', width:250}
+                ,{field: 'lablepic', title: '标签图片', width:250,templet:function (d) {
+                    if(d.lablepic!=null){
+                        return "<img src='/yunforum/image/"+d.lablepic+ "' width='30px' height='30px' >"}
+                    else{
+                        return "还没有图片"
+                    }
+                    }}
                 ,{field: 'describe', title: '标签描述', width:250}
                 ,{field: 'latypeid', title: '标签所属', width:250}
                 ,{ width:220, align:'center', toolbar: '#barDemo',title:'操作'}
@@ -39,10 +47,16 @@
         table.on('tool(test)', function(obj){
             var data = obj.data;
             if(obj.event === 'update'){
-                urla='musictype/update';
+                $("#lablename").val(data.lablename);
+                $("#describe").val(data.describe);
+                $("#lablepic").val(data.lablepic);
+                $("#lableid").val(data.lableid);
+                $("#latypeid").find("option:contains('"+data.latypeid+"')").attr("selected",true);
+
+                urla='http://localhost:8080/yunforum/lable/update';
                 layer.open({
                     type: 1,
-                    area: ['400px','350px'],
+                    area: ['400px','450px'],
                     fix: false, //不固定
                     offset: '100px',
                     maxmin: true,
@@ -51,15 +65,14 @@
                     title: '修改',
                     content:$("#fff")
                 });
-                $("#pl").val(data.mtid);
-                $("#pl").attr('readonly',true);
+                $("#lableid").attr('readonly',true);
             }
             if(obj.event === 'detail'){
                 $.ajax({
-                    url:'musictype/del',
+                    url:'http://localhost:8080/yunforum/lable/delete',
                     type:'post',
                     dataType:'json',
-                    data:{id:data.mtid},
+                    data:{lableid:data.lableid},
                     success:function(data){
                         if(data == 1){
                             layer.alert('成功',{
@@ -69,21 +82,26 @@
                                     location.reload();
                                 }
                             });
+                        }else{
+                            alert("失败");
                         }
                     }
                 })
             }
         });
     });
-
     var urla;
     function add(){
-        urla='musictype/add';
-        $("#pl").attr("readonly",true);
-        $("#tishi").html("进行添加操作时编号自动生成");
+        $("#lablename").val("");
+        $("#describe").val("");
+        $("#lablepic").val("");
+        $("#lableid").val("添加时自动生成");
+        $("#latypeid").val("");
+        urla='http://localhost:8080/yunforum/lable/add';
+        $("#lableid").attr("readonly",true);
         layer.open({
             type: 1,
-            area: ['400px','350px'],
+            area: ['400px','450px'],
             fix: false, //不固定
             offset: '100px',
             maxmin: true,
@@ -94,11 +112,25 @@
         })
     }
     function send(){
+        if (urla=='http://localhost:8080/yunforum/lable/add') {
+            $("#lableid").val("");
+        }
+        var form=new FormData();
+        form.append("pic", document.getElementById("pic").files[0]);
+        form.append("lableid",$("#lableid").val());
+        form.append("lablename",$("#lablename").val());
+        form.append("describe",$("#describe").val());
+        form.append("latypeid",$("#latypeid").val());
+        form.append("lablepic",$("#lablepic").val());
         $.ajax({
             url:urla,
             type:'post',
+            cache: false,
+            async: false,
+            processData: false,
+            contentType: false,
             dataType:'json',
-            data:$("#fff").serialize(),
+            data:form,
             success:function(data){
                 if(data == 1){
                     layer.alert('成功',{
@@ -113,11 +145,22 @@
         })
     }
 </script>
-<form class="layui-form" action=""  method="post" id="fff" style="display:none">
+
+<form class="layui-form" action=""  method="post" id="fff" style="display:none" enctype="multipart/form-data">
     &nbsp;&nbsp;&nbsp;&nbsp;      <label id="tishi"></label><br>
-    <label class="layui-form-label">标签名称:</label><input type="text" class="layui-input" style="width:200px" name="lablename" id="pl"><br>
-    <label class="layui-form-label">标签图片:</label><input type="text" class="layui-input" style="width:200px" name="mtname"><br>
-    <label class="layui-form-label">标签所属:</label><input type="text" class="layui-input" style="width:200px" name="mtnum"><br>
+    <label class="layui-form-label">标签编号:</label><input type="text" class="layui-input" style="width:200px" id="lableid" name="lableid"><br>
+    <label class="layui-form-label">标签名称:</label><input type="text" class="layui-input" style="width:200px" name="lablename" id="lablename"><br>
+    <label class="layui-form-label">标签描述:</label><input type="text" class="layui-input" style="width:200px" id="describe" name="describe"><br>
+    <label class="layui-form-label">标签图标:</label><input type="file" style="width:200px" id="pic" name="pic"><br>
+    <div class="layui-form-item">
+        <label class="layui-form-label">标签所属:</label>
+    <div class="layui-input-block">
+        <select name="latypeid" id="latypeid" lay-filter="aihao" >
+            <option th:each="lay,userStat:${ll}" th:value="${lay.latypeid}" th:text="${lay.latypename}"></option>
+        </select>
+    </div>
+        <input type="hidden" id="lablepic" name="lablepic">
+</div><br>
     <input type="button" class="layui-btn layui-btn-primary layui-btn-xs" value="提交" style="width:200px;height:40px;margin-left:100px" onclick="send()">
 </form>
 

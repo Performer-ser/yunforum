@@ -50,7 +50,7 @@
     <div class="bottom-nav visible-xs visible-sm">
         <div class="opts">
             <a class="opts-group active" href="https://segmentfault.com/"><i class="fa fa-home" aria-hidden="true"></i><span>首页</span></a>
-            <a class="opts-group " href="https://segmentfault.com/questions"><i class="fa fa-comments" aria-hidden="true"></i><span>问答</span></a>
+            <a class="opts-group " href="questions"><i class="fa fa-comments" aria-hidden="true"></i><span>问答</span></a>
             <a class="opts-group " href="https://segmentfault.com/blogs"><i class="fa fa-pencil-square" aria-hidden="true"></i><span>专栏</span></a>
             <a class="opts-group " href="https://segmentfault.com/lives"><i class="fa fa-play-circle" aria-hidden="true"></i><span>讲堂</span></a>
             <div class="opts-group">
@@ -109,7 +109,7 @@
                 <div>
                     <ul class="menu list-inline pull-left hidden-xs">
                         <li class="menu__item"><a href="https://segmentfault.com/" class="active-nav">首页</a></li>
-                        <li class="menu__item"><a href="https://segmentfault.com/questions" class="">问答</a></li>
+                        <li class="menu__item"><a href="questions" class="">问答</a></li>
                         <li class="menu__item"><a href="https://segmentfault.com/blogs" class="">专栏</a></li>
                         <li class="menu__item"><a class=" " href="https://segmentfault.com/lives">讲堂</a></li>
                         <li class="menu__item"><a href="https://segmentfault.com/groups" class="">圈子</a></li>
@@ -136,7 +136,7 @@
             </div>
             <div class="col-sm-4 col-md-3 col-lg-3 text-right">
                 <ul class="opts list-inline hidden-xs">
-                    <li class="opts__item"><a href="logins" style="margin-bottom:2px;">立即登录</a> <a href="register" onclick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">免费注册</a> </li>
+                    <li class="opts__item"><a href="http://localhost:8080/yunforum/logins" style="margin-bottom:2px;">立即登录</a> <a href="register" onclick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">免费注册</a> </li>
                 </ul>
             </div>
         </div>
@@ -152,8 +152,8 @@
                 </div>
                 <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-1">
                     <form class="register-form clearfix" action="https://segmentfault.com/api/user/phone/register">
-                        <a href="register" class="SFLogin btn btn-lg btn-primary mr15">免费注册</a>
-                        <a href="logins" class="SFRegister btn btn-lg btn-primary">立即登录</a>
+                        <p class="SFLogin btn btn-lg btn-primary mr15">注重修养</p>
+                        <p class="SFLogin btn btn-lg btn-primary mr15">文明观文</p>
                     </form>
                 </div>
             </div>
@@ -165,24 +165,24 @@
             <div class="col-md-2 left">
                 <div class="router-box">
                     <a class="router-box-item active" onclick="zx('tj')" href="javascript:;"> <i class="fa fa-newspaper-o" aria-hidden="true"></i> <span class="name">为你推荐</span> </a>
-                    <a class="router-box-item " href="https://segmentfault.com/hottest"> <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="name">近期热门</span> </a>
+                    <a class="router-box-item " href="http://localhost:8080/yunforum/specials/querydz"> <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="name">近期热门</span> </a>
                     <a class="router-box-item " onclick="zx('zx')" href="javascript:;"><i class="fa fa-globe" aria-hidden="true"></i> <span class="name">最新内容</span> </a>
                     <a class="router-box-item showChannels visible-xs-block" href="https://segmentfault.com/"> <i class="fa fa-server" aria-hidden="true"></i> <span class="name">技术频道</span> </a>
                 </div>
                 <div class="tech-square hidden-xs">
                     <h5 class="tech-square-title mt0 mb15">技术频道</h5>
                     <li th:each="list1:${list1}" style="list-style-type: none">
-                        <a class="tech-square-item " th:href="@{/query(lableid=${list1.lableid})}">
+                        <a class="tech-square-item " th:href="@{/specials/query(lableid=${list1.lableid})}">
+
+                        <a class="tech-square-item " th:href="@{/specials/query(lableid=${list1.lableid})}">
                             <!--<img src="../index_files/3997397795-5a6edc1c3167f_small" />-->
                             <span class="tech-square-item-icon"><img src="../index_files/1.png"  /></span>
-                            <!--<li th:each="list1:${list1}">
-                                               <td th:text="${list1.slablename}"></td>
-                                           </li>-->
+
                             <span th:text="${list1.lablename}" id="btn"></span>
                         </a>
                     </li>
 
-                    <a class="tech-square-item " href="https://segmentfault.com/tags"> <span class="tech-square-item-icon"> <i class="fa fa-tags" aria-hidden="true"></i> </span> <span>更多标签</span> </a>
+                    <a class="tech-square-item " href="http://localhost:8080/yunforum/latype/tags"> <span class="tech-square-item-icon"> <i class="fa fa-tags" aria-hidden="true"></i> </span> <span>更多标签</span> </a>
                 </div>
             </div>
             <script type="text/javascript">
@@ -249,11 +249,9 @@
                 <div class="news-list" id="tj" th:style="${list.size()==0}?'display:block':'display:none'">
                     <div class="news-item stream__item clearfix mt15" data-id="1190000018398978">
                         <li th:each="list:${list2}" style="list-style-type: none">
-
-
                             <div class="news__item-info clearfix">
-                                <a th:href="@{'/a/'+${list.specialid}}" class="news-img" style="    "></a>
-                                <a target="_blank" th:href="@{'/a/'+${list.specialid}}">
+                                <a th:href="@{'/specials/a/'+${list.specialid}}" class="news-img" style="    "></a>
+                                <a target="_blank" th:href="@{'/specials/a/'+${list.specialid}}">
 
                                     <div class="mb5 mt5">
                                         <h4 class="news__item-title mt0" th:text="${list.title}"></h4>
@@ -279,8 +277,8 @@
                     <div class="news-item stream__item clearfix mt15" data-id="1190000018398978">
                         <li th:each="list:${listxin}" style="list-style-type: none">
                             <div class="news__item-info clearfix">
-                                <a th:href="@{'/a/'+${list.specialid}}" class="news-img" style="    "></a>
-                                <a target="_blank" th:href="@{'/a/'+${list.specialid}}">
+                                <a th:href="@{'/specials/a/'+${list.specialid}}" class="news-img" style="    "></a>
+                                <a target="_blank" th:href="@{'/specials/a/'+${list.specialid}}">
 
                                     <div class="mb5 mt5">
                                         <h4 class="news__item-title mt0" th:text="${list.title}"></h4>
@@ -308,8 +306,8 @@
 
 
                             <div class="news__item-info clearfix">
-                                <a th:href="@{'/a/'+${list.specialid}}" class="news-img" style="    "></a>
-                                <a target="_blank" th:href="@{'/a/'+${list.specialid}}">
+                                <a th:href="@{'/specials/a/'+${list.specialid}}" class="news-img" style="    "></a>
+                                <a target="_blank" th:href="@{'/specials/a/'+${list.specialid}}">
                                     <!-- <a>-->
                                     <div class="mb5 mt5">
                                         <h4 class="news__item-title mt0" th:text="${list.title}"></h4>
@@ -323,7 +321,7 @@
                                     <div class="news__item-meta">
                                         <span class="pr20 votes-operation " data-id="1190000018398978" data-type="article"><span class="wrap"><i class="fa fa-thumbs-up "></i></span><span class="votes-num  ">11</span><span class="dot ">&middot;</span><span class="votes-word">赞</span></span>
                                         <span class="bookmark-operation pr20 hidden" data-id="1190000018398978" data-type="article"><i class="fa fa-bookmark pr5"></i><span class="bookmark-word">收藏</span></span>
-                                        <span class="author pr20"><a href="https://segmentfault.com/u/humphry" th:text="${list.username}"></a><span class="dot">&middot;</span><p th:text="${list.time}"></p></span>
+                                        <span class="author pr20"><a href="https://segmentfault.com/u/humphry" th:text="${list.username}"></a><span class="dot">&middot;</span></span>
                                     </div>
                                 </div>
                             </div>
