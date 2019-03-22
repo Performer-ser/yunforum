@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.*;
 
 @Controller
-/*@RequestMapping("ques")*/
+@RequestMapping("questions")
 public class QuestionController {
     @Autowired
     QuestionService qs;
@@ -67,7 +67,7 @@ public class QuestionController {
         System.out.println("就去了热门回答页面");
         return "questions/hottest";
     }
-    @RequestMapping(value="q/{qid}")
+    @RequestMapping(value="/q/{qid}")
     public String quesById(Model model,@PathVariable Integer qid){
         List<Map<String, Object>> maps = qs.quesById(qid);
         Map<String, Object> list = qs.quesById(qid).get(0);

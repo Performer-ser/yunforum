@@ -515,23 +515,16 @@
         <div class="row">
             <div class="col-xs-12 col-md-9 main">
                 <ul class="nav nav-tabs mb10 mt30 visible-xs">
-                    <li><a href="/questions">最新问答</a> </li>
-                    <li><a href="/subscribed">为我推送</a></li>
-                    <li class="active"><a href="/unanswered">等待回答</a></li>
-                    <li><a href="/hottest">热门问答</a></li>
-                    <li role="presentation" class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="https://segmentfault.com/questions/unanswered#" role="button" aria-haspopup="true" aria-expanded="false"> 更多 <span class="caret"></span> </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="https://segmentfault.com/experts">付费问答</a></li>
-                            <li><a href="https://segmentfault.com/review">众审中心</a></li>
-                        </ul> </li>
+                    <li><a href="/questions/questions">最新问答</a> </li>
+                    <li><a href="/questions/subscribed">为我推送</a></li>
+                    <li class="active"><a href="/questions/unanswered">等待回答</a></li>
+                    <li><a href="/questions/hottest">热门问答</a></li>
                 </ul>
                 <ul class="nav nav-tabs mb10 mt30 hidden-xs">
-                    <li><a href="/questions">最新问答</a> </li>
-                    <li><a href="/subscribed">为我推送</a></li>
-                    <li class="active"><a href="/unanswered">等待回答</a> </li>
-                    <li><a href="/hottest">热门问答</a></li>
-                    <li><a href="https://segmentfault.com/experts"><span class="fa fa-jpy mr5"></span>付费问答</a></li>
-                    <li><a href="https://segmentfault.com/review"><span class="fa fa-check-square-o mr5"></span>众审中心</a> </li>
+                    <li><a href="/questions/questions">最新问答</a> </li>
+                    <li><a href="/questions/subscribed">为我推送</a></li>
+                    <li class="active"><a href="/questions/unanswered">等待回答</a> </li>
+                    <li><a href="/questions/hottest">热门问答</a></li>
                     <a class="btn btn-primary pull-right" href="https://segmentfault.com/ask">+ 提问题</a>
                 </ul>
                 <div class="alert alert-info mt15 mb0 hidden text-center" role="alert" id="notice-update"></div>
@@ -553,9 +546,9 @@
                         </div>
                         <div class="summary">
                             <ul class="author list-inline">
-                                <li> <a href="https://segmentfault.com/u/dajiangde">大酱的</a> <span class="split"></span> <a th:href="@{'/q/'+${l.questionid}}" class="askDate" data-created="1551929175">8 分钟前提问</a> </li>
+                                <li> <a href="https://segmentfault.com/u/dajiangde">大酱的</a> <span class="split"></span> <a th:href="@{'/questions/q/'+${l.questionid}}" class="askDate" data-created="1551929175">8 分钟前提问</a> </li>
                             </ul>
-                            <h2 class="title"> <a th:href="@{'/q/'+${l.questionid}}" th:text="${l.title}">
+                            <h2 class="title"> <a th:href="@{'/questions/q/'+${l.questionid}}" th:text="${l.title}">
                                 <!--es6对象解构赋值问题--> </a> </h2>
                             <ul class="taglist--inline ib" th:each="qs:${l.lablenames}">
                                 <li class="tagPopup"> <a class="tag" href="https://segmentfault.com/t/html5" data-toggle="popover" data-original-title="html5" data-id="1040000000089409" th:text="${qs}"> <img src="../question/unanswered_files/1025005915-54cb538538eea_small" /> html5 </a> </li>

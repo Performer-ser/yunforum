@@ -23,8 +23,10 @@ public interface QuestionDao {
     //查询点赞表
     @Select("select count(*) dizan from admire a where a.type = 1 and a.status = 1 and type_id=#{param1}")
     public Integer byAdmire(Integer qid);
+    //查看回答表
     @Select("select count(*) huida from review r where r.type = 1 and r.composeid = #{param1}")
     public Integer byReview(Integer qid);
+    //查看浏览表
     @Select("select count(*) from browse b where b.type =1 and b.composeid = #{parma1}")
     public Integer byBrowse(Integer qid);
 
