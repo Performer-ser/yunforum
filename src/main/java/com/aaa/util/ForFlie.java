@@ -29,7 +29,6 @@ public class ForFlie {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return bool;
     }
     /**
@@ -111,7 +110,7 @@ public class ForFlie {
         StringBuilder wenben=new StringBuilder();
         try{
             String encoding = "UTF-8";
-            File files = new File("C:\\Users\\25059\\Downloads\\file\\"+filename+".txt");
+            File files = new File("D:\\S3\\ggg\\segmentfault.com\\text\\"+filename+".txt");
             if (files.isFile() && files.exists()) { //判断文件是否存在
                 InputStreamReader read = new InputStreamReader(
                         new FileInputStream(files), encoding);//考虑到编码格式

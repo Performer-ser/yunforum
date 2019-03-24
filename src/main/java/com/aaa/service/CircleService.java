@@ -43,4 +43,7 @@ public class CircleService {
     public Integer add(Circle c){
         return cd.add(c);
     }
+    public List<Circle> queryByCircleid(Integer circleid){
+        return cd.queryByCircleid(circleid);
+    }
 }
