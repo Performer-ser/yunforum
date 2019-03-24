@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+﻿﻿<!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
@@ -33,14 +33,16 @@
      style="position:absolute; border: 1px solid #009a61; z-index:99; font-size: 10px; background:#fff"></div>
 <div class="global-nav sf-header sf-header--index">
     <div class="bottom-nav visible-xs visible-sm ">
-        <div class="opts">
-            <a class="opts-group " href="/"><i aria-hidden="true" class="fa fa-home"></i><span>首页</span></a>
-            <a class="opts-group " href="/questions"><i aria-hidden="true" class="fa fa-comments"></i><span>问答</span></a>
-            <a class="opts-group " href="/blogs"><i aria-hidden="true" class="fa fa-pencil-square"></i><span>专栏</span></a>
-            <a class="opts-group " href="/lives"><i aria-hidden="true" class="fa fa-play-circle"></i><span>讲堂</span></a>
+        <div class="opts"><a class="opts-group " href="/"><i aria-hidden="true"
+                                                             class="fa fa-home"></i><span>首页</span></a><a
+                class="opts-group " href="/questions"><i aria-hidden="true"
+                                                         class="fa fa-comments"></i><span>问答</span></a><a
+                class="opts-group " href="/blogs"><i aria-hidden="true" class="fa fa-pencil-square"></i><span>专栏</span></a><a
+                class="opts-group " href="/lives"><i aria-hidden="true"
+                                                     class="fa fa-play-circle"></i><span>讲堂</span></a>
             <div class="opts-group">
-                <div class="btn-group dropup">
-                    <i aria-hidden="true" class="fa fa-bars dropdown hoverDropdown" data-toggle="dropdown"><span>更多</span></i>
+                <div class="btn-group dropup"><i aria-hidden="true" class="fa fa-bars dropdown hoverDropdown"
+                                                 data-toggle="dropdown"><span>更多</span></i>
                     <ul class="dropdown-menu">
                         <li><a href="/jobs">职位</a></li>
                         <li><a href="/events">活动</a></li>
@@ -52,15 +54,12 @@
         </div>
     </div>
     <nav class="container nav">
-        <div class="visible-xs visible-sm header-response">
-            <a href="/search" style="display:block"><i aria-hidden="true" class="fa fa-search"></i></a>
-            <div class="sf-header__logo sf-header__logo--response">
-                <h1><a href="/" style="height:24px; background-size: auto 24px;"></a></h1>
-            </div>
-            <a class="pull-right login-btn" href="/user/login">
-                <i aria-hidden="true" class="fa fa-user"></i>
-            </a>
-        </div>
+        <div class="visible-xs visible-sm header-response"><a href="/search" style="display:block"><i
+                aria-hidden="true" class="fa fa-search"></i></a>
+            <div class="sf-header__logo sf-header__logo--response"><h1><a href="/"
+                                                                          style="height:24px; background-size: auto 24px;"></a>
+            </h1></div>
+            <a class="pull-right login-btn" href="/user/login"><i aria-hidden="true" class="fa fa-user"></i></a></div>
         <script>
             mobileScroll(
                 function (direction) {
@@ -97,10 +96,11 @@
                         <li class="menu__item"><a class="" href="/questions">问答</a></li>
                         <li class="menu__item"><a class="" href="/blogs">专栏</a></li>
                         <li class="menu__item"><a class="active-nav" href="/groups">圈子</a></li>
-                        <li class="menu__item menu__item--more dropdown">
-                            <a class="dropdown-toggle dropdownBtn" data-toggle="dropdown" href="##">
-                            发现<i aria-hidden="true" class="fa fa-caret-down"style="font-size: 14px;margin-left: 5px;"></i>
-                            </a>
+                        <li class="menu__item menu__item--more dropdown"><a class="dropdown-toggle dropdownBtn"
+                                                                            data-toggle="dropdown"
+                                                                            href="##">
+                            发现<i aria-hidden="true" class="fa fa-caret-down"
+                                 style="font-size: 14px;margin-left: 5px;"></i></a>
                             <div class="dropdown-block hidden">
                                 <ul class="dropdown-content-menu">
                                     <li><a href="/events">活动</a></li>
@@ -109,93 +109,135 @@
                                     <li><a href="/users">排行榜</a></li>
                                     <li><a href="/badges">徽章</a></li>
                                     <li><a href="/notes">笔记</a></li>
-                                    <li>
-                                        <a href="https://docs.segmentfault.com" target="_blank">开发手册
-                                            <i class="ml10 fa fa-external-link-square" style="line-height: 20px;font-size: 12px;color: #F5A623;"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://business.segmentfault.com/ads?utm_source=sf-header" target="_blank">广告投放
-                                            <i class="ml10 fa fa-external-link-square" style="line-height: 20px;font-size: 12px;color: #F5A623;"></i>
-                                        </a>
-                                    </li>
+                                    <li><a href="https://docs.segmentfault.com" target="_blank">开发手册<i
+                                            class="ml10 fa fa-external-link-square"
+                                            style="line-height: 20px;font-size: 12px;color: #F5A623;"></i></a></li>
+                                    <li><a href="https://business.segmentfault.com/ads?utm_source=sf-header"
+                                           target="_blank">广告投放<i
+                                            class="ml10 fa fa-external-link-square"
+                                            style="line-height: 20px;font-size: 12px;color: #F5A623;"></i></a></li>
                                 </ul>
                             </div>
                         </li>
-                        <li class="menu__item visible-sm-inline-block">
-                            <a href="/search"><span class="glyphicon glyphicon-search" style="vertical-align: middle;"></span></a>
-                        </li>
+                        <li class="menu__item visible-sm-inline-block"><a href="/search"><span
+                                class="glyphicon glyphicon-search" style="vertical-align: middle;"></span></a></li>
                     </ul>
                     <form action="/search" class="header-search  hidden-sm hidden-xs pull-right">
-                        <button class="btn btn-link">
-                            <span class="sr-only">搜索</span>
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                        <input class="form-control" id="searchBox" name="q" placeholder="搜索问题或关键字" type="text" value=""/>
-                    </form>
+                        <button class="btn btn-link"><span class="sr-only">搜索</span><span
+                                class="glyphicon glyphicon-search"></span></button>
+                        <input class="form-control" id="searchBox" name="q" placeholder="搜索问题或关键字" type="text"
+                               value=""/></form>
                 </div>
             </div>
             <div class="col-sm-4 col-md-3 col-lg-3 text-right">
                 <ul class="opts list-inline hidden-xs">
-                    <li class="opts__item">
-                        <a class="SFRegister btn-signin" href="/user/login" style="margin-bottom:2px;">立即登录</a>
-                        <a class="SFLogin ml10 btn-signup" href="/user/register"
-                           onClick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">免费注册</a>
+                    <li class="opts__item"><a class="SFRegister btn-signin" href="/user/login"
+                                              style="margin-bottom:2px;">立即登录</a><a class="SFLogin ml10 btn-signup"
+                                                                                    href="/user/register"
+                                                                                    onClick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">免费注册</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 </div>
-<div class="group__warp mt30" data-groupid="" data-isjoin="" data-price="" id="detailData">
+<div class="group__warp mt30" data-groupid="" data-isjoin="" data-price=""
+     id="detailData">
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-xs-12">
                 <div><h3 class="mt0 mb5">圈子</h3>
                     <p class="text-muted">这里是程序员的聚集地，根据你的兴趣认识更多的朋友</p></div>
                 <ul class="nav nav-tabs live--nav">
-                    <li class="active" role="presentation"><a href="/groups?tab=all">全部</a></li>
-                    <li class="" role="presentation"><a href="/groups?tab=joined">我关注的</a></li>
-                    <li class="" role="presentation"><a href="/groups?tab=tech">技术</a></li>
-                    <li class="" role="presentation"><a href="/groups?tab=creative">创意</a></li>
-                    <li class="" role="presentation"><a href="/groups?tab=fun">好玩</a></li>
-                    <li class="" role="presentation"><a href="/groups?tab=jobs">酷工作</a></li>
-                    <li class="" role="presentation"><a href="/groups?tab=other">其他</a></li>
+                    <li class="active" role="presentation"><a
+                            href="/groups?tab=all">全部</a></li>
+                    <li class="" role="presentation"><a
+                            href="/groups?tab=joined">我关注的</a></li>
+                    <li class="" role="presentation"><a
+                            href="/groups?tab=tech">技术</a></li>
+                    <li class="" role="presentation"><a
+                            href="/groups?tab=creative">创意</a></li>
+                    <li class="" role="presentation"><a
+                            href="/groups?tab=fun">好玩</a></li>
+                    <li class="" role="presentation"><a
+                            href="/groups?tab=jobs">酷工作</a></li>
+                    <li class="" role="presentation"><a
+                            href="/groups?tab=other">其他</a></li>
                 </ul>
                 <div class="group__discuss mt15">
-                    <div class="group__discuss-heading">
-                        <h4>最近的帖子
-                            <a class="btn btn-xs btn-default discuss__post-btn" href="javascript:show();" >+发新帖</a>
-                        </h4>
-                    </div>
+                    <div class="group__discuss-heading"><h4>最近的帖子 <a class="btn btn-xs btn-default discuss__post-btn"
+                                                                     href="javascript:;">+
+                        发新帖</a></h4></div>
                     <div class="group__discuss-content">
-                        <!--<div action="/api/group/[id]/discussion/add" id="fff" class="form hide form&#45;&#45;discuss">
+                        <div action="/api/group/[id]/discussion/add" class="form hide form--discuss">
+                            <div class="form-group"><input class="form-control notautosave" name="title"
+                                                           placeholder="标题"
+                                                           type="text"></div>
+                            <div class="form-group"><select class="form-control group-index-id" style="width:255px">
+                                <option disabled selected value="0">选择发布到圈子</option>
+                                <optgroup label="技术">
+                                    <option value="1570000010557000">Vue.js 技术圈</option>
+                                    <option value="1570000011077131">JS函数库 [JavaScriptLib]</option>
+                                    <option value="1570000012016118">Kotlin 开发者社区（Kotlin Developers Community）</option>
+                                    <option value="1570000012700093">区块链爱好者</option>
+                                    <option value="1570000014909795">编程思想</option>
+                                    <option value="1570000015602354">新零售</option>
+                                    <option value="1570000015683365">python爬虫~爬呀爬</option>
+                                    <option value="1570000015726601">系统架构及优化</option>
+                                    <option value="1570000015808863">星城前端</option>
+                                    <option value="1570000015914377">全栈修炼</option>
+                                    <option value="1570000015929284">java 数据结构与算法</option>
+                                    <option value="1570000016095058">spark开发</option>
+                                    <option value="1570000016135810">IOT技术社区</option>
+                                    <option value="1570000016414795">vue 及 cli 有问必答</option>
+                                    <option value="1570000016522561">UWP产品技术讨论</option>
+                                    <option value="1570000016522874">Nervos 日常</option>
+                                    <option value="1570000016535207">前端打怪闯关</option>
+                                    <option value="1570000016593100">时光乄漫步</option>
+                                    <option value="1570000016599655">H5 Desktop Application</option>
+                                    <option value="1570000016634791">debug</option>
+                                    <option value="1570000016645716">铁锹厂家</option>
+                                    <option value="1570000016683301">python3 ：Mark的快乐家园🌍</option>
+                                    <option value="1570000016732596">学无止境</option>
+                                    <option value="1570000016772501">electron交流圈</option>
+                                    <option value="1570000016803941">LNMP技术研究</option>
+                                    <option value="1570000016879825">口碑测评</option>
+                                    <option value="1570000016978571">java交流</option>
+                                    <option value="1570000017030185">前端攻城狮</option>
+                                    <option value="1570000017281198">老铁煮酒</option>
+                                    <option value="1570000017346337">tensorflow</option>
+                                    <option value="1570000017421751">shell编程</option>
+                                    <option value="1570000017421938">shell编程-付费圈</option>
+                                </optgroup>
+                                <optgroup label="创意">
+                                    <option value="1570000014909673">我的作品</option>
+                                    <option value="1570000016244214">程序员发财之道</option>
+                                </optgroup>
+                                <optgroup label="好玩">
+                                    <option value="1570000010558968">程序员の日常</option>
+                                    <option value="1570000014909715">数码极客</option>
+                                    <option value="1570000016662664">阿里云</option>
+                                    <option value="1570000016754433">CMD命令行界面操作系统</option>
+                                </optgroup>
+                                <optgroup label="酷工作">
+                                    <option value="1570000014908485">职业生涯</option>
+                                    <option value="1570000018311706">酷工作</option>
+                                </optgroup>
+                                <optgroup label="其他">
+                                    <option value="1570000009280187">SF 小管家</option>
+                                </optgroup>
+                            </select></div>
                             <div class="form-group">
-                                <input class="form-control notautosave" name="title" placeholder="标题" type="text">
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control group-index-id" style="width:255px">
-                                    <option disabled selected value="0">选择发布到圈子</option>
-                                    <optgroup label="技术">
-                                        <option value="1570000010557000">Vue.js 技术圈</option>
-                                        <option value="1570000017421938">shell编程-付费圈</option>
-                                    </optgroup>
-                                    <optgroup label="创意">
-                                        <option value="1570000014909673">我的作品</option>
-                                        <option value="1570000016244214">程序员发财之道</option>
-                                    </optgroup>
-                                </select>
-                            </div>
-                            <div id="test-editormd">
-                                <textarea style="display:none;" class="editormd-html-textarea" id="editormd"></textarea>
-                                <textarea class="editormd-html-textarea" name="text" id="editormdhtml"></textarea>
+                                <div class="editor">
+                                    <textarea class="form-control" id="discussEditor" name="text" placeholder="内容描述" rows="4"></textarea>
+                                </div>
                             </div>
                             <div class="text-right">
                                 <button class="btn btn-default discuss__cancel-btn" type="button">取消</button>
-                                <button class="btn btn-primary ml10 discuss__submit-btn" type="button" onclick="tijiao()">发布</button>
+                                <button class="btn btn-primary ml10 discuss__submit-btn" type="button">发布</button>
                             </div>
                         </div>
-                        --><div class="group__discuss-list">
+                        <div class="group__discuss-list">
                             <div class="group__discuss-item" th:each="nets:${circ}" data-url="/g/1570000014908485/d/1560000017473999">
                                 <a class="group__discuss-avatar" th:href="@{'/circle/personal/'+${nets['userid']}}" target="_blank">
                                 <img  class="avatar-40" th:src="@{${nets['head']}}"></a>
@@ -411,41 +453,5 @@
 </div>
 <script crossorigin th:src="@{../js/assets.js}"></script>
 <script th:src="@{../js/ads.min.js}" type="text/javascript"></script>
-<script type="text/javascript" th:inline="javascript">
-    var testEditor;
-    $(function() {
-        testEditor = editormd("test-editormd", {
-            watch:false,
-            width   : "90%",
-            height  : 400,
-            syncScrolling : "single",
-            path    : "http://localhost:8080/yunforum/editormd/lib/",
-            imageUpload : true,
-            imageFormats : ["jpg","jpeg","gif","png","bmp","webp"],
-            imageUploadURL : "http://localhost:8080/yunforum/write/pic",
-            saveHTMLToTextarea : true
-        });
-    });
-    function tijiao(){
-        var htmlco = $("#editormd").val();
-        var title=$("#title").val();
-        //alert(htmlco);
-        $.ajax(
-            {data:{'text':htmlco,'title':title},
-                dataType:'text',
-                success: function(data){
-                    alert(data);
-                },
-                type:'post',
-                url:'http://localhost:8080/yunforum/write/text'
-            }
-        );
-    }
-    function show(){
-        $("#fff").removeClass("form hide form--discuss");
-        $("#fff").addClass("form form--discuss");
-
-    }
-</script>
 </body>
 </html>

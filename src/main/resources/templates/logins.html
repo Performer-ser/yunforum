@@ -13,8 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
     <meta name="google-site-verification" content="DVVM1p1HEm8vE1wVOQ9UjcKP--pNAsg_pleTU5TkFaM" />
     <meta charset="UTF-8" xmlns:th="www.thymeleaf.org" />
-    <script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="../js/load.min.js"></script>
+    <!--<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../js/load.min.js"></script>-->
     <script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}"></script>
     <style>
         html, body, #app {
@@ -519,7 +519,7 @@
         height: 100%;
         min-width: 960px;
         min-height: 765px;
-        background: url(../login_files/login.jpg) top/cover no-repeat
+        background: url(../yunforum/login_files/login.jpg) top/cover no-repeat
     }
 
     .login-container .login-wrapper {
@@ -3106,6 +3106,8 @@
                                     $.post("users/login",{"phone":c,"pwd":s},function (data) {
                                         if(data==1){
                                             alert("登陆成功");
+
+                                            // zhangwei
                                             window.location.href="specials/query";
                                         }else{
                                             alert(data);

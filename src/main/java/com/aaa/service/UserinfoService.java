@@ -17,12 +17,4 @@ public class UserinfoService {
     public Integer register(Userinfo u){
         return ud.register(u);
     }
-    public List<Userinfo> queryPage(Integer page,Integer limit){return ud.queryPage(page,limit);};
-    public List<Userinfo> queryAll(){return ud.queryAll();};
-    public Integer disabled(Integer userid,Integer status){
-        return ud.disabled(userid,status);
-    }
-    public Userinfo queryOne(Integer userid){
-        return ud.queryOne(userid);
-    }
 }

@@ -3208,7 +3208,7 @@
                                             alert(phone);
                                             $.ajax({
                                                 type: "post",
-                                                url: "user/yzm",
+                                                url: "users/yzm",
                                                 data: {phone: phone},
                                                 dataType: "json",
                                                 success: function (data) {
@@ -3275,7 +3275,7 @@
 
                                                 $.ajax({
                                                     type: "post",
-                                                    url: "user/register",
+                                                    url: "users/register",
                                                     data: {phone: phone, pwd: pwd},
                                                     dataType: "json",
                                                     success: function (data) {
@@ -3287,7 +3287,7 @@
                                                             $('#pwd').val("");
                                                             $('#upwds').val("");
                                                             $('#yzm').val("");
-                                                            return 'query'
+                                                            return 'logins'
                                                         }
                                                     }
                                                 });
