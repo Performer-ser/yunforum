@@ -1,3 +1,4 @@
+/*
 package com.aaa.util;
 
 import net.sf.json.JSONObject;
@@ -18,10 +19,12 @@ import java.util.Map;
 
 //import net.sf.json.JSONObject;
 
+*/
 /**
  *短信API服务调用示例代码 － 聚合数据
  *在线接口文档：http://www.juhe.cn/docs/54
- **/
+ **//*
+
 
 public class JuheDemo {
     public static final String DEF_CHATSET = "UTF-8";
@@ -68,11 +71,13 @@ public class JuheDemo {
             result =net(url, params, "GET");
             // System.out.println(result);
             // JSONObject.fromObject(result);
-           /* if(object.getInt("error_code")==0){
+           */
+/* if(object.getInt("error_code")==0){
                 System.out.println(object.get("result"));
             }else{
                 System.out.println(object.get("error_code")+":"+object.get("reason"));
-            }*/
+            }*//*
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -83,18 +88,22 @@ public class JuheDemo {
 
     public static void main(String[] args) {
         //测试
-    	/*String request2 = getRequest2("17698904046","456456");
-    	System.out.println(request2);*/
+    	*/
+/*String request2 = getRequest2("17698904046","456456");
+    	System.out.println(request2);*//*
+
     }
 
-    /**
+    */
+/**
      *
      * @param strUrl 请求地址
      * @param params 请求参数
      * @param method 请求方法
      * @return  网络请求字符串
      * @throws Exception
-     */
+     *//*
+
     public static String net(String strUrl, Map params,String method) throws Exception {
         HttpURLConnection conn = null;
         BufferedReader reader = null;
@@ -159,3 +168,4 @@ public class JuheDemo {
         return sb.toString();
     }
 }
+*/

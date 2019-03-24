@@ -1,13 +1,11 @@
 package com.aaa.service;
 
 import com.aaa.dao.QuestionDao;
-
-import com.aaa.entity.Question;
+import com.aaa.entity.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
-
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +22,16 @@ public class QuestionService {
             //System.out.println(q.get("qlablename"));
             List<String> ls = new ArrayList<String>();
             String s = q.get("lablename").toString();
+            Integer ids = Integer.parseInt(q.get("questionid").toString());
+            System.out.println("ids:"+ids);
+            Integer nums = qd.byAdmire(ids);// 点赞数
+            Integer bro = qd.byBrowse(ids);//浏览数量
+            Integer rev = qd.byReview(ids);//回答数量
+
+            System.out.println("nums:"+nums);
+            q.put("nums",nums);
+            q.put("bro",bro);
+            q.put("rev",rev);
             String[] str = s.split(",");
             for(int i = 0;i<str.length;i++){
                 ls.add(str[i]);
@@ -31,11 +39,20 @@ public class QuestionService {
             q.put("lablenames",ls);
             System.out.println(q.get("lablenames"));
         }
-        System.out.println(list);
         return list;
     }
     public List<Map<String,Object>> quesById(Integer qid){
         return qd.quesById(qid);
     }
+    public Integer byAdmire(Integer qid){
+        return qd.byAdmire(qid);
+    }
+    public Integer byReview(Integer qid){
+        return qd.byReview(qid);
+    }
+    public Integer byBrowse(Integer qid){
+        return qd.byBrowse(qid);
+    }
+
 
 }

@@ -1,3 +1,4 @@
+/*
 package com.aaa.controller;
 
 import com.aaa.entity.Userinfo;
@@ -40,9 +41,11 @@ public class UserinfoController {
         System.out.println(a);
         return a;
     }
-    /**
+    */
+/**
      * 发送注册验证码
-     */
+     *//*
+
     @RequestMapping("yzm")
     @ResponseBody
     public String yzm(String phone)
@@ -52,10 +55,13 @@ public class UserinfoController {
         JuheDemo.getRequest2(phone,times);
         System.out.println(times);
         return times;
-        /*String times = new Date().getTime()+"";
+        */
+/*String times = new Date().getTime()+"";
         times=times.substring(8, 12);
         JuheDemo.getRequest2(phone, times);
         System.out.println(times);
-        return times;*/
+        return times;*//*
+
     }
 }
+*/

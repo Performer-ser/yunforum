@@ -1,13 +1,13 @@
 package com.aaa.dao;
 
-
-import com.aaa.entity.Question;
+import com.aaa.entity.*;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 import java.util.Map;
+
 
 @Mapper
 public interface QuestionDao {
@@ -20,7 +20,15 @@ public interface QuestionDao {
     @Select("select q.*,u.* from question q inner join user_info u on q.userid = u.userid where q.questionid = #{qid}")
     public List<Map<String,Object>> quesById(Integer qid);
 
-
+    //查询点赞表
+    @Select("select count(*) dizan from admire a where a.type = 1 and a.status = 1 and type_id=#{param1}")
+    public Integer byAdmire(Integer qid);
+    //查看回答表
+    @Select("select count(*) huida from review r where r.type = 1 and r.composeid = #{param1}")
+    public Integer byReview(Integer qid);
+    //查看浏览表
+    @Select("select count(*) from browse b where b.type =1 and b.composeid = #{parma1}")
+    public Integer byBrowse(Integer qid);
 
 
 
