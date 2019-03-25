@@ -104,8 +104,7 @@
                 // });
                 //$("#latypeid").attr('readonly',true);
             }else if(obj.event === 'detail') {
-                alert("123123123");
-                window.open("http://localhost:8080/yunforum/users/queryOne?userid="+data.userid);
+                window.location="http://localhost:8080/yunforum/users/queryOne?userid="+data.userid;
             }
         });
     });

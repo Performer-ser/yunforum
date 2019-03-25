@@ -7,21 +7,128 @@
 
     <script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}"></script>
     <script th:src="@{/lib/layui/layui.js}" charset="utf-8"></script>
+    <style type="text/css">
+        #conttt{
+            margin-left: 100px;
+            margin-top: 50px;
+        }
+        .circleImg{
+            border-radius: 100px;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top:70px;
+            left:700px;
+        }
+    </style>
 </head>
 </head>
 <body>
-    <div>
+<div class="weadmin-body" id="conttt">
+    <div class="layui-form-item"></div>
+    <form class="layui-form">
+        <div class="layui-form-item">
         <label class="layui-form-label">用户编号 :</label><label th:text="${lu.userid}" class="layui-form-label"> </label>
-        <label class="layui-form-label">用户名:</label><label th:text="${lu.username}" class="layui-form-label"> </label><br>
+        <label class="layui-form-label">用户名:</label><label th:text="${lu.username}" class="layui-form-label"> </label>
+        </div>
+        <div class="layui-form-item">
         <label class="layui-form-label">性别:</label><label th:text="${lu.sex}==0?'男':'女'" class="layui-form-label"> </label>
-        <label class="layui-form-label" >用户名:</label><label th:text="${lu.username}"class="layui-form-label"> </label>
-        <!--<label >用户编号 :</label><label th:text="${lu.userid}" style="padding-right: 50px"> </label>-->
-        <!--<label >用户名:</label><label th:text="${lu.username}" style="padding-right: 50px"> </label><br>-->
-        <!---->
-        <!--<br>-->
+        <label class="layui-form-label" >出生日期:</label><label th:text="${lu.birthday}"class="layui-form-label"> </label>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机号码:</label><label th:text="${lu.phone}" class="layui-form-label"> </label>
+            <label class="layui-form-label" >现居住地:</label><label th:text="${lu.address}"class="layui-form-label"> </label>
+        </div>
+        <div class="layui-form-item">
+        <label class="layui-form-label">身份证号:</label><label th:text="${lu.idcard}" class="layui-form-label"> </label>
+        <label class="layui-form-label" >真实姓名:</label><label th:text="${lu.truename}"class="layui-form-label"> </label>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">注册时间:</label><label th:text="${lu.createuser}" class="layui-form-label"> </label>
+            <label class="layui-form-label" >用户状态:</label><label th:text="${lu.userstatus}==0?'禁用':'正常'"class="layui-form-label"> </label>
+        </div>
+        <img class="circleImg" src="http://localhost:8080/yunforum/image/psb.png">
+    </form>
     </div>
-    <div style="position:absolute;top:20px;left:300px;" >
+<div class="layui-tab">
+    <ul class="layui-tab-title">
+        <li></li>
+        <li class="layui-this">他的问答</li>
+        <li>他的文章</li>
+        <li>他的圈子</li>
+        <li>声望记录</li>
+        <li>他的文件</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item"></div>
+        <div class="layui-tab-item layui-show">
+            <table class="layui-hide" id="demo" lay-filter="test">
+            </table></div>
+        <div class="layui-tab-item"><table class="layui-hide" id="demo2" lay-filter="test"></table></div>
+        <div class="layui-tab-item"><table class="layui-hide" id="demo3" lay-filter="test"></table></div>
+        <div class="layui-tab-item">内容4</div>
+        <div class="layui-tab-item">内容5</div>
+    </div>
+</div>
+<script type="text/javascript" th:inline="javascript">
+    layui.use(['element','table'], function(){
+        var $ = layui.jquery
+            , element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+        var table = layui.table;
 
-    </div>
+        //展示已知数据
+        table.render({
+            elem: '#demo'
+            ,url: '/yunforum/users/queryQuesPage?userid='+[[${lu.userid}]]
+            ,width:854
+            ,page:true
+            ,left:100
+            ,limit:3
+            ,cols: [
+                [
+                    {field: 'questionid', title: '问题编号', width:125, sort: true}
+                    ,{field: 'lableid', title: '所属标签', width:125}
+                    ,{field: 'title', title: '标题', width:125}
+                    ,{field: 'time', title: '发表时间', width:125}
+                    ,{field: 'reviewid', title: '采纳编号', width:125}
+                ]
+            ]
+        });
+        table.render({
+            elem: '#demo2'
+            ,url: '/yunforum/users/querySpePage?userid='+[[${lu.userid}]]
+            ,width:854
+            ,page:true
+            ,left:100
+            ,limit:3
+            ,cols: [
+                [
+                    {field: 'specialid', title: '文章编号', width:125, sort: true}
+                    ,{field: 'lableid', title: '所属标签', width:125}
+                    ,{field: 'title', title: '标题', width:125}
+                    ,{field: 'time', title: '发表时间', width:125}
+                    ,{field: 'content', title: '内容', width:125}
+                ]
+            ]
+        });
+        table.render({
+            elem: '#demo3'
+            ,url: '/yunforum/users/queryCirPage?userid='+[[${lu.userid}]]
+            ,width:854
+            ,page:true
+            ,left:100
+            ,limit:3
+            ,cols: [
+                [
+                    {field: 'circleid', title: '编号', width:125, sort: true}
+                    ,{field: 'clableid', title: '所属圈子', width:125}
+                    ,{field: 'title', title: '标题', width:125}
+                    ,{field: 'time', title: '发表时间', width:125}
+                    ,{field: 'content', title: '内容', width:125}
+                ]
+            ]
+        });
+        });
+</script>
 </body>
 </html>

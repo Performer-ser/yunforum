@@ -15,4 +15,13 @@ public class LableService {
     public List<Lable> query(){
         return ld.query();
     }
+    public int delete(Integer id){
+        return ld.delete(id);
+    }
+    public int add(Lable lable){
+        return ld.add(lable);
+    }
+    public int update(Lable lable){
+        return ld.update(lable);
+    }
 }
