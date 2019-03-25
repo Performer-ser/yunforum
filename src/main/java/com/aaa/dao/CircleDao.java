@@ -20,6 +20,8 @@ public interface CircleDao {
     public List<Circle> queryByClableid(Integer clableid);
     @Select("select count(*) count from circle where clableid = #{param1}")
     public Integer querycountByClableid(Integer clableid);
+    @Select("select * from circle where circleid = #{circleid}")
+    public List<Circle> queryByCircleid(Integer circleid);
     @Select("select * from circle where userid = #{param1}")
     public List<Circle> queryByUserid(Integer userid);
     @Insert("insert into circle VALUES(null,#{clableid},#{title},#{content},#{userid},SYSDATE())")
