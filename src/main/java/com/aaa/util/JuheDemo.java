@@ -1,40 +1,24 @@
-/*
 package com.aaa.util;
-
-
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
-
 
 
 //import net.sf.json.JSONObject;
 
-*/
 /**
  *短信API服务调用示例代码 － 聚合数据
  *在线接口文档：http://www.juhe.cn/docs/54
- **//*
+ **/
 
 
 public class JuheDemo {
-    public static final String DEF_CHATSET = "UTF-8";
+ /*   public static final String DEF_CHATSET = "UTF-8";
     public static final int DEF_CONN_TIMEOUT = 30000;
     public static final int DEF_READ_TIMEOUT = 30000;
     public static String userAgent =  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36";
 
     //配置您申请的KEY
-    public static final String APPKEY ="3fa4acc97d44c40a61f68f1692776195";
+    public static final String APPKEY ="3fa4acc97d44c40a61f68f1692776195";*/
 
-    /*/ /*1.屏蔽词检查测
+  /*1.屏蔽词检查测
     public static void getRequest1(){
         String result =null;
         String url ="http://v.juhe.cn/sms/black";//请求接口地址
@@ -54,9 +38,7 @@ public class JuheDemo {
             e.printStackTrace();
         }
     }
-*/
     //2.发送短信
-/*
     public static String getRequest2(String Phone,String StochasticNum){
         String result =null;
         String url ="http://v.juhe.cn/sms/send";//请求接口地址
@@ -71,12 +53,11 @@ public class JuheDemo {
             result =net(url, params, "GET");
             // System.out.println(result);
             // JSONObject.fromObject(result);
-           */
-/* if(object.getInt("error_code")==0){
+           if(object.getInt("error_code")==0){
                 System.out.println(object.get("result"));
             }else{
                 System.out.println(object.get("error_code")+":"+object.get("reason"));
-            }*//*
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,14 +68,11 @@ public class JuheDemo {
 
 
     public static void main(String[] args) {
-        //测试
-    	*/
-/*String request2 = getRequest2("17698904046","456456");
+        //测试String request2 = getRequest2("17698904046","456456");
     	System.out.println(request2);*//*
 
     }
 
-    */
 /**
      *
      * @param strUrl 请求地址
@@ -102,7 +80,8 @@ public class JuheDemo {
      * @param method 请求方法
      * @return  网络请求字符串
      * @throws Exception
-     *//*
+     */
+/*
 
     public static String net(String strUrl, Map params,String method) throws Exception {
         HttpURLConnection conn = null;
@@ -167,5 +146,6 @@ public class JuheDemo {
         }
         return sb.toString();
     }
+    */
 }
-*/
+

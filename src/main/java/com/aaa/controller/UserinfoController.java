@@ -1,18 +1,14 @@
-/*
 package com.aaa.controller;
 
 import com.aaa.entity.Userinfo;
 import com.aaa.service.UserinfoService;
 import com.aaa.util.JsonMapper;
-import com.aaa.util.JuheDemo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,12 +36,13 @@ public class UserinfoController {
         System.out.println(a);
         return a;
     }
-    */
+
 /**
      * 发送注册验证码
-     *//*
+     */
 
-    @RequestMapping("yzm")
+
+   /* @RequestMapping("yzm")
     @ResponseBody
     public String yzm(String phone)
     {
@@ -54,14 +51,7 @@ public class UserinfoController {
         JuheDemo.getRequest2(phone,times);
         System.out.println(times);
         return times;
-        */
-/*String times = new Date().getTime()+"";
-        times=times.substring(8, 12);
-        JuheDemo.getRequest2(phone, times);
-        System.out.println(times);
-        return times;*//*
-
-    }
+    }*/
     @RequestMapping("queryPage")
     @ResponseBody
     public String queryPage(Integer page,Integer limit){
@@ -93,4 +83,4 @@ public class UserinfoController {
         return "information";
     }
 }
-*/
+
