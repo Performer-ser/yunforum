@@ -14,10 +14,10 @@ public interface QuestionDao {
     @Insert("insert into question(title,content,time) values(#{title},#{content},now())")
     public int add(Question q);
 
-    @Select("select questionid,title,content,userid,time,GROUP_CONCAT(b.lablename) lablename from question a left join lable b on FIND_IN_SET(b.lableid,a.lableid) group by questionid,title,content,userid,time order by time desc")
+    @Select("select u.username,q.questionid,q.title,q.content,q.userid,q.time,GROUP_CONCAT(b.lablename) lablename from user_info u left join question q on u.userid = q.userid left join lable b on FIND_IN_SET(b.lableid,q.lableid) group by u.username,q.questionid,q.title,q.content,q.userid,q.time order by time desc")
     public List<Map<String,Object>> queryQuestionsByQlable();
 
-    @Select("select q.*,u.* from question q inner join user_info u on q.userid = u.userid where q.questionid = #{qid}")
+    @Select("select u.username,q.questionid,q.title,q.content,q.userid,q.time,GROUP_CONCAT(b.lablename) lablename from user_info u left join question q on u.userid = q.userid left join lable b on FIND_IN_SET(b.lableid,q.lableid) where q.questionid=#{param1} group by u.username,q.questionid,q.title,q.content,q.userid,q.time order by time desc")
     public List<Map<String,Object>> quesById(Integer qid);
 
     //查询点赞表

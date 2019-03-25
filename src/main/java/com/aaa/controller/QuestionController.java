@@ -67,13 +67,33 @@ public class QuestionController {
         System.out.println("就去了热门回答页面");
         return "questions/hottest";
     }
-    @RequestMapping(value="/q/{qid}")
+    @RequestMapping(value="q/{qid}")
     public String quesById(Model model,@PathVariable Integer qid){
-        List<Map<String, Object>> maps = qs.quesById(qid);
-        Map<String, Object> list = qs.quesById(qid).get(0);
-        model.addAttribute("maps",maps);
+        List<Map<String, Object>> list = qs.quesById(qid);
+        /*Map<String, Object> lists = qs.quesById(qid).get(0);*/
+        for (Map<String, Object> q:list){
+            //System.out.println(q.get("qlablename"));
+            List<String> ls = new ArrayList<String>();
+            String s = q.get("lablename").toString();
+            Integer ids = Integer.parseInt(q.get("questionid").toString());
+            System.out.println("ids:"+ids);
+            Integer nums = qs.byAdmire(ids);// 点赞数
+            Integer bro = qs.byBrowse(ids);//浏览数量
+            Integer rev = qs.byReview(ids);//回答数量
+
+            System.out.println("nums:"+nums);
+            q.put("nums",nums);
+            q.put("bro",bro);
+            q.put("rev",rev);
+            String[] str = s.split(",");
+            for(int i = 0;i<str.length;i++){
+                ls.add(str[i]);
+            }
+            q.put("lablenames",ls);
+            System.out.println(q.get("lablenames"));
+        }
         model.addAttribute("list",list);
-        System.out.println(maps.toString());
+        System.out.println("list:---"+list);
         return "questions/q";
     }
 
