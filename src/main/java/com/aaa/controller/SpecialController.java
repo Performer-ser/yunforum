@@ -100,4 +100,40 @@ public class SpecialController {
 
         return "indexs";
     }*/
+
+    /**专栏
+     * 推荐文章
+     * 顺序查询所有文章，分页
+     * @param m
+     * @param pageNum
+     * @return
+     */
+   @RequestMapping("blogs")
+   public String aaa(Model m,Integer pageNum){
+       if(null == pageNum){
+           pageNum = 1;
+       }
+       List<Map<String,Object>> list=ss.queryblogs(pageNum);
+       m.addAttribute("list",list);
+       m.addAttribute("pageNum",pageNum);
+       return "blogs/blogs";
+   }
+
+    /**专栏
+     * 热门文章
+     * 根据点赞数量进行查询文章，分页
+     * @param m
+     * @param pageNum
+     * @return
+     */
+   @RequestMapping("hottests")
+    public String bbb(Model m,Integer pageNum){
+       if (null == pageNum){
+           pageNum=1;
+       }
+       List<Map<String,Object>> list= ss.queryhottests(pageNum);
+       m.addAttribute("list",list);
+       m.addAttribute("pageNum",pageNum);
+       return "blogs/hottests";
+   }
 }

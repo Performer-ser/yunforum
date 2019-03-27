@@ -38,6 +38,8 @@
     <script type="text/javascript" th:src="@{/question/questions_files/integrator.js.下载}"></script>
     <script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}"></script>
 
+
+
     <style id="tsbrowser_video_independent_player_style" type="text/css">                                                            [tsbrowser_force_max_size] {
         width: 100% !important;
         height: 100% !important;
@@ -488,16 +490,16 @@
         <div class="row">
             <div class="col-xs-12 col-md-9 main">
                 <ul class="nav nav-tabs mb10 mt30 visible-xs">
-                    <li class="active"><a href="/questions/questions">最新问答</a> </li>
-                    <li><a href="/questions/subscribed">为我推送</a></li>
-                    <li><a href="/questions/unanswered">等待回答</a></li>
-                    <li><a href="/questions/hottest">热门问答</a></li>
+                    <li class="active"><a href="/yunforum/questions/questions">最新问答</a> </li>
+                    <li><a href="/yunforum/questions/subscribed">为我推送</a></li>
+                    <li><a href="/yunforum/questions/unanswered">等待回答</a></li>
+                    <li><a href="/yunforum/questions/hottest">热门问答</a></li>
                 </ul>
                 <ul class="nav nav-tabs mb10 mt30 hidden-xs">
-                    <li class="active"><a href="/questions/questions">最新问答</a> </li>
-                    <li><a href="/questions/subscribed">为我推送</a></li>
-                    <li><a href="/questions/unanswered">等待回答</a> </li>
-                    <li><a href="/questions/hottest">热门问答</a></li>
+                    <li class="active"><a href="/yunforum/questions/questions">最新问答</a> </li>
+                    <li><a href="/yunforum/questions/subscribed">为我推送</a></li>
+                    <li><a href="/yunforum/questions/unanswered">等待回答</a> </li>
+                    <li><a href="/yunforum/questions/hottest">热门问答</a></li>
                     <a class="btn btn-primary pull-right" href="https://segmentfault.com/ask">+ 提问题</a>
                 </ul>
                 <div class="alert alert-info mt15 mb0 hidden text-center" role="alert" id="notice-update"></div>
@@ -524,11 +526,11 @@
                         </div>
                         <div class="summary">
                             <ul class="author list-inline">
-                                <li> <a href="https://segmentfault.com/u/linfeng_5ac9bd0a4d6a7">临风</a> <span class="split"></span> <a th:href="@{'/questions/q/'+${l.questionid}}">刚刚回答</a> </li>
+                                <li> <a href="https://segmentfault.com/u/linfeng_5ac9bd0a4d6a7" th:text="${l.username}"></a> <span class="split"></span> <a th:href="@{'/questions/q/'+${l.questionid}}" th:text="${l.time}">刚刚回答</a> </li>
                             </ul>
                             <h2 class="title"> <a th:href="@{'/questions/q/'+${l.questionid}}" th:text="${l.title}"></a> </h2>
                             <ul class="taglist--inline ib" th:each="qs:${l.lablenames}">
-                                <li class="tagPopup"> <a class="tag" href="https://segmentfault.com/t/java" data-toggle="popover" data-original-title="java" data-id="1040000000089449" th:text="${qs}"> <img src="../question/questions_files/868271510-54cb382abb7a1_small" /> java </a> </li>
+                                <li class="tagPopup"> <a class="tag" href="https://segmentfault.com/t/java" data-toggle="popover" data-original-title="java" data-id="1040000000089449" th:text="${qs}"> <img src="../question/questions_files/868271510-54cb382abb7a1_small" /></a> </li>
                             </ul>
                         </div>
                     </section>

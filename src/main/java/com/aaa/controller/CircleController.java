@@ -2,6 +2,7 @@ package com.aaa.controller;
 
 import com.aaa.entity.*;
 import com.aaa.service.*;
+import com.aaa.util.ForFlie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -212,7 +213,18 @@ public class CircleController {
     }
     @RequestMapping(value = "show/{circleid}")
     public String attention(Model mv, @PathVariable Integer circleid){
-        System.out.println("访问圈子内容");
+        List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+        List<Circle> circles = cs.queryByCircleid(circleid);
+        List<Clable> clables = cls.queryByClableid(circles.get(0).getClableid());
+        List<User_info> user_infos = us.queryByUserId(circles.get(0).getUserid());
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("clablename",clables.get(0).getClablename());
+        map.put("head",user_infos.get(0).getHead());
+        map.put("username",user_infos.get(0).getUsername());
+        map.put("ctime",circles.get(0).getTime());
+        resultList.add(map);
+        mv.addAttribute("list",resultList);
+        mv.addAttribute("aaa", ForFlie.readFile(circles.get(0).getTitle()));
         return  "show";
     }
     @RequestMapping(value = "write/{circleid}")

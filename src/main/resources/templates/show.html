@@ -15,7 +15,6 @@
     <meta name="keywords"
           content="SegmentFault,思否,javascript,php,python,java,mysql,ios,android,vue.js,node.js,html,css,ruby,git,docker,前端"/>
     <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="SegmentFault"/>
-    <link rel="shortcut icon" href="https://static.segmentfault.com/v-5c8b4d77/global/img/favicon.ico"/>
     <link rel="apple-touch-icon" href="https://static.segmentfault.com/v-5c8b4d77/global/img/touch-icon.png">
     <meta name="msapplication-TileColor" content="#009a61"/>
     <meta name="msapplication-square150x150logo"
@@ -27,6 +26,13 @@
     <link rel="stylesheet" th:href="@{/css/group.css}"/>
     <link rel="stylesheet" th:href="@{/css/responsive.css}"/>
     <script type='text/javascript' th:src="@{/js/spcjs.js}"></script>
+    <script th:src="@{/editormd/examples/js/jquery.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/editormd/css/editormd.preview.min.css}" />
+    <link rel="stylesheet" th:href="@{/editormd/css/editormd.css}" />
+    <!-- 因为我们使用了dark主题，所以在容器div上加上dark的主题类，实现我们自定义的代码样式 -->
+    <script th:src="@{/editormd/lib/marked.min.js}"></script>
+    <script th:src="@{/editormd/lib/prettify.min.js}"></script>
+    <script th:src="@{/editormd/editormd.min.js}"></script>
 </head>
 <body data-mod="group" sclass="group-detail ">
 <img id="icon4weChat" style="height: 0;width: 0;" data-src="static/picture/touch-icon-512.png">
@@ -160,24 +166,26 @@
 </div>
 
 
-<div class="group__discuss-detail container" id="discussionData" data-id='1570000014908485' data-groupprice="0"
-     data-isjoin="" data-groupurl="/g/career">
+<div class="group__discuss-detail container" id="discussionData" data-id='1570000014908485' data-groupprice="0" data-isjoin="" data-groupurl="/g/career">
     <ol class="breadcrumb">
         <li><a href="/groups">圈子</a></li>
         <li><a href="/g/career">职业生涯</a></li>
         <li class="active">讨论详情</li>
     </ol>
     <div class="row">
-        <div class="col-md-9">
-            <div class="heading"><h3 class="heading__title">一起来总结你的 2018 </h3></div>
+        <div class="col-md-9" th:each="nets:${list}">
+            <div class="heading"><h3 class="heading__title" th:text="${nets['clablename']}"></h3></div>
             <div class="author">
-                <img src="static/picture/c55f99c5417d4ebeb87eedc44bf1454f.gif" class="avatar-24">
+                <img th:src="@{${nets['head']}}" class="avatar-24">
                 <a href="/u/segmentfault" target="_blank">
-                    <strong>SegmentFault</strong>
+                    <strong th:text="${nets['username']}"></strong>
                 </a>
-                <span> ·  2018年12月21日</span>
+                <span th:text="${#dates.format(nets['ctime'], 'yyyy年MM月dd日')}"></span>
             </div>
-            <div class="content fmt">
+            <div id="test-editormd" >
+                <textarea></textarea>
+            </div>
+          <!--  <div class="content fmt" >
                 <p>
                     <span class="img-wrap">
                     <img data-src="static/picture/64f13998d01d4a89841dcca7737ab6e1.gif"
@@ -208,7 +216,8 @@
                     <li><a href="https://segmentfault.com/a/1190000007917925">2016 总结</a></li>
                 </ul>
             </div>
-           <!--
+           -->
+            <!--
             这个注释里面的是
            <div class="form hide form&#45;&#45;discuss" action="/api/discussion/[id]/edit">
                 <div class="form-group">
@@ -275,10 +284,7 @@ SegmentFault 也已经六岁了
                    data-target="#911"
                    data-action="report"
                 >举报</a>
-
             </div>
-
-
             <div class="comment--group">
 
                 <div class="comments--news comments--default comments--discussion
@@ -287,8 +293,7 @@ SegmentFault 也已经六岁了
                      data-is-admin="null" id="goToReplyArea">
                     <div class="mb10 clearfix">
                         <strong class="comments-stat pull-left mr10">88 条评论</strong>
-
-                        <div class="btn-group comments-sort">
+                       <!-- <div class="btn-group comments-sort">
                             <button type="button" class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown">
                                 <span class="comments-sort-text">默认排序</span> <span class="caret"></span>
                             </button>
@@ -296,15 +301,15 @@ SegmentFault 也已经六岁了
                                 <li><a href="javascript:;" data-sort="default">默认排序</a></li>
                                 <li><a href="javascript:;" data-sort="asc">时间排序</a></li>
                             </ul>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="comments-container">
                         <div class="comments-list">
                             <div class="comments-item" data-id="1050000017474870">
                                 <div class="pull-left">
-                                    <a href="/u/sunny" target="_blank"><img class="avatar-32 "
-                                                                            src="static/picture/9b17a45d95cf46dc9bf3f8f570c7adb2.gif"
-                                                                            alt=""></a>
+                                    <a href="/u/sunny" target="_blank">
+                                        <img class="avatar-32 " src="static/picture/9b17a45d95cf46dc9bf3f8f570c7adb2.gif" alt="">
+                                    </a>
                                 </div>
                                 <div class="comments-content">
                                     <div class="comment-trigger">
@@ -2372,21 +2377,12 @@ SegmentFault 也已经六岁了
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
         <div class="col-md-3">
-            <div class="mb25 hidden-md hidden-sm hidden-xs"><img src="static/picture/20190318.png" alt="Planets"
-                                                                 usemap="#gridsMap" width=255 height=136>
-                <map name="gridsMap" id="gridsMap"></map>
-                <div style="text-align: center;"><a style="text-align:center; color:#9E9E9E; font-size:12px"
-                                                    href="/sponsor">想在上方展示你的广告？</a></div>
-                <script async src="static/js/20190318.js"></script>
-            </div>
             <div class="side">
-                <div class="related-discuss "><h4 class="related-discuss__heading">最新帖子<span
-                        class="related-discuss__heading-more"></span></h4>
+                <div class="related-discuss ">
+                    <h4 class="related-discuss__heading">最新帖子<span class="related-discuss__heading-more"></span></h4>
                     <div class="related-discuss__item"><a href="/g/1570000014908485/d/1560000018409028">第三方贷款公司，正规吗</a>
                     </div>
                     <div class="related-discuss__item"><a href="/g/1570000014908485/d/1560000018204716">找工作遇见培训机构</a>
@@ -2408,18 +2404,19 @@ SegmentFault 也已经六岁了
                     </div>
                 </div>
             </div>
-            <h4 class="related-discuss__heading mt30" style="font-size:14px; color: #333;">分享扩散</h4>
+            <!--<h4 class="related-discuss__heading mt30" style="font-size:14px; color: #333;">分享扩散</h4>
             <div class="group__intro-share hidden-xs" data-title="职业生涯" data-author="joyqi"
                  data-discussiontitle="一起来总结你的 2018 ">
                 <div class="widget-share__full" data-text=""
                      data-url="https://segmentfault.com/g/career" data-shorturl="http://sfau.lt/cHbaIxB"></div>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>
+<!--防盗链也很简单了,js里判断来路url如果不是本站不显示图片
 <script type="text/javascript">
     window.refererUrl = '/g/1570000014908485/d/1560000017473999';
-</script>
+</script>-->
 
 <div class="modal widget-911" id="911" tabindex='-1'>
     <div class="modal-dialog">
@@ -2609,13 +2606,23 @@ SegmentFault 也已经六岁了
 <div id="fixedTools" class="hidden-xs hidden-sm">
     <a id="backtop" class="hidden border-bottom" href="#">回顶部</a>
 </div>
-
-
+<!--当前时间戳
 <script>
     window.serverTime = 1552895047000;
-</script>
+</script>-->
 <script crossorigin th:src="@{/js/assets.js}"></script>
-<script crossorigin th:src="@{/js/detail.min.js}"></script>
 <script th:src="@{/js/ads.min.js}" type="text/javascript"></script>
+<script type="text/javascript" th:inline="javascript">
+    testEditor = editormd.markdownToHTML("test-editormd", {
+        markdown:[[${aaa}]],
+        htmlDecode      : "style,script,iframe",  // you can filter tags decode
+        emoji           : true,
+        taskList        : true,
+        tex             : true,  // 默认不解析
+        flowChart       : true,  // 默认不解析
+        sequenceDiagram : true,  // 默认不解析
+    });
+
+</script>
 </body>
 </html>

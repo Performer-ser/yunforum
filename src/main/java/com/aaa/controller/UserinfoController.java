@@ -1,8 +1,9 @@
-/*
+
 package com.aaa.controller;
 
 import com.aaa.entity.Userinfo;
 import com.aaa.service.UserinfoService;
+/*import com.aaa.util.JuheDemo;*/
 import com.aaa.util.JuheDemo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,10 +42,10 @@ public class UserinfoController {
         System.out.println(a);
         return a;
     }
-    */
-/**
+
+    /**
      * 发送注册验证码
-     *//*
+     */
 
     @RequestMapping("yzm")
     @ResponseBody
@@ -55,13 +56,8 @@ public class UserinfoController {
         JuheDemo.getRequest2(phone,times);
         System.out.println(times);
         return times;
-        */
-/*String times = new Date().getTime()+"";
-        times=times.substring(8, 12);
-        JuheDemo.getRequest2(phone, times);
-        System.out.println(times);
-        return times;*//*
 
     }
 }
-*/
+
+

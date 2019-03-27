@@ -15,7 +15,7 @@
     var OA_spc="<"+"script type='text/javascript' ";
     OA_spc+="src='"+OA_p+"?zones="+OA_zoneids;
     OA_spc+="&amp;source="+escape(OA_source)+"&amp;r="+OA_r;
-    OA_spc+="&amp;block=1&amp;repu=19&amp;tag=javascript";
+    OA_spc+="&amp;block=1&amp;repu=32&amp;tag=javascript";
     OA_spc+=(document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
 
     if (window.location) OA_spc+="&amp;loc="+escape(window.location);
@@ -46,7 +46,7 @@
         var OA_pop="<"+"script type='text/javascript' ";
         OA_pop+="src='"+OA_p+"?zoneid="+zoneid;
         OA_pop+="&amp;source="+escape(OA_source)+"&amp;r="+OA_r;
-        OA_spc+="&amp;block=1&amp;repu=19&amp;tag=javascript";
+        OA_spc+="&amp;block=1&amp;repu=32&amp;tag=javascript";
         if (window.location) OA_pop+="&amp;loc="+escape(window.location);
         if (document.referrer) OA_pop+="&amp;referer="+escape(document.referrer);
         OA_pop+="'><"+"/script>";

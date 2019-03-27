@@ -3,6 +3,7 @@ package com.aaa.dao;
 import com.aaa.entity.Lable;
 import com.aaa.entity.Slable;
 
+import com.aaa.entity.Special;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -34,5 +35,10 @@ public interface SpecialDao {
     public List<Map<String,Object>> querydz();
     /*public List<Map<String,Object>> queryByids(Integer )*/
     /*public List<Map<String,Object>> query2(Integer slableid);*/
-
+    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time from special sp left join user_info us on sp.userid=us.userid limit #{param1},5")
+    public List<Map<String,Object>> queryblogs(Integer offset);
+    @Select("select count(*) dz,s.specialid,s.lableid,s.title,s.content,s.time,us.username,a.status\n" +
+            " from admire a left join special s on a.type_id = s.specialid left join user_info us on s.userid=us.userid\n" +
+            "where  a.status = 1  and a.type =2 group by s.specialid,s.lableid,s.title,s.content,s.userid,s.time,us.username,a.status  order by dz desc limit #{param1},5")
+    public List<Map<String,Object>> queryhottests(Integer offset);
 }

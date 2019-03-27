@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+    <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
+    <link rel="stylesheet" th:href="@{/lib/layui/css/layui.css}" media="all">
+
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}"></script>
+</head>
+<body>
+<br/>
+<table class="layui-hide" id="demo"  lay-filter="test">
+
+</table>
+<script th:src="@{/lib/layui/layui.js}" charset="utf-8"></script>
+<script type="text/html" id="barDemo" th:inline="javascript">
+    <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="detail">详情</a>
+    {{# if (d.userstatus=== 1) { }}  
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="update">禁用</a>
+    {{# }else{ }}  
+    <a class="layui-btn layui-btn-xs" lay-event="update">解除禁用</a>
+    {{#} }}
+
+</script>
+<script th:inline="javascript">
+    layui.use('table', function(){
+        var table = layui.table;
+        table.render({
+            elem: '#demo'
+            ,url: 'http://localhost:8080/yunforum/users/queryPage'
+            ,width:854
+            ,page:true
+            ,limit:10
+            ,limits:[5,8,10]
+            ,cols: [
+                [
+                    {field: 'username', title: '用户名', width:125, sort: true}
+                    ,{field: 'phone', title: '手机号码', width:125}
+                    ,{field: 'truename', title: '真实姓名', width:125}
+                    ,{field: 'createuser', title: '注册时间', width:125}
+                    ,{field: 'userstatus', title: '用户状态', width:125,templet:function(d){
+                    if(d.userstatus==0){
+                        return "<font color='red'>已禁用</font>";
+                    }else{
+                        return "<font color='#7cfc00'>正常</font>"
+                    }
+                }}
+                    ,{ width:220, align:'center', toolbar: '#barDemo',title:'操作'}
+                ]
+            ]
+        });
+        table.on('tool(test)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'update'){
+                var tishi;
+                if(data.userstatus==0){
+                    tishi="解除禁用吗？"
+                }else{
+                    tishi="确定禁用吗?"
+                }
+                layer.alert('确认禁用吗？',{
+                    anim: 4 ,
+                    offset: '100px',
+                    yes:function(){
+                        $.ajax({
+                            url:"http://localhost:8080/yunforum/users/disabled",
+                            type:'post',
+                            dataType:'json',
+                            data:{userid:data.userid,status:data.userstatus},
+                            success:function(data){
+                                if(data == 1){
+                                    layer.alert('已完成',{
+                                        anim: 4 ,
+                                        offset: '100px',
+                                        yes:function(){
+                                            location.reload();
+                                        }
+                                    });
+                                }else{
+                                    layer.alert('禁用失败',{
+                                        anim: 4 ,
+                                        offset: '100px',
+                                        yes:function(){
+                                            location.reload();
+                                        }
+                                    });
+                                }
+                            }
+                        })
+                    }
+                });
+                // urla='http://localhost:8080/yunforum/latype/update';
+                // layer.open({
+                //     type: 1,
+                //     area: ['400px','350px'],
+                //     fix: false, //不固定
+                //     offset: '100px',
+                //     maxmin: true,
+                //     anim: 4,
+                //     shade:0.4,
+                //     title: '修改',
+                //     content:$("#fff")
+                // });
+                //$("#latypeid").attr('readonly',true);
+            }else if(obj.event === 'detail') {
+                window.location="http://localhost:8080/yunforum/users/queryOne?userid="+data.userid;
+            }
+        });
+    });
+
+    function send(){
+        $.ajax({
+            url:aaa,
+            type:'post',
+            dataType:'json',
+            data:$("#fff").serialize(),
+            success:function(data){
+                if(data == 1){
+                    layer.alert('成功',{
+                        anim: 4 ,
+                        offset: '100px',
+                        yes:function(){
+                            location.reload();
+                        }
+                    });
+                }
+            }
+        })
+    }
+</script>
+</body>
+</html>

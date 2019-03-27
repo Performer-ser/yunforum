@@ -25,4 +25,13 @@ public class LatypeService {
     public List<Lable> querylable(){
         return ld.querylable();
     }
+    public int add(Latype latype){
+        return ld.add(latype);
+    }
+    public int update(Latype latype){
+        return ld.update(latype);
+    }
+    public int delete(Integer id){
+        return ld.delete(id);
+    }
 }

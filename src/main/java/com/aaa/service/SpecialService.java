@@ -4,6 +4,7 @@ import com.aaa.dao.SpecialDao;
 
 import com.aaa.entity.Lable;
 import com.aaa.entity.Slable;
+import com.aaa.entity.Special;
 import com.sun.corba.se.spi.ior.ObjectKey;
 import org.springframework.stereotype.Service;
 
@@ -50,5 +51,15 @@ public class SpecialService {
     }
     public List<Map<String,Object>> querydz(){
         return sd.querydz();
+    }
+
+    public List<Map<String,Object>> queryblogs(Integer pageNum){
+        Integer offset =  (pageNum - 1) * 5;
+        return sd.queryblogs(offset);
+    }
+
+    public List<Map<String,Object>> queryhottests(Integer pageNum){
+        Integer offset =  (pageNum - 1) * 5;
+        return sd.queryhottests(offset);
     }
 }
