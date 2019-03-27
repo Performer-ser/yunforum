@@ -21,10 +21,10 @@
     <meta content="bcf7fd80dca60d53d46d5b46e1b990ca" name="baidu_union_verify">
     <link href="/feeds/questions" rel="alternate" title="SegmentFault 最新问题" type="application/atom+xml">
     <link href="/feeds/blogs" rel="alternate" title="SegmentFault 最新文章" type="application/atom+xml">
-    <link th:href="@{../css/global.css}" rel="stylesheet"/>
-    <link th:href="@{../css/group.css}" rel="stylesheet"/>
-    <link th:href="@{../css/responsive.css}" rel="stylesheet"/>
-    <script th:href='@{../js/spcjs.js}' type='text/javascript'></script>
+    <link th:href="@{/css/global.css}" rel="stylesheet"/>
+    <link th:href="@{/css/group.css}" rel="stylesheet"/>
+    <link th:href="@{/css/responsive.css}" rel="stylesheet"/>
+    <script th:href='@{/js/spcjs.js}' type='text/javascript'></script>
 </head>
 <body class="group-detail "
       data-mod="group"><img data-src="../static/picture/touch-icon-512.png" id="icon4weChat"
@@ -195,7 +195,8 @@
                                 <button class="btn btn-primary ml10 discuss__submit-btn" type="button" onclick="tijiao()">发布</button>
                             </div>
                         </div>
-                        --><div class="group__discuss-list">
+                        -->
+                        <div class="group__discuss-list">
                             <div class="group__discuss-item" th:each="nets:${circ}" data-url="/g/1570000014908485/d/1560000017473999">
                                 <a class="group__discuss-avatar" th:href="@{'/circle/personal/'+${nets['userid']}}" target="_blank">
                                 <img  class="avatar-40" th:src="@{${nets['head']}}"></a>

@@ -3,6 +3,7 @@ package com.aaa.dao;
 import com.aaa.entity.Lable;
 import com.aaa.entity.Slable;
 
+import com.aaa.entity.Special;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -34,5 +35,6 @@ public interface SpecialDao {
     public List<Map<String,Object>> querydz();
     /*public List<Map<String,Object>> queryByids(Integer )*/
     /*public List<Map<String,Object>> query2(Integer slableid);*/
+
 
 }

@@ -46,10 +46,8 @@ public class QuestionService {
     public List<Map<String,Object>> quesById(Integer qid){
         return qd.quesById(qid);
     }
+    public Integer byAdmire(Integer qid){ return qd.byAdmire(qid); }
     //查询点赞数量
-    public Integer byAdmire(Integer qid){
-        return qd.byAdmire(qid);
-    }
     //查询评论回答数量
     public Integer byReview(Integer qid){
         return qd.byReview(qid);
@@ -58,6 +56,8 @@ public class QuestionService {
     public Integer byBrowse(Integer qid){
         return qd.byBrowse(qid);
     }
+    public Map<String,Object> queryTitle(Integer qid){return qd.queryTitle(qid);}
+
     //查看回答表及回答用户根据问答的
     public List<Map<String,Object>> queryReviewByQuestionid(Integer qid){
         return qd.queryReviewByQuestionid(qid);
