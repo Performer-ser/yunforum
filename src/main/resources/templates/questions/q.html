@@ -427,6 +427,7 @@
                         <span th:text="${list[0].bro}"></span> 次浏览
                     </div>
                 </div>
+                <div></div>
                 <article class="widget-question__item">
                     <div class="post-col">
                         <div class="widget-vote  btn btn-default   ">
@@ -463,7 +464,7 @@
                                         <img src="../../question/q_files/rp.svg" />
                                         <span style="color:#BF7158">148</span>
                                     </div>
-                                    <span style="font-size:13px; color:#999">17 小时前提问</span>
+                                    <span style="font-size:13px; color:#999" th:text="${list[0].time}"></span>
                                 </div>
                             </div>
                         </div>
@@ -501,10 +502,6 @@
                     <!-- end .post-offset -->
                 </article>
                 <div class="widget-answers" id="goToReplyArea">
-                    <div class="btn-group pull-right" role="group">
-                        <a href="https://segmentfault.com/q/1010000018604298#answers-title" id="sortby-rank" class="btn btn-default btn-xs active">默认排序</a>
-                        <a href="https://segmentfault.com/q/1010000018604298?sort=created#answers-title" id="sortby-created" class="btn btn-default btn-xs">时间排序</a>
-                    </div>
                     <div class="title h3 mt30 mb20 post-title pb0" id="answers-title">
                         <div class="pb15">
                             <span th:text="${list[0].rev}"></span>个回答
@@ -521,344 +518,100 @@
                             </div>
                         </div>
                     </div>
-                    <article class="clearfix widget-answers__item accepted" id="a-1020000018604337">
-                        <div class="post-col">
-                            <div class="widget-vote btn btn-default  ">
-                                <button type="button" class="like" data-id="1020000018604337" data-type="answer" data-do="like" data-toggle="tooltip" data-placement="top" title="" data-original-title="答案对人有帮助，有参考价值"> <span class="sr-only">答案对人有帮助，有参考价值</span> </button>
-                                <span class="count">3</span>
-                                <button type="button" class="hate" data-id="1020000018604337" data-type="answer" data-do="hate" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="答案没帮助，是错误的答案，答非所问"> <span class="sr-only">答案没帮助，是错误的答案，答非所问</span> </button>
-                            </div>
-                            <!-- 该答案被采纳 -->
-                            <div class="text-center accepted-check cancel-cursor-pointer mt15" data-id="1020000018604337" data-do="accept/cancel" data-type="answer" style="white-space:nowrap" ;="">
-                                <i class="fa fa-check-circle accepted-check-icon" aria-hidden="true"></i>
-                                <br />
-                                <span class="fontsize13">已采纳</span>
-                            </div>
-                        </div>
-                        <div class="post-offset">
-                            <div class="answer fmt" data-id="1020000018604337">
-                                <div class="widget-codetool" style="display: none;">
-                                    <div class="widget-codetool--inner">
-                                        <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
-                                        <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="'AAAA'.split('').join(',')
-" title="" data-original-title="复制"></span>
-                                    </div>
+                    <div th:each="ls:${lists}">
+                        <article class="clearfix widget-answers__item accepted" id="a-1020000018604337">
+                            <div class="post-col">
+                                <div class="widget-vote btn btn-default  ">
+                                    <button type="button" class="like" data-id="1020000018604337" data-type="answer" data-do="like" data-toggle="tooltip" data-placement="top" title="" data-original-title="答案对人有帮助，有参考价值"> <span class="sr-only">答案对人有帮助，有参考价值</span> </button>
+                                    <span class="count">3</span>
+                                    <button type="button" class="hate" data-id="1020000018604337" data-type="answer" data-do="hate" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="答案没帮助，是错误的答案，答非所问"> <span class="sr-only">答案没帮助，是错误的答案，答非所问</span> </button>
                                 </div>
-                                <pre class="hljs perl"><code><span class="hljs-string">'AAAA'</span>.<span class="hljs-keyword">split</span>(<span class="hljs-string">''</span>).join(<span class="hljs-string">','</span>)
-</code></pre>
-                                <p>这种还是要多关注一下基础。</p>
-                            </div>
-                            <div class="row answer__info--row">
-                                <div class="post-opt col-md-8 col-sm-8 col-xs-10">
-                                    <ul class="list-inline mb0 ml0">
-                                        <li class="pl0 pr15"><a href="javascript:void(0);" class="comments" data-id="1020000018604337" data-target="#comment-1020000018604337"><i class="fa fa-commenting mr4" aria-hidden="true"></i> 评论&nbsp;&middot;&nbsp;1</a></li>
-                                        <li class="pl0 pr15"><a href="javascript:;" class="answer__reward-btn" data-id="1020000018604337"><i class="fa fa-jpy mr4" aria-hidden="true"></i><span>赞赏</span></a></li>
-                                        <li data-toggle="tooltip" data-placement="top" title="" class="edit-btn js__rank-check pl0 pr15" data-original-title="声望需要达到 200"><a href="javascript:;">编辑</a></li>
-                                        <li class="dropdown js__content-ops pl0" data-typetext="答案" data-module="answer" data-id="1020000018604337"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-left">
-                                                <li><a href="https://segmentfault.com/q/1010000018604298#911" data-toggle="modal" data-target="#911" data-action="report">举报</a></li>
-                                                <li><a href="https://segmentfault.com/q/1010000018604298/a-1020000018604337/revision">历史版本</a></li>
-                                            </ul></li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4 col-sm-4 hidden-xs answer__info--author">
-                                    <div class="answer__info--author-avatar">
-                                        <a class="mr10 inline-block" href="https://segmentfault.com/u/sekai"><img class="avatar-40 " data-toggle="popover" data-slug="sekai" data-id="1030000005137267" src="../../question/q_files/308792816-57e4ee779dcf2_big64" alt="" /></a>
-                                    </div>
-                                    <div class=" answer__info--author-warp" style="display:flex; flex-direction:column">
-                                        <div class="mb5">
-                                            <a class="answer__info--author-name mr5" title="saionjisekai" href="https://segmentfault.com/u/sekai">saionjisekai<img class="avatar-40 " data-toggle="popover" data-slug="ppxs199" data-id="1030000009380439" src="../../question/q_files/user-64.png" alt="" /></a>
-                                            <img src="../../question/q_files/rp.svg" />
-                                            <span class="answer__info--author-rank">913</span>
-                                        </div>
-                                        <div class="answer__info--date">
-                                            <a href="https://segmentfault.com/q/1010000018604298/a-1020000018604337" data-toggle="tooltip" data-placement="top" title="" data-original-title="17 小时前 发布">17 小时前更新</a>
-                                        </div>
-                                    </div>
+                                <!-- 该答案被采纳 -->
+                                <div class="text-center accepted-check cancel-cursor-pointer mt15" data-id="1020000018604337" data-do="accept/cancel" data-type="answer" style="white-space:nowrap" ;="">
+                                    <i class="fa fa-check-circle accepted-check-icon" aria-hidden="true"></i>
+                                    <br />
+                                    <span class="fontsize13">已采纳</span>
                                 </div>
                             </div>
-                            <div class="widget-comments hidden" id="comment-1020000018604337" data-id="1020000018604337">
-                                <div class="widget-comments__form row">
-                                    <form class="clearfix" method="POST">
-                                        <div class="form-group mb0 widget-comments__form--input">
-                                            <input name="id" type="hidden" value="1020000018604337" />
-                                            <textarea rows="1" name="text" class="form-control mono" id="commentText-1020000018604337" data-id="1020000018604337" placeholder="使用评论询问更多信息或提出修改意见，请不要在评论里回答问题"></textarea>
+                            <div class="post-offset">
+                                <div class="answer fmt" data-id="1020000018604337">
+                                    <p th:text="${ls.content}"></p>
+                                </div>
+                                <div class="row answer__info--row">
+                                    <div class="post-opt col-md-8 col-sm-8 col-xs-10">
+                                        <ul class="list-inline mb0 ml0">
+                                            <li class="pl0 pr15"><a href="javascript:void(0);" class="comments" data-id="1020000018604337" data-target="#comment-1020000018604337"><i class="fa fa-commenting mr4" aria-hidden="true"></i> 评论&nbsp;&middot;&nbsp;1 </a></li>
+                                            <li class="pl0 pr15"><a href="javascript:;" class="answer__reward-btn" data-id="1020000018604337"><i class="fa fa-jpy mr4" aria-hidden="true"></i><span>赞赏</span></a></li>
+                                            <li data-toggle="tooltip" data-placement="top" title="" class="edit-btn js__rank-check pl0 pr15" data-original-title="声望需要达到 200"><a href="javascript:;">编辑</a></li>
+                                            <li class="dropdown js__content-ops pl0" data-typetext="答案" data-module="answer" data-id="1020000018604337"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                                                <ul class="dropdown-menu dropdown-menu-left">
+                                                    <li><a href="#911" data-toggle="modal" data-target="#911" data-action="report">举报</a></li>
+                                                    <li><a href="/q/1010000018604298/a-1020000018604337/revision">历史版本</a></li>
+                                                </ul></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 hidden-xs answer__info--author">
+                                        <div class="answer__info--author-avatar">
+                                            <a class="mr10 inline-block" href="/u/sekai"><img class="avatar-40 " data-toggle="popover" data-slug="sekai" data-id="1030000005137267" th:src="@{'../../question/ico/'+${ls.head}}" alt="" /></a>
                                         </div>
-                                        <div class="widget-comments__btn">
-                                            <div class="pull-right">
-                                                <button type="submit" class="btn btn-default postComment" data-id="1020000018604337">提交评论 </button>
-                                                <span class="widget-comments__btn--tips"><a href="javascript:void(0);" class="toggle-comment-helper" title="语法提示"><i class="fa fa-question-circle"></i></a></span>
+                                        <div class=" answer__info--author-warp" style="display:flex; flex-direction:column">
+                                            <div class="mb5">
+                                                <a class="answer__info--author-name mr5" th:title="${ls.username}" href="/u/sekai" th:text="${ls.username}"></a>
+                                                <img src="https://cdn.segmentfault.com/v-5c8b4d77/global/img/rp.svg" />
+                                                <span class="answer__info--author-rank">924</span>
+                                            </div>
+                                            <div class="answer__info--date">
+                                                <a href="/q/1010000018604298/a-1020000018604337" data-toggle="tooltip" data-placement="top" title="" data-original-title="3 天前 发布" th:text="${ls.time}"></a>
                                             </div>
                                         </div>
-                                    </form>
-                                    <div class="col-md-12">
-                                        <div class="alert alert-warning alert-dismissible mb0 mt10 fmt comment-helper" data-rank="32" style="display:none;" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="right:0;"><span aria-hidden="true">&times;</span></button> 评论支持部分 Markdown 语法：
-                                            <code>**bold**</code>
-                                            <code>_italic_</code>
-                                            <code>[link](http://example.com)</code>
-                                            <code>&gt; 引用</code>
-                                            <code>`code`</code>
-                                            <code>- 列表</code>。
-                                            <br />同时，被你 @ 的用户也会收到通知
-                                        </div>
                                     </div>
                                 </div>
-                                <!-- /.widget-comments__form -->
-                            </div>
-                            <!-- /.widget-comments -->
-                        </div>
-                    </article>
-                    <!-- /article -->
-                    <article class="clearfix widget-answers__item" id="a-1020000018604583">
-                        <div class="post-col">
-                            <div class="widget-vote btn btn-default  ">
-                                <button type="button" class="like" data-id="1020000018604583" data-type="answer" data-do="like" data-toggle="tooltip" data-placement="top" title="" data-original-title="答案对人有帮助，有参考价值"> <span class="sr-only">答案对人有帮助，有参考价值</span> </button>
-                                <span class="count">0</span>
-                                <button type="button" class="hate" data-id="1020000018604583" data-type="answer" data-do="hate" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="答案没帮助，是错误的答案，答非所问"> <span class="sr-only">答案没帮助，是错误的答案，答非所问</span> </button>
-                            </div>
-                        </div>
-                        <div class="post-offset">
-                            <div class="answer fmt" data-id="1020000018604583">
-                                <p>现写了一个你试试</p>
-                                <div class="widget-codetool" style="display: none;">
-                                    <div class="widget-codetool--inner">
-                                        <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
-                                        <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="var str = 'AAAA'
-var arr = []
-for (let i=0;i&lt;str.length;i++){
-    arr.push(str[i])
-}
-var arrString = arr.join(',')" title="" data-original-title="复制"></span>
-                                    </div>
-                                </div>
-                                <pre class="hljs cs"><code><span class="hljs-keyword">var</span> str = <span class="hljs-string">'AAAA'</span>
-<span class="hljs-keyword">var</span> arr = []
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;str.length;i++){
-    arr.push(str[i])
-}
-<span class="hljs-keyword">var</span> arrString = arr.<span class="hljs-keyword">join</span>(<span class="hljs-string">','</span>)</code></pre>
-                            </div>
-                            <div class="row answer__info--row">
-                                <div class="post-opt col-md-8 col-sm-8 col-xs-10">
-                                    <ul class="list-inline mb0 ml0">
-                                        <li class="pl0 pr15"><a href="javascript:void(0);" class="comments" data-id="1020000018604583" data-target="#comment-1020000018604583"><i class="fa fa-commenting mr4" aria-hidden="true"></i> 评论</a></li>
-                                        <li class="pl0 pr15"><a href="javascript:;" class="answer__reward-btn" data-id="1020000018604583"><i class="fa fa-jpy mr4" aria-hidden="true"></i><span>赞赏</span></a></li>
-                                        <li data-toggle="tooltip" data-placement="top" title="" class="edit-btn js__rank-check pl0 pr15" data-original-title="声望需要达到 200"><a href="javascript:;">编辑</a></li>
-                                        <li class="dropdown js__content-ops pl0" data-typetext="答案" data-module="answer" data-id="1020000018604583"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-left">
-                                                <li><a href="https://segmentfault.com/q/1010000018604298#911" data-toggle="modal" data-target="#911" data-action="report">举报</a></li>
-                                                <li><a href="https://segmentfault.com/q/1010000018604298/a-1020000018604583/revision">历史版本</a></li>
-                                            </ul></li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4 col-sm-4 hidden-xs answer__info--author">
-                                    <div class="answer__info--author-avatar">
-                                        <a class="mr10 inline-block" href="https://segmentfault.com/u/yilumengxiang"><img class="avatar-40 " data-toggle="popover" data-slug="yilumengxiang" data-id="1030000011584479" src="../../question/q_files/user-64.png" alt="" /></a>
-                                    </div>
-                                    <div class=" answer__info--author-warp" style="display:flex; flex-direction:column">
-                                        <div class="mb5">
-                                            <a class="answer__info--author-name mr5" title="一路梦香" href="https://segmentfault.com/u/yilumengxiang">一路梦香</a>
-                                            <img src="../../question/q_files/rp.svg" />
-                                            <span class="answer__info--author-rank">22</span>
+                                <div class="widget-comments" id="comment-1020000018604337" data-id="1020000018604337">
+                                    <div class="widget-comments__item hover-show " id="1050000018604670">
+                                        <div class="votes widget-vote">
+                                            <span class="                  hover-show-obj                    islike0-10                  "> 0 </span>
+                                            <i class="fa fa-thumbs-up ml5 thumbsup fixcolor  hover-show-obj" data-id="1050000018604670" aria-hidden="true" data-do="like" data-type="comment" data-votesnum="0" style=" cursor:pointer;"> </i>
                                         </div>
-                                        <div class="answer__info--date">
-                                            <a href="https://segmentfault.com/q/1010000018604298/a-1020000018604583"> 17 小时前回答</a>
+                                        <div class="comment-content wordbreak">
+                                            <div class="content fmt" style="display:inline-block">
+                                                <p>比我的简单多了- -我还写了个for。。。。</p>
+                                            </div>
+                                            <textarea name="text" rows="1" id="commentText-1050000018604670" class="editTextarea mono form-control mb10 hidden">比我的简单多了- -我还写了个for。。。。 </textarea>
+                                            <p class="comment-meta" style="display:inline-block"> <span> — </span> <a href="/c/1050000018604670" class="text-muted"></a> <a href="/u/yilumengxiang" class="commentUser" data-userid="1030000011584479" data-username="一路梦香" data-userslug="yilumengxiang" data-useravatar="https://cdn.segmentfault.com/v-5c8b4d77/global/img/user-64.png"><strong>一路梦香</strong> </a> &middot; <span class="createdDate">3 天前</span> <span class="pull-right commentTools hover-show-obj ml15"> <a href="#" class="commentReply mr5" data-userid="1030000011584479" data-id="1050000018604670" data-username="一路梦香"><span class="flipx glyphicon glyphicon-share-alt" aria-hidden="true"></span></a> <a href="#911" class="ml10" data-toggle="modal" data-target="#911" data-action="report" data-action-text="举报" data-module="comment" data-id="1050000018604670" data-typetext="评论" data-placement="top" title="举报"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></a> </span></p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="widget-comments hidden" id="comment-1020000018604583" data-id="1020000018604583">
-                                <div class="widget-comments__form row">
-                                    <form class="clearfix" method="POST">
-                                        <div class="form-group mb0 widget-comments__form--input">
-                                            <input name="id" type="hidden" value="1020000018604583" />
-                                            <textarea rows="1" name="text" class="form-control mono" id="commentText-1020000018604583" data-id="1020000018604583" placeholder="使用评论询问更多信息或提出修改意见，请不要在评论里回答问题"></textarea>
-                                        </div>
-                                        <div class="widget-comments__btn">
-                                            <div class="pull-right">
-                                                <button type="submit" class="btn btn-default postComment" data-id="1020000018604583">提交评论 </button>
-                                                <span class="widget-comments__btn--tips"><a href="javascript:void(0);" class="toggle-comment-helper" title="语法提示"><i class="fa fa-question-circle"></i></a></span>
+                                    <div class="widget-comments__form row">
+                                        <form class="clearfix" method="POST">
+                                            <div class="form-group mb0 widget-comments__form--input">
+                                                <input name="id" type="hidden" value="1020000018604337" />
+                                                <textarea rows="1" name="text" class="form-control mono" id="commentText-1020000018604337" data-id="1020000018604337" placeholder="使用评论询问更多信息或提出修改意见，请不要在评论里回答问题" style="overflow: hidden; word-wrap: break-word; height: 35px;"></textarea>
+                                            </div>
+                                            <div class="widget-comments__btn">
+                                                <div class="pull-right">
+                                                    <button type="submit" class="btn btn-default postComment" data-id="1020000018604337">提交评论 </button>
+                                                    <span class="widget-comments__btn--tips"><a href="javascript:void(0);" class="toggle-comment-helper" title="语法提示"><i class="fa fa-question-circle"></i></a></span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="col-md-12">
+                                            <div class="alert alert-warning alert-dismissible mb0 mt10 fmt comment-helper" data-rank="32" style="display:none;" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="right:0;"><span aria-hidden="true">&times;</span></button> 评论支持部分 Markdown 语法：
+                                                <code>**bold**</code>
+                                                <code>_italic_</code>
+                                                <code>[link](http://example.com)</code>
+                                                <code>&gt; 引用</code>
+                                                <code>`code`</code>
+                                                <code>- 列表</code>。
+                                                <br />同时，被你 @ 的用户也会收到通知
                                             </div>
                                         </div>
-                                    </form>
-                                    <div class="col-md-12">
-                                        <div class="alert alert-warning alert-dismissible mb0 mt10 fmt comment-helper" data-rank="32" style="display:none;" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="right:0;"><span aria-hidden="true">&times;</span></button> 评论支持部分 Markdown 语法：
-                                            <code>**bold**</code>
-                                            <code>_italic_</code>
-                                            <code>[link](http://example.com)</code>
-                                            <code>&gt; 引用</code>
-                                            <code>`code`</code>
-                                            <code>- 列表</code>。
-                                            <br />同时，被你 @ 的用户也会收到通知
-                                        </div>
                                     </div>
+                                    <!-- /.widget-comments__form -->
                                 </div>
-                                <!-- /.widget-comments__form -->
+                                <!-- /.widget-comments -->
                             </div>
-                            <!-- /.widget-comments -->
-                        </div>
-                    </article>
-                    <!-- /article -->
-                    <article class="clearfix widget-answers__item" id="a-1020000018605342">
-                        <div class="post-col">
-                            <div class="widget-vote btn btn-default  ">
-                                <button type="button" class="like" data-id="1020000018605342" data-type="answer" data-do="like" data-toggle="tooltip" data-placement="top" title="" data-original-title="答案对人有帮助，有参考价值"> <span class="sr-only">答案对人有帮助，有参考价值</span> </button>
-                                <span class="count">0</span>
-                                <button type="button" class="hate" data-id="1020000018605342" data-type="answer" data-do="hate" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="答案没帮助，是错误的答案，答非所问"> <span class="sr-only">答案没帮助，是错误的答案，答非所问</span> </button>
-                            </div>
-                        </div>
-                        <div class="post-offset">
-                            <div class="answer fmt" data-id="1020000018605342">
-                                <div class="widget-codetool" style="display:none;">
-                                    <div class="widget-codetool--inner">
-                                        <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
-                                        <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="var a = &quot;AAAAAA&quot;;
-var b =  a.replace(/(?&lt;=.)(.)/g,&quot;,$1&quot;);
-console.log(b);" title="" data-original-title="复制"></span>
-                                    </div>
-                                </div>
-                                <pre class="javascript hljs"><code class="JS"><span class="hljs-keyword">var</span> a = <span class="hljs-string">&quot;AAAAAA&quot;</span>;
-<span class="hljs-keyword">var</span> b =  a.replace(<span class="hljs-regexp">/(?&lt;=.)(.)/g</span>,<span class="hljs-string">&quot;,$1&quot;</span>);
-<span class="hljs-built_in">console</span>.log(b);</code></pre>
-                            </div>
-                            <div class="row answer__info--row">
-                                <div class="post-opt col-md-8 col-sm-8 col-xs-10">
-                                    <ul class="list-inline mb0 ml0">
-                                        <li class="pl0 pr15"><a href="javascript:void(0);" class="comments" data-id="1020000018605342" data-target="#comment-1020000018605342"><i class="fa fa-commenting mr4" aria-hidden="true"></i> 评论</a></li>
-                                        <li class="pl0 pr15"><a href="javascript:;" class="answer__reward-btn" data-id="1020000018605342"><i class="fa fa-jpy mr4" aria-hidden="true"></i><span>赞赏</span></a></li>
-                                        <li data-toggle="tooltip" data-placement="top" title="" class="edit-btn js__rank-check pl0 pr15" data-original-title="声望需要达到 200"><a href="javascript:;">编辑</a></li>
-                                        <li class="dropdown js__content-ops pl0" data-typetext="答案" data-module="answer" data-id="1020000018605342"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-left">
-                                                <li><a href="https://segmentfault.com/q/1010000018604298#911" data-toggle="modal" data-target="#911" data-action="report">举报</a></li>
-                                                <li><a href="https://segmentfault.com/q/1010000018604298/a-1020000018605342/revision">历史版本</a></li>
-                                            </ul></li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4 col-sm-4 hidden-xs answer__info--author">
-                                    <div class="answer__info--author-avatar">
-                                        <a class="mr10 inline-block" href="https://segmentfault.com/u/helloworld_"><img class="avatar-40 " data-toggle="popover" data-slug="helloworld_" data-id="1030000002572301" src="../../question/q_files/662891029-5bdbe5e55d72b_big64" alt="" /></a>
-                                    </div>
-                                    <div class=" answer__info--author-warp" style="display:flex; flex-direction:column">
-                                        <div class="mb5">
-                                            <a class="answer__info--author-name mr5" title="helloworld_" href="https://segmentfault.com/u/helloworld_">helloworld_<img class="avatar-40 " data-toggle="popover" data-slug="ppxs199" data-id="1030000009380439" src="../../question/q_files/user-64.png" alt="" /></a>
-                                            <img src="../../question/q_files/rp.svg" />
-                                            <span class="answer__info--author-rank">2.6k</span>
-                                        </div>
-                                        <div class="answer__info--date">
-                                            <a href="https://segmentfault.com/q/1010000018604298/a-1020000018605342"> 16 小时前回答</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="widget-comments hidden" id="comment-1020000018605342" data-id="1020000018605342">
-                                <div class="widget-comments__form row">
-                                    <form class="clearfix" method="POST">
-                                        <div class="form-group mb0 widget-comments__form--input">
-                                            <input name="id" type="hidden" value="1020000018605342" />
-                                            <textarea rows="1" name="text" class="form-control mono" id="commentText-1020000018605342" data-id="1020000018605342" placeholder="使用评论询问更多信息或提出修改意见，请不要在评论里回答问题"></textarea>
-                                        </div>
-                                        <div class="widget-comments__btn">
-                                            <div class="pull-right">
-                                                <button type="submit" class="btn btn-default postComment" data-id="1020000018605342">提交评论 </button>
-                                                <span class="widget-comments__btn--tips"><a href="javascript:void(0);" class="toggle-comment-helper" title="语法提示"><i class="fa fa-question-circle"></i></a></span>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <div class="col-md-12">
-                                        <div class="alert alert-warning alert-dismissible mb0 mt10 fmt comment-helper" data-rank="32" style="display:none;" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="right:0;"><span aria-hidden="true">&times;</span></button> 评论支持部分 Markdown 语法：
-                                            <code>**bold**</code>
-                                            <code>_italic_</code>
-                                            <code>[link](http://example.com)</code>
-                                            <code>&gt; 引用</code>
-                                            <code>`code`</code>
-                                            <code>- 列表</code>。
-                                            <br />同时，被你 @ 的用户也会收到通知
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.widget-comments__form -->
-                            </div>
-                            <!-- /.widget-comments -->
-                        </div>
-                    </article>
-                    <!-- /article -->
-                    <article class="clearfix widget-answers__item" id="a-1020000018606812">
-                        <div class="post-col">
-                            <div class="widget-vote btn btn-default  ">
-                                <button type="button" class="like" data-id="1020000018606812" data-type="answer" data-do="like" data-toggle="tooltip" data-placement="top" title="" data-original-title="答案对人有帮助，有参考价值"> <span class="sr-only">答案对人有帮助，有参考价值</span> </button>
-                                <span class="count">0</span>
-                                <button type="button" class="hate" data-id="1020000018606812" data-type="answer" data-do="hate" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="答案没帮助，是错误的答案，答非所问"> <span class="sr-only">答案没帮助，是错误的答案，答非所问</span> </button>
-                            </div>
-                        </div>
-                        <div class="post-offset">
-                            <div class="answer fmt" data-id="1020000018606812">
-                                <p>'aaaa'.replace(/B/g, ',')</p>
-                            </div>
-                            <div class="row answer__info--row">
-                                <div class="post-opt col-md-8 col-sm-8 col-xs-10">
-                                    <ul class="list-inline mb0 ml0">
-                                        <li class="pl0 pr15"><a href="javascript:void(0);" class="comments" data-id="1020000018606812" data-target="#comment-1020000018606812"><i class="fa fa-commenting mr4" aria-hidden="true"></i> 评论</a></li>
-                                        <li class="pl0 pr15"><a href="javascript:;" class="answer__reward-btn" data-id="1020000018606812"><i class="fa fa-jpy mr4" aria-hidden="true"></i><span>赞赏</span></a></li>
-                                        <li data-toggle="tooltip" data-placement="top" title="" class="edit-btn js__rank-check pl0 pr15" data-original-title="声望需要达到 200"><a href="javascript:;">编辑</a></li>
-                                        <li class="pl0 pr15"><a href="javascript:;" class="translate" data-canclick="1" data-type="answer" data-target="zh">翻译</a></li>
-                                        <li class="dropdown js__content-ops pl0" data-typetext="答案" data-module="answer" data-id="1020000018606812"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-left">
-                                                <li><a href="https://segmentfault.com/q/1010000018604298#911" data-toggle="modal" data-target="#911" data-action="report">举报</a></li>
-                                                <li><a href="https://segmentfault.com/q/1010000018604298/a-1020000018606812/revision">历史版本</a></li>
-                                            </ul></li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4 col-sm-4 hidden-xs answer__info--author">
-                                    <div class="answer__info--author-avatar">
-                                        <a class="mr10 inline-block" href="https://segmentfault.com/u/ppxs199"><img class="avatar-40 " data-toggle="popover" data-slug="ppxs199" data-id="1030000009380439" src="../../question/q_files/user-64.png" alt="" /></a>
-                                    </div>
-                                    <div class=" answer__info--author-warp" style="display:flex; flex-direction:column">
-                                        <div class="mb5">
-                                            <a class="answer__info--author-name mr5" title="PPxs199" href="https://segmentfault.com/u/ppxs199">PPxs199</a>
-                                            <img src="../../question/q_files/rp.svg" />
-                                            <span class="answer__info--author-rank">196</span>
-                                        </div>
-                                        <div class="answer__info--date">
-                                            <a href="https://segmentfault.com/q/1010000018604298/a-1020000018606812"> 14 小时前回答</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="widget-comments hidden" id="comment-1020000018606812" data-id="1020000018606812">
-                                <div class="widget-comments__form row">
-                                    <form class="clearfix" method="POST">
-                                        <div class="form-group mb0 widget-comments__form--input">
-                                            <input name="id" type="hidden" value="1020000018606812" />
-                                            <textarea rows="1" name="text" class="form-control mono" id="commentText-1020000018606812" data-id="1020000018606812" placeholder="使用评论询问更多信息或提出修改意见，请不要在评论里回答问题"></textarea>
-                                        </div>
-                                        <div class="widget-comments__btn">
-                                            <div class="pull-right">
-                                                <button type="submit" class="btn btn-default postComment" data-id="1020000018606812">提交评论 </button>
-                                                <span class="widget-comments__btn--tips"><a href="javascript:void(0);" class="toggle-comment-helper" title="语法提示"><i class="fa fa-question-circle"></i></a></span>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <div class="col-md-12">
-                                        <div class="alert alert-warning alert-dismissible mb0 mt10 fmt comment-helper" data-rank="32" style="display:none;" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="right:0;"><span aria-hidden="true">&times;</span></button> 评论支持部分 Markdown 语法：
-                                            <code>**bold**</code>
-                                            <code>_italic_</code>
-                                            <code>[link](http://example.com)</code>
-                                            <code>&gt; 引用</code>
-                                            <code>`code`</code>
-                                            <code>- 列表</code>。
-                                            <br />同时，被你 @ 的用户也会收到通知
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.widget-comments__form -->
-                            </div>
-                            <!-- /.widget-comments -->
-                        </div>
-                    </article>
+                        </article>
+                    </div>
                     <!-- /article -->
                     <div class="text-center">
                     </div>
@@ -1050,24 +803,24 @@ qa-detail__invent-btn
                     }
                 </style>
                 <!--     <div data-api="/api/news/hottest">
-                  <script type="text/template">
-                      <div class="widget_headline widget-box mt20 mb30">
-                          <h2 class="h4 widget-box__title">热门头条</h2>
-                          <ul class="taglist--block pl20" >
-                              <% _.each(data,function(d){ %>
-                              <li class="">
-                                  <a href="<%- d.url %>" data-id="<%- d.id %>"
-                                     data-original-title="<%= d.name %>"><%= d.title %></a>
-                                  <p class=""><span class="mr5 color_F5A623"><%- d.VotesWord %> 赞</span> | <span class="ml5"><%- d.comments %> 评论</span></p>
-                              </li>
-                              <% }) %>
-                              <a href="/news" target="_blank" class="f12" >更多头条内容→</a>
-                          </ul>
+                            <script type="text/template">
+                                <div class="widget_headline widget-box mt20 mb30">
+                                    <h2 class="h4 widget-box__title">热门头条</h2>
+                                    <ul class="taglist--block pl20" >
+                                        <% _.each(data,function(d){ %>
+                                        <li class="">
+                                            <a href="<%- d.url %>" data-id="<%- d.id %>"
+                                               data-original-title="<%= d.name %>"><%= d.title %></a>
+                                            <p class=""><span class="mr5 color_F5A623"><%- d.VotesWord %> 赞</span> | <span class="ml5"><%- d.comments %> 评论</span></p>
+                                        </li>
+                                        <% }) %>
+                                        <a href="/news" target="_blank" class="f12" >更多头条内容→</a>
+                                    </ul>
 
-                      </div>
-                  </script>
-              </div>
-           -->
+                                </div>
+                            </script>
+                        </div>
+                     -->
                 <div style="position:sticky; top:15px">
                     <div class="mb30 block">
                         <script type="text/javascript">
@@ -1079,27 +832,27 @@ qa-detail__invent-btn
                         </div>
                     </div>
                     <!--     <div data-type="widget" data-api="/api/bookmarkArchive/hots" data-api-overwrite="/api/bookmarkArchive/1010000018604298/related">
-                     <script type="text/template">
-                         <div class="widget-box widget-box--bookmark no-border">
-                             <h4 class="widget-box__title">相关收藏夹 <a id="widgetBookmarkRefresh" class="userstab pull-right"
-                                                                       href="javascript:;">换一组</a></h4>
-                             <ul class="widget-links list-unstyled media">
-                                 <% _.each(data,function(d){ %>
-                                 <li class="widget-links__item">
-                                     <img class="pull-left pattern pattern-<%= d.id%19 %> mr10" src="https://static.segmentfault.com/v-5c8b4d77/global/img/pattern/<%= d.id%10 ? d.id%10 : 10 %>.svg" width="32">
-                                     <div class="media-body">
-                                         <a target="_blank" class="ellipsis mr0" href="<%- d.url %>"><%= d.name %></a>
-                                         <p class="mb0">
-                                             <span><%- d.num %></span> 个条目 <span class="division">|</span> <span><%- d.followers %></span> 人关注
-                                         </p>
-                                     </div>
-                                 </li>
-                                 <% }) %>
-                             </ul>
-                         </div>
-                     </script>
-                 </div>
-              -->
+                                  <script type="text/template">
+                                      <div class="widget-box widget-box--bookmark no-border">
+                                          <h4 class="widget-box__title">相关收藏夹 <a id="widgetBookmarkRefresh" class="userstab pull-right"
+                                                                                    href="javascript:;">换一组</a></h4>
+                                          <ul class="widget-links list-unstyled media">
+                                              <% _.each(data,function(d){ %>
+                                              <li class="widget-links__item">
+                                                  <img class="pull-left pattern pattern-<%= d.id%19 %> mr10" src="https://static.segmentfault.com/v-5c8b4d77/global/img/pattern/<%= d.id%10 ? d.id%10 : 10 %>.svg" width="32">
+                                                  <div class="media-body">
+                                                      <a target="_blank" class="ellipsis mr0" href="<%- d.url %>"><%= d.name %></a>
+                                                      <p class="mb0">
+                                                          <span><%- d.num %></span> 个条目 <span class="division">|</span> <span><%- d.followers %></span> 人关注
+                                                      </p>
+                                                  </div>
+                                              </li>
+                                              <% }) %>
+                                          </ul>
+                                      </div>
+                                  </script>
+                              </div>
+                           -->
                     <div id="paradigm-question-related">
                         <div class="recommend-post widget-box no-border">
                             <h4 class="h4 widget-box__title">相似问题</h4>

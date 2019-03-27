@@ -16,8 +16,10 @@ public class QuestionService {
     public int add(Question q){
         return qd.add(q);
     }
-    public List<Map<String,Object>> queryQuestionsByQlable(){
-        List<Map<String, Object>> list = qd.queryQuestionsByQlable();
+    public List<Map<String,Object>> queryQuestionsByQlable(Integer pageNum){
+
+        Integer offset =  (pageNum - 1) * 15;
+        List<Map<String, Object>> list = qd.queryQuestionsByQlable(offset);
         for (Map<String, Object> q:list){
             //System.out.println(q.get("qlablename"));
             List<String> ls = new ArrayList<String>();
@@ -44,15 +46,21 @@ public class QuestionService {
     public List<Map<String,Object>> quesById(Integer qid){
         return qd.quesById(qid);
     }
+    //查询点赞数量
     public Integer byAdmire(Integer qid){
         return qd.byAdmire(qid);
     }
+    //查询评论回答数量
     public Integer byReview(Integer qid){
         return qd.byReview(qid);
     }
+    //查询浏览数量
     public Integer byBrowse(Integer qid){
         return qd.byBrowse(qid);
     }
-
+    //查看回答表及回答用户根据问答的
+    public List<Map<String,Object>> queryReviewByQuestionid(Integer qid){
+        return qd.queryReviewByQuestionid(qid);
+    }
 
 }

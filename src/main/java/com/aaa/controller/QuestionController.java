@@ -2,7 +2,9 @@ package com.aaa.controller;
 
 
 import com.aaa.entity.Question;
+import com.aaa.service.AdmireService;
 import com.aaa.service.QuestionService;
+import com.aaa.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +18,18 @@ import java.util.*;
 public class QuestionController {
     @Autowired
     QuestionService qs;
+    @Autowired
+    ReviewService rs;
+    @Autowired
+    AdmireService as;
 
     Question ques = new Question();
     @RequestMapping("questions")
-    public String queryQuestionsByQlable(Model model){
-        List<Map<String, Object>> list = qs.queryQuestionsByQlable();
+    public String queryQuestionsByQlable(Model model,Integer pageNum){
+        if(null == pageNum){
+            pageNum = 1;
+        }
+        List<Map<String, Object>> list = qs.queryQuestionsByQlable(pageNum);
         /*for (Map<String, Object> q:list){
             //System.out.println(q.get("qlablename"));
             List<String> ls = new ArrayList<String>();
@@ -43,26 +52,40 @@ public class QuestionController {
             System.out.println(q.get("lablenames"));
         }
         System.out.println(list);*/
+        System.out.println("pageNum"+pageNum);
+        model.addAttribute("pageNum",pageNum);
         model.addAttribute("list",list);
         return "questions/questions";
     }
     @RequestMapping("subscribed")
-    public String b(Model model){
-        List<Map<String, Object>> list = qs.queryQuestionsByQlable();
+    public String b(Model model,Integer pageNum){
+        if(null == pageNum){
+            pageNum = 1;
+        }
+        List<Map<String, Object>> list = qs.queryQuestionsByQlable(pageNum);
+        model.addAttribute("pageNum",pageNum);
         model.addAttribute("list",list);
         System.out.println("就去了为我推送页面");
         return "questions/subscribed";
     }
     @RequestMapping("unanswered")
-    public String c(Model model){
-        List<Map<String, Object>> list = qs.queryQuestionsByQlable();
+    public String c(Model model,Integer pageNum){
+        if(null == pageNum){
+            pageNum = 1;
+        }
+        List<Map<String, Object>> list = qs.queryQuestionsByQlable(pageNum);
+        model.addAttribute("pageNum",pageNum);
         model.addAttribute("list",list);
         System.out.println("就去了等待回答页面");
         return "questions/unanswered";
     }
     @RequestMapping("hottest")
-    public String d(Model model){
-        List<Map<String, Object>> list = qs.queryQuestionsByQlable();
+    public String d(Model model,Integer pageNum){
+        if(null == pageNum){
+            pageNum = 1;
+        }
+        List<Map<String, Object>> list = qs.queryQuestionsByQlable(pageNum);
+        model.addAttribute("pageNum",pageNum);
         model.addAttribute("list",list);
         System.out.println("就去了热门回答页面");
         return "questions/hottest";
@@ -92,10 +115,13 @@ public class QuestionController {
             q.put("lablenames",ls);
             System.out.println(q.get("lablenames"));
         }
+        List<Map<String, Object>> lists = qs.queryReviewByQuestionid(qid);
+        model.addAttribute("lists",lists);
+
         model.addAttribute("list",list);
         System.out.println("list:---"+list);
+        System.out.println("lists:---"+lists);
         return "questions/q";
     }
-
 
 }
