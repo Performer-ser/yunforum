@@ -346,8 +346,8 @@ SegmentFault 也已经六岁了
                                     </p>
                                     <!--回复表-->
                                     <div class="reply-list">
-                                        <div class="reply-item" data-id="1050000017553480" th:each="nets:${replie}">
-                                            <!--点赞数量的统计-->通过评论者id或者评论内容来对数据进行一个判断是否是当前的评论和回复，如果是则显示没有则不显示
+                                        <div class="reply-item" data-id="1050000017553480" th:each="re:${replie}"  th:if="${re['to_username']} eq ${nets['username']}">
+                                            <!--点赞数量的统计通过评论者id或者评论内容来对数据进行一个判断是否是当前的评论和回复，如果是则显示没有则不显示-->
                                             <span class="pull-left comment-ops " style="position:absolute;">
                                                 <span class="mr20 comments-zan ">
                                                     <span class="comments-zan-value comment-showhideislike0-10">0</span>
@@ -355,7 +355,7 @@ SegmentFault 也已经六岁了
                                                 </span>
                                             </span>
                                             <div class="reply-content-block">
-                                                <div class="reply-content"><p th:text="${nets['content']}">恭喜吧，祝心想事成吧</p></div>
+                                                <div class="reply-content"><p th:text="${re['content']}"></p></div>
                                                 <form action="/api/comment/1050000017553480/edit">
                                                     <div class="form-group">
                                                         <textarea class="editTextarea mono form-control mb10 hidden"
@@ -366,21 +366,26 @@ SegmentFault 也已经六岁了
                                                     </div>
                                                 </form>
                                                 <div class="comment-func inline-block">
-                                                <span class="pull-right commentTools ml15">                                                                                                                    title="举报">
-                                                    <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                                <span class="pull-right commentTools ml15">
+                                                    <a href="#911" class="ml10" data-toggle="modal"
+                                                       data-target="#911" data-module="comment"
+                                                       data-id="1050000017783741"data-action='report'data-typetext="评论"
+                                                       data-placement="top"title="举报">
+                                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                                    </a>
                                                 </span>
                                                 <span class="comment-meta inline-block">
                                                     <span> — </span>
                                                     <a target="_blank" href="/u/2006">
-                                                        <strong th:text="${nets['from_username']}"></strong>
+                                                        <strong th:text="${re['from_username']}"></strong>
                                                     </a>
                                                     <span class="comments-isAuthor hide"></span>
-                                                    <span class="text-muted-plus" th:text="'  ·   '+${#dates.format(nets['recoverytime'], 'yyyy年MM月dd日')}">  ·  2018年12月28日</span>
+                                                    <span class="text-muted-plus" th:text="'  ·   '+${#dates.format(re['recoverytime'], 'yyyy年MM月dd日')}"></span>
                                                 </span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="reply-item" data-id="1050000017783741">
+                                      <!--  <div class="reply-item" data-id="1050000017783741">
                                             <span class="pull-left comment-ops " style="position:absolute;">
                                                 <span class="mr20 comments-zan ">
                                                     <span class="comments-zan-value comment-showhideislike0-10">0</span>
@@ -466,7 +471,7 @@ SegmentFault 也已经六岁了
                                                 </div>
                                             </div>
                                         </div>
-
+-->
                                         <div class="reply-item reply-item--ops" data-obj="obj">
                                             <a class="reply-inner-btn" href="javascript:;">添加回复</a>
 
