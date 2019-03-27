@@ -2,7 +2,9 @@ package com.aaa.controller;
 
 
 import com.aaa.entity.Question;
+import com.aaa.service.AdmireService;
 import com.aaa.service.QuestionService;
+import com.aaa.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,10 @@ import java.util.*;
 public class QuestionController {
     @Autowired
     QuestionService qs;
+    @Autowired
+    ReviewService rs;
+    @Autowired
+    AdmireService as;
 
     Question ques = new Question();
     @RequestMapping("questions")
@@ -96,6 +102,28 @@ public class QuestionController {
         System.out.println("list:---"+list);
         return "questions/q";
     }
-
+    @RequestMapping("answers")
+    public String answers(Integer page,Model model){
+        List<Map<String,Object>> lm=rs.queryOneAll(1);
+        List<Map<String,Object>> aw=new ArrayList<Map<String,Object>>();
+        for (int i=0;i<lm.size();i++){
+            Map<String,Object> m=qs.queryTitle(Integer.valueOf(lm.get(i).get("composeid").toString()));
+            List<Map<String,Object>> ll=as.query(4,Integer.valueOf(lm.get(i).get("composeid").toString()),1);
+            lm.get(i).put("title",m.get("title"));
+            lm.get(i).put("admire",ll.get(0).get("count"));
+            Map<String,Object> q=new HashMap<>();
+            if((i+1)%20==0){
+                q.put("ass",(i+1)/20);
+                aw.add(q);
+            }else{
+                q.put("ass",1);
+                aw.add(q);
+            }
+        }
+        System.out.printf(lm.toString());
+        model.addAttribute("lm",lm);
+        model.addAttribute("a",aw);
+        return "personquestion";
+    }
 
 }
