@@ -29,7 +29,8 @@ public interface QuestionDao {
     //查看浏览表
     @Select("select count(*) from browse b where b.type =1 and b.composeid = #{parma1}")
     public Integer byBrowse(Integer qid);
-
+    @Select("select title from question where questionid=#{param1}")
+    public Map<String,Object> queryTitle(Integer questionid);
 
 
 }

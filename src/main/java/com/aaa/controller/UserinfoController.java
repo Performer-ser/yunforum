@@ -1,5 +1,7 @@
 package com.aaa.controller;
 
+import com.aaa.entity.Circle;
+import com.aaa.entity.Special;
 import com.aaa.entity.Userinfo;
 import com.aaa.service.UserinfoService;
 import com.aaa.util.JsonMapper;
@@ -82,5 +84,45 @@ public class UserinfoController {
         model.addAttribute("lu",us.queryOne(userid));
         return "information";
     }
+    @RequestMapping("queryQuesPage")
+    @ResponseBody
+    public String queryQuesPage(Integer userid,Integer page,Integer limit){
+        List<Map<String,Object>> lu=us.queryQuesPage(userid,(page-1)*limit,limit);
+        List<Map<String,Object>> lua=us.queryQuesAll(userid);
+        Map<String,Object> map=new HashMap<>();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",lua.size());
+        map.put("data",lu);
+        String json= JsonMapper.mapToJson(map);
+        return json;
+    }
+    @RequestMapping("querySpePage")
+    @ResponseBody
+    public String querySpePage(Integer userid,Integer page,Integer limit){
+        List<Special> lp=us.querySpePage(userid,(page-1)*limit,limit);
+        List<Special> lpa=us.querySpeAll(userid);
+        Map<String,Object> map=new HashMap<>();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",lpa.size());
+        map.put("data",lp);
+        String json= JsonMapper.mapToJson(map);
+        return json;
+    }
+    @RequestMapping("queryCirPage")
+    @ResponseBody
+    public String queryCirPage(Integer userid,Integer page,Integer limit){
+        List<Circle> lc=us.queryCirPage(userid,(page-1)*limit,limit);
+        List<Circle> lca=us.queryCirAll(userid);
+        Map<String,Object> map=new HashMap<>();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",lca.size());
+        map.put("data",lc);
+        String json= JsonMapper.mapToJson(map);
+        return json;
+    }
+
 }
 

@@ -44,15 +44,14 @@ public class QuestionService {
     public List<Map<String,Object>> quesById(Integer qid){
         return qd.quesById(qid);
     }
-    public Integer byAdmire(Integer qid){
-        return qd.byAdmire(qid);
-    }
+    public Integer byAdmire(Integer qid){ return qd.byAdmire(qid); }
     public Integer byReview(Integer qid){
         return qd.byReview(qid);
     }
     public Integer byBrowse(Integer qid){
         return qd.byBrowse(qid);
     }
+    public Map<String,Object> queryTitle(Integer qid){return qd.queryTitle(qid);}
 
 
 }

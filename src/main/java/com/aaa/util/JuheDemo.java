@@ -1,7 +1,20 @@
 package com.aaa.util;
 
+import net.sf.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 //import net.sf.json.JSONObject;
+
 
 /**
  *短信API服务调用示例代码 － 聚合数据
@@ -10,54 +23,58 @@ package com.aaa.util;
 
 
 public class JuheDemo {
- /*   public static final String DEF_CHATSET = "UTF-8";
+
+    public static final String DEF_CHATSET = "UTF-8";
     public static final int DEF_CONN_TIMEOUT = 30000;
     public static final int DEF_READ_TIMEOUT = 30000;
-    public static String userAgent =  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36";
+    public static String userAgent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36";
 
     //配置您申请的KEY
-    public static final String APPKEY ="3fa4acc97d44c40a61f68f1692776195";*/
+    public static final String APPKEY = "3fa4acc97d44c40a61f68f1692776195";
 
-  /*1.屏蔽词检查测
-    public static void getRequest1(){
-        String result =null;
-        String url ="http://v.juhe.cn/sms/black";//请求接口地址
+    //1.屏蔽词检查测
+    public static void getRequest1() {
+        String result = null;
+        String url = "http://v.juhe.cn/sms/black";//请求接口地址
         Map params = new HashMap();//请求参数
-        params.put("word","测试该接口");//需要检测的短信内容，需要UTF8 URLENCODE
-        params.put("key",APPKEY);//应用APPKEY(应用详细页查询)
+        params.put("word", "测试该接口");//需要检测的短信内容，需要UTF8 URLENCODE
+        params.put("key", APPKEY);//应用APPKEY(应用详细页查询)
 
         try {
-            result =net(url, params, "GET");
+            result = net(url, params, "GET");
             JSONObject object = JSONObject.fromObject(result);
-            if(object.getInt("error_code")==0){
+            if (object.getInt("error_code") == 0) {
                 System.out.println(object.get("result"));
-            }else{
-                System.out.println(object.get("error_code")+":"+object.get("reason"));
+            } else {
+                System.out.println(object.get("error_code") + ":" + object.get("reason"));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     //2.发送短信
-    public static String getRequest2(String Phone,String StochasticNum){
-        String result =null;
-        String url ="http://v.juhe.cn/sms/send";//请求接口地址
+    public static String getRequest2(String Phone, String StochasticNum) {
+        String result = null;
+        String url = "http://v.juhe.cn/sms/send";//请求接口地址
         Map params = new HashMap();//请求参数
-        params.put("mobile",Phone);//接收短信的手机号码
-        params.put("tpl_id","139930");//短信模板ID，请参考个人中心短信模板设置
-        params.put("tpl_value","#code#="+StochasticNum+"&#company#=江派书城");//变量名和变量值对。如果你的变量名或者变量值中带有#&=中的任意一个特殊符号，请先分别进行urlencode编码后再传递，<a href="http://www.juhe.cn/news/index/id/50" target="_blank">详细说明></a>
-        params.put("key",APPKEY);//应用APPKEY(应用详细页查询)
-        params.put("dtype","json");//返回数据的格式,xml或json，默认json
+        params.put("mobile", Phone);//接收短信的手机号码
+        params.put("tpl_id", "139930");//短信模板ID，请参考个人中心短信模板设置
+        params.put("tpl_value", "#code#=" + StochasticNum + "&#company#=江派书城");//变量名和变量值对。如果你的变量名或者变量值中带有#&=中的任意一个特殊符号，请先分别进行urlencode编码后再传递，<a href="http://www.juhe.cn/news/index/id/50" target="_blank">详细说明></a>
+        params.put("key", APPKEY);//应用APPKEY(应用详细页查询)
+        params.put("dtype", "json");//返回数据的格式,xml或json，默认json
 
         try {
-            result =net(url, params, "GET");
+            result = net(url, params, "GET");
             // System.out.println(result);
             // JSONObject.fromObject(result);
-           if(object.getInt("error_code")==0){
+
+        /*    if (object.getInt("error_code") == 0) {
                 System.out.println(object.get("result"));
-            }else{
-                System.out.println(object.get("error_code")+":"+object.get("reason"));
-            }
+            } else {
+                System.out.println(
+                        object.get("error_code") + ":" + object.get("reason"));
+            }*/
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,14 +83,15 @@ public class JuheDemo {
     }
 
 
-
     public static void main(String[] args) {
-        //测试String request2 = getRequest2("17698904046","456456");
-    	System.out.println(request2);*//*
+        //测试
+
+        String request2 = getRequest2("17698904046", "456456");
+        System.out.println(request2);
 
     }
 
-/**
+    /**
      *
      * @param strUrl 请求地址
      * @param params 请求参数
@@ -81,7 +99,6 @@ public class JuheDemo {
      * @return  网络请求字符串
      * @throws Exception
      */
-/*
 
     public static String net(String strUrl, Map params,String method) throws Exception {
         HttpURLConnection conn = null;
@@ -146,6 +163,5 @@ public class JuheDemo {
         }
         return sb.toString();
     }
-    */
 }
 
