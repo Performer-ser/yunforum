@@ -287,16 +287,7 @@ SegmentFault 也已经六岁了
                      data-id="1560000017473999" data-user-id="" data-author-id="1030000000094051"
                      data-is-admin="null" id="goToReplyArea">
                     <div class="mb10 clearfix">
-                        <strong class="comments-stat pull-left mr10">88 条评论</strong>
-                       <!-- <div class="btn-group comments-sort">
-                            <button type="button" class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown">
-                                <span class="comments-sort-text">默认排序</span> <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="javascript:;" data-sort="default">默认排序</a></li>
-                                <li><a href="javascript:;" data-sort="asc">时间排序</a></li>
-                            </ul>
-                        </div>-->
+                        <strong class="comments-stat pull-left mr10" th:text="${count}+'条评论'"></strong>
                     </div>
                     <div class="comments-container">
                         <div class="comments-list">
@@ -325,13 +316,6 @@ SegmentFault 也已经六岁了
                                         </span>
                                     </div>
                                     <div class="fmt mb10"><p th:text="${nets['count']}"></p></div>
-                                  <!--  <form action="/api/comment/1050000017474870/edit">
-                                        <div class="form-group">
-                                            <textarea class="editTextarea mono form-control mb10 hidden" rows="1"
-                                                      name="text"
-                                                      style="height: 28px; overflow: hidden; word-wrap: break-word;">2018 感觉时间过的好快啊  :)</textarea>
-                                        </div>
-                                    </form>-->
                                     <p class="comment-ops not-reply">
                                         <span class="comments-zan ">
                                             <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
@@ -344,6 +328,19 @@ SegmentFault 也已经六岁了
                                           <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
                                         </span>
                                     </p>
+                                    <!--用于添加回复-->
+                                    <div class="reply-list reply-list--empty">
+                                        <div class="reply-item reply-item--ops hide" data-obj="obj">
+                                            <a class="reply-inner-btn hide" href="javascript:;">添加回复</a>
+                                        </div>
+                                        <form class="reply-form" action="/api/comment/1050000017837975/reply">
+                                            <button type="button" class="btn btn-default pull-right reply-btn">添加回复</button>
+                                            <button class="hide" type="button"></button>
+                                            <div class="form-group">
+                                                <textarea style="min-height: 35px; max-height: 132px; overflow: hidden; overflow-wrap: break-word; height: 32px;" name="text" class="form-control reply-text" rows="1" placeholder="文明社会，理性评论"></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
                                     <!--回复表-->
                                     <div class="reply-list">
                                         <div class="reply-item" data-id="1050000017553480" th:each="re:${replie}"  th:if="${re['to_username']} eq ${nets['username']}">
@@ -385,96 +382,8 @@ SegmentFault 也已经六岁了
                                                 </div>
                                             </div>
                                         </div>
-                                      <!--  <div class="reply-item" data-id="1050000017783741">
-                                            <span class="pull-left comment-ops " style="position:absolute;">
-                                                <span class="mr20 comments-zan ">
-                                                    <span class="comments-zan-value comment-showhideislike0-10">0</span>
-                                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
-                                                </span>
-                                            </span>
-                                            <div class="reply-content-block">
-                                                <div class="reply-content"><p>一起加油！</p></div>
-                                                <form action="/api/comment/1050000017783741/edit">
-                                                    <div class="form-group">
-                                                        <textarea class="editTextarea mono form-control mb10 hidden"
-                                                                  rows="1" name="text"
-                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">一起加油！</textarea>
-                                                    </div>
-                                                </form>
-                                                <div class="comment-func inline-block">
-                                                    <span class="pull-right commentTools ml15">
-                                                        <a href="#911" class="ml10" data-toggle="modal"
-                                                           data-target="#911" data-module="comment"
-                                                           data-id="1050000017783741"data-action='report'data-typetext="评论"
-                                                           data-placement="top"title="举报">
-                                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
-                                                        </a>
-                                                    </span>
-                                                    <span class="comment-meta inline-block">
-                                                    <span> — </span>
-                                                    <a target="_blank" href="/u/edagarli"><strong>edagarli</strong></a>
-                                                    <span class="comments-isAuthor hide"></span>
-                                                    <span class="text-muted-plus">  ·  1月6日</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="reply-item" data-id="1050000017915077">
-                            <span class="pull-left comment-ops " style="position:absolute;">
-                                <span class="mr20 comments-zan ">
-                                    <span class="comments-zan-value comment-showhide
-                                         islike0-10
-                                        ">
-                                        0
-                                    </span>
-                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
-                                </span>
-                            </span>
-
-                                            <div class="reply-content-block">
-                                                <div class="reply-content"><p>2018 虽然学到了很多东西！但遗憾的是钱变少了~</p></div>
-                                                <form action="/api/comment/1050000017915077/edit">
-                                                    <div class="form-group">
-                                                        <textarea class="editTextarea mono form-control mb10 hidden"
-                                                                  rows="1" name="text"
-                                                                  style="height: 28px; overflow: hidden; word-wrap: break-word;">2018 虽然学到了很多东西！但遗憾的是钱变少了~</textarea>
-                                                    </div>
-                                                </form>
-                                                <div class="comment-func inline-block">
-                                    
-
-                                    <span class="pull-right commentTools ml15">
-                                                                                                                                                                <a href="#911"
-                                                                                                                                                                   class="ml10"
-                                                                                                                                                                   data-toggle="modal"
-                                                                                                                                                                   data-target="#911"
-                                                                                                                                                                   data-module="comment"
-                                                                                                                                                                   data-id="1050000017915077"
-                                                                                                                                                                   data-action='report'
-                                                                                                                                                                   data-typetext="评论"
-                                                                                                                                                                   data-placement="top"
-                                                                                                                                                                   title="举报">
-                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
-                                        </a>
-                                    </span>
-
-                                                    <span class="comment-meta inline-block">
-                                        <span> — </span>
-                                        <a target="_blank" href="/u/diary">
-                                            <strong>灰色v碰触</strong>
-                                        </a> 
-                                        <span class="comments-isAuthor hide">
-                                            
-                                        </span> 
-                                        <span class="text-muted-plus">  ·  1月16日</span>
-                                                                            </span>
-                                                </div>
-                                            </div>
-                                        </div>
--->
                                         <div class="reply-item reply-item--ops" data-obj="obj">
                                             <a class="reply-inner-btn" href="javascript:;">添加回复</a>
-
                                         </div>
                                     </div>
                                 </div>
@@ -484,20 +393,19 @@ SegmentFault 也已经六岁了
                             <div class="comments-loading hide">载入中...</div>
                             <div class="comments-more "><a href="javascript:;">显示更多评论</a></div>
                          -->
+                        <!--从session中查询出用户的信息来对当前用户来添加评论-->
                         <div class="comments-box" id="goToReplyEditor">
                             <div class="pull-left">
-                                <img class="avatar-32 "
-                                     src="static/picture/user-128.png"
-                                     alt=""/>
+                                <!--<img class="avatar-32" th:src="${session.user.head}" alt=""/>-->
                             </div>
                             <div class="comments-box-content">
-                                <form action="/api/discussion/1560000017473999/comments/add">
+                                <form th:action="@{/circle/add}">
                                     <div class="form-group mb0">
                                         <textarea name="text" rows="3" class="form-control"
                                                   placeholder="文明社会，理性评论"></textarea>
                                         <div class="mt15 text-right">
                                             <button type="button" class="hide"></button>
-                                            <button class=" btn btn-primary" type="button">发布评论</button>
+                                            <button class=" btn btn-primary" type="submit">发布评论</button>
                                         </div>
                                     </div>
                                 </form>

@@ -1,7 +1,9 @@
 package com.aaa.controller;
+
 import com.aaa.entity.Circle;
 import com.aaa.service.CircleService;
 import com.aaa.util.ForFlie;
+import com.aaa.util.IdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,10 +29,11 @@ public class WriteController{
     @ResponseBody
     public int text(String text,String title,Integer clableid) throws IOException{
         int add = 0;
-        if(ForFlie.createFile(title,text)){
+        String randomIdByUUID = IdUtils.getRandomIdByUUID();
+        if(ForFlie.createFile(randomIdByUUID,text)){
            Circle c = new Circle();
            c.setClableid(clableid);
-           c.setContent(text);
+           c.setContent(randomIdByUUID);
            c.setTitle(title);
            /*从session里面获取，后期添加*/
            c.setUserid(1);
