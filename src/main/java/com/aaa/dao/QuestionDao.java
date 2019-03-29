@@ -29,10 +29,16 @@ public interface QuestionDao {
     //查看浏览表
     @Select("select count(*) from browse b where b.type =1 and b.composeid = #{parma1}")
     public Integer byBrowse(Integer qid);
-    @Select("select title from question where questionid=#{param1}")
+    @Select("select title,reviewid from question where questionid=#{param1}")
     public Map<String,Object> queryTitle(Integer questionid);
     //查看回答表及回答用户根据问答的id
     @Select("select q.questionid,r.content,r.time,u.username,u.head from question q left join review r on q.questionid = r.composeid left join user_info u on r.userid = u.userid where r.type = 1 and questionid = #{param1}")
     public List<Map<String,Object>> queryReviewByQuestionid(Integer qid);
+    //分页查看个人问题
+    @Select("select questionid,title,reviewid,time from question where userid=#{param1} limit #{param2},20")
+    public List<Map<String,Object>> queryUser(Integer userid,Integer page);
+    //查看个人全部问题
+    @Select("select title,reviewid,time from question where userid=#{param1}")
+    public List<Map<String,Object>> queryUserAll(Integer userid);
 
 }

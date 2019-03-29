@@ -194,21 +194,24 @@ public class QuestionController {
     }
     @RequestMapping("answers")
     public String answers(Integer page,Model model){
-        List<Map<String,Object>> lm=rs.queryOneAll(1);
+        uuuu(1,model);
+        List<Map<String,Object>> lm=rs.queryOneAll(1,(page-1)*20);
         List<Map<String,Object>> aw=new ArrayList<Map<String,Object>>();
         for (int i=0;i<lm.size();i++){
             Map<String,Object> m=qs.queryTitle(Integer.valueOf(lm.get(i).get("composeid").toString()));
-            List<Map<String,Object>> ll=as.query(4,Integer.valueOf(lm.get(i).get("composeid").toString()),1);
+            List<Map<String,Object>> ll=as.query(4,Integer.valueOf(lm.get(i).get("reviewid").toString()),1);
             lm.get(i).put("title",m.get("title"));
+            lm.get(i).put("caina",m.get("reviewid"));
             lm.get(i).put("admire",ll.get(0).get("count"));
             Map<String,Object> q=new HashMap<>();
-            if((i+1)%20==0){
-                q.put("ass",(i+1)/20);
-                aw.add(q);
-            }else{
-                q.put("ass",1);
-                aw.add(q);
-            }
+        }
+        Double wq=Double.valueOf(rs.queryUserAll(1).size());
+        Double c=Math.ceil(wq/20);
+        for (int i=0;i<c;i++){
+            Map<String,Object> m=new HashMap<>();
+            m.put("ass",i+1);
+            m.put("page",page);
+            aw.add(m);
         }
         System.out.printf(lm.toString());
         model.addAttribute("lm",lm);
@@ -219,6 +222,30 @@ public class QuestionController {
     public String ask(){
         System.out.println("进入了ask页面");
         return "questions/ask";
+    }
+    @RequestMapping("qqq")
+    public String qqq(Integer page,Model model){
+        List<Map<String,Object>> lq=qs.queryUser(1,(page-1)*20);
+        List<Map<String,Object>> aw=new ArrayList<Map<String,Object>>();
+        for (int i=0; i<lq.size();i++){
+            List<Map<String,Object>> ll=as.query(1,Integer.valueOf(lq.get(i).get("questionid").toString()),1);
+            lq.get(i).put("admire",ll.get(0).get("count"));
+        }
+        Double wq=Double.valueOf(qs.queryUserAll(1).size());
+        Double c=Math.ceil(wq/20);
+        for (int i=0;i<c;i++){
+            Map<String,Object> m=new HashMap<>();
+            m.put("ass",i+1);
+            m.put("page",page);
+            aw.add(m);
+        }
+        System.out.printf(lq.toString());
+        model.addAttribute("lq",lq);
+        model.addAttribute("a",aw);
+        return "personQues";
+    }
+    public void uuuu(Integer userid,Model model){
+        model.addAttribute("user",1111);
     }
 
 }

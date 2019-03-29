@@ -18,5 +18,6 @@ public class ReviewService {
     public List<Review> queryByUserid(Integer userid){
         return  rd.queryByUserid(userid);
     }
-    public List<Map<String,Object>> queryOneAll(Integer userid){return rd.queryOneAll(userid);}
+    public List<Map<String,Object>> queryOneAll(Integer userid,Integer page){return rd.queryOneAll(userid,page);}
+    public List<Map<String,Object>> queryUserAll(Integer userid){return rd.queryUserAll(userid);}
 }

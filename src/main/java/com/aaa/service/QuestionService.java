@@ -57,6 +57,8 @@ public class QuestionService {
         return qd.byBrowse(qid);
     }
     public Map<String,Object> queryTitle(Integer qid){return qd.queryTitle(qid);}
+    public List<Map<String,Object>> queryUser(Integer userid,Integer page){return qd.queryUser(userid,page);}
+    public List<Map<String,Object>> queryUserAll(Integer userid){return qd.queryUserAll(userid);}
 
     //查看回答表及回答用户根据问答的
     public List<Map<String,Object>> queryReviewByQuestionid(Integer qid){
