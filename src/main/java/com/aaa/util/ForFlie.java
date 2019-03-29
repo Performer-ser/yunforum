@@ -1,10 +1,9 @@
 package com.aaa.util;
 
 import java.io.*;
-import java.util.UUID;
 
 public class ForFlie {
-    private static String path = "C:\\Users\\25059\\Downloads\\file\\";
+    private static String path = "D:\\S3\\ggg\\segmentfault.com\\text\\";
 
     //文件路径+名称
     private static String filenameTemp;
