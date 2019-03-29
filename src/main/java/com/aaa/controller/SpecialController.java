@@ -58,48 +58,13 @@ public class SpecialController {
         m.addAttribute("list",list);
         return "hottest";
     }
-   /* *//**
-     * 最新内容
-     * @param m
-     * @return
-     *//*
-    @RequestMapping("xin")
-    public String query1(Model m){
-        List<Map<String,Object>> list=ss.query1();
-        List<Slable> list1=ss.querySlable();
-        System.out.println(list1);
-        m.addAttribute("list1",list1);
-        //System.out.println(list1.toString());
-        m.addAttribute("list",list);
-        System.out.println(list.toString());
-        System.out.println("---------------------------------------------*-*-*----------------------------");
-        return "xin";
-    }*/
+
     @RequestMapping(value = "a/{specialid}")
     public String queryByid(Model m ,@PathVariable Integer specialid){
-
         Map<String,Object> list=ss.queryByid(specialid).get(0);
         m.addAttribute("list",list);
         return "a";
     }
-
-   /*@RequestMapping(value = "query2")
-    public String query2(Model m, Integer slableid){
-        Map<String,Object> map=ss.query2(slableid);
-        System.out.println(map);
-        m.addAttribute("map",map);
-
-        List<Slable> list1=sls.querySlable();
-        System.out.println(list1);
-        m.addAttribute("list1",list1);
-        m.addAttribute("list",list);
-        Map<String,Object> list2=sls.query2(slableid);
-        System.out.println(list2);
-        m.addAttribute("list2",list2);
-
-
-        return "indexs";
-    }*/
 
     /**专栏
      * 推荐文章
@@ -136,4 +101,15 @@ public class SpecialController {
        m.addAttribute("pageNum",pageNum);
        return "blogs/hottests";
    }
+   @RequestMapping("newest")
+    public String ccc(Model m,Integer pageNum){
+       if (null== pageNum){
+           pageNum=1;
+       }
+       List<Map<String,Object>> list=ss.querynewest(pageNum);
+       m.addAttribute("list",list);
+       m.addAttribute("pageNum",pageNum);
+       return "blogs/newest";
+   }
+
 }

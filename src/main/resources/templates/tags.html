@@ -183,15 +183,16 @@
         </h2>
         <div class="row tag-list mt20">
 
-            <div class="tag-list__itemWraper" th:each="list : ${list}">
+            <div class="tag-list__itemWraper" th:each="list2 : ${list2}">
                 <div class="tag-list__itemInnerBox">
-                    <h3 class="h5 tag-list__itemheader" th:text="${list.latypename}"></h3>
+                    <h3 class="h5 tag-list__itemheader" th:text="${list2.latypename}"></h3>
                     <ul class="tag-list__itembody taglist--inline multi">
-                        <th:block th:each="list2:${list1}">
-                            <th:block th:if="${list.latypeid} eq ${list2.latypeid}">
+                        <th:block th:each="list:${list1}">
+                            <th:block th:if="${list2.latypeid} eq ${list.latypeid}">
                                 <li class="tagPopup">
-                                    <a href="" class="tag" data-toggle="popover"
-                                       data-id="1040000000089449" data-original-title="java" th:title="${list2.describe}" th:text="${list2.lablename}">
+                                   <!-- @{'/latype/t/'+${list.lableid}}-->
+                                    <a th:href="@{'/latype/t/'+${list.lableid}}" class="tag" data-toggle="popover"
+                                       data-id="1040000000089449" data-original-title="java" th:title="${list.describe}" th:text="${list.lablename}">
                                         <img src="../tags_files/868271510-54cb382abb7a1_small">
                                     </a>
                                 </li>

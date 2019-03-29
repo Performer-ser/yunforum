@@ -7,6 +7,7 @@ import com.aaa.util.JsonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -29,14 +30,29 @@ public class LatypeController {
 
     @RequestMapping("tags")
     public String tags(Model m){
-        List<Latype> list=lts.querylatype();
+        List<Latype> list2=lts.querylatype();
         List<Lable> list1=lts.querylable();
-        m.addAttribute("list",list);
+        m.addAttribute("list2",list2);
         m.addAttribute("list1",list1);
-        System.out.println("list="+list);
+        System.out.println("list2="+list2);
         System.out.println("list1="+list1);
         return "tags";
     }
+
+    /**
+     * 根据标签id查询所对的内容
+     * @param m
+     * @param lableid
+     * @return
+     */
+    @RequestMapping(value = "t/{lableid}")
+    public String queryBysid(Model m,@PathVariable Integer lableid){
+        Map<String,Object> list=lts.queryBysid(lableid).get(0);
+        m.addAttribute("list",list);
+        return "t";
+    }
+
+
     @RequestMapping("querys")
     @ResponseBody
     public String querys(HttpServletResponse resp){

@@ -18,6 +18,15 @@ public interface LatypeDao {
     public List<Latype> querylatype();
     @Select("select * from lable")
     public List<Lable> querylable();
+
+    /**
+     * 根据标签ID查询出于与此标签有关的内容
+     */
+    @Select("select la.lableid,la.lablename,la.describe,sp.lableid slableid,sp.title,sp.content,us.username,sp.time from lable la left join special sp" +
+            " on la.lableid= sp.lableid left join user_info us on sp.userid= us.userid where la.lableid =#{lableid}")
+    public List<Map<String,Object>> queryBysid(Integer lableid);
+
+
     @Insert("insert latype (latypename) values(#{latypename})")
     public int add(Latype latype);
     @Update("update latype set latypename=#{latypename} where latypeid=#{latypeid}")

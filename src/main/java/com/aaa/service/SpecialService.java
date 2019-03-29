@@ -62,4 +62,11 @@ public class SpecialService {
         Integer offset =  (pageNum - 1) * 5;
         return sd.queryhottests(offset);
     }
+
+    public List<Map<String,Object>> querynewest(Integer pageNum){
+        Integer offset =  (pageNum - 1) * 5;
+        return sd.querynewest(offset);
+    }
+
+
 }

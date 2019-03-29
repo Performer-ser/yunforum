@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://segmentfault.com/t/java -->
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta property="qc:admins" content="15317273575564615446375">
+    <meta property="og:image" content="https://static.segmentfault.com/v-5c8b4d77/global/img/touch-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="alexaVerifyID" content="LkzCRJ7rPEUwt6fVey2vhxiw1vQ">
+    <meta name="apple-itunes-app" content="app-id=958101793, app-argument=">
+    <title>java 的动态 - SegmentFault 思否</title>
+    <meta name="description"
+          content="java Java 是一种可以撰写跨平台应用软件的面向对象的程序设计语言，是由 Sun Microsystems 公司于 1995 年 5 月推出的 Java 程序设计语言和 Java 平台（即 JavaSE, JavaEE, JavaME）的总称。Java 技术具有卓越的通用...">
+    <meta name="keywords" content="java 学习,java 教程,java 文章,java 问答">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://segmentfault.com/opensearch.xml"
+          title="SegmentFault">
+    <link rel="shortcut icon" href="https://static.segmentfault.com/v-5c8b4d77/global/img/favicon.ico">
+    <link rel="apple-touch-icon" href="https://static.segmentfault.com/v-5c8b4d77/global/img/touch-icon.png">
+    <meta name="msapplication-TileColor" content="#009a61">
+    <meta name="msapplication-square150x150logo"
+          content="https://static.segmentfault.com/v-5c8b4d77/global/img/touch-icon.png">
+    <meta name="baidu_union_verify" content="bcf7fd80dca60d53d46d5b46e1b990ca">
+    <link rel="alternate" type="application/atom+xml" title="SegmentFault 最新问题"
+          href="https://segmentfault.com/feeds/questions">
+    <link rel="alternate" type="application/atom+xml" title="SegmentFault 最新文章"
+          href="https://segmentfault.com/feeds/blogs">
+    <link rel="stylesheet" href="../../t_files/global.css">
+    <link rel="stylesheet" href="../../t_files/tag.css">
+    <link rel="stylesheet" href="../../t_files/responsive.css">
+    <script src="../../t_files/hm.js.下载"></script>
+    <script async="" src="../../t_files/analytics.js.下载"></script>
+    <script src="../../t_files/osd.js.下载"></script>
+    <script src="../../t_files/ca-pub-6330872677300335.js.下载"></script>
+    <script type="text/javascript" src="../../t_files/spcjs.php"></script>
+    <script type="text/javascript" src="../../t_files/spc.php"></script>
+    <script type="text/javascript" src="../../t_files/fl.js.下载"></script>
+    <script async="" src="../../t_files/f(4).txt"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-6330872677300335",
+            enable_page_level_ads: true
+        });
+    </script>
+    <link rel="preload" href="../../t_files/f(5).txt" as="script">
+    <script type="text/javascript" src="../../t_files/f(5).txt"></script>
+    <link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/r20190320/r20190131/show_ads_impl.js"
+          as="script">
+</head>
+<body data-mod="tag" class="tag-detail "><!--[if lt IE 9]>
+<div class="alert alert-danger topframe" role="alert">你的浏览器实在<strong>太太太太太太旧了</strong>，放学别走，升级完浏览器再说 <a target="_blank"
+                                                                                                        class="alert-link"
+                                                                                                        href="http://browsehappy.com">立即升级</a>
+</div><![endif]--><img id="icon4weChat" style="height: 0;width: 0;"
+                       data-src="https://static.segmentfault.com/v-5c8b4d77/global/img/touch-icon-512.png">
+<div id="gridMapHoverBox"
+     style="position:absolute; border: 1px solid #009a61; z-index:99; font-size: 10px; background:#fff"></div>
+<div class="global-nav sf-header sf-header--index">
+    <div class="bottom-nav visible-xs visible-sm ">
+        <div class="opts"><a class="opts-group " href="https://segmentfault.com/"><i class="fa fa-home"
+                                                                                     aria-hidden="true"></i><span>首页</span></a><a
+                class="opts-group " href="https://segmentfault.com/questions"><i class="fa fa-comments"
+                                                                                 aria-hidden="true"></i><span>问答</span></a><a
+                class="opts-group " href="https://segmentfault.com/blogs"><i class="fa fa-pencil-square"
+                                                                             aria-hidden="true"></i><span>专栏</span></a><a
+                class="opts-group " href="https://segmentfault.com/lives"><i class="fa fa-play-circle"
+                                                                             aria-hidden="true"></i><span>讲堂</span></a>
+            <div class="opts-group">
+                <div class="btn-group dropup"><i class="fa fa-bars dropdown hoverDropdown" data-toggle="dropdown"
+                                                 aria-hidden="true"><span>更多</span></i>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://segmentfault.com/jobs">职位</a></li>
+                        <li><a href="https://segmentfault.com/events">活动</a></li>
+                        <li><a href="http://localhost:8080/yunforum/latype/tags">标签</a></li>
+                        <li><a href="https://segmentfault.com/badges">徽章</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="container nav">
+        <div class="visible-xs visible-sm header-response"><a href="https://segmentfault.com/search"
+                                                              style="display:block"><i class="fa fa-search"
+                                                                                       aria-hidden="true"></i></a>
+            <div class="sf-header__logo sf-header__logo--response"><h1><a href="https://segmentfault.com/"
+                                                                          style="height:24px; background-size: auto 24px;"></a>
+            </h1></div>
+            <a href="https://segmentfault.com/user/login" class="pull-right login-btn"><i class="fa fa-user"
+                                                                                          aria-hidden="true"></i></a>
+        </div>
+        <script>
+            mobileScroll(
+                function (direction) {
+                    try {
+                        if (direction === 'down') {
+                            document.querySelector('.bottom-nav').classList.add('hidden')
+                        } else {
+                            document.querySelector('.bottom-nav').classList.remove('hidden')
+                        }
+                    } catch (err) {
+                    }
+                }
+            );
+
+            function mobileScroll(fn) {
+                var beforeScrollTop = document.documentElement.scrollTop || document.body.scrollTop,
+                    fn = fn || function () {
+                    };
+                window.addEventListener("scroll", function () {
+                    var afterScrollTop = document.documentElement.scrollTop || document.body.scrollTop,
+                        delta = afterScrollTop - beforeScrollTop;
+                    if (delta === 0) return false;
+                    fn(delta > 0 ? "down" : "up");
+                    beforeScrollTop = afterScrollTop;
+                }, false);
+            }
+        </script>
+        <div class="row hidden-xs hidden-sm">
+            <div class="col-sm-8 col-md-9 col-lg-9">
+                <div class="sf-header__logo"><h1><a href="https://segmentfault.com/">SegmentFault</a></h1></div>
+                <div>
+                    <ul class="menu list-inline pull-left hidden-xs">
+                        <li class="menu__item"><a href="https://segmentfault.com/" class="">首页</a></li>
+                        <li class="menu__item"><a href="https://segmentfault.com/questions" class="">问答</a></li>
+                        <li class="menu__item"><a href="https://segmentfault.com/blogs" class="">专栏</a></li>
+                        <li class="menu__item"><a class=" " href="https://segmentfault.com/lives">讲堂</a></li>
+                        <li class="menu__item"><a href="https://segmentfault.com/groups" class="">圈子</a></li>
+                        <li class="menu__item menu__item--more dropdown"><a href="https://segmentfault.com/t/java##"
+                                                                            class="dropdown-toggle dropdownBtn"
+                                                                            data-toggle="dropdown">
+                            发现<i class="fa fa-caret-down" style="font-size: 14px;margin-left: 5px;"
+                                 aria-hidden="true"></i></a>
+                            <div class="dropdown-block hidden">
+                                <ul class="dropdown-content-menu">
+                                    <li><a href="https://segmentfault.com/events">活动</a></li>
+                                    <li><a href="http://localhost:8080/yunforum/latype/tags">标签</a></li>
+                                    <li><a href="https://segmentfault.com/groups?tab=jobs">酷工作</a></li>
+                                    <li><a href="https://segmentfault.com/users">排行榜</a></li>
+                                    <li><a href="https://segmentfault.com/badges">徽章</a></li>
+                                    <li><a href="https://segmentfault.com/notes">笔记</a></li>
+                                    <li><a href="https://docs.segmentfault.com/" target="_blank">开发手册<i
+                                            style="line-height: 20px;font-size: 12px;color: #F5A623;"
+                                            class="ml10 fa fa-external-link-square"></i></a></li>
+                                    <li><a href="https://business.segmentfault.com/ads?utm_source=sf-header"
+                                           target="_blank">广告投放<i
+                                            style="line-height: 20px;font-size: 12px;color: #F5A623;"
+                                            class="ml10 fa fa-external-link-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="menu__item visible-sm-inline-block"><a href="https://segmentfault.com/search"><span
+                                class="glyphicon glyphicon-search" style="vertical-align: middle;"></span></a></li>
+                    </ul>
+                    <form action="https://segmentfault.com/search"
+                          class="header-search  hidden-sm hidden-xs pull-right">
+                        <button class="btn btn-link"><span class="sr-only">搜索</span><span
+                                class="glyphicon glyphicon-search"></span></button>
+                        <input id="searchBox" name="q" type="text" placeholder="搜索问题或关键字" class="form-control" value="">
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-3 col-lg-3 text-right">
+                <ul class="opts list-inline hidden-xs">
+                    <li class="opts__item"><a href="https://segmentfault.com/user/login" class="SFRegister btn-signin"
+                                              style="margin-bottom:2px;">立即登录</a><a
+                            href="https://segmentfault.com/user/register" class="SFLogin ml10 btn-signup"
+                            onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Button&#39;, &#39;Click&#39;, &#39;Login&#39;]);">免费注册</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="sub-head hidden-xs hidden-sm"><span class="tag-nav__item btn-all-tag"><a
+                href="http://localhost:8080/yunforum/latype/tags" class="text-secondNav">热门标签</a></span>
+            <div class="tag-container-outer"><span class="tag-nav__item mr20 "><a class="text-secondNav"
+                                                                                  href="http://localhost:8080/yunforum/latype/tags">全部</a></span>
+                <div class="tag-container"><span class="tag-nav__item mr20"><a class="text-secondNav"
+                                                                               href="https://segmentfault.com/t/javascript">javascript</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav"
+                                                      href="https://segmentfault.com/t/php">php</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/python">python</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav"
+                                                      href="https://segmentfault.com/t/java">java</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/mysql">mysql</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav"
+                                                      href="https://segmentfault.com/t/ios">ios</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/android">android</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/node.js">node.js</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/html5">html5</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/linux">linux</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/c%2B%2B">c++</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav"
+                                                      href="https://segmentfault.com/t/css3">css3</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav"
+                                                      href="https://segmentfault.com/t/git">git</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/golang">golang</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav"
+                                                      href="https://segmentfault.com/t/ruby">ruby</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav"
+                                                      href="https://segmentfault.com/t/vim">vim</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/docker">docker</a></span><span
+                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/mongodb">mongodb</a></span>
+                </div>
+            </div>
+            <div class="gradient-block"></div>
+        </div>
+    </nav>
+</div>
+<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;">
+    <ins id="aswift_0_expand"
+         style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;">
+        <ins id="aswift_0_anchor"
+             style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;">
+            <iframe frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true"
+                    scrolling="no" allowfullscreen="true"
+                    onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}"
+                    id="aswift_0" name="aswift_0"
+                    style="left:0;position:absolute;top:0;border:0px;width:0px;height:0px;"
+                    src="../../t_files/saved_resource(1).html"></iframe>
+        </ins>
+    </ins>
+</ins>
+<div class="wrap">
+    <div class="container tag__container">
+        <div class="row">
+            <div class="col-xs-12 col-md-9 main">
+                <ol class="breadcrumb mb15">
+                    <li><a href="http://localhost:8080/yunforum/latype/tags">标签</a></li>
+                    <li><a href="" th:text="${list.lablename}"><!--java--></a></li>
+                    <li class="active">标签动态</li>
+                </ol>
+                <section class="tag-info tag__info">
+                    <div>
+
+                        <a class="tag tag-lg" href="https://segmentfault.com/t/java" data-toggle="popover"
+                           data-id="1040000000089449" data-original-title="java" style="font-size:14px;height:28px;">
+                            <img src="../../t_files/868271510-54cb382abb7a1_small" th:text="${list.lablename}">
+                            <!--java-->
+                        </a>
+
+                        <div class="tag__info--follow ml10">
+                            <button type="button" class="btn btn-success btn-xs tagfollowBtn  "
+                                    data-id="1040000000089449"><span class="text">关注</span><span
+                                    class="hr">|</span><span class="num">45610</span>
+                            </button>
+
+                        </div>
+                    </div>
+                    <p class="tag__info--desc" th:text="${list.describe}"><!--Java 是一种可以撰写跨平台应用软件的面向对象的程序设计语言，是由 Sun Microsystems 公司于 1995 年 5 月推出的
+                        Java 程序设计语言和 Java 平台（即 JavaSE, JavaEE, JavaME）的总称。Java 技术具有卓越的通用-->...</p>
+
+                    <style>
+                        #suggest-list ins a {
+                            border-radius: 11px;
+                            border: 1px solid rgba(0, 154, 97, 1);
+                            padding: 2px 10px;
+                            margin-right: 10px;
+                            font-size: 13px;
+                        }
+
+                        #suggest-list ins a:hover {
+                            text-decoration: none;
+                        }
+                    </style>
+
+                    <div class="mt15" id="suggest-list">
+
+                        <div class="block">
+                            <script type="text/javascript">
+                                OA_show(6);
+                                OA_show(11);
+                                OA_show(12);
+                                OA_show(13);
+                                OA_show(14);
+                            </script>
+                            <div id="beacon_2d4ec52577"
+                                 style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img
+                                    src="../../t_files/lg.php" width="0" height="0" alt="" style="width: 0px; height: 0px;">
+                            </div>
+                            <div id="beacon_baab11e7c7"
+                                 style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img
+                                    src="../../t_files/lg(1).php" width="0" height="0" alt=""
+                                    style="width: 0px; height: 0px;"></div>
+                            <div id="beacon_8f4ef8ea85"
+                                 style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img
+                                    src="../../t_files/lg(2).php" width="0" height="0" alt=""
+                                    style="width: 0px; height: 0px;"></div>
+                            <div id="beacon_583e3283ea"
+                                 style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img
+                                    src="../../t_files/lg(3).php" width="0" height="0" alt=""
+                                    style="width: 0px; height: 0px;"></div>
+                            <div id="beacon_86aa70e8f4"
+                                 style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img
+                                    src="../../t_files/lg(4).php" width="0" height="0" alt=""
+                                    style="width: 0px; height: 0px;"></div>
+
+                        </div>
+                    </div>
+
+                </section>
+
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active"><a href="https://segmentfault.com/t/java">标签动态</a></li>
+                    <li role="presentation" class=""><a href="https://segmentfault.com/t/java/questions">技术问答</a></li>
+                    <li role="presentation" class=""><a href="https://segmentfault.com/t/java/blogs">专栏文章</a></li>
+                    <li role="presentation"><a href="https://segmentfault.com/lives/newest?q=java"
+                                               target="_blank">技术讲座</a></li>
+                    <li role="presentation"><a href="https://segmentfault.com/jobs/search?q=java"
+                                               target="_blank">相关职位</a></li>
+                    <li role="presentation" class=""><a href="https://segmentfault.com/t/java/info">标签百科</a></li>
+                    <a class="btn btn-primary pull-right" href="https://segmentfault.com/ask?tag=java">+ 提问题</a>
+                </ul>
+
+                <div class="tab-content">
+
+                    <div id="stream" class="stream-list" data-id="1040000000089449" data-nextstart="1553657409152">
+                        <div class="news-list">
+                            <div class="news-item stream__item clearfix" data-mtime="1553676986"
+                                 data-id="1190000018676060">
+                                <!--<div class="stream__item-zan btn btn-default " data-id="1190000018676060"
+                                     data-type="article"><span class="stream__item-zan-icon"></span><span
+                                        class="stream__item-zan-number">2</span></div>-->
+                                <div class="news__item-info">
+                                    <div class="mb6">
+                                        <h4 class="news__item-title mt0">
+                                            <a class="mr10" target="_blank"
+                                               href="https://segmentfault.com/a/1190000018676060?utm_source=tag-newest" th:text="${list.title}">
+                                                <!--认识与实现Skip List -->
+                                            </a>
+                                        </h4>
+                                        <ul class="taglist--inline ib">
+                                            <li class="tagPopup"><a class="tag"
+                                                                    href=""
+                                                                    data-toggle="popover" data-img=""
+                                                                    data-placement="top" data-original-title="算法-数据结构"
+                                                                    data-id="1040000004403597" th:text="${list.lablename}">
+                                               <!-- 算法-数据结构-->
+                                            </a></li>
+                                            <!--<li class="tagPopup"><a class="tag" href="https://segmentfault.com/t/java"
+                                                                    data-toggle="popover" data-img=""
+                                                                    data-placement="top" data-original-title="java"
+                                                                    data-id="1040000000089449"><img
+                                                    src="../../t_files/868271510-54cb382abb7a1_small">
+                                                java
+                                            </a></li>-->
+                                        </ul>
+                                    </div>
+                                    <p class="news__item-meta"><a href="https://segmentfault.com/u/crabapple"><img
+                                            class="avatars-img" src="../../t_files/269459806-5c20ea4a5d010_small" width="18"
+                                            height="18"></a><a class=""
+                                                               href="https://segmentfault.com/u/crabapple" th:text="${list.username}"><!--赵栩彬--></a><span
+                                            class="dot">·</span><span th:text="${list.time}"><!--1 小时前--></span><span class="dot">·</span><span
+                                            class="text-info"><a
+                                            href="https://segmentfault.com/a/1190000018676060?utm_source=tag-newest#goToReplyArea">评论</a></span><span
+                                            class="dot">·</span><a class="text-article"
+                                                                   href="http://localhost:8080/yunforum/specials/blogs"
+                                                                   target="_blank">专栏</a></p></div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <ul class="pager">
+                                <li id="btn-load-more" class="hidden"><a href="javascript:;">点击载入更多</a></li>
+                                <li id="btn-loading" class="hidden"><a href="javascript:;"><i
+                                        class="fa fa-spinner fa-spin" aria-hidden="true"></i> 载入中</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <script>
+                        window.livePngUrl = "https://static.segmentfault.com/v-5c8b4d77/index/img/live.svg"
+                    </script>
+                </div><!-- /.tab-content -->
+            </div><!-- /.main -->
+
+            <div class="col-xs-12 col-md-3 side">
+
+
+                <div class="mb25 mt30 block">
+                    <script type="text/javascript">
+                        OA_show(1);
+                    </script>
+                    <script async="" src="../../t_files/f(4).txt"></script>
+                    <!-- 侧栏矩形 -->
+                    <ins class="adsbygoogle" style="display:inline-block;width:255px;height:213px"
+                         data-ad-client="ca-pub-6330872677300335" data-ad-slot="9674628595"
+                         data-adsbygoogle-status="done">
+                        <ins id="aswift_1_expand"
+                             style="display:inline-table;border:none;height:213px;margin:0;padding:0;position:relative;visibility:visible;width:255px;background-color:transparent;">
+                            <ins id="aswift_1_anchor"
+                                 style="display:block;border:none;height:213px;margin:0;padding:0;position:relative;visibility:visible;width:255px;background-color:transparent;">
+                                <iframe width="255" height="213" frameborder="0" marginwidth="0" marginheight="0"
+                                        vspace="0" hspace="0" allowtransparency="true" scrolling="no"
+                                        allowfullscreen="true"
+                                        onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}"
+                                        id="aswift_1" name="aswift_1"
+                                        style="left:0;position:absolute;top:0;border:0px;width:255px;height:213px;"
+                                        src="../../t_files/saved_resource(2).html"></iframe>
+                            </ins>
+                        </ins>
+                    </ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                    <div id="beacon_700a416d47" style="position: absolute; left: 0px; top: 0px; visibility: hidden;">
+                        <img src="../../t_files/lg(5).php" width="0" height="0" alt="" style="width: 0px; height: 0px;">
+                    </div>
+
+                </div>
+
+                <style>
+                    .job-recommend-area a:not(:last-of-type) {
+                        margin-bottom: 10px;
+                        display: block
+                    }
+
+                    .job-recommend-area a:hover {
+                        text-decoration: none;
+                    }
+                </style>
+                <div class="job-recommend">
+                    <h3 class="job-title">推广链接</h3>
+                    <div class="job-recommend-area">
+
+                        <div class="block">
+                            <script type="text/javascript">
+                                OA_show(7);
+                                OA_show(9);
+                                OA_show(10);
+                                OA_show(15);
+                                OA_show(16);
+                            </script>
+                            <a href="https://sponsor.segmentfault.com/ck.php?oaparams=2__bannerid=57__zoneid=7__cb=8ca3d84e49__oadest=https%3A%2F%2Fsegmentfault.com%2Fls%2F1650000011387052"
+                               target="_blank"><strong> Java 微服务实践课</strong><br>
+                                <small style="color: #999">上千人学习过的微服务实栈课</small>
+                            </a>
+                            <div id="beacon_8ca3d84e49"
+                                 style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img
+                                    src="../../t_files/lg(6).php" width="0" height="0" alt=""
+                                    style="width: 0px; height: 0px;"></div>
+                            <a href="https://sponsor.segmentfault.com/ck.php?oaparams=2__bannerid=56__zoneid=9__cb=cc986c64de__oadest=https%3A%2F%2Fsegmentfault.com%2Fls%2F1650000011318558"
+                               target="_blank"><strong>大神的PHP 进阶之路</strong><br>
+                                <small style="color: #999">亿级 PV 项目的架构梳理，性能提升实战</small>
+                            </a>
+                            <div id="beacon_cc986c64de"
+                                 style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img
+                                    src="../../t_files/lg(7).php" width="0" height="0" alt=""
+                                    style="width: 0px; height: 0px;"></div>
+                            <a href="https://sponsor.segmentfault.com/ck.php?oaparams=2__bannerid=111__zoneid=10__cb=189724cb17__oadest=https%3A%2F%2Fdwz.cn%2F9w7Sxc4P"
+                               target="_blank"><strong>Android 进阶之路</strong><br>
+                                <small style="color: #999"><span style="color: #F7A700">8 个月带你蜕变成为高级工程师！</span></small>
+                            </a>
+                            <div id="beacon_189724cb17"
+                                 style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img
+                                    src="../../t_files/lg(8).php" width="0" height="0" alt=""
+                                    style="width: 0px; height: 0px;"></div>
+                            <div id="beacon_be002b6565"
+                                 style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img
+                                    src="../../t_files/lg(9).php" width="0" height="0" alt=""
+                                    style="width: 0px; height: 0px;"></div>
+                            <div id="beacon_99330e25d8"
+                                 style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img
+                                    src="../../t_files/lg(10).php" width="0" height="0" alt=""
+                                    style="width: 0px; height: 0px;"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <style>
+                    .job-recommend {
+                        margin-bottom: 30px;
+                    }
+
+                    .job-title {
+                        font-size: 14px;
+                        color: #017E66;
+                        font-weight: 500;
+                        background: #BFE6D7;
+                        margin: 0;
+                        padding-top: 6px;
+                        padding-bottom: 6px;
+                        text-align: center;
+                    }
+
+                    .job-recommend-area {
+                        padding: 13px;
+                        border: 3px solid #EBF7F3;
+                        border-top: none;
+                    }
+                </style>
+
+                <div class="widget-box widget-taguser">
+                    <h2 class="h4 widget-box__title">标签排行榜
+                        <span class="taguser-catalog text-muted pull-right">
+                            <span class="showMonthTagHero" style="padding:0;">本月</span>
+                                                        ·
+                            <span class="showAllTagHero notactive" style="padding:0;">全部</span>
+                                                    </span>
+                    </h2>
+                    <ol class="widget-top10">
+                        <li class="text-muted showMonthTagHeroList">
+                            <img src="../../t_files/3294088589-5b2b987795cbc_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/vipstone" class="ellipsis"><strong>王磊的博客</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+354
+                                    </span>
+                        </li>
+                        <li class="text-muted showMonthTagHeroList">
+                            <img src="../../t_files/3010007529-5acacceb1867c_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/java_3y" class="ellipsis"><strong>Java3y</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+311
+                                    </span>
+                        </li>
+                        <li class="text-muted showMonthTagHeroList">
+                            <img src="../../t_files/207007958-5c24c2519a876_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/diyimingdexiao"
+                               class="ellipsis"><strong>小蝌蚪</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+298
+                                    </span>
+                        </li>
+                        <li class="text-muted showMonthTagHeroList">
+                            <img src="../../t_files/1146417533-5a696a0ca4f80_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/codecraft"
+                               class="ellipsis"><strong>codecraft</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+279
+                                    </span>
+                        </li>
+                        <li class="text-muted showMonthTagHeroList">
+                            <img src="../../t_files/843501995-5c3f4dacdeba4_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/langlixingzhou"
+                               class="ellipsis"><strong>浪里行舟</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+230
+                                    </span>
+                        </li>
+                        <li class="text-muted showMonthTagHeroList">
+                            <img src="../../t_files/2663967402-5c7358b728bb2_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/linfeng_5ac9bd0a4d6a7"
+                               class="ellipsis"><strong>临风</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+221
+                                    </span>
+                        </li>
+                        <li class="text-muted showMonthTagHeroList">
+                            <img src="../../t_files/873431357-5c848f4ad454d_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/snailclimb" class="ellipsis"><strong>Snailclimb</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+212
+                                    </span>
+                        </li>
+                        <li class="text-muted showMonthTagHeroList">
+                            <img src="../../t_files/1345754475-5c7f5329c131e_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/flyhero" class="ellipsis"><strong>码上实战</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+208
+                                    </span>
+                        </li>
+                        <li class="text-muted showMonthTagHeroList">
+                            <img src="../../t_files/3859822743-5c301008726a1_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/lasenlindeshilaimu_5c053ca1aff6d"
+                               class="ellipsis"><strong>鸠拉森林的史莱姆</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+200
+                                    </span>
+                        </li>
+                        <li class="text-muted showMonthTagHeroList">
+                            <img src="../../t_files/3993726954-5ac2dbd4dc732_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/mingzhongshui"
+                               class="ellipsis"><strong>命中水ヽ</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+194
+                                    </span>
+                        </li>
+
+                        <li class="text-muted hidden showAllTagHeroList">
+                            <img src="../../t_files/3010007529-5acacceb1867c_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/java_3y" class="ellipsis"><strong>Java3y</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+5899
+                                    </span>
+                        </li>
+                        <li class="text-muted hidden showAllTagHeroList">
+                            <img src="../../t_files/3870447111-5673aedad6338_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/justjavac"
+                               class="ellipsis"><strong>justjavac</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+5532
+                                    </span>
+                        </li>
+                        <li class="text-muted hidden showAllTagHeroList">
+                            <img src="../../t_files/3585593290-57eb81ba2726b_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/kevinz" class="ellipsis"><strong>kevinz</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+3615
+                                    </span>
+                        </li>
+                        <li class="text-muted hidden showAllTagHeroList">
+                            <img src="../../t_files/4252702309-5a1510af3804c_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/crossoverjie"
+                               class="ellipsis"><strong>crossoverJie</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+3580
+                                    </span>
+                        </li>
+                        <li class="text-muted hidden showAllTagHeroList">
+                            <img src="../../t_files/3634395563-5a76855103752_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/jamesfancy" class="ellipsis"><strong>边城</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+3427
+                                    </span>
+                        </li>
+                        <li class="text-muted hidden showAllTagHeroList">
+                            <img src="../../t_files/873431357-5c848f4ad454d_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/snailclimb" class="ellipsis"><strong>Snailclimb</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+3324
+                                    </span>
+                        </li>
+                        <li class="text-muted hidden showAllTagHeroList">
+                            <img src="../../t_files/3046988269-5644b84c17ed3_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/youmingdot" class="ellipsis"><strong>有明</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+3321
+                                    </span>
+                        </li>
+                        <li class="text-muted hidden showAllTagHeroList">
+                            <img src="../../t_files/3293712826-589696006f2a3_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/camile" class="ellipsis"><strong>泊浮目</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+3282
+                                    </span>
+                        </li>
+                        <li class="text-muted hidden showAllTagHeroList">
+                            <img src="../../t_files/631523902-1030000000479629_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/reeco"
+                               class="ellipsis"><strong>FullStackDeveloper</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+3145
+                                    </span>
+                        </li>
+                        <li class="text-muted hidden showAllTagHeroList">
+                            <img src="../../t_files/1146417533-5a696a0ca4f80_small" class="avatar-24">
+                            <a href="https://segmentfault.com/u/codecraft"
+                               class="ellipsis"><strong>codecraft</strong></a>
+                            <span class="text-muted pull-right">
+                                        <img src="../../t_files/rp.svg" class="mr5">+3124
+                                    </span>
+                        </li>
+
+                    </ol>
+                </div>
+
+                <div class="widget-box pt0" style="border:none;">
+                    <h2 class="h4 widget-box__title">相关标签</h2>
+                    <ul class="taglist--inline multi">
+                        <li class="tagPopup">
+                            <a class="tag" href="https://segmentfault.com/t/javascript" data-toggle="popover"
+                               data-id="1040000000089436" data-original-title="javascript">
+                                javascript</a>
+                        </li>
+                        <li class="tagPopup">
+                            <a class="tag" href="https://segmentfault.com/t/php" data-toggle="popover"
+                               data-id="1040000000089387" data-original-title="php">
+                                php</a>
+                        </li>
+                        <li class="tagPopup">
+                            <a class="tag" href="https://segmentfault.com/t/spring" data-toggle="popover"
+                               data-id="1040000000090103" data-original-title="spring">
+                                spring</a>
+                        </li>
+                        <li class="tagPopup">
+                            <a class="tag" href="https://segmentfault.com/t/python" data-toggle="popover"
+                               data-id="1040000000089534" data-original-title="python">
+                                <img src="../../t_files/2521771040-54cb53b372821_small">
+                                python</a>
+                        </li>
+                        <li class="tagPopup">
+                            <a class="tag" href="https://segmentfault.com/t/mysql" data-toggle="popover"
+                               data-id="1040000000089439" data-original-title="mysql">
+                                <img src="../../t_files/9498447-54cb56e325a72_small">
+                                mysql</a>
+                        </li>
+                        <li class="tagPopup">
+                            <a class="tag" href="https://segmentfault.com/t/android" data-toggle="popover"
+                               data-id="1040000000089658" data-original-title="android">
+                                <img src="../../t_files/287281599-5a263edae47e9_small">
+                                android</a>
+                        </li>
+                        <li class="tagPopup">
+                            <a class="tag" href="https://segmentfault.com/t/node.js" data-toggle="popover"
+                               data-id="1040000000089918" data-original-title="node.js">
+                                node.js</a>
+                        </li>
+                        <li class="tagPopup">
+                            <a class="tag" href="https://segmentfault.com/t/html" data-toggle="popover"
+                               data-id="1040000000089571" data-original-title="html">
+                                html</a>
+                        </li>
+                        <li class="tagPopup">
+                            <a class="tag" href="https://segmentfault.com/t/c%2B%2B" data-toggle="popover"
+                               data-id="1040000000089741" data-original-title="c++">
+                                c++</a>
+                        </li>
+                        <li class="tagPopup">
+                            <a class="tag" href="https://segmentfault.com/t/c" data-toggle="popover"
+                               data-id="1040000000089457" data-original-title="c">
+                                c</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div><!-- /.side -->
+        </div>
+    </div>
+</div>
+
+
+<footer id="footer">
+    <div class="container">
+        <div class="row hidden-xs">
+            <dl class="col-sm-2 site-link">
+                <dt>产品</dt>
+
+                <dd>
+                    <a href="https://segmentfault.com/questions/hottest?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E7%83%AD%E9%97%A8%E9%97%AE%E7%AD%94">热门问答</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/blogs/hottest?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E7%83%AD%E9%97%A8%E4%B8%93%E6%A0%8F">热门专栏</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/lives?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E7%83%AD%E9%97%A8%E8%AE%B2%E5%A0%82">热门讲堂</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/events?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E6%9C%80%E6%96%B0%E6%B4%BB%E5%8A%A8">最新活动</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/groups?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E5%9C%88%E5%AD%90">圈子</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/groups?tab=jobs&amp;utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E6%89%BE%E5%B7%A5%E4%BD%9C">酷工作</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/app?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=app">移动客户端</a>
+                </dd>
+
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>资源</dt>
+                <dd>
+                    <a href="https://segmentfault.com/weekly?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-weekly&amp;utm_term=%E6%AF%8F%E5%91%A8%E7%B2%BE%E9%80%89">每周精选</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/users?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-users&amp;utm_term=%E7%94%A8%E6%88%B7%E6%8E%92%E8%A1%8C%E6%A6%9C">用户排行榜</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/badges?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-badges&amp;utm_term=%E5%BE%BD%E7%AB%A0">徽章</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/faq?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-faq&amp;utm_term=%E5%B8%AE%E5%8A%A9%E4%B8%AD%E5%BF%83">帮助中心</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/repu?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-repu&amp;utm_term=%E5%A3%B0%E6%9C%9B%E4%B8%8E%E6%9D%83%E9%99%90">声望与权限</a>
+                </dd>
+                <dd>
+                    <a href="https://segmentfault.com/community?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-community&amp;utm_term=%E7%A4%BE%E5%8C%BA%E6%9C%8D%E5%8A%A1%E4%B8%AD%E5%BF%83">社区服务中心</a>
+                </dd>
+                <dd>
+                    <a href="https://docs.segmentfault.com/?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-docs&amp;utm_term=%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C">开发手册</a>
+                </dd>
+
+
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>商务</dt>
+                <dd>
+                    <a href="https://business.segmentfault.com/services?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-services-rencai&amp;utm_term=%E4%BA%BA%E6%89%8D%E6%9C%8D%E5%8A%A1"
+                       target="_blank">人才服务</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/services?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-services-qiyeneixun&amp;utm_term=%E4%BC%81%E4%B8%9A%E6%9C%8D%E5%8A%A1"
+                       target="_blank">企业培训</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/services?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-services-huodongcehua&amp;utm_term=%E6%B4%BB%E5%8A%A8%E7%AD%96%E5%88%92"
+                       target="_blank">活动策划</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/ads?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-ads&amp;utm_term=%E5%B9%BF%E5%91%8A%E6%8A%95%E6%94%BE"
+                       target="_blank">广告投放</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/bc?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-bc&amp;utm_term=%E5%8C%BA%E5%9D%97%E9%93%BE%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"
+                       target="_blank">区块链解决方案</a></dd>
+                <dd>
+                    <a href="https://business.segmentfault.com/contact?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-contact&amp;utm_term=%E5%90%88%E4%BD%9C%E8%81%94%E7%B3%BB"
+                       target="_blank">合作联系</a></dd>
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>关于</dt>
+                <dd>
+                    <a href="https://about.segmentfault.com/?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=about&amp;utm_content=about-index&amp;utm_term=%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC">关于我们</a>
+                </dd>
+                <dd>
+                    <a href="https://about.segmentfault.com/careers.html?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=about&amp;utm_content=about-careers&amp;utm_term=%E5%8A%A0%E5%85%A5%E6%88%91%E4%BB%AC">加入我们</a>
+                </dd>
+                <dd>
+                    <a href="https://about.segmentfault.com/contact.html?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=about&amp;utm_content=about-contact&amp;utm_term=%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC">联系我们</a>
+                </dd>
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>关注</dt>
+                <dd><a href="https://segmentfault.com/blog/segmentfault" target="_blank">产品技术日志</a></dd>
+                <dd><a href="https://segmentfault.com/blog/community_admin" target="_blank">社区运营日志</a></dd>
+                <dd><a href="https://segmentfault.com/blog/segmentfault_news" target="_blank">市场运营日志</a></dd>
+                <dd><a href="https://segmentfault.com/blog/segmentfault_team" target="_blank">团队日志</a></dd>
+                <dd><a href="https://segmentfault.com/blog/interview" target="_blank">社区访谈</a></dd>
+                <dd>
+                    <ul class="sn-inline">
+                        <li>
+                            <a class="entypo-wechart icon-sn-weixin weixin-popover-qrcode" data-toggle="popover"
+                               data-placement="top" data-content="" data-original-title="" title="">微信</a>
+                        </li>
+                        <li>
+                            <a href="http://weibo.com/segmentfault" target="_blank" class="entypo-weibo icon-sn-weibo">新浪微博</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/SegmentFault" target="_blank"
+                               class="entypo-facebook icon-sn-github">Github</a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/segment_fault" target="_blank"
+                               class="entypo-twitter icon-sn-twitter">Twitter</a>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+
+            <dl class="col-sm-2 site-link" id="license">
+                <dt>条款</dt>
+                <dd><a href="https://segmentfault.com/tos">服务条款</a></dd>
+                <dd><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">内容许可</a></dd>
+                <dd>
+                    <a href="https://segmentfault.com/app" class="clearfix mt10 block"><img
+                            src="../../t_files/appQrcode.png" class="app-qrcode"></a>
+                    <div class="app-download-desc">
+                        <p>扫一扫下载 App</p>
+                    </div>
+
+                </dd>
+            </dl>
+        </div>
+        <div class="copyright">
+            Copyright © 2011-2019 SegmentFault. 当前呈现版本 19.02.27<br>
+            <a href="http://www.miibeian.gov.cn/" rel="nofollow">浙ICP备 15005796号-2</a> &nbsp;
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602002000"
+               rel="nofollow">浙公网安备 33010602002000号</a>
+            <span class="ml5">杭州堆栈科技有限公司版权所有</span>
+            <p class="mt30">CDN 存储服务由 <a target="_blank"
+                                         href="https://www.upyun.com/?utm_source=segmentfault&amp;utm_medium=link&amp;utm_campaign=upyun&amp;md=segmentfault">又拍云</a>
+                赞助提供 </p>
+        </div>
+        <p class="text-center">
+            <a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="mobile" href="javascript:;">移动版</a>
+            <a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="desktop"
+               href="javascript:;">桌面版</a>
+        </p>
+    </div>
+</footer>
+
+<div id="fixedTools" class="hidden-xs hidden-sm">
+    <a id="backtop" class="hidden border-bottom" href="https://segmentfault.com/t/java#">回顶部</a>
+</div>
+
+<iframe id="google_osd_static_frame_5120053808936" name="google_osd_static_frame"
+        style="display: none; width: 0px; height: 0px;" src="../../t_files/saved_resource(3).html"></iframe>
+<script id="loginModal" type="text/template">
+    <div class="row bg-white login-modal">
+        <div class="col-md-12 login-wrap">
+            <form action="/api/user/login" method="POST" role="form" class="mt15">
+                <div class="form-group hidden">
+                    <input type="text" class="form-control" name="remember" value="1"
+                           autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="username" class="control-label">手机号 或 Email</label>
+                    <input type="text" class="form-control" name="username" tabindex="1" required
+                           placeholder="11 位手机号 或 Email"
+                           autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">密码</label><span class="pull-right"><a
+                        href="/user/forgot" tabindex="4">忘记密码</a></span>
+                    <input type="password" class="form-control" name="password" tabindex="2" required
+                           placeholder="请输入密码">
+                </div>
+                <div class="form-group">
+                    <a
+
+                            href="/user/phoneLogin"
+                            class="phoneLogin"
+                    >手机验证码登录</a>
+                </div>
+                <div class="form-group clearfix">
+                    <button type="submit" class="btn-block btn btn-primary pull-right pl20 pr20" tabindex="3"
+                            onclick='ga("send", "event", "email login button", "clicked", "login modal");'>登录
+                    </button>
+                </div>
+            </form>
+            <div class="text-muted text-center more-login-area">
+                <span class="more-login-words">更多登录方式</span>
+            </div>
+            <div class="widget-login mb15 text-center">
+                <a href="/user/oauth/google" class=""
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "google"});'><span
+                        class="icon-sn-google"></span></a>
+                <a href="/user/oauth/github" class=""
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "github"});");'><span
+                        class="icon-sn-github"></span></a>
+                <a href="/user/oauth/weibo" class=""
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "weibo"});'><span
+                        class="icon-sn-weibo"></span></a>
+                <a href="/user/oauth/qq" class=""
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "qq"});'><span
+                        class="icon-sn-qq"></span></a>
+                <a href="/user/oauth/weixin" class=""
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "qq"});'><span
+                        class="icon-sn-weixin"></span></a>
+                <a href="/user/oauth/linkedin" class=""
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "linkedin"});'><span
+                        class="icon-sn-linkedin"></span></a>
+                <span id="loginShowMore" style="cursor: pointer" class="mb5"><span class="icon-sn-dotted"></span></span>
+                <a href="/user/oauth/twitter" class=" hidden"
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "twitter"});'><span
+                        class="icon-sn-twitter"></span></a>
+                <a href="/user/oauth/facebook" class=" hidden"
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "facebook"});'><span
+                        class="icon-sn-facebook"></span></a>
+                <a href="/user/oauth/douban" class=" hidden"
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "douban"});'><span
+                        class="icon-sn-douban"></span></a>
+            </div>
+            <div class="form-group clearfix">
+                <a class="btn-block btn btn-default pull-right pl20 pr20
+                        SFLogin
+             "
+
+
+                   onclick='ga("send", "event", "email login button", "clicked", "login modal");'>
+                    注册新账号
+                </a>
+            </div>
+            <p class="text-muted text-center mb15">登录即表示你同意网站的<a href="/tos" target="_blank">《服务条款》</a></p></div>
+    </div>
+</script>
+<script id="registerModal" type="text/template">
+    <div class="row bg-white login-modal">
+        <div class="col-md-12 login-wrap">
+
+            <form action="/api/user/register" method="POST" role="form" class="mt15">
+                <div class="form-group">
+                    <label for="name" class="control-label">你的名字</label>
+                    <input type="text" class="form-control" name="name" required placeholder="真实姓名或常用昵称">
+                </div>
+
+                <div class="form-group">
+                    <label for="mail" class="control-label">手机号</label>
+                    <input type="text" class="form-control" id="login-name" name="mail" required placeholder="11 位手机号">
+                </div>
+
+                <input type="text" class="hidden" name="register_type" value="mail">
+
+                <div class="form-group">
+                    <div class="captchaInput mb10">
+                        <input type="text" class="form-control" name="cap" placeholder="右侧的验证码"
+                               style="width:50%; display: inline; margin-right: 15px;">
+                        <span class="mt10">
+                                <a id="loginReloadCaptcha" href="javascript:void(0)">
+                                <img src="/user/captcha?w=135&h=34" class="cap" width="135" height="34"/></a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="phone-register-only hidden">
+                        <div class="input-group">
+                            <input name="code" type="text" class="form-control js-user-login__phone-code-value"
+                                   placeholder="短信验证码">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default js-user-login__phone-vaild-btn" style="width:96px;"
+                                        type="button">
+                                获取验证码</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="control-label">密码</label>
+                    <input type="password" class="form-control" name="password" required placeholder="不少于 6 位的密码">
+                </div>
+                <div class="form-group clearfix">
+                    <button type="submit" class="btn-block btn btn-primary pl20 pr20 pull-right"
+                            onclick='ga("send", "event", "email register button", "clicked", "login modal");'>注册
+                    </button>
+                </div>
+                <div class="text-muted text-center more-login-area">
+                    <span class="more-login-words">更多登录方式</span>
+                </div>
+                <div class="widget-login mb15 text-center">
+                    <a href="/user/oauth/google" class=""
+                       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "google"});'><span
+                            class="icon-sn-google"></span></a>
+                    <a href="/user/oauth/github" class=""
+                       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "github"});");'><span
+                            class="icon-sn-github"></span></a>
+                    <a href="/user/oauth/weibo" class=""
+                       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "weibo"});'><span
+                            class="icon-sn-weibo"></span></a>
+                    <a href="/user/oauth/qq" class=""
+                       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "qq"});'><span
+                            class="icon-sn-qq"></span></a>
+                    <a href="/user/oauth/weixin" class=""
+                       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "qq"});'><span
+                            class="icon-sn-weixin"></span></a>
+                    <a href="/user/oauth/linkedin" class=""
+                       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "linkedin"});'><span
+                            class="icon-sn-linkedin"></span></a>
+                    <span id="loginShowMore" style="cursor: pointer" class="mb5"><span
+                            class="icon-sn-dotted"></span></span>
+                    <a href="/user/oauth/twitter" class=" hidden"
+                       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "twitter"});'><span
+                            class="icon-sn-twitter"></span></a>
+                    <a href="/user/oauth/facebook" class=" hidden"
+                       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "facebook"});'><span
+                            class="icon-sn-facebook"></span></a>
+                    <a href="/user/oauth/douban" class=" hidden"
+                       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "douban"});'><span
+                            class="icon-sn-douban"></span></a>
+                </div>
+                <div class="form-group clearfix">
+                    <a class="btn-block btn btn-default pull-right pl20 pr20
+                        SFRegister
+             "
+
+
+                       onclick='ga("send", "event", "email login button", "clicked", "login modal");'>
+                        已有账号登录
+                    </a>
+                </div>
+                <p class="text-muted text-center mb15">登录即表示你同意网站的<a href="/tos" target="_blank">《服务条款》</a></p></form>
+        </div>
+    </div>
+</script>
+<script id="phoneLoginModal" type="text/template">
+
+    <div class="row bg-white login-modal phonelogin-modal">
+        <div class="col-md-12 login-wrap">
+            <form action="/api/user/phonelogin" method="POST" role="form" class="mt15">
+                <div class="form-group">
+                    <label for="phone" class="control-label required">手机号</label>
+                    <input type="text" class="form-control phonelogin--phone" name="phone" tabindex="1" required
+                           placeholder="11 位手机号"
+                           autocomplete="off">
+                    <span class="help-block"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="authCode" class="control-label required">验证码</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control bindphone--code" name="authCode" placeholder="短信验证码">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default user-bind__phone-vaild-btn" type="button">获取验证码</button>
+                        </span>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+
+                <div class="form-group">
+                    <a
+                            href="/user/login"
+                            class="SFRegister"
+                    >密码登录（手机号或 Email）</a>
+                </div>
+                <div class="form-group clearfix">
+                    <button type="submit" class="btn-block btn btn-primary pull-right pl20 pr20" tabindex="3"
+                            onclick='ga("send", "event", "email login button", "clicked", "login modal");'>登录
+                    </button>
+                </div>
+            </form>
+            <div class="text-muted text-center more-login-area">
+                <span class="more-login-words">更多登录方式</span>
+            </div>
+            <div class="widget-login mb15 text-center">
+                <a href="/user/oauth/google" class=""
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "google"});'><span
+                        class="icon-sn-google"></span></a>
+                <a href="/user/oauth/github" class=""
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "github"});");'><span
+                        class="icon-sn-github"></span></a>
+                <a href="/user/oauth/weibo" class=""
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "weibo"});'><span
+                        class="icon-sn-weibo"></span></a>
+                <a href="/user/oauth/qq" class=""
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "qq"});'><span
+                        class="icon-sn-qq"></span></a>
+                <a href="/user/oauth/weixin" class=""
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "qq"});'><span
+                        class="icon-sn-weixin"></span></a>
+                <a href="/user/oauth/linkedin" class=""
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "linkedin"});'><span
+                        class="icon-sn-linkedin"></span></a>
+                <span id="loginShowMore" style="cursor: pointer" class="mb5"><span class="icon-sn-dotted"></span></span>
+                <a href="/user/oauth/twitter" class=" hidden"
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "twitter"});'><span
+                        class="icon-sn-twitter"></span></a>
+                <a href="/user/oauth/facebook" class=" hidden"
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "facebook"});'><span
+                        class="icon-sn-facebook"></span></a>
+                <a href="/user/oauth/douban" class=" hidden"
+                   onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "douban"});'><span
+                        class="icon-sn-douban"></span></a>
+            </div>
+            <div class="form-group clearfix">
+                <a class="btn-block btn btn-default pull-right pl20 pr20
+                        SFLogin
+             "
+
+
+                   onclick='ga("send", "event", "email login button", "clicked", "login modal");'>
+                    注册新账号
+                </a>
+            </div>
+            <p class="text-muted text-center mb15">登录即表示你同意网站的<a href="/tos" target="_blank">《服务条款》</a></p></div>
+    </div>
+</script>
+<script id="bindPhoneModal" type="text/template">
+    <div class="bg-white bindphone-model">
+        <div class="alert alert-warning" role="alert">
+            为了保证账号安全，请先绑定手机
+        </div>
+        <div>
+            <form class="form-horizontal form__bindphone-apply" style="background-color:#fff;padding:0;">
+                <div class="form-group ">
+                    <label for="phoneNumber" class="col-sm-3 control-label required">手机号码</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control bindphone--phone" id="phoneNumber" name="phone"
+                               placeholder="仅只支持大陆手机号">
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                <div class="form-group">
+                    <label for="authCode" class="col-sm-3 control-label required">验证码</label>
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control bindphone--code" name="code" placeholder="短信验证码">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default user-bind__phone-vaild-btn" type="button">获取验证码</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</script>
+
+
+<script>
+    window.serverTime = 1553682399000;
+</script>
+
+<script>
+    (function (w) {
+        w.SF = {
+            staticUrl: "https://static.segmentfault.com/v-5c8b4d77"
+        };
+        w.SF.token = (function () {
+            var _C7ztgu = '6'//'8T'
+                +//'v'
+                'v' + '9'//'k'
+                +//'p9'
+                '9' +//'I'
+                '19b' + /* 'JOm'//'JOm' */'' + ''///*'tk9'*/'tk9'
+                +//'2C3'
+                '6f' + '84'//'2'
+                + ''///*'q'*/'q'
+                + '702'//'nCs'
+                + ''///*'f'*/'f'
+                +//'b5k'
+                '078' +//'fmH'
+                'fmH' + 'a4'//'jy'
+                + 'bd'//'6'
+                + '72'//'B5'
+                + '7f'//'o'
+                +//'dGx'
+                'dGx' + ''///*'gN8'*/'gN8'
+                +//'I3'
+                '6' + /* 'p4J'//'p4J' */'' + 'e'//'xd'
+                + /* 'G'//'G' */'' +//'o8'
+                'b' + 'c'//'6j'
+                + /* 'g'//'g' */'' + '2c'//'4A'
+                +//'iS'
+                '6a', _iG5 = [[1, 2], [16, 19], [24, 27]];
+
+            for (var i = 0; i < _iG5.length; i++) {
+                _C7ztgu = _C7ztgu.substring(0, _iG5[i][0]) + _C7ztgu.substring(_iG5[i][1]);
+            }
+
+            return _C7ztgu;
+        })();
+        ;
+    })(window);
+
+    var lock = {
+        type: "",
+        text: '',
+        table: {"ban_post": [1, "\u4f60\u5df2\u7ecf\u88ab\u7981\u8a00, \u65e0\u6cd5\u8fdb\u884c\u6b64\u64cd\u4f5c, \u5982\u6709\u7591\u4e49\u8bf7\u63d0\u4ea4\u7533\u8bc9, \u6216\u8005\u53d1\u90ae\u4ef6\u5230pr@segmentfault.com"]}
+    };
+
+</script>
+
+<script crossorigin="" src="../../t_files/assets.js.下载"></script>
+
+<script crossorigin="" src="../../t_files/detail.min.js.下载"></script>
+
+
+<script src="../../t_files/ads.min.js.下载" type="text/javascript"></script>
+<div id="UGTKzPZbRoOS" style="display: none;"></div>
+
+<script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-918487-8']);
+    _gaq.push(['_trackPageview']);
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+
+    ga('create', 'UA-918487-8', 'auto', {
+        'userID': 0,
+        'createdTime': 0,
+        'now': 1553682399,
+        'allowLinker': true
+    });
+    ga('require', 'linker');
+    ga('linker:autoLink', ['docs.segmentfault.com']);
+    ga('set', 'dimension1', 'guest');
+    ga('send', 'pageview');
+
+    if (document.getElementById('UGTKzPZbRoOS')) {
+        UGTKzPZbRoOS = 'No';
+    } else {
+        UGTKzPZbRoOS = 'Yes';
+    }
+
+    if (typeof ga !== 'undefined') {
+        ga('send', 'event', 'Blocking Ads', UGTKzPZbRoOS, {'nonInteraction': 1});
+    } else if (typeof _gaq !== 'undefined') {
+        _gaq.push(['_trackEvent', 'Blocking Ads', UGTKzPZbRoOS, undefined, undefined, true]);
+    }
+
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?e23800c454aa573c0ccb16b52665ac26";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+</body>
+<iframe id="google_shimpl" style="display: none;" src="../../t_files/saved_resource(4).html"></iframe>
+<iframe id="google_esf" name="google_esf" src="../../t_files/zrt_lookup.html" data-ad-client="ca-pub-6330872677300335"
+        style="display: none;"></iframe>
+</html>
