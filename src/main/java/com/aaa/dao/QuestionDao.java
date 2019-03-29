@@ -14,8 +14,8 @@ public interface QuestionDao {
     @Insert("insert into question(title,content,time) values(#{title},#{content},now())")
     public int add(Question q);
 
-    @Select("select u.username,q.questionid,q.title,q.content,q.userid,q.time,GROUP_CONCAT(b.lablename) lablename from user_info u left join question q on u.userid = q.userid left join lable b on FIND_IN_SET(b.lableid,q.lableid) group by u.username,q.questionid,q.title,q.content,q.userid,q.time order by time desc")
-    public List<Map<String,Object>> queryQuestionsByQlable();
+    @Select("select u.username,q.questionid,q.title,q.content,q.userid,q.time,GROUP_CONCAT(b.lablename) lablename from user_info u left join question q on u.userid = q.userid left join lable b on FIND_IN_SET(b.lableid,q.lableid) group by u.username,q.questionid,q.title,q.content,q.userid,q.time order by time desc limit #{param1},15")
+    public List<Map<String,Object>> queryQuestionsByQlable(Integer offset);
 
     @Select("select u.username,q.questionid,q.title,q.content,q.userid,q.time,GROUP_CONCAT(b.lablename) lablename from user_info u left join question q on u.userid = q.userid left join lable b on FIND_IN_SET(b.lableid,q.lableid) where q.questionid=#{param1} group by u.username,q.questionid,q.title,q.content,q.userid,q.time order by time desc")
     public List<Map<String,Object>> quesById(Integer qid);
@@ -31,5 +31,8 @@ public interface QuestionDao {
     public Integer byBrowse(Integer qid);
     @Select("select title from question where questionid=#{param1}")
     public Map<String,Object> queryTitle(Integer questionid);
+    //查看回答表及回答用户根据问答的id
+    @Select("select q.questionid,r.content,r.time,u.username,u.head from question q left join review r on q.questionid = r.composeid left join user_info u on r.userid = u.userid where r.type = 1 and questionid = #{param1}")
+    public List<Map<String,Object>> queryReviewByQuestionid(Integer qid);
 
 }

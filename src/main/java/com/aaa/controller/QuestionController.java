@@ -30,7 +30,7 @@ public class QuestionController {
             pageNum = 1;
         }
         List<Map<String, Object>> list = qs.queryQuestionsByQlable(pageNum);
-        /*for (Map<String, Object> q:list){
+        for (Map<String, Object> q:list){
             //System.out.println(q.get("qlablename"));
             List<String> ls = new ArrayList<String>();
             String s = q.get("lablename").toString();
@@ -51,7 +51,7 @@ public class QuestionController {
             q.put("lablenames",ls);
             System.out.println(q.get("lablenames"));
         }
-        System.out.println(list);*/
+        System.out.println(list);
         System.out.println("pageNum"+pageNum);
         model.addAttribute("pageNum",pageNum);
         model.addAttribute("list",list);
@@ -63,6 +63,27 @@ public class QuestionController {
             pageNum = 1;
         }
         List<Map<String, Object>> list = qs.queryQuestionsByQlable(pageNum);
+        for (Map<String, Object> q:list){
+            //System.out.println(q.get("qlablename"));
+            List<String> ls = new ArrayList<String>();
+            String s = q.get("lablename").toString();
+            Integer ids = Integer.parseInt(q.get("questionid").toString());
+            System.out.println("ids:"+ids);
+            Integer nums = qs.byAdmire(ids);// 点赞数
+            Integer bro = qs.byBrowse(ids);//浏览数量
+            Integer rev = qs.byReview(ids);//回答数量
+
+            System.out.println("nums:"+nums);
+            q.put("nums",nums);
+            q.put("bro",bro);
+            q.put("rev",rev);
+            String[] str = s.split(",");
+            for(int i = 0;i<str.length;i++){
+                ls.add(str[i]);
+            }
+            q.put("lablenames",ls);
+            System.out.println(q.get("lablenames"));
+        }
         model.addAttribute("pageNum",pageNum);
         model.addAttribute("list",list);
         System.out.println("就去了为我推送页面");
@@ -74,8 +95,35 @@ public class QuestionController {
             pageNum = 1;
         }
         List<Map<String, Object>> list = qs.queryQuestionsByQlable(pageNum);
+        for (Map<String, Object> q:list){
+            //System.out.println(q.get("qlablename"));
+            List<String> ls = new ArrayList<String>();
+            String s = q.get("lablename").toString();
+            Integer ids = Integer.parseInt(q.get("questionid").toString());
+            System.out.println("ids:"+ids);
+            Integer nums = qs.byAdmire(ids);// 点赞数
+            Integer bro = qs.byBrowse(ids);//浏览数量
+            Integer rev = qs.byReview(ids);//回答数量
+
+            System.out.println("nums:"+nums);
+            q.put("nums",nums);
+            q.put("bro",bro);
+            q.put("rev",rev);
+            String[] str = s.split(",");
+            for(int i = 0;i<str.length;i++){
+                ls.add(str[i]);
+            }
+            q.put("lablenames",ls);
+            System.out.println(q.get("lablenames"));
+        }
         model.addAttribute("pageNum",pageNum);
         model.addAttribute("list",list);
+        List<Map<String,Object>> maps = new ArrayList<Map<String,Object>>();
+        for(Map<String,Object> m:list){
+            Integer i = (Integer) m.get("rev");
+            System.out.println("i"+i);
+        }
+        /**/
         System.out.println("就去了等待回答页面");
         return "questions/unanswered";
     }
@@ -85,6 +133,27 @@ public class QuestionController {
             pageNum = 1;
         }
         List<Map<String, Object>> list = qs.queryQuestionsByQlable(pageNum);
+        for (Map<String, Object> q:list){
+            //System.out.println(q.get("qlablename"));
+            List<String> ls = new ArrayList<String>();
+            String s = q.get("lablename").toString();
+            Integer ids = Integer.parseInt(q.get("questionid").toString());
+            System.out.println("ids:"+ids);
+            Integer nums = qs.byAdmire(ids);// 点赞数
+            Integer bro = qs.byBrowse(ids);//浏览数量
+            Integer rev = qs.byReview(ids);//回答数量
+
+            System.out.println("nums:"+nums);
+            q.put("nums",nums);
+            q.put("bro",bro);
+            q.put("rev",rev);
+            String[] str = s.split(",");
+            for(int i = 0;i<str.length;i++){
+                ls.add(str[i]);
+            }
+            q.put("lablenames",ls);
+            System.out.println(q.get("lablenames"));
+        }
         model.addAttribute("pageNum",pageNum);
         model.addAttribute("list",list);
         System.out.println("就去了热门回答页面");
@@ -146,6 +215,10 @@ public class QuestionController {
         model.addAttribute("a",aw);
         return "personquestion";
     }
-
+    @RequestMapping("ask")
+    public String ask(){
+        System.out.println("进入了ask页面");
+        return "questions/ask";
+    }
 
 }

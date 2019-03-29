@@ -500,7 +500,7 @@
                     <li><a href="/yunforum/questions/subscribed">为我推送</a></li>
                     <li><a href="/yunforum/questions/unanswered">等待回答</a> </li>
                     <li><a href="/yunforum/questions/hottest">热门问答</a></li>
-                    <a class="btn btn-primary pull-right" href="https://segmentfault.com/ask">+ 提问题</a>
+                    <a class="btn btn-primary pull-right" th:href="@{/questions/ask}">+ 提问题</a>
                 </ul>
                 <div class="alert alert-info mt15 mb0 hidden text-center" role="alert" id="notice-update"></div>
                 <div class="stream-list question-stream">
@@ -526,7 +526,7 @@
                         </div>
                         <div class="summary">
                             <ul class="author list-inline">
-                                <li> <a href="https://segmentfault.com/u/linfeng_5ac9bd0a4d6a7" th:text="${l.username}"></a> <span class="split"></span> <a th:href="@{'/questions/q/'+${l.questionid}}" th:text="${l.time}">刚刚回答</a> </li>
+                                <li> <a href="https://segmentfault.com/u/linfeng_5ac9bd0a4d6a7" th:text="${l.username}"></a> <span class="split"></span> <a th:href="@{'/questions/q/'+${l.questionid}}" th:text="${l.time}"></a> </li>
                             </ul>
                             <h2 class="title"> <a th:href="@{'/questions/q/'+${l.questionid}}" th:text="${l.title}"></a> </h2>
                             <ul class="taglist--inline ib" th:each="qs:${l.lablenames}">

@@ -19,7 +19,7 @@ public class QuestionService {
     public List<Map<String,Object>> queryQuestionsByQlable(Integer pageNum){
 
         Integer offset =  (pageNum - 1) * 15;
-        List<Map<String, Object>> list = qd.queryQuestionsByQlable(offset);
+        /*List<Map<String, Object>> list = qd.queryQuestionsByQlable(offset);
         for (Map<String, Object> q:list){
             //System.out.println(q.get("qlablename"));
             List<String> ls = new ArrayList<String>();
@@ -40,8 +40,8 @@ public class QuestionService {
             }
             q.put("lablenames",ls);
             System.out.println(q.get("lablenames"));
-        }
-        return list;
+        }*/
+        return qd.queryQuestionsByQlable(offset);
     }
     public List<Map<String,Object>> quesById(Integer qid){
         return qd.quesById(qid);
