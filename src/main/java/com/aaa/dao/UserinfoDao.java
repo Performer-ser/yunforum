@@ -34,7 +34,7 @@ public interface UserinfoDao {
     public List<Map<String,Object>> queryQuePage(Integer userid,Integer page,Integer limit);
 
     @Select("select * from special where userid=#{param1} limit #{param2},#{param3}")
-    public List<Special> querySpePage(Integer userid,Integer page,Integer limit);
+    public List<Special> querySpePage(Integer userid, Integer page, Integer limit);
     @Select("select * from special where userid =#{userid}")
     public List<Special> querySpeAll( Integer userid);
 

@@ -53,4 +53,13 @@ public class SpecialService {
         return sd.querydz();
     }
 
+    public List<Map<String,Object>> queryblogs(Integer pageNum){
+        Integer offset =  (pageNum - 1) * 5;
+        return sd.queryblogs(offset);
+    }
+
+    public List<Map<String,Object>> queryhottests(Integer pageNum){
+        Integer offset =  (pageNum - 1) * 5;
+        return sd.queryhottests(offset);
+    }
 }

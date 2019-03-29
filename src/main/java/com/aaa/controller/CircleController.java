@@ -243,6 +243,7 @@ public class CircleController {
                         replie.add(ms);
                     }
                     System.out.println("回复表中的内容"+replie.toString());
+                    System.out.println("回复表中的数量"+replie.size());
                 }
                /* System.out.println("回复表根据id"+replies.toString());*/
                 mr.put("username",lu.get(0).getUsername());
@@ -254,6 +255,7 @@ public class CircleController {
             }
         }
         System.out.println("评论表中的数据"+review.toString());
+        System.out.println("评论表中的数量"+review.size());
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("clablename",clables.get(0).getClablename());
         map.put("head",user_infos.get(0).getHead());
@@ -263,7 +265,9 @@ public class CircleController {
         mv.addAttribute("list",resultList);
         mv.addAttribute("review",review);
         mv.addAttribute("replie",replie);
-        mv.addAttribute("aaa", ForFlie.readFile(circles.get(0).getTitle()));
+        mv.addAttribute("count",review.size()+replie.size());
+        System.out.println(circles.get(0).getContent());
+        mv.addAttribute("aaa", ForFlie.readFile(circles.get(0).getContent()));
         return  "show";
     }
     @RequestMapping(value = "write/{circleid}")
@@ -294,5 +298,8 @@ public class CircleController {
             mv.addAttribute("clms",clm);
         return  "indexs";
     }
-
+    @RequestMapping("add")
+    public String add(Model mv,String text){
+        return "redirect:/circle/show/1";
+    }
 }

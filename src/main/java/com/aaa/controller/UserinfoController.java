@@ -1,16 +1,23 @@
+
 package com.aaa.controller;
 
 import com.aaa.entity.Circle;
 import com.aaa.entity.Special;
 import com.aaa.entity.Userinfo;
 import com.aaa.service.UserinfoService;
+/*import com.aaa.util.JuheDemo;*/
 import com.aaa.util.JsonMapper;
+import com.aaa.util.JuheDemo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,11 +27,14 @@ import java.util.Map;
 public class UserinfoController {
     @Autowired
     UserinfoService us;
+
     @RequestMapping("login")
     @ResponseBody
-    public int login(Userinfo user){
+    public int login(Userinfo user, HttpServletRequest request){
+       HttpSession session = request.getSession();
        List<Userinfo> list=us.login(user);
        if(list.size()==1){
+           session.setAttribute("LoginUser",list);
            return 1;
        }else {
            return 0;
@@ -39,12 +49,11 @@ public class UserinfoController {
         return a;
     }
 
-/**
+    /**
      * 发送注册验证码
      */
 
-
-   /* @RequestMapping("yzm")
+    @RequestMapping("yzm")
     @ResponseBody
     public String yzm(String phone)
     {
@@ -53,7 +62,8 @@ public class UserinfoController {
         JuheDemo.getRequest2(phone,times);
         System.out.println(times);
         return times;
-    }*/
+
+    }
     @RequestMapping("queryPage")
     @ResponseBody
     public String queryPage(Integer page,Integer limit){
@@ -125,4 +135,5 @@ public class UserinfoController {
     }
 
 }
+
 

@@ -25,7 +25,6 @@ public class LatypeService {
     public List<Lable> querylable(){
         return ld.querylable();
     }
-
     public int add(Latype latype){
         return ld.add(latype);
     }

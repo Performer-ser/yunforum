@@ -58,7 +58,7 @@
      style="position:absolute; border: 1px solid #009a61; z-index:99; font-size: 10px; background:#fff"></div>
 <div class="global-nav sf-header sf-header--index">
     <div class="bottom-nav visible-xs visible-sm ">
-        <div class="opts"><a class="opts-group " href="https://segmentfault.com/"><i class="fa fa-home"
+        <div class="opts"><a class="opts-group " href="http://localhost:8080/yunforum/specials/query"><i class="fa fa-home"
                                                                                      aria-hidden="true"></i><span>首页</span></a><a
                 class="opts-group " href="https://segmentfault.com/questions"><i class="fa fa-comments"
                                                                                  aria-hidden="true"></i><span>问答</span></a><a
@@ -121,7 +121,7 @@
                 <div class="sf-header__logo"><h1><a href="https://segmentfault.com/">SegmentFault</a></h1></div>
                 <div>
                     <ul class="menu list-inline pull-left hidden-xs">
-                        <li class="menu__item"><a href="https://segmentfault.com/" class="">首页</a></li>
+                        <li class="menu__item"><a href="http://localhost:8080/yunforum/specials/query" class="">首页</a></li>
                         <li class="menu__item"><a href="https://segmentfault.com/questions" class="">问答</a></li>
                         <li class="menu__item"><a href="https://segmentfault.com/blogs" class="">专栏</a></li>
                         <li class="menu__item"><a class=" " href="https://segmentfault.com/lives">讲堂</a></li>
@@ -190,10 +190,9 @@
                         <th:block th:each="list2:${list1}">
                             <th:block th:if="${list.latypeid} eq ${list2.latypeid}">
                                 <li class="tagPopup">
-                                    <a href="https://segmentfault.com/t/java" class="tag" data-toggle="popover"
-                                       data-id="1040000000089449" data-original-title="java" th:text="${list2.lablename}">
+                                    <a href="" class="tag" data-toggle="popover"
+                                       data-id="1040000000089449" data-original-title="java" th:title="${list2.describe}" th:text="${list2.lablename}">
                                         <img src="../tags_files/868271510-54cb382abb7a1_small">
-                                        <!--java-->
                                     </a>
                                 </li>
                             </th:block>

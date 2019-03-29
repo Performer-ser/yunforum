@@ -38,5 +38,4 @@ public class ClableService {
         return cd.queryByClablename(clablename);
     }
 
-
 }

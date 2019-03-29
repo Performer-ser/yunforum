@@ -3,6 +3,7 @@ package com.aaa.controller;
 
 import com.aaa.entity.Lable;
 import com.aaa.entity.Slable;
+import com.aaa.entity.Userinfo;
 import com.aaa.service.SlableService;
 import com.aaa.service.SpecialService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +28,7 @@ public class SpecialController {
 
     //推荐的标题
     @RequestMapping("query")
-    public String query(Model m,Integer lableid){
+    public String query(Model m,Integer lableid,HttpServletRequest request){
         System.out.println(lableid);
         List<Map<String,Object>> list=ss.query(lableid);
         List<Map<String,Object>> list2=ss.querycenter();
@@ -43,6 +46,9 @@ public class SpecialController {
         if(lableid!=null){
             m.addAttribute("listxin",null);
         }
+        HttpSession session = request.getSession();
+        List<Userinfo> lists=(List<Userinfo>)session.getAttribute("LoginUser");
+        m.addAttribute("userlist",lists);
         System.out.println("---------------------------------------------*-*-*----------------------------");
         return "indexss";
     }
@@ -94,4 +100,40 @@ public class SpecialController {
 
         return "indexs";
     }*/
+
+    /**专栏
+     * 推荐文章
+     * 顺序查询所有文章，分页
+     * @param m
+     * @param pageNum
+     * @return
+     */
+   @RequestMapping("blogs")
+   public String aaa(Model m,Integer pageNum){
+       if(null == pageNum){
+           pageNum = 1;
+       }
+       List<Map<String,Object>> list=ss.queryblogs(pageNum);
+       m.addAttribute("list",list);
+       m.addAttribute("pageNum",pageNum);
+       return "blogs/blogs";
+   }
+
+    /**专栏
+     * 热门文章
+     * 根据点赞数量进行查询文章，分页
+     * @param m
+     * @param pageNum
+     * @return
+     */
+   @RequestMapping("hottests")
+    public String bbb(Model m,Integer pageNum){
+       if (null == pageNum){
+           pageNum=1;
+       }
+       List<Map<String,Object>> list= ss.queryhottests(pageNum);
+       m.addAttribute("list",list);
+       m.addAttribute("pageNum",pageNum);
+       return "blogs/hottests";
+   }
 }

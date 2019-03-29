@@ -30,8 +30,8 @@ public class UserinfoService {
     }
     public List<Map<String,Object>> queryQuesAll(Integer userid){ return ud.queryQuesAll(userid);}
     public List<Map<String,Object>> queryQuesPage(Integer userid,Integer page,Integer limit){ return ud.queryQuePage(userid,page,limit);}
-    public List<Special> querySpePage(Integer userid,Integer page,Integer limit){return ud.querySpePage(userid,page,limit);}
+    public List<Special> querySpePage(Integer userid, Integer page, Integer limit){return ud.querySpePage(userid,page,limit);}
     public List<Special> querySpeAll(Integer userid){return ud.querySpeAll(userid);}
-    public List<Circle> queryCirPage(Integer userid,Integer page,Integer limit){return ud.queryCirPage(userid,page,limit);}
+    public List<Circle> queryCirPage(Integer userid, Integer page, Integer limit){return ud.queryCirPage(userid,page,limit);}
     public List<Circle> queryCirAll(Integer userid){return ud.queryCirAll(userid);}
 }
