@@ -40,5 +40,10 @@ public interface QuestionDao {
     //查看个人全部问题
     @Select("select title,reviewid,time from question where userid=#{param1}")
     public List<Map<String,Object>> queryUserAll(Integer userid);
-
+    //查看所有标签类型
+    @Select("select latypeid,latypename from latype")
+    public List<Lable> queryLatype();
+    ////查询标签及标签类型根据标签类型id
+    @Select("select a.latypeid,a.latypename,b.lableid,b.lablename,b.lablepic,b.describe from latype a left join lable b on a.latypeid = b.latypeid where a.latypeid = #{param1}")
+    public List<Map<String,Object>> queryLableByLatypeid(Integer lid);
 }

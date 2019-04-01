@@ -526,7 +526,7 @@
                         </div>
                         <div class="summary">
                             <ul class="author list-inline">
-                                <li> <a href="https://segmentfault.com/u/linfeng_5ac9bd0a4d6a7" th:text="${l.username}"></a> <span class="split"></span> <a th:href="@{'/questions/q/'+${l.questionid}}" th:text="${l.time}"></a> </li>
+                                <li> <a href="https://segmentfault.com/u/linfeng_5ac9bd0a4d6a7" th:text="${l.username}"></a> <span class="split"></span> <a th:href="@{'/questions/q/'+${l.questionid}}" th:text="${l.details}"></a> </li>
                             </ul>
                             <h2 class="title"> <a th:href="@{'/questions/q/'+${l.questionid}}" th:text="${l.title}"></a> </h2>
                             <ul class="taglist--inline ib" th:each="qs:${l.lablenames}">
@@ -961,65 +961,7 @@
 <script>
     window.serverTime = 1551945085000;
 </script>
-<script>
-    (function (w) {
-        w.SF = {
-            staticUrl: "https://cdn.segmentfault.com/v-5c78d357"
-        };
-        w.SF.token = (function () {
-            var _tTrjl = 'e0'//'lx'
-                + 'd'//'rDN'
-                +//'nwc'
-                'nwc' + '98'//'h5l'
-                +//'c'
-                '72' + ''///*'OUx'*/'OUx'
-                + 'a5'//'0'
-                + 'ee'//'q'
-                +//'QJK'
-                '640' + 'a2'//'tJ0'
-                + ''///*'T'*/'T'
-                +//'iq'
-                '43' +//'d'
-                '10' +//'J'
-                '0b' +//'7'
-                'd' + 'd4'//'N'
-                +//'aF'
-                'fad' + '0'//'kg'
-                + '8'//'y'
-                + 'd'//'T1e'
-                + ''///*'o'*/'o'
-                +//'V'
-                '5', _wECc7 = [[3, 6]];
 
-            for (var i = 0; i < _wECc7.length; i++) {
-                _tTrjl = _tTrjl.substring(0, _wECc7[i][0]) + _tTrjl.substring(_wECc7[i][1]);
-            }
-
-            return _tTrjl;
-        })();
-        ;
-    })(window);
-
-    var lock = {
-        type: "",
-        text: '',
-        table: {"ban_post": [1, "\u4f60\u5df2\u7ecf\u88ab\u7981\u8a00, \u65e0\u6cd5\u8fdb\u884c\u6b64\u64cd\u4f5c, \u5982\u6709\u7591\u4e49\u8bf7\u63d0\u4ea4\u7533\u8bc9, \u6216\u8005\u53d1\u90ae\u4ef6\u5230pr@segmentfault.com"]}
-    };
-
-    var ddosMode = false;
-
-    (function (currentUrl) {
-        if (typeof URL != 'undefined') {
-            var baseUrl = new URL('https://segmentfault.com');
-
-            if (baseUrl.protocol != currentUrl.protocol
-                || baseUrl.host != currentUrl.host) {
-                window.location.href = baseUrl.protocol + '//' + baseUrl.host
-                    + currentUrl.pathname + currentUrl.search + currentUrl.hash;
-            }
-        }
-    })(window.location);
-</script>
 <script crossorigin="" src="../question/questions_files/assets.js.下载"></script>
 <script crossorigin="" src="../question/questions_files/index.min.js.下载"></script>
 <script src="../question/questions_files/ads.min.js.下载" type="text/javascript"></script>
