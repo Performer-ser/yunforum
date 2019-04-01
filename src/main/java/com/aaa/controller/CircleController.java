@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -236,7 +237,8 @@ public class CircleController {
                         ms.put("reviewid",replies.get(j).getReviewid());
                         ms.put("content",replies.get(j).getContent());
                         List<User_info> lu1 = us.queryByUserId(replies.get(j).getFrom_userid());
-                        List<User_info> lu2 = us.queryByUserId(replies.get(j).getReplyid());
+                        List<User_info> lu2 = us.queryByUserId(replies.get(j).getTo_userid());
+                        System.out.println("用户"+lu2);
                         ms.put("from_username",lu1.get(0).getUsername());
                         ms.put("to_username",lu2.get(0).getUsername());
                         ms.put("recoverytime",replies.get(j).getRecoverytime());
@@ -246,7 +248,9 @@ public class CircleController {
                     System.out.println("回复表中的数量"+replie.size());
                 }
                /* System.out.println("回复表根据id"+replies.toString());*/
+                mr.put("reviewid",reviews.get(i).getReviewid());
                 mr.put("username",lu.get(0).getUsername());
+                mr.put("userid",lu.get(0).getUserid());
                 mr.put("head",lu.get(0).getHead());
                 mr.put("count",reviews.get(i).getContent());
                 mr.put("time",reviews.get(i).getTime());
@@ -261,12 +265,14 @@ public class CircleController {
         map.put("head",user_infos.get(0).getHead());
         map.put("username",user_infos.get(0).getUsername());
         map.put("ctime",circles.get(0).getTime());
+        map.put("title",circles.get(0).getTitle());
+        map.put("circleid",circles.get(0).getCircleid());
         resultList.add(map);
         mv.addAttribute("list",resultList);
+        System.out.println(resultList.toString());
         mv.addAttribute("review",review);
         mv.addAttribute("replie",replie);
         mv.addAttribute("count",review.size()+replie.size());
-        System.out.println(circles.get(0).getContent());
         mv.addAttribute("aaa", ForFlie.readFile(circles.get(0).getContent()));
         return  "show";
     }
@@ -298,8 +304,30 @@ public class CircleController {
             mv.addAttribute("clms",clm);
         return  "indexs";
     }
-    @RequestMapping("add")
-    public String add(Model mv,String text){
-        return "redirect:/circle/show/1";
+    @RequestMapping("addByReview")
+    public String addByReview(Model mv, String text, HttpSession session,Integer circleid){
+        Review r = new Review();
+        r.setContent(text);
+        r.setComposeid(circleid);
+        /*从session中获取获取用户的id*/
+        r.setUserid(1);
+        rs.addByReview(r);
+        return "redirect:/circle/show/"+circleid;
     }
+    @RequestMapping("addByReply")
+    public String addByReply(Model mv, String text, HttpSession session,Integer reviewid,Integer touserid,Integer circleid){
+        System.out.println("内容"+text);
+        System.out.println("内容"+reviewid);
+        System.out.println("内容"+touserid);
+        System.out.println("内容"+circleid);
+        Reply r = new Reply();
+        r.setContent(text);
+        /*从session中获取对象*/
+        r.setFrom_userid(2);
+        r.setTo_userid(touserid);
+        r.setReviewid(reviewid);
+        rps.addByReply(r);
+        return "redirect:/circle/show/"+circleid;
+    }
+
 }

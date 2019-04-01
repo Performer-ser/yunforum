@@ -20,4 +20,7 @@ public class ReviewService {
     }
     public List<Map<String,Object>> queryOneAll(Integer userid,Integer page){return rd.queryOneAll(userid,page);}
     public List<Map<String,Object>> queryUserAll(Integer userid){return rd.queryUserAll(userid);}
+    public Integer addByReview(Review r){
+        return  rd.addByReview(r);
+    }
 }
