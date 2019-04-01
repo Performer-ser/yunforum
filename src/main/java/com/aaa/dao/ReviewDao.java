@@ -1,6 +1,7 @@
 package com.aaa.dao;
 
 import com.aaa.entity.Review;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -18,5 +19,6 @@ public interface ReviewDao {
     public List<Map<String,Object>> queryOneAll(Integer userid,Integer page);
     @Select("select reviewid from review where type=1 and userid=#{param1}")
     public List<Map<String,Object>> queryUserAll(Integer userid);
-
+    @Insert("insert into review VALUES(null,#{composeid},3,#{content},#{userid},SYSDATE())")
+    public Integer addByReview(Review r);
 }

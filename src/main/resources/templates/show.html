@@ -177,7 +177,7 @@
     </ol>
     <div class="row">
         <div class="col-md-9" th:each="nets:${list}">
-            <div class="heading"><h3 class="heading__title" th:text="${nets['clablename']}"></h3></div>
+            <div class="heading"><h3 class="heading__title" th:text="${nets['title']}"></h3></div>
             <div class="author">
                 <img th:src="@{${nets['head']}}" class="avatar-24">
                 <a href="/u/segmentfault" target="_blank">
@@ -322,19 +322,22 @@ SegmentFault 也已经六岁了
                                             <span class="comments-zan-text">赞</span>
                                             <span class="comments-zan-value">+11</span>
                                         </span>
-                                        <span class="ml15 comments-reply-btn">回复</span>
+                                        <span class="ml15 comments-reply-btn" th:onclick="'javascript:hui(\''+${nets['reviewid']}+'\')'">回复</span>
                                         <span class="pull-right editBtns hidden">
                                           <button class="btn btn-link btn-xs cancel" type="button">取消</button>
                                           <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
                                         </span>
                                     </p>
                                     <!--用于添加回复-->
-                                    <div class="reply-list reply-list--empty">
+                                    <div class="reply-list reply-list--empty" th:id="${nets['reviewid']}">
                                         <div class="reply-item reply-item--ops hide" data-obj="obj">
                                             <a class="reply-inner-btn hide" href="javascript:;">添加回复</a>
                                         </div>
-                                        <form class="reply-form" action="/api/comment/1050000017837975/reply">
-                                            <button type="button" class="btn btn-default pull-right reply-btn">添加回复</button>
+                                        <form class="reply-form" th:action="@{/circle/addByReply}">
+                                            <input type="hidden" name="touserid" th:value="${nets['userid']}">
+                                            <input type="hidden" name="reviewid" th:value="${nets['reviewid']}">
+                                            <input type= "hidden" name="circleid" th:each="cir:${list}" th:value="${cir['circleid']}"/>
+                                            <button type="submit" class="btn btn-default pull-right reply-btn">添加回复</button>
                                             <button class="hide" type="button"></button>
                                             <div class="form-group">
                                                 <textarea style="min-height: 35px; max-height: 132px; overflow: hidden; overflow-wrap: break-word; height: 32px;" name="text" class="form-control reply-text" rows="1" placeholder="文明社会，理性评论"></textarea>
@@ -343,7 +346,7 @@ SegmentFault 也已经六岁了
                                     </div>
                                     <!--回复表-->
                                     <div class="reply-list">
-                                        <div class="reply-item" data-id="1050000017553480" th:each="re:${replie}"  th:if="${re['to_username']} eq ${nets['username']}">
+                                        <div class="reply-item" data-id="1050000017553480" th:each="re:${replie}" th:if="${re['reviewid']} eq ${nets['reviewid']}">
                                             <!--点赞数量的统计通过评论者id或者评论内容来对数据进行一个判断是否是当前的评论和回复，如果是则显示没有则不显示-->
                                             <span class="pull-left comment-ops " style="position:absolute;">
                                                 <span class="mr20 comments-zan ">
@@ -382,8 +385,8 @@ SegmentFault 也已经六岁了
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="reply-item reply-item--ops" data-obj="obj">
-                                            <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+                                        <div class="reply-item reply-item--ops" th:each="re:${replie}" th:if="${re['reviewid']} eq ${nets['reviewid']}">
+                                            <a class="reply-inner-btn" th:id="'tian'+${re['reviewid']}" th:onclick="'javascript:tian(\''+${re['reviewid']}+'\')'" href="javascript:;">添加回复</a>
                                         </div>
                                     </div>
                                 </div>
@@ -399,7 +402,8 @@ SegmentFault 也已经六岁了
                                 <!--<img class="avatar-32" th:src="${session.user.head}" alt=""/>-->
                             </div>
                             <div class="comments-box-content">
-                                <form th:action="@{/circle/add}">
+                                <form th:action="@{/circle/addByReview}">
+                                    <input type= "hidden" name="circleid" th:each="nets:${list}" th:value="${nets['circleid']}"/>
                                     <div class="form-group mb0">
                                         <textarea name="text" rows="3" class="form-control"
                                                   placeholder="文明社会，理性评论"></textarea>
@@ -663,6 +667,31 @@ SegmentFault 也已经六岁了
         /*$(".modal-content").css('display','none');*/
         $("#911").css('display','block');
         $("#911").css('visibility','visible');
+    }
+</script>
+<script type="text/javascript">
+    function hui(reviewid) {
+        if($("#"+reviewid)){
+            $("#"+reviewid).css("display","block");
+        }else{
+
+        }
+    }
+    function tian(reviewid) {
+        /*$("#"+reviewid).parent();*/
+        /*alert($("#"+reviewid).prev().html());*/
+        $("#tian"+reviewid).hide();
+        $("")
+        $("#tian"+reviewid).after(" <form class=\"reply-form\" method=\"post\" action=\"circle/addByReply\">\n" +
+            "            <input type=\"hidden\" name=\"touserid\" value=\"[nets['userid']]\">\n" +
+            "            <input type=\"hidden\" name=\"reviewid\" value=\"[nets['reviewid']]\">\n" +
+            "            <input type=\"hidden\" name=\"circleid\" value=\"[nets['circleid']]\">\n" +
+            "            <button type=\"submit\" class=\"btn btn-default pull-right reply-btn\">添加回复</button>\n" +
+            "            <button class=\"hide\" type=\"button\"></button>\n" +
+            "            <div class=\"form-group\">\n" +
+            "            <textarea style=\"min-height: 35px; max-height: 132px; overflow: hidden; overflow-wrap: break-word; height: 32px;\" name=\"text\" class=\"form-control reply-text\" rows=\"1\" placeholder=\"文明社会，理性评论\"></textarea>\n" +
+            "            </div>\n" +
+            "        </form>");
     }
 </script>
 </body>

@@ -14,4 +14,7 @@ public class ReplyService {
     public List<Reply> queryByReviewid(Integer reviewid){
         return  rd.queryByReviewid(reviewid);
     }
+    public Integer addByReply(Reply r){
+        return rd.addByReply(r);
+    }
 }
