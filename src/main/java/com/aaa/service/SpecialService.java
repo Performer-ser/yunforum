@@ -67,6 +67,8 @@ public class SpecialService {
         Integer offset =  (pageNum - 1) * 5;
         return sd.querynewest(offset);
     }
-
+    public List<Map<String,Object>> querya(){
+        return sd.querya();
+    }
 
 }

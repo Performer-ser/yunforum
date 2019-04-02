@@ -56,6 +56,7 @@ public class SpecialController {
     public String querydz(Model m){
         List<Map<String,Object>> list= ss.querydz();
         m.addAttribute("list",list);
+        System.out.println(list);
         return "hottest";
     }
 
@@ -63,6 +64,10 @@ public class SpecialController {
     public String queryByid(Model m ,@PathVariable Integer specialid){
         Map<String,Object> list=ss.queryByid(specialid).get(0);
         m.addAttribute("list",list);
+        List<Map<String,Object>> querya= ss.querya();
+        m.addAttribute("querya",querya);
+        System.out.println(querya);
+        System.out.println(list);
         return "a";
     }
 
@@ -80,6 +85,7 @@ public class SpecialController {
        }
        List<Map<String,Object>> list=ss.queryblogs(pageNum);
        m.addAttribute("list",list);
+       System.out.println(list);
        m.addAttribute("pageNum",pageNum);
        return "blogs/blogs";
    }

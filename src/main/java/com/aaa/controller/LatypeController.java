@@ -3,6 +3,7 @@ package com.aaa.controller;
 import com.aaa.entity.Lable;
 import com.aaa.entity.Latype;
 import com.aaa.service.LatypeService;
+import com.aaa.service.SpecialService;
 import com.aaa.util.JsonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,10 @@ import java.util.Map;
 public class LatypeController {
     @Autowired
     LatypeService lts;
+    @Autowired
+    SpecialService ss;
+
+
     @RequestMapping("query")
     public String query(Model model){
         List<Latype> ll=lts.query();
@@ -39,6 +44,7 @@ public class LatypeController {
         return "tags";
     }
 
+
     /**
      * 根据标签id查询所对的内容
      * @param m
@@ -46,10 +52,28 @@ public class LatypeController {
      * @return
      */
     @RequestMapping(value = "t/{lableid}")
-    public String queryBysid(Model m,@PathVariable Integer lableid){
-        Map<String,Object> list=lts.queryBysid(lableid).get(0);
-        m.addAttribute("list",list);
+    public String queryBysid(Model m,@PathVariable Integer lableid,Integer latypeid){
+        List<Map<String,Object>> list=lts.queryBysid(lableid);
+        m.addAttribute("listss",list);
+        System.out.println(list);
+        List<Lable> listlables=lts.querylables();
+        m.addAttribute("listlables",listlables);
+        System.out.println(listlables);
+        List<Map<String,Object>> queryxg=lts.queryxg((Integer)  list.get(0).get("latypeid"));
+        m.addAttribute("queryxg",queryxg);
+        System.out.println(queryxg);
         return "t";
+    }
+
+    @RequestMapping(value = "a/{specialid}")
+    public String queryByid(Model m ,@PathVariable Integer specialid){
+        Map<String,Object> list=ss.queryByid(specialid).get(0);
+        m.addAttribute("list",list);
+        List<Map<String,Object>> querya= ss.querya();
+        m.addAttribute("querya",querya);
+        System.out.println(querya);
+        System.out.println(list);
+        return "a";
     }
 
 

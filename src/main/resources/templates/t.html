@@ -58,11 +58,11 @@
      style="position:absolute; border: 1px solid #009a61; z-index:99; font-size: 10px; background:#fff"></div>
 <div class="global-nav sf-header sf-header--index">
     <div class="bottom-nav visible-xs visible-sm ">
-        <div class="opts"><a class="opts-group " href="https://segmentfault.com/"><i class="fa fa-home"
+        <div class="opts"><a class="opts-group " href="http://localhost:8080/yunforum/specials/query"><i class="fa fa-home"
                                                                                      aria-hidden="true"></i><span>首页</span></a><a
                 class="opts-group " href="https://segmentfault.com/questions"><i class="fa fa-comments"
                                                                                  aria-hidden="true"></i><span>问答</span></a><a
-                class="opts-group " href="https://segmentfault.com/blogs"><i class="fa fa-pencil-square"
+                class="opts-group " href="http://localhost:8080/yunforum/specials/blogs"><i class="fa fa-pencil-square"
                                                                              aria-hidden="true"></i><span>专栏</span></a><a
                 class="opts-group " href="https://segmentfault.com/lives"><i class="fa fa-play-circle"
                                                                              aria-hidden="true"></i><span>讲堂</span></a>
@@ -121,9 +121,9 @@
                 <div class="sf-header__logo"><h1><a href="https://segmentfault.com/">SegmentFault</a></h1></div>
                 <div>
                     <ul class="menu list-inline pull-left hidden-xs">
-                        <li class="menu__item"><a href="https://segmentfault.com/" class="">首页</a></li>
+                        <li class="menu__item"><a href="http://localhost:8080/yunforum/specials/query" class="">首页</a></li>
                         <li class="menu__item"><a href="https://segmentfault.com/questions" class="">问答</a></li>
-                        <li class="menu__item"><a href="https://segmentfault.com/blogs" class="">专栏</a></li>
+                        <li class="menu__item"><a href="http://localhost:8080/yunforum/specials/blogs" class="">专栏</a></li>
                         <li class="menu__item"><a class=" " href="https://segmentfault.com/lives">讲堂</a></li>
                         <li class="menu__item"><a href="https://segmentfault.com/groups" class="">圈子</a></li>
                         <li class="menu__item menu__item--more dropdown"><a href="https://segmentfault.com/t/java##"
@@ -172,34 +172,11 @@
         </div>
         <div class="sub-head hidden-xs hidden-sm"><span class="tag-nav__item btn-all-tag"><a
                 href="http://localhost:8080/yunforum/latype/tags" class="text-secondNav">热门标签</a></span>
-            <div class="tag-container-outer"><span class="tag-nav__item mr20 "><a class="text-secondNav"
-                                                                                  href="http://localhost:8080/yunforum/latype/tags">全部</a></span>
-                <div class="tag-container"><span class="tag-nav__item mr20"><a class="text-secondNav"
-                                                                               href="https://segmentfault.com/t/javascript">javascript</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav"
-                                                      href="https://segmentfault.com/t/php">php</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/python">python</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav"
-                                                      href="https://segmentfault.com/t/java">java</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/mysql">mysql</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav"
-                                                      href="https://segmentfault.com/t/ios">ios</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/android">android</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/node.js">node.js</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/html5">html5</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/linux">linux</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/c%2B%2B">c++</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav"
-                                                      href="https://segmentfault.com/t/css3">css3</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav"
-                                                      href="https://segmentfault.com/t/git">git</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/golang">golang</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav"
-                                                      href="https://segmentfault.com/t/ruby">ruby</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav"
-                                                      href="https://segmentfault.com/t/vim">vim</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/docker">docker</a></span><span
-                        class="tag-nav__item mr20"><a class="text-secondNav" href="https://segmentfault.com/t/mongodb">mongodb</a></span>
+            <div class="tag-container-outer">
+                <span class="tag-nav__item mr20 "><a class="text-secondNav" href="http://localhost:8080/yunforum/latype/tags">全部</a></span>
+                <div class="tag-container">
+                    <!--标签-->
+                    <span  th:each="l:${listlables}" class="tag-nav__item mr20"><a class="text-secondNav" th:href="@{'/latype/t/'+${l.lableid}}" th:text="${l.lablename}"><!--javascript--></a></span>
                 </div>
             </div>
             <div class="gradient-block"></div>
@@ -226,15 +203,15 @@
             <div class="col-xs-12 col-md-9 main">
                 <ol class="breadcrumb mb15">
                     <li><a href="http://localhost:8080/yunforum/latype/tags">标签</a></li>
-                    <li><a href="" th:text="${list.lablename}"><!--java--></a></li>
+                    <li><a href="" th:text="${listss[0].lablename}"><!--java--></a></li>
                     <li class="active">标签动态</li>
                 </ol>
                 <section class="tag-info tag__info">
                     <div>
 
-                        <a class="tag tag-lg" href="https://segmentfault.com/t/java" data-toggle="popover"
+                        <a class="tag tag-lg" th:href="@{'/latype/t/'+${listss[0].lableid}}" data-toggle="popover"
                            data-id="1040000000089449" data-original-title="java" style="font-size:14px;height:28px;">
-                            <img src="../../t_files/868271510-54cb382abb7a1_small" th:text="${list.lablename}">
+                            <img src="../../t_files/868271510-54cb382abb7a1_small" th:text="${listss[0].lablename}">
                             <!--java-->
                         </a>
 
@@ -246,7 +223,7 @@
 
                         </div>
                     </div>
-                    <p class="tag__info--desc" th:text="${list.describe}"><!--Java 是一种可以撰写跨平台应用软件的面向对象的程序设计语言，是由 Sun Microsystems 公司于 1995 年 5 月推出的
+                    <p class="tag__info--desc" th:text="${listss[0].describe}"><!--Java 是一种可以撰写跨平台应用软件的面向对象的程序设计语言，是由 Sun Microsystems 公司于 1995 年 5 月推出的
                         Java 程序设计语言和 Java 平台（即 JavaSE, JavaEE, JavaME）的总称。Java 技术具有卓越的通用-->...</p>
 
                     <style>
@@ -300,15 +277,13 @@
                 </section>
 
                 <ul class="nav nav-tabs">
-                    <li role="presentation" class="active"><a href="https://segmentfault.com/t/java">标签动态</a></li>
-                    <li role="presentation" class=""><a href="https://segmentfault.com/t/java/questions">技术问答</a></li>
-                    <li role="presentation" class=""><a href="https://segmentfault.com/t/java/blogs">专栏文章</a></li>
-                    <li role="presentation"><a href="https://segmentfault.com/lives/newest?q=java"
-                                               target="_blank">技术讲座</a></li>
-                    <li role="presentation"><a href="https://segmentfault.com/jobs/search?q=java"
+                    <li role="presentation" class="active"><a href="https://segmentfault.com/t/java">专栏文章</a></li>
+                    <li role="presentation" class=""><a href="http://localhost:8080/yunforum/questions/questions">技术问答</a></li>
+                    <!--<li role="presentation" class=""><a href="https://segmentfault.com/t/java/blogs">标签动态</a></li>-->
+                    <!--<li role="presentation"><a href="https://segmentfault.com/jobs/search?q=java"
                                                target="_blank">相关职位</a></li>
-                    <li role="presentation" class=""><a href="https://segmentfault.com/t/java/info">标签百科</a></li>
-                    <a class="btn btn-primary pull-right" href="https://segmentfault.com/ask?tag=java">+ 提问题</a>
+                    <li role="presentation" class=""><a href="https://segmentfault.com/t/java/info">标签百科</a></li>-->
+                   <!-- <a class="btn btn-primary pull-right" href="https://segmentfault.com/ask?tag=java">+ 提问题</a>-->
                 </ul>
 
                 <div class="tab-content">
@@ -320,42 +295,20 @@
                                 <!--<div class="stream__item-zan btn btn-default " data-id="1190000018676060"
                                      data-type="article"><span class="stream__item-zan-icon"></span><span
                                         class="stream__item-zan-number">2</span></div>-->
-                                <div class="news__item-info">
+                                <div class="news__item-info" th:each="li:${listss}" th:if="${listss.size()!=1}">
                                     <div class="mb6">
-                                        <h4 class="news__item-title mt0">
-                                            <a class="mr10" target="_blank"
-                                               href="https://segmentfault.com/a/1190000018676060?utm_source=tag-newest" th:text="${list.title}">
-                                                <!--认识与实现Skip List -->
-                                            </a>
-                                        </h4>
+                                        <h4 class="news__item-title mt0"> <a class="mr10" target="_blank" th:href="@{'/latype/a/'+${li.specialid}}" th:text="${li.title}">
+                                            <!--认识与实现Skip List --> </a> </h4>
                                         <ul class="taglist--inline ib">
-                                            <li class="tagPopup"><a class="tag"
-                                                                    href=""
-                                                                    data-toggle="popover" data-img=""
-                                                                    data-placement="top" data-original-title="算法-数据结构"
-                                                                    data-id="1040000004403597" th:text="${list.lablename}">
-                                               <!-- 算法-数据结构-->
-                                            </a></li>
-                                            <!--<li class="tagPopup"><a class="tag" href="https://segmentfault.com/t/java"
-                                                                    data-toggle="popover" data-img=""
-                                                                    data-placement="top" data-original-title="java"
-                                                                    data-id="1040000000089449"><img
-                                                    src="../../t_files/868271510-54cb382abb7a1_small">
-                                                java
-                                            </a></li>-->
+                                            <li class="tagPopup"><a class="tag" href="" data-toggle="popover" data-img="" data-placement="top" data-original-title="算法-数据结构" data-id="1040000004403597" th:text="${li.lablename}">
+                                                <!-- 算法-数据结构--> </a></li>
                                         </ul>
                                     </div>
-                                    <p class="news__item-meta"><a href="https://segmentfault.com/u/crabapple"><img
-                                            class="avatars-img" src="../../t_files/269459806-5c20ea4a5d010_small" width="18"
-                                            height="18"></a><a class=""
-                                                               href="https://segmentfault.com/u/crabapple" th:text="${list.username}"><!--赵栩彬--></a><span
-                                            class="dot">·</span><span th:text="${list.time}"><!--1 小时前--></span><span class="dot">·</span><span
-                                            class="text-info"><a
-                                            href="https://segmentfault.com/a/1190000018676060?utm_source=tag-newest#goToReplyArea">评论</a></span><span
-                                            class="dot">·</span><a class="text-article"
-                                                                   href="http://localhost:8080/yunforum/specials/blogs"
-                                                                   target="_blank">专栏</a></p></div>
-                            </div>
+                                    <p class="news__item-meta"><a href="https://segmentfault.com/u/crabapple"><img class="avatars-img" src="../../t_files/269459806-5c20ea4a5d010_small" width="18" height="18" /></a><a class="" href="https://segmentfault.com/u/crabapple" th:text="${li.username}">
+                                        <!--赵栩彬--></a><span class="dot">&middot;</span><span th:text="${li.time}">
+     <!--1 小时前--></span><span class="dot">&middot;</span><span class="text-info"><a th:href="@{'/latype/a/'+${li.specialid}}">评论</a></span><span class="dot">&middot;</span><a class="text-article" href="http://localhost:8080/yunforum/specials/blogs" target="_blank">专栏</a></p>
+                                </div>
+                            </div><!--https://segmentfault.com/a/1190000018676060?utm_source=tag-newest#goToReplyArea-->
                         </div>
                         <div class="text-center">
                             <ul class="pager">
@@ -654,59 +607,11 @@
 
                 <div class="widget-box pt0" style="border:none;">
                     <h2 class="h4 widget-box__title">相关标签</h2>
-                    <ul class="taglist--inline multi">
+                    <ul class="taglist--inline multi" th:each="l:${queryxg}">
                         <li class="tagPopup">
-                            <a class="tag" href="https://segmentfault.com/t/javascript" data-toggle="popover"
-                               data-id="1040000000089436" data-original-title="javascript">
-                                javascript</a>
-                        </li>
-                        <li class="tagPopup">
-                            <a class="tag" href="https://segmentfault.com/t/php" data-toggle="popover"
-                               data-id="1040000000089387" data-original-title="php">
-                                php</a>
-                        </li>
-                        <li class="tagPopup">
-                            <a class="tag" href="https://segmentfault.com/t/spring" data-toggle="popover"
-                               data-id="1040000000090103" data-original-title="spring">
-                                spring</a>
-                        </li>
-                        <li class="tagPopup">
-                            <a class="tag" href="https://segmentfault.com/t/python" data-toggle="popover"
-                               data-id="1040000000089534" data-original-title="python">
-                                <img src="../../t_files/2521771040-54cb53b372821_small">
-                                python</a>
-                        </li>
-                        <li class="tagPopup">
-                            <a class="tag" href="https://segmentfault.com/t/mysql" data-toggle="popover"
-                               data-id="1040000000089439" data-original-title="mysql">
-                                <img src="../../t_files/9498447-54cb56e325a72_small">
-                                mysql</a>
-                        </li>
-                        <li class="tagPopup">
-                            <a class="tag" href="https://segmentfault.com/t/android" data-toggle="popover"
-                               data-id="1040000000089658" data-original-title="android">
-                                <img src="../../t_files/287281599-5a263edae47e9_small">
-                                android</a>
-                        </li>
-                        <li class="tagPopup">
-                            <a class="tag" href="https://segmentfault.com/t/node.js" data-toggle="popover"
-                               data-id="1040000000089918" data-original-title="node.js">
-                                node.js</a>
-                        </li>
-                        <li class="tagPopup">
-                            <a class="tag" href="https://segmentfault.com/t/html" data-toggle="popover"
-                               data-id="1040000000089571" data-original-title="html">
-                                html</a>
-                        </li>
-                        <li class="tagPopup">
-                            <a class="tag" href="https://segmentfault.com/t/c%2B%2B" data-toggle="popover"
-                               data-id="1040000000089741" data-original-title="c++">
-                                c++</a>
-                        </li>
-                        <li class="tagPopup">
-                            <a class="tag" href="https://segmentfault.com/t/c" data-toggle="popover"
-                               data-id="1040000000089457" data-original-title="c">
-                                c</a>
+                            <a class="tag" th:href="@{'/latype/t/'+${l.lableid}}" data-toggle="popover"
+                               data-id="1040000000089436" data-original-title="javascript" th:text="${l.lablename}">
+                                <!--javascript--></a>
                         </li>
                     </ul>
                 </div>
@@ -1173,55 +1078,7 @@
     window.serverTime = 1553682399000;
 </script>
 
-<script>
-    (function (w) {
-        w.SF = {
-            staticUrl: "https://static.segmentfault.com/v-5c8b4d77"
-        };
-        w.SF.token = (function () {
-            var _C7ztgu = '6'//'8T'
-                +//'v'
-                'v' + '9'//'k'
-                +//'p9'
-                '9' +//'I'
-                '19b' + /* 'JOm'//'JOm' */'' + ''///*'tk9'*/'tk9'
-                +//'2C3'
-                '6f' + '84'//'2'
-                + ''///*'q'*/'q'
-                + '702'//'nCs'
-                + ''///*'f'*/'f'
-                +//'b5k'
-                '078' +//'fmH'
-                'fmH' + 'a4'//'jy'
-                + 'bd'//'6'
-                + '72'//'B5'
-                + '7f'//'o'
-                +//'dGx'
-                'dGx' + ''///*'gN8'*/'gN8'
-                +//'I3'
-                '6' + /* 'p4J'//'p4J' */'' + 'e'//'xd'
-                + /* 'G'//'G' */'' +//'o8'
-                'b' + 'c'//'6j'
-                + /* 'g'//'g' */'' + '2c'//'4A'
-                +//'iS'
-                '6a', _iG5 = [[1, 2], [16, 19], [24, 27]];
 
-            for (var i = 0; i < _iG5.length; i++) {
-                _C7ztgu = _C7ztgu.substring(0, _iG5[i][0]) + _C7ztgu.substring(_iG5[i][1]);
-            }
-
-            return _C7ztgu;
-        })();
-        ;
-    })(window);
-
-    var lock = {
-        type: "",
-        text: '',
-        table: {"ban_post": [1, "\u4f60\u5df2\u7ecf\u88ab\u7981\u8a00, \u65e0\u6cd5\u8fdb\u884c\u6b64\u64cd\u4f5c, \u5982\u6709\u7591\u4e49\u8bf7\u63d0\u4ea4\u7533\u8bc9, \u6216\u8005\u53d1\u90ae\u4ef6\u5230pr@segmentfault.com"]}
-    };
-
-</script>
 
 <script crossorigin="" src="../../t_files/assets.js.下载"></script>
 

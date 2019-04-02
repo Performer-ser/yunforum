@@ -18,12 +18,14 @@ public interface LatypeDao {
     public List<Latype> querylatype();
     @Select("select * from lable")
     public List<Lable> querylable();
+    @Select("select * from lable where lableid <19")
+    public List<Lable> querylables();
 
     /**
      * 根据标签ID查询出于与此标签有关的内容
      */
-    @Select("select la.lableid,la.lablename,la.describe,sp.lableid slableid,sp.title,sp.content,us.username,sp.time from lable la left join special sp" +
-            " on la.lableid= sp.lableid left join user_info us on sp.userid= us.userid where la.lableid =#{lableid}")
+    @Select("select la.lableid,la.latypeid,la.lablename,la.describe,sp.specialid,sp.lableid slableid,sp.title,sp.content,us.username,sp.time from lable la left join special sp" +
+            " on la.lableid= sp.lableid left join user_info us on sp.userid= us.userid where la.lableid =#{param1}")
     public List<Map<String,Object>> queryBysid(Integer lableid);
 
 
@@ -33,4 +35,11 @@ public interface LatypeDao {
     public int update(Latype latype);
     @Delete("delete from latype where latypeid=#{param1}")
     public int delete(Integer id);
+    /**
+     * a页面
+     */
+    @Select("select sp.title,us.username,la.lablename from special sp left join user_info us on sp.userid= us.userid left join lable la on sp.lableid=la.lableid where sp.specialid <6 order by sp.time desc")
+    public List<Map<String,Object>> querya();
+    @Select("select lt.latypename,la.lablename,la.lableid from latype lt left join lable la on lt.latypeid=la.latypeid where la.latypeid=#{param1}")
+    public List<Map<String,Object>> queryxg(Integer  latypeid);
 }

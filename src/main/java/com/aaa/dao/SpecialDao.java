@@ -31,7 +31,8 @@ public interface SpecialDao {
      * @param specialid
      * @return
      */
-    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time from special sp left join user_info us on sp.userid=us.userid where sp.specialid =#{specialid}")
+    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time,la.lablename from " +
+            "special sp left join user_info us on sp.userid=us.userid left join lable la on sp.lableid=la.lableid  where sp.specialid =#{specialid}")
     public List<Map<String,Object>> queryByid(Integer specialid);
 
     @Select("select count(*) dz,s.specialid,s.lableid,s.title,s.content,s.time,us.username,a.status\n" +
@@ -66,6 +67,10 @@ public interface SpecialDao {
      */
     @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time,la.lablename from special sp left join user_info us on sp.userid=us.userid left join lable la on sp.lableid=la.lableid order by sp.time desc limit #{param1},5")
     public List<Map<String,Object>> querynewest(Integer offset);
-
+    /**
+     * a页面
+     */
+    @Select("select sp.title,us.username,la.lablename,la.lableid from special sp left join user_info us on sp.userid= us.userid left join lable la on sp.lableid=la.lableid where sp.specialid <6 order by sp.time desc")
+    public List<Map<String,Object>> querya();
 
 }
