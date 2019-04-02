@@ -2,6 +2,7 @@ package com.aaa.controller;
 
 
 import com.aaa.entity.Lable;
+import com.aaa.entity.Latype;
 import com.aaa.entity.Question;
 import com.aaa.service.AdmireService;
 import com.aaa.service.QuestionService;
@@ -231,11 +232,6 @@ public class QuestionController {
         model.addAttribute("a",aw);
         return "personquestion";
     }
-    @RequestMapping("ask")
-    public String ask(){
-        System.out.println("进入了ask页面");
-        return "questions/ask";
-    }
     @RequestMapping("qqq")
     public String qqq(Integer page,Model model){
         List<Map<String,Object>> lq=qs.queryUser(1,(page-1)*20);
@@ -261,9 +257,20 @@ public class QuestionController {
         model.addAttribute("user",1111);
     }
     @RequestMapping("queryLatype")
-    public void queryLatype(Model model){
-        List<Lable> list = qs.queryLatype();
+    public String queryLatype(Model model){
+        List<Latype> list = qs.queryLatype();
+        for (Latype lt:list){
+            String s = lt.getLatypename().toString();
+            List<Map<String, Object>> lists = qs.queryLableByLatypeid(s);
+            model.addAttribute("lists",lists);
+            System.out.println("lists"+lists);
+        }
         model.addAttribute("list",list);
+        System.out.println("list"+list);
+        return "questions/ask";
     }
+
+
+
 
 }

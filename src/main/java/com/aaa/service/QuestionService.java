@@ -104,11 +104,15 @@ public class QuestionService {
         return qd.queryReviewByQuestionid(qid);
     }
     //查看所有标签类型
-    public List<Lable> queryLatype(){
+    public List<Latype> queryLatype(){
         return qd.queryLatype();
     }
     ////查询标签及标签类型根据标签类型id
-    public List<Map<String,Object>> queryLableByLatypeid(Integer lid){
-        return qd.queryLableByLatypeid(lid);
+    public List<Map<String,Object>> queryLableByLatypeid(String lname){
+        return qd.queryLableByLatypeid(lname);
+    }
+    //添加浏览数据
+    public Integer addBrowse(Browse browse){
+        return qd.addBrowse(browse);
     }
 }

@@ -42,8 +42,12 @@ public interface QuestionDao {
     public List<Map<String,Object>> queryUserAll(Integer userid);
     //查看所有标签类型
     @Select("select latypeid,latypename from latype")
-    public List<Lable> queryLatype();
+    public List<Latype> queryLatype();
     ////查询标签及标签类型根据标签类型id
-    @Select("select a.latypeid,a.latypename,b.lableid,b.lablename,b.lablepic,b.describe from latype a left join lable b on a.latypeid = b.latypeid where a.latypeid = #{param1}")
-    public List<Map<String,Object>> queryLableByLatypeid(Integer lid);
+    @Select("select a.latypeid,a.latypename,b.lableid,b.lablename,b.lablepic,b.describe from latype a left join lable b on a.latypeid = b.latypeid where a.latypename = #{param1}")
+    public List<Map<String,Object>> queryLableByLatypeid(String lname);
+
+    //添加浏览数据
+    @Insert("insert into browse(browseid,type,composeid,userid,browsetime) values(#{browseid},1,#{composeid},'1',SYSDATE())")
+    public Integer addBrowse(Browse browse);
 }
