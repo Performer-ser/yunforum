@@ -33,6 +33,8 @@ public class CircleController {
     CliqueService clqs;
     @Autowired
     ReplyService rps;
+    @Autowired
+    AdmireService as;
 
     @RequestMapping("queryLimit")
     @ResponseBody
@@ -58,7 +60,7 @@ public class CircleController {
         for (int i = 0; i < lc.size(); i++) {
             Map<String, Object> circle = new HashMap<String, Object>();
             /*这个是获得用户的一些信息*/
-            List<User_info> lus = us.queryByUserId(lc.get(i).getUserid());
+            List<Userinfo> lus = us.queryByUserId(lc.get(i).getUserid());
             //System.out.println(lus);
             /*这个是获取评论信息的*/
             List<Review> lr = rs.queryByComposeid(lc.get(i).getCircleid());
@@ -74,7 +76,7 @@ public class CircleController {
             if (lr.size() == 0) {
                 circle.put("rcount", 0);
             } else {
-                List<User_info> lui = us.queryByUserId(lr.get(0).getUserid());
+                List<Userinfo> lui = us.queryByUserId(lr.get(0).getUserid());
                 circle.put("rname", lui.get(0).getUsername());
                 circle.put("rtime", lr.get(0).getTime());
                 circle.put("rcount", lr.size());
@@ -153,7 +155,7 @@ public class CircleController {
         for (int i = 0; i < circles.size(); i++) {
             System.out.println("圈子信息"+lc.toString());
             List<Review> lr = rs.queryByComposeid(circles.get(i).getCircleid());
-            List<User_info> user_infos = us.queryByUserId(circles.get(i).getUserid());
+            List<Userinfo> user_infos = us.queryByUserId(circles.get(i).getUserid());
             Map<String, Object> cir = new HashMap<String, Object>();
             cir.put("head", user_infos.get(0).getHead());
             cir.put("title", circles.get(i).getTitle());
@@ -164,7 +166,7 @@ public class CircleController {
             if (lr.size() == 0) {
                 cir.put("rcount", 0);
             } else {
-                List<User_info> lui = us.queryByUserId(lr.get(i).getUserid());
+                List<Userinfo> lui = us.queryByUserId(lr.get(i).getUserid());
                 cir.put("rname", lui.get(i).getUsername());
                 cir.put("rtime", lr.get(i).getTime());
                 cir.put("rcount", lr.size());
@@ -192,7 +194,7 @@ public class CircleController {
         List<Clable> lc = cls.queryByClablename(clablename);
         List<Clique> lcq = clqs.queryByClableid(lc.get(0).getClableid());
         for (int i = 0; i < lcq.size() ; i++) {
-            List<User_info> user_infos = us.queryByUserId(lcq.get(i).getUserid());
+            List<Userinfo> user_infos = us.queryByUserId(lcq.get(i).getUserid());
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("userid",user_infos.get(0).getUserid());
             map.put("username",user_infos.get(0).getUsername());
@@ -215,13 +217,15 @@ public class CircleController {
         return  "personal";
     }
     @RequestMapping(value = "show/{circleid}")
-    public String attention(Model mv, @PathVariable Integer circleid){
+    public String attention(Model mv, @PathVariable Integer circleid,HttpSession session){
         List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
         List<Map<String, Object>> review = new ArrayList<Map<String, Object>>();
         List<Map<String, Object>> replie = new ArrayList<Map<String, Object>>();
+        List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
+        Integer userid = loginUser.get(0).getUserid();
         List<Circle> circles = cs.queryByCircleid(circleid);
         List<Clable> clables = cls.queryByClableid(circles.get(0).getClableid());
-        List<User_info> user_infos = us.queryByUserId(circles.get(0).getUserid());
+        List<Userinfo> user_infos = us.queryByUserId(circles.get(0).getUserid());
         List<Review> reviews = rs.queryByComposeid(circleid);
         if(reviews.size() == 0){
             /*说明没有评论*/
@@ -229,16 +233,18 @@ public class CircleController {
            /* System.out.println("显示评论数据"+reviews.toString());*/
             for (int i = 0; i < reviews.size(); i++) {
                 Map<String, Object> mr = new HashMap<String, Object>();
-                List<User_info> lu = us.queryByUserId(reviews.get(i).getUserid());
+                List<Userinfo> lu = us.queryByUserId(reviews.get(i).getUserid());
                 List<Reply> replies = rps.queryByReviewid(reviews.get(i).getReviewid());
                 if(replies.size() != 0){
                     for (int j = 0; j < replies.size(); j++) {
                         Map<String, Object> ms = new HashMap<String, Object>();
+                        Integer query = as.queryCount(replies.get(j).getReplyid(), 4);
+                        ms.put("likenumByReply",query);
                         ms.put("reviewid",replies.get(j).getReviewid());
                         ms.put("content",replies.get(j).getContent());
-                        List<User_info> lu1 = us.queryByUserId(replies.get(j).getFrom_userid());
-                        List<User_info> lu2 = us.queryByUserId(replies.get(j).getTo_userid());
-                        System.out.println("用户"+lu2);
+                        List<Userinfo> lu1 = us.queryByUserId(replies.get(j).getFrom_userid());
+                        List<Userinfo> lu2 = us.queryByUserId(replies.get(j).getTo_userid());
+                       /* System.out.println("用户"+lu2);*/
                         ms.put("from_username",lu1.get(0).getUsername());
                         ms.put("to_username",lu2.get(0).getUsername());
                         ms.put("recoverytime",replies.get(j).getRecoverytime());
@@ -249,9 +255,12 @@ public class CircleController {
                 }
                /* System.out.println("回复表根据id"+replies.toString());*/
                 mr.put("reviewid",reviews.get(i).getReviewid());
+                mr.put("likenum",as.queryCount(reviews.get(i).getReviewid(), 3));
                 mr.put("username",lu.get(0).getUsername());
                 mr.put("userid",lu.get(0).getUserid());
                 mr.put("head",lu.get(0).getHead());
+                Integer queryone = as.queryone(reviews.get(i).getReviewid(), 3, userid);
+                mr.put("queryone",queryone);
                 mr.put("count",reviews.get(i).getContent());
                 mr.put("time",reviews.get(i).getTime());
                 mr.put("num",reviews.size());
@@ -316,10 +325,10 @@ public class CircleController {
     }
     @RequestMapping("addByReply")
     public String addByReply(Model mv, String text, HttpSession session,Integer reviewid,Integer touserid,Integer circleid){
-        System.out.println("内容"+text);
+        /*System.out.println("内容"+text);
         System.out.println("内容"+reviewid);
         System.out.println("内容"+touserid);
-        System.out.println("内容"+circleid);
+        System.out.println("内容"+circleid);*/
         Reply r = new Reply();
         r.setContent(text);
         /*从session中获取对象*/

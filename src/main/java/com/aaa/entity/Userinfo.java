@@ -10,11 +10,20 @@ public class Userinfo {
     private String phone;
     private String address;
     private String idcard;
+    private String head;
     private String truename;
     private Integer rank;
     private Date createuser;
     private Integer userstatus;
     private String pwd;
+
+    public String getHead() {
+        return head;
+    }
+
+    public void setHead(String head) {
+        this.head = head;
+    }
 
     public Integer getUserid() {
         return userid;
