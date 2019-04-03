@@ -412,12 +412,12 @@
                     <div class="recommend-post mb30">
                         <ul class="widget-links">
                            <!-- th:href="@{'/latype/t/'+${l.lableid}}"-->
-                            <li><a th:href="@{'/specials/a/'+${q.lableid}}"
+                            <li><a th:href="@{'/specials/a/'+${q.specialid}}"
                                    th:title="${q.title}"
                                    target="_blank" th:text="${q.title}"><!--OpenResty Web框架lor发布0.1.0稳定版--></a>
                                 <span class="text-muted" th:text="${q.username}"><!--sumory--></span>
-                                <a class="tag" taget="_blank" href="https://segmentfault.com/t/mvc" th:text="${q.lablename}"><!--mvc--></a>
-
+                                <!--th:href="@{'/latype/t/'+${list.lableid}}"-->
+                                <a class="tag" taget="_blank" th:href="@{'/latype/t/'+${q.lableid}}" th:text="${q.lablename}"><!--mvc--></a>
                             </li>
 
                         </ul>

@@ -70,7 +70,7 @@ public interface SpecialDao {
     /**
      * a页面
      */
-    @Select("select sp.title,us.username,la.lablename,la.lableid from special sp left join user_info us on sp.userid= us.userid left join lable la on sp.lableid=la.lableid where sp.specialid <6 order by sp.time desc")
+    @Select("select sp.specialid,sp.title,us.username,la.lablename,la.lableid from special sp left join user_info us on sp.userid= us.userid left join lable la on sp.lableid=la.lableid where sp.specialid <6 order by sp.time desc")
     public List<Map<String,Object>> querya();
 
 }
