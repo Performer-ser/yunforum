@@ -60,8 +60,12 @@
         var htmlco = $("#editormd").val();
         var title=$("#tetle").val();
         var options=$("#sel option:selected");
-        if(options.val()==0){
+        if(title == "" && title.length == 0){
+            swal("请输入标题！")
+        }else if(options.val()==0){
             swal("请选择发布到哪个圈子！")
+        }else if(htmlco == "" && htmlco.length == 0){
+            swal("请输入你要发布的内容！")
         }else{
             $.ajax({
                 data: {'text':htmlco,'title':title,'clableid':options.val()},
@@ -69,11 +73,11 @@
                 url: '../../write/text',
                 success: function (data) {
                     if(data == 1){
-                        swal('发表成功，即将跳转！');
+                        /*swal('发表成功，即将跳转！');
                         window.setTimeout('window.location.href = "../../write/ReadFile/"+title', 2000);
-                        /*该地方应该跳转到该圈子里面*/
+                        该地方应该跳转到该圈子里面*/
                           swal('发表成功，即将跳转！');
-                          setTimeout("window.location = '../../write/ReadFile/'+$('#sel option:selected').val()", 1000);
+                          setTimeout("window.location = '../../circle/q/'+$('#sel option:selected').text()", 1000);
                     }else{
                         alert("添加失败");
                     }

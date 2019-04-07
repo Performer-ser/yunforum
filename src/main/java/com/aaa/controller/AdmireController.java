@@ -31,8 +31,12 @@ public class AdmireController {
     @ResponseBody
     public Map<String,Object> update(HttpSession session,Integer type_id, Integer type, Integer userid){
         List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
-        userid = loginUser.get(0).getUserid();
+        userid = null == loginUser? 0:loginUser.get(0).getUserid();
         Map map=new HashMap();
+        if (userid == 0){
+            map.put("status",-1);
+            return map;
+        }
         int message=0;
         Integer status=as.queryone(type_id,type,userid);
         if(status==null){

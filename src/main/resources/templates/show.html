@@ -633,8 +633,8 @@
 
 <div class="group__discuss-detail container" id="discussionData" data-id='1570000014908485' data-groupprice="0" data-isjoin="" data-groupurl="/g/career">
     <ol class="breadcrumb">
-        <li><a href="/groups">圈子</a></li>
-        <li><a href="/g/career">职业生涯</a></li>
+        <li><a th:href="@{'../../circle/circle'}">圈子</a></li>
+        <li><a th:href="@{'../../circle/q/'+${clablename}}" th:text="@{${clablename}}"></a></li>
         <li class="active">讨论详情</li>
     </ol>
     <div class="row">
@@ -663,7 +663,7 @@
                     </div>
                     <div class="comments-container">
                         <div class="comments-list">
-                            <div class="comments-item" data-id="1050000017474870" th:each="nets:${review}">
+                            <div class="comments-item" th:id="'ping'+${nets['reviewid']}" th:each="nets:${review}">
                                 <div class="pull-left">
                                     <a th:href="@{'/circle/personal/'+${nets['userid']}}" target="_blank">
                                         <img class="avatar-32 " th:src="@{${nets['head']}}" alt="">
@@ -708,9 +708,6 @@
                                     </p>
                                     <!--用于添加回复-->
                                     <div class="reply-list reply-list--empty" th:id="${nets['reviewid']}">
-                                        <div class="reply-item reply-item--ops hide" data-obj="obj">
-                                            <a class="reply-inner-btn hide" href="javascript:;">添加回复</a>
-                                        </div>
                                         <form class="reply-form" th:action="@{/circle/addByReply}">
                                             <input type="hidden" name="touserid" th:value="${nets['userid']}">
                                             <input type="hidden" name="reviewid" th:value="${nets['reviewid']}">
@@ -727,9 +724,10 @@
                                         <div class="reply-item" data-id="1050000017553480" th:each="re:${replie}" th:if="${re['reviewid']} eq ${nets['reviewid']}">
                                             <!--点赞数量的统计通过评论者id或者评论内容来对数据进行一个判断是否是当前的评论和回复，如果是则显示没有则不显示-->
                                             <span class="pull-left comment-ops " style="position:absolute;">
-                                                <span class="mr20 comments-zan ">
-                                                    <span class="comments-zan-value comment-showhide islike0-10" th:if="${re['likenumByReply']} != 0" th:text="${nets['likenumByReply']}"></span>
-                                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true"></i>
+                                                <!--已经点赞的-->
+                                                <span th:classappend="${re['queryone'] == 1 ? 'mr20 comments-zan comments-zan--active':'mr20 comments-zan'}" th:id="'hui'+${re['replyid']}">
+                                                    <span class="comments-zan-value comment-showhide islike0-10" th:text="${re['likenumByReply']}"></span>
+                                                    <i class="fa fa-thumbs-up comment-showhide ml5" aria-hidden="true" th:onclick="'javascript:huifu(\''+${re['replyid']}+'\')'"></i>
                                                 </span>
                                             </span>
                                             <div class="reply-content-block">
@@ -764,7 +762,6 @@
                                             </div>
                                         </div>
                                         <div class="reply-item reply-item--ops" th:each="re:${replie}" th:if="${re['reviewid']} eq ${nets['reviewid']}">
-
                                             <a class="reply-inner-btn" th:id="'tian'+${re['reviewid']}" th:onclick="'javascript:tian(\''+${re['reviewid']}+'\',\''+${nets['userid']}+'\')'" href="javascript:;">添加回复</a>
                                         </div>
                                     </div>
@@ -1082,7 +1079,9 @@
             {data:{'type_id':reviewid,'type':3},
                 dataType:"json",
                 success: function(data){
-                    if(data["status"]==1){
+                    if(data["status"]==-1){
+                        window.location.href="../../logins";
+                    }else if(data["status"]==1){
                         $("#zan"+reviewid).removeClass("comments-zan");
                         $("#zan"+reviewid).children(".comments-zan-text").text("已赞");
                         $("#zan"+reviewid).children(".comments-zan-value").text("+"+data['count']);
@@ -1099,6 +1098,36 @@
             }
         )
     }
+    function huifu(replyid) {
+        $.ajax(
+            {data:{'type_id':replyid,'type':4},
+                dataType:"json",
+                success: function(data){
+                    if(data["status"]==1){
+                        $("#hui"+replyid).removeClass("mr20 comments-zan");
+                        $("#hui"+replyid).children(".comments-zan-value").text(+data['count']);
+                        $("#hui"+replyid).addClass("mr20 comments-zan comments-zan--active");
+                    }else{
+                        $("#hui"+replyid).removeClass("mr20 comments-zan comments-zan--active");
+                        $("#hui"+replyid).children(".comments-zan-value").text(data['count']);
+                        $("#hui"+replyid).addClass("mr20 comments-zan");
+                    }
+                },
+                type:'post',
+                url:'../../admire/update'
+            }
+        )
+    }
+    $(function () {
+        $(".comments-item").each(function () {
+            $(this).find(".reply-item--ops").each(function () {
+                if($(this).length != 2 || $(this).length != 1){
+                    $(this).next().remove();
+                }
+            })
+
+        });
+    });
 </script>
 </body>
 </html>

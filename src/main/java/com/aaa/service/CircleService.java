@@ -46,4 +46,10 @@ public class CircleService {
     public List<Circle> queryByCircleid(Integer circleid){
         return cd.queryByCircleid(circleid);
     }
+    public List<Circle> diffTimeBy(Integer[] clableids){
+        return cd.diffTimeBy(clableids);
+    }
+    public List<Circle> queryByClableid2(Integer clableid,Integer page){
+        return cd.queryByClableid2(clableid,page);
+    }
 }

@@ -14,5 +14,8 @@ public class CircletypeService {
     public List<Circletype> queryAll(){
         return cd.queryAll();
     }
+    public List<Circletype> queryByTypeid(Integer typeid){
+        return cd.queryByTypeid(typeid);
+    }
 
 }

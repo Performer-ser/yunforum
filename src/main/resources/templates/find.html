@@ -638,7 +638,7 @@
                             <div class="col-md-4 mb10" th:each="pc:${pci}" th:if="${nets['tname']} eq ${pc['tname']}">
                                 <div class="Media">
                                     <a  th:href="@{'/circle/q/'+${pc['clablename']}}">
-                                        <img class="Media-figure" th:src="@{${pc['cpic']}}" alt=""></a>
+                                        <img class="Media-figure" th:src="@{'yunforum/'+${pc['cpic']}}" alt=""></a>
                                     <div class="Media-body">
                                         <a th:href="@{'/circle/q/'+${pc['clablename']}}"  th:text="@{${pc['clablename']}}"></a>
                                         <small class="text-muted" th:text="@{${pc['count']}}+条圈子"></small>
@@ -651,9 +651,9 @@
             </div>
             <div class="col-xs-12 col-md-3 mb20 mt30">
                 <div class="list-group mb20 hidden-xs">
-                    <a href="/groups/all" class="list-group-item active">全部圈子</a>
-                    <a href="/groups/joined" class="list-group-item ">我关注的圈子</a>
-                    <a href="/groups/started" class="list-group-item ">我管理的圈子</a>
+                    <a href="circle/find" class="list-group-item active">全部圈子</a>
+                    <a href="circle/joined" class="list-group-item">我关注的圈子</a>
+                    <a href="circle/started" class="list-group-item">我管理的圈子</a>
                 </div>
             </div>
         </div>
@@ -686,9 +686,7 @@
                 <dd>
                     <a href="/app?utm_source=sf-footer&utm_medium=footer-nav&utm_campaign=product&utm_content=footer-links-hottest-questions&utm_term=app">移动客户端</a>
                 </dd>
-
             </dl>
-
             <dl class="col-sm-2 site-link">
                 <dt>资源</dt>
                 <dd>
