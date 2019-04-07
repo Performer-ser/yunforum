@@ -71,4 +71,8 @@ public class SpecialService {
         return sd.querya();
     }
 
+    public List<Map<String,Object>> queryPS(Integer userid){return sd.queryPS(userid);}
+    public int queryAtt(Integer perspid){return sd.queryAtt(perspid);}
+    public List<Map<String,Object>> queryAd(Integer userid){return sd.queryAd(userid);}
+    public int queryAA(Integer type_id){return sd.queryAA(type_id);}
 }

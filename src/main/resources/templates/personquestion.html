@@ -790,21 +790,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2">
-                    <div class="mb15 ">
-                        <a class="btn mr10 btn-success userfollow mt10" data-id="1030000007460810">
-                            加关注
-                        </a>
-                        <a class="btn btn-default mt10" data-userid="1030000007460810" data-username="前端小智" href="javascript:void(0);" id="courier" style="width:68px">
-                            发私信
-                        </a>
-                    </div>
+                    <div class="mb15 "><a class="btn mr10 btn-success userfollow mt10" data-id="1030000007460810">
+                        加关注
+                    </a><a class="btn btn-default  mt10" href="javascript:void(0);" id="courier" data-username="前端小智"
+                           data-userid="1030000007460810" style="width:68px">发私信</a></div>
                     <div class="profile__heading-info row">
                         <div class="col-md-6 col-xs-6" style="border-right: 1px solid #eee;">
                             <a href="https://segmentfault.com/u/minnanitkong/users/following">
                                             <span>
                                                 关注了
                                             </span>
-                                <span class="h5">
+                                <span class="h5" th:text="${map.guanzhu}">
                                                 17 人
                                             </span>
                             </a>
@@ -814,7 +810,7 @@
                                             <span>
                                                 粉丝
                                             </span>
-                                <span class="h5">
+                                <span class="h5" th:text="${map.fensi}">
                                                 4121 人
                                             </span>
                             </a>
@@ -827,66 +823,31 @@
                         </li>
                         <li>
                             <a href="https://segmentfault.com/u/minnanitkong">
-                                            <span>
-                                                他的主页
+                                            <span th:text="${session.LoginUser!=null && map.userid==session.LoginUser[0].getUserid()}?'我的主页':'他的主页'">
                                             </span>
                             </a>
                         </li>
                         <li class="active">
                             <a href="https://segmentfault.com/u/minnanitkong/answers">
-                                            <span>
-                                                他的回答
+                                            <span th:text="${session.LoginUser!=null && map.userid==session.LoginUser[0].getUserid()}?'我的回答':'他的回答'">
                                             </span>
-                                <span class="count">
-                                                78
+                                <span class="count" th:text="${map.anwser}!=null?${map.anwser}:''">
                                             </span>
                             </a>
                         </li>
                         <li>
                             <a href="https://segmentfault.com/u/minnanitkong/questions">
-                                            <span>
-                                                他的提问
+                                            <span th:text="${session.LoginUser!=null && map.userid==session.LoginUser[0].getUserid()}?'我的提问':'他的提问'">
                                             </span>
-                                <span class="count">
+                                <span class="count" th:text="${map.question}!=null?${map.question}:''">
                                             </span>
                             </a>
                         </li>
                         <li>
                             <a href="https://segmentfault.com/u/minnanitkong/articles">
-                                            <span>
-                                                他的文章
+                                            <span th:text="${session.LoginUser!=null && map.userid==session.LoginUser[0].getUserid()}?'我的文章':'他的文章'">
                                             </span>
-                                <span class="count">
-                                                97
-                                            </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://segmentfault.com/u/minnanitkong/lives">
-                                            <span>
-                                                他的讲座
-                                            </span>
-                                <span class="count">
-                                                2
-                                            </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://segmentfault.com/u/minnanitkong/notes">
-                                            <span>
-                                                他的笔记
-                                            </span>
-                                <span class="count">
-                                            </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://segmentfault.com/u/minnanitkong/posts">
-                                            <span>
-                                                他的分享
-                                            </span>
-                                <span class="count">
-                                                6
+                                <span class="count" th:text="${map.question}!=null?${map.wenzhang}:''">
                                             </span>
                             </a>
                         </li>
@@ -977,7 +938,7 @@
                     <div class="text-center">
                         <ul class="pagination">
                             <li th:each="aa:${a}" th:classappend="${aa.page}==${aa.ass}?'active':''">
-                                <a th:text="${aa.ass}" th:href="@{'/questions/answers?page='+${aa.ass}}">
+                                <a th:text="${aa.ass}" th:href="@{'/questions/answers?page='+${aa.ass}+'&userid='+${map.userid}}">
                                 </a>
                             </li>
                             <!--<li>-->

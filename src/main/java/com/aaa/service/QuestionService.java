@@ -115,4 +115,5 @@ public class QuestionService {
     public Integer addBrowse(Browse browse){
         return qd.addBrowse(browse);
     }
+    public List<Review> queryAllAnwser(Integer userid){return qd.queryAllAnswer(userid);}
 }

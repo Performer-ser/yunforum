@@ -47,8 +47,19 @@ public class LetterController {
         return "letter";
     }
     @RequestMapping("details")
-    public String details(Integer fromid){
-        System.out.printf(fromid.toString());
+    public String details(Integer fromid,Model model,HttpSession session){
+        List<Userinfo> user=(List<Userinfo>) session.getAttribute("LoginUser");
+        List<Map<String,Object>>  ld=ls.queryDetial(fromid,user.get(0).getUserid());
+        Userinfo uf=ls.queryuserinfo(fromid);
+        System.out.println("asdfasdfdsfdsafdasfdasfafdsfasfdsafdsafdas"+ld);
+        model.addAttribute("ld",ld);
+        model.addAttribute("uf",uf);
         return "ledetails";
+    }
+    @RequestMapping("add")
+    public String add(Integer toid,String tttt,HttpSession session){
+        List<Userinfo> user=(List<Userinfo>) session.getAttribute("LoginUser");
+        ls.add(user.get(0).getUserid(),toid,tttt);
+        return "redirect:details?fromid="+toid;
     }
 }

@@ -17,4 +17,6 @@ public class LetterService {
     public Letter queryLe(Integer fromid){return ld.queryLe(fromid);}
     public Userinfo queryuserinfo(Integer userid){return ld.queryuserinfo(userid);}
     public Integer queryStatus(Integer fromid,Integer toid){return ld.queryStatus(fromid,toid);}
+    public List<Map<String,Object>> queryDetial(Integer fromid,Integer toid){return ld.queryDetail(fromid,toid);}
+    public int add(Integer fromid,Integer toid,String content){return ld.add(fromid,toid,content);}
 }
