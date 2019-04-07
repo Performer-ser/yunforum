@@ -46,10 +46,8 @@ public interface QuestionDao {
     ////查询标签及标签类型根据标签类型id
     @Select("select a.latypeid,a.latypename,b.lableid,b.lablename,b.lablepic,b.describe from latype a left join lable b on a.latypeid = b.latypeid where a.latypename = #{param1}")
     public List<Map<String,Object>> queryLableByLatypeid(String lname);
+
     //添加浏览数据
     @Insert("insert into browse(browseid,type,composeid,userid,browsetime) values(#{browseid},1,#{composeid},'1',SYSDATE())")
     public Integer addBrowse(Browse browse);
-    //查看个人全部回答
-    @Select("select * from review where userid=#{param1} and type=1")
-    public List<Review> queryAllAnswer(Integer userid);
 }
