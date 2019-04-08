@@ -105,7 +105,8 @@ public class SpecialController {
        List<Map<String,Object>> list= ss.queryhottests(pageNum);
        m.addAttribute("list",list);
        m.addAttribute("pageNum",pageNum);
-       return "blogs/hottests";
+       return "blogs" +
+               "/hottests";
    }
    @RequestMapping("newest")
     public String ccc(Model m,Integer pageNum){

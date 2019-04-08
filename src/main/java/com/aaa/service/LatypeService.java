@@ -5,7 +5,6 @@ import com.aaa.dao.LatypeDao;
 import com.aaa.dao.SpecialDao;
 import com.aaa.entity.Lable;
 import com.aaa.entity.Latype;
-import com.sun.corba.se.spi.ior.ObjectKey;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -46,6 +45,10 @@ public class LatypeService {
         List<Map<String,Object>> list = ld.queryBysid(lableid);
         return list;
     }
+    /*public List<Map<String,Object>> queryBysid(String lablename){
+        List<Map<String,Object>> list = ld.queryBysid(lablename);
+        return list;
+    }*/
 
     public List<Map<String,Object>> queryByid(Integer specialid){
         List<Map<String,Object>> list = sd.queryByid(specialid);
@@ -65,4 +68,7 @@ public class LatypeService {
     public int delete(Integer id){
         return ld.delete(id);
     }
+    /*public int addattentiongz(int attentiongzid,int userid,int lableid){
+        return ld.addattentiongz(attentiongzid,userid,lableid);
+    }*/
 }

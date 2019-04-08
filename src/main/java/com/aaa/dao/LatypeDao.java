@@ -42,4 +42,15 @@ public interface LatypeDao {
     public List<Map<String,Object>> querya();
     @Select("select lt.latypename,la.lablename,la.lableid from latype lt left join lable la on lt.latypeid=la.latypeid where la.latypeid=#{param1}")
     public List<Map<String,Object>> queryxg(Integer  latypeid);
+    /**
+     * t页面的关注
+     *//*
+    @Insert("insert into attentiongz(attentiongzid,userid,lableid) values(#{attentiongzid},#{userid},#{lableid})")
+    public int addattentiongz(int attentiongzid,int userid,int lableid);
+    *//**
+     * t页面取消关注
+     *//*
+    @Delete("delete from attentiongz where attentiongzid=#{param1}")
+    public int delattentiongz(Integer attentiongzid);*/
+
 }

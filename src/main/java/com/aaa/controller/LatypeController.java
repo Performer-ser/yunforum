@@ -64,6 +64,11 @@ public class LatypeController {
         System.out.println(queryxg);
         return "t";
     }
+    /*@RequestMapping("adds")
+    public int addattentiongz(int attentiongzid,int userid,int lableid){
+        return lts.addattentiongz(attentiongzid,userid,lableid);
+    }*/
+
 
     @RequestMapping(value = "a/{specialid}")
     public String queryByid(Model m ,@PathVariable Integer specialid){
@@ -75,6 +80,7 @@ public class LatypeController {
         System.out.println(list);
         return "a";
     }
+
 
 
     @RequestMapping("querys")
