@@ -1,6 +1,7 @@
 package com.aaa.service;
 
 import com.aaa.dao.PerspecialDao;
+import com.aaa.entity.Lable;
 import com.aaa.entity.Latype;
 import com.aaa.entity.Perspecial;
 import com.aaa.entity.Special;
@@ -25,10 +26,13 @@ public class PerspecialService {
         return pd.queryLatype();
     }
 
-    public List<Map<String,Object>> queryLableByLatypeid(String lname){
-        return pd.queryLableByLatypeid(lname);
+    public List<Lable> queryLable(){
+        return pd.queryLable();
     }
     public void addspe(Special spe){
         pd.addspe(spe);
+    }
+    public List<Lable> querylablename(String lablename){
+        return pd.querylablename(lablename);
     }
 }

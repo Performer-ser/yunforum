@@ -6,6 +6,7 @@ import com.aaa.entity.Special;
 import com.aaa.entity.Userinfo;
 import com.aaa.service.UserinfoService;
 /*import com.aaa.util.JuheDemo;*/
+import com.aaa.util.IdUtils;
 import com.aaa.util.JsonMapper;
 import com.aaa.util.JuheDemo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,8 @@ public class UserinfoController {
     @RequestMapping("register")
     @ResponseBody
     public Integer register(Userinfo u){
+        String randomIdByUUID = IdUtils.getRandomIdByUUID();
+        u.setUsername(randomIdByUUID);
         Integer a =us.register(u);
         System.out.println(a);
         return a;

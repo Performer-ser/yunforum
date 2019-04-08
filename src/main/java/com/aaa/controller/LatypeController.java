@@ -2,7 +2,9 @@ package com.aaa.controller;
 
 import com.aaa.entity.Lable;
 import com.aaa.entity.Latype;
+import com.aaa.entity.Userinfo;
 import com.aaa.service.LatypeService;
+import com.aaa.service.MessageService;
 import com.aaa.service.SpecialService;
 import com.aaa.util.JsonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +27,8 @@ public class LatypeController {
     LatypeService lts;
     @Autowired
     SpecialService ss;
+    @Autowired
+    MessageService ms;
 
 
     @RequestMapping("query")
@@ -64,10 +69,7 @@ public class LatypeController {
         System.out.println(queryxg);
         return "t";
     }
-    /*@RequestMapping("adds")
-    public int addattentiongz(int attentiongzid,int userid,int lableid){
-        return lts.addattentiongz(attentiongzid,userid,lableid);
-    }*/
+
 
 
     @RequestMapping(value = "a/{specialid}")
@@ -109,6 +111,34 @@ public class LatypeController {
     @ResponseBody
     public int delete(Integer latypeid){
         return lts.delete(latypeid);
+    }
+
+    @RequestMapping("attentionspe")
+    @ResponseBody
+    public int attentionspe(Integer perspid, HttpSession session){
+        List<Userinfo> login=(List<Userinfo>) session.getAttribute("LoginUser");
+        int result=0;
+        if(ms.queryAllSpe(perspid,login.get(0).getUserid()).size()==0){
+            result=ms.addSpe(perspid,login.get(0).getUserid());
+        }else{
+            ms.delSpe(perspid,login.get(0).getUserid());
+            result=0;
+        }
+        return result;
+    }
+
+    @RequestMapping("attentionlab")
+    @ResponseBody
+    public int attentionlab(Integer lableid,HttpSession session){
+        List<Userinfo> login=(List<Userinfo>) session.getAttribute("LoginUser");
+        int result=0;
+        if(ms.queryAllLab(lableid,login.get(0).getUserid()).size()==0){
+            result=ms.addLab(lableid,login.get(0).getUserid());
+        }else{
+            ms.delLab(lableid,login.get(0).getUserid());
+            result=0;
+        }
+        return result;
     }
 
 }

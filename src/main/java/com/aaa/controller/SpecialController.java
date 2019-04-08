@@ -4,6 +4,7 @@ package com.aaa.controller;
 import com.aaa.entity.Lable;
 import com.aaa.entity.Slable;
 import com.aaa.entity.Userinfo;
+import com.aaa.service.MessageService;
 import com.aaa.service.SlableService;
 import com.aaa.service.SpecialService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class SpecialController {
     SpecialService ss;
     /*@Autowired
     SlableService sls;*/
+    @Autowired
+    MessageService ms;
 
     //推荐的标题
     @RequestMapping("query")
@@ -118,5 +121,18 @@ public class SpecialController {
        m.addAttribute("pageNum",pageNum);
        return "blogs/newest";
    }
+    @RequestMapping("attentionspe")
+    @ResponseBody
+    public int attentionspe(Integer perspid,HttpSession session){
+        List<Userinfo> login=(List<Userinfo>) session.getAttribute("LoginUser");
+        int result=0;
+        if(ms.queryAllSpe(perspid,login.get(0).getUserid()).size()==0){
+            result=ms.addSpe(perspid,login.get(0).getUserid());
+        }else{
+            ms.delSpe(perspid,login.get(0).getUserid());
+            result=0;
+        }
+        return result;
+    }
 
 }

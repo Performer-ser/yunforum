@@ -1,8 +1,6 @@
 package com.aaa.controller;
 
-import com.aaa.entity.Latype;
-import com.aaa.entity.Perspecial;
-import com.aaa.entity.Special;
+import com.aaa.entity.*;
 import com.aaa.service.PerspecialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
@@ -25,8 +24,10 @@ public class Perspecialcontroller {
    }
     @RequestMapping("adds")
     @ResponseBody
-    public Integer adds(Perspecial per){
-        per.setUserid(1);
+    public Integer adds(Perspecial per,HttpSession session){
+        List<Userinfo> login=(List<Userinfo>) session.getAttribute("LoginUser");
+        //per.setUserid(1);
+        per.setUserid(login.get(0).getUserid());
         System.out.println(per.getPerspdescribe());
         System.out.println(per.getPerspname());
         pes.add(per);
@@ -37,12 +38,11 @@ public class Perspecialcontroller {
        List<Perspecial> list= pes.queryPerspecial();
        m.addAttribute("list",list);
         List<Latype> list1 = pes.queryLatype();
-        for (Latype lt:list1){
-            String s = lt.getLatypename().toString();
-            List<Map<String, Object>> lists = pes.queryLableByLatypeid(s);
+
+            List<Lable> lists = pes.queryLable();
             m.addAttribute("lists",lists);
             System.out.println("lists"+lists);
-        }
+
         m.addAttribute("list1",list1);
         System.out.println("list1"+list1);
 
@@ -50,11 +50,14 @@ public class Perspecialcontroller {
     }
     @RequestMapping("add2")
     @ResponseBody
-    public Integer add2(Special spe,String lableName){
+    public Integer add2(HttpSession session,Special spe, String lablename){
         System.out.println("spe = " + spe);
-        System.out.println("lableName = " + lableName);
+        List<Userinfo> login=(List<Userinfo>) session.getAttribute("LoginUser");
+        spe.setLableid(pes.querylablename(lablename).get(0).getLableid());
+        System.out.println("lableName = " + lablename);
                 /*spe.setLableid(5)*/;
-        spe.setUserid(1);
+        //spe.setUserid(1);
+        spe.setUserid(login.get(0).getUserid());
         pes.addspe(spe);
        return 1;
     }

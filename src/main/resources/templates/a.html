@@ -42,6 +42,8 @@
         ParadigmSDK.trackDetailPageShow();</script>
     <link rel="preload" href="../../a_files/f.txt" as="script">
     <script type="text/javascript" src="../../a_files/f.txt"></script>
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}"></script>
+    <link rel="stylesheet" th:href="@{/lib/layui/css/layui.css}" media="all"/>
     <link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/r20190304/r20190131/show_ads_impl.js"
           as="script">
 </head><!-- 推荐引擎 -->
@@ -54,29 +56,57 @@
 <div id="gridMapHoverBox"
      style="position:absolute; border: 1px solid #009a61; z-index:99; font-size: 10px; background:#fff"></div>
 <div class="global-nav sf-header sf-header--index">
-    <div class="bottom-nav visible-xs visible-sm">
-        <div class="opts"><a class="opts-group " href="https://segmentfault.com/">
-            <i class="fa fa-home" aria-hidden="true"></i>
-            <span>首页</span></a>
-            <a class="opts-group " href="https://segmentfault.com/questions">
-                <i class="fa fa-comments" aria-hidden="true"></i>
-                <span>问答</span></a>
-            <a class="opts-group active" href="https://segmentfault.com/blogs">
-                <i class="fa fa-pencil-square" aria-hidden="true"></i>
-                <span>专栏</span></a>
-            <a class="opts-group " href="https://segmentfault.com/lives">
-                <i class="fa fa-play-circle" aria-hidden="true"></i>
-                <span>讲堂</span></a>
+    <div class="bottom-nav visible-xs visible-sm hidden">
+        <div class="opts">
+            <a class="opts-group " href="http://localhost:8080/yunforum/specials/query">
+                <i aria-hidden="true" class="fa fa-home">
+                </i>
+                <span>
+                                首页
+                            </span>
+            </a>
+            <a class="opts-group " href="http://localhost:8080/yunforum/questions/questions">
+                <i aria-hidden="true" class="fa fa-comments">
+                </i>
+                <span>
+                                问答
+                            </span>
+            </a>
+            <a class="opts-group " href="https://segmentfault.com/blogs">
+                <i aria-hidden="true" class="fa fa-pencil-square">
+                </i>
+                <span>
+                                专栏
+                            </span>
+            </a>
             <div class="opts-group">
                 <div class="btn-group dropup">
-                    <i class="fa fa-bars dropdown hoverDropdown" data-toggle="dropdown" aria-hidden="true">
-                        <span>更多</span></i>
+                    <i aria-hidden="true" class="fa fa-bars dropdown hoverDropdown" data-toggle="dropdown">
+                                    <span>
+                                        更多
+                                    </span>
+                    </i>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="https://segmentfault.com/jobs">职位</a></li>
-                        <li><a href="https://segmentfault.com/events">活动</a></li>
-                        <li><a href="https://segmentfault.com/tags">标签</a></li>
-                        <li><a href="https://segmentfault.com/badges">徽章</a></li>
+                            <a href="https://segmentfault.com/jobs">
+                                职位
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://segmentfault.com/events">
+                                活动
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://segmentfault.com/tags">
+                                标签
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://segmentfault.com/badges">
+                                徽章
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -85,89 +115,529 @@
     <nav class="container nav">
         <div class="visible-xs visible-sm header-response">
             <a href="https://segmentfault.com/search" style="display:block">
-                <i class="fa fa-search" aria-hidden="true"></i></a>
+                <i aria-hidden="true" class="fa fa-search">
+                </i>
+            </a>
             <div class="sf-header__logo sf-header__logo--response">
-                <h1><a href="https://segmentfault.com/" style="height:24px; background-size: auto 24px;"></a></h1>
+                <h1>
+                    <a href="https://segmentfault.com/" style="height:24px; background-size: auto 24px;">
+                    </a>
+                </h1>
             </div>
-            <a href="https://segmentfault.com/user/login" class="pull-right login-btn">
-                <i class="fa fa-user" aria-hidden="true"></i></a></div>
-        <script>
-            mobileScroll(
-                function (direction) {
-                    try {
-                        if (direction === 'down') {
-                            document.querySelector('.bottom-nav').classList.add('hidden')
-                        } else {
-                            document.querySelector('.bottom-nav').classList.remove('hidden')
-                        }
-                    } catch (err) {
-                    }
-                }
-            );
+            <div class="opts">
+                <li class="opts__item user dropdown hoverDropdown">
+                    <a class="dropdownBtn user-avatar" data-toggle="dropdown" href="https://segmentfault.com/u/jianao" style="background-image: url('https://avatar-static.segmentfault.com/159/699/1596994257-5c943ea0b02e8_big64');">
+                    </a>
+                    <div class="dropdown-avatar-menu hidden">
+                        <div class="menu-score">
+                                        <span class="score pull-left ml20 mr10">
+                                            0 声望
+                                        </span>
+                            <div class="">
+                                            <span class="badge badge--o badge--sf badge--gold">
+                                                <i class="badge__icon">
+                                                </i>
+                                            </span>
+                                <span class="profile__sidebar--award-badge-count">
+                                                0
+                                            </span>
+                                <span class="badge badge--o badge--sf badge--silver">
+                                                <i class="badge__icon">
+                                                </i>
+                                            </span>
+                                <span class="profile__sidebar--award-badge-count">
+                                                0
+                                            </span>
+                                <span class="badge badge--o badge--sf badge--bronze">
+                                                <i class="badge__icon">
+                                                </i>
+                                            </span>
+                                <span class="profile__sidebar--award-badge-count">
+                                                1
+                                            </span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="container-fluid">
+                            <div class="menu-list row">
+                                <div class="col-md-6 col-xs-6 pl0 pr0">
+                                    <ul>
+                                        <li class="message-response visible-xs">
+                                            <a href="https://segmentfault.com/user/notifications" id="messageCount-response">
+                                                通知提醒
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/u/jianao/notes">
+                                                我的笔记
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/u/jianao/bookmarks">
+                                                我的收藏
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/user/invited">
+                                                受邀回答
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/experts">
+                                                付费问答
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 col-xs-6 pl0 pr0">
+                                    <ul>
+                                        <li class="letter-response visible-xs">
+                                            <a href="https://segmentfault.com/user/messages" id="letterCount-response">
+                                                私信消息
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/u/jianao">
+                                                我的主页
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/u/jianao/about">
+                                                我的档案
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/user/finance">
+                                                我的资产
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/user/settings">
+                                                个人设置
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://segmentfault.com/api/user/logout?_=06e96beae137f919d04adeb1ba5fb5d4">
+                                                退出
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="menu-footer">
+                            <a class="js__action--complain" href="javascript:void(0);">
+                                                    <span>
+                                                        用户申诉
+                                                    </span>
+                            </a>
+                            ·
+                            <a href="https://segmentfault.com/g/1570000009280187">
+                                                    <span>
+                                                        建议反馈
+                                                    </span>
+                            </a>
+                            ·
+                            <a href="https://segmentfault.com/user/invitation">
+                                                    <span>
+                                                        邀请朋友
+                                                    </span>
+                            </a>
+                        </div>
+                        </hr>
+                        </hr>
+                    </div>
+                </li>
+                <li class="opts__item dropdown hoverDropdown write-btns mt0">
+                    <a class="dropdownBtn" data-toggle="dropdown" href="https://segmentfault.com/ask">
+                        <i aria-hidden="true" class="fa fa-plus" style="margin-top: 7px">
+                        </i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right ">
+                        <li>
+                            <a href="https://segmentfault.com/ask">
+                                提问题
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://segmentfault.com/write">
+                                写文章
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://segmentfault.com/record">
+                                记笔记
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </div>
 
-            function mobileScroll(fn) {
-                var beforeScrollTop = document.documentElement.scrollTop || document.body.scrollTop,
-                    fn = fn || function () {
-                    };
-                window.addEventListener("scroll", function () {
-                    var afterScrollTop = document.documentElement.scrollTop || document.body.scrollTop,
-                        delta = afterScrollTop - beforeScrollTop;
-                    if (delta === 0) return false;
-                    fn(delta > 0 ? "down" : "up");
-                    beforeScrollTop = afterScrollTop;
-                }, false);
-            }
-        </script>
         <div class="row hidden-xs hidden-sm">
             <div class="col-sm-8 col-md-9 col-lg-9">
-                <div class="sf-header__logo"><h1><a href="https://segmentfault.com/">SegmentFault</a></h1></div>
+                <div class="sf-header__logo">
+                    <h1>
+                        <a href="https://segmentfault.com/">
+                            SegmentFault
+                        </a>
+                    </h1>
+                </div>
                 <div>
                     <ul class="menu list-inline pull-left hidden-xs">
-                        <li class="menu__item"><a href="https://segmentfault.com/" class="">首页</a></li>
-                        <li class="menu__item"><a href="https://segmentfault.com/questions" class="">问答</a></li>
-                        <li class="menu__item"><a href="https://segmentfault.com/blogs" class="active-nav">专栏</a></li>
-                        <li class="menu__item"><a class=" " href="https://segmentfault.com/lives">讲堂</a></li>
-                        <li class="menu__item"><a href="https://segmentfault.com/groups" class="">圈子</a></li>
-                        <li class="menu__item menu__item--more dropdown"><a
-                                href="https://segmentfault.com/a/1190000018425629##" class="dropdown-toggle dropdownBtn"
-                                data-toggle="dropdown">
-                            发现<i class="fa fa-caret-down" style="font-size: 14px;margin-left: 5px;"
-                                 aria-hidden="true"></i></a>
-                            <div class="dropdown-block hidden">
+                        <li class="menu__item">
+                            <a class="" href="http://localhost:8080/yunforum/specials/query">
+                                首页
+                            </a>
+                        </li>
+                        <li class="menu__item">
+                            <a class="" href="http://localhost:8080/yunforum/questions/questions">
+                                问答
+                            </a>
+                        </li>
+                        <li class="menu__item">
+                            <a class="" href="https://segmentfault.com/blogs">
+                                专栏
+                            </a>
+                        </li>
+                        <li class="menu__item">
+                            <a class="" href="http://localhost:8080/yunforum/circle/circle">
+                                圈子
+                            </a>
+                        </li>
+                        <li class="menu__item menu__item--more dropdown"  onmouseover="f()" onmouseout="ff()">
+                            <a class="dropdown-toggle dropdownBtn" data-toggle="dropdown" href="https://segmentfault.com/u/minnanitkong/answers##">
+                                <script>
+                                    function f() {
+                                        $("#aaa").prop('class','dropdown-block');
+                                    } function ff() {
+                                        $("#aaa").prop('class','dropdown-block hidden');
+                                    }
+                                </script>
+                                发现
+                                <span class="caret" style="font-size: 14px;margin-left: 5px;">
+                                </span>
+                            </a>
+                            <div id="aaa" class="dropdown-block hidden">
                                 <ul class="dropdown-content-menu">
-                                    <li><a href="https://segmentfault.com/events">活动</a></li>
-                                    <li><a href="https://segmentfault.com/tags">标签</a></li>
-                                    <li><a href="https://segmentfault.com/jobs">找工作</a></li>
-                                    <li><a href="https://segmentfault.com/users">排行榜</a></li>
-                                    <li><a href="https://segmentfault.com/badges">徽章</a></li>
-                                    <li><a href="https://segmentfault.com/notes">笔记</a></li>
-                                    <li><a href="https://docs.segmentfault.com/" target="_blank">开发手册<i
-                                            style="line-height: 20px;font-size: 12px;color: #F5A623;"
-                                            class="ml10 fa fa-external-link-square"></i></a></li>
-                                    <li><a href="https://business.segmentfault.com/ads?utm_source=sf-header"
-                                           target="_blank">广告投放<i
-                                            style="line-height: 20px;font-size: 12px;color: #F5A623;"
-                                            class="ml10 fa fa-external-link-square"></i></a></li>
+                                    <li>
+                                        <a href="https://segmentfault.com/events">
+                                            活动
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://segmentfault.com/tags">
+                                            标签
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://segmentfault.com/groups?tab=jobs">
+                                            酷工作
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://segmentfault.com/users">
+                                            排行榜
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://segmentfault.com/badges">
+                                            徽章
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://segmentfault.com/notes">
+                                            笔记
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://docs.segmentfault.com/" target="_blank">
+                                            开发手册
+                                            <i class="ml10 fa fa-external-link-square" style="line-height: 20px;font-size: 12px;color: #F5A623;">
+                                            </i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://business.segmentfault.com/ads?utm_source=sf-header" target="_blank">
+                                            广告投放
+                                            <i class="ml10 fa fa-external-link-square" style="line-height: 20px;font-size: 12px;color: #F5A623;">
+                                            </i>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
-                        <li class="menu__item visible-sm-inline-block"><a href="https://segmentfault.com/search"><span
-                                class="glyphicon glyphicon-search" style="vertical-align: middle;"></span></a></li>
+                        <li class="menu__item visible-sm-inline-block">
+                            <a href="https://segmentfault.com/search">
+                                            <span class="glyphicon glyphicon-search" style="vertical-align: middle;">
+                                            </span>
+                            </a>
+                        </li>
                     </ul>
-                    <form action="https://segmentfault.com/search"
-                          class="header-search  hidden-sm hidden-xs pull-right">
-                        <button class="btn btn-link"><span class="sr-only">搜索</span><span
-                                class="glyphicon glyphicon-search"></span></button>
-                        <input id="searchBox" name="q" type="text" placeholder="搜索问题或关键字" class="form-control" value="">
+                    <form action="https://segmentfault.com/search" class="header-search hidden-sm hidden-xs pull-right">
+                        <button class="btn btn-link">
+                                        <span class="sr-only">
+                                            搜索
+                                        </span>
+                            <i class="layui-icon layui-icon-search" style="font-size: 15px;"></i>
+                            </span>
+                        </button>
+                        <input class="form-control" id="searchBox" name="q" placeholder="搜索问题或关键字" type="text" value=""/>
                     </form>
                 </div>
             </div>
-            <div class="col-sm-4 col-md-3 col-lg-3 text-right">
+            <!--登陆注册-->
+            <div class="col-sm-4 col-md-3 col-lg-3 text-right" id="loginAndRegister" th:if="${session.LoginUser==null}">
                 <ul class="opts list-inline hidden-xs">
-                    <li class="opts__item"><a href="https://segmentfault.com/user/login" class="SFRegister btn-signin"
-                                              style="margin-bottom:2px;">立即登录</a><a
-                            href="https://segmentfault.com/user/register" class="SFLogin ml10 btn-signup"
-                            onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Button&#39;, &#39;Click&#39;, &#39;Login&#39;]);">免费注册</a>
+                    <li class="opts__item"><a href="http://localhost:8080/yunforum/logins" style="margin-bottom:2px;">立即登录</a> <a class="SFLogin ml10 btn-signup" href="register" onclick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">免费注册</a> </li>
+                </ul>
+            </div>
+
+
+            <div class="col-sm-4 col-md-3 col-lg-3 text-right" id="LoginThan" th:if="${session.LoginUser!=null}">
+                <ul class="opts list-inline hidden-xs">
+                    <li class="opts__item dropdown hoverDropdown write-btns visible-lg-inline-block">
+                        <div id="dsd" class="btn-group" >
+                            <button aria-expanded="false" aria-haspopup="true" class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+                                创建
+                                <span class="caret">
+                                            </span>
+                            </button>
+                            <script>
+                                $('body').on('click',function(e){
+                                    var target = $(e.target);
+                                    // 如果#overlay或者#btn下面还有子元素，可使用
+                                    // !target.is('#btn *')
+                                    if(target.is('#dsd *')){
+                                        $('#dsd').prop("class","btn-group open")
+                                    }else{
+                                        $('#dsd').prop("class","btn-group")
+                                    }
+                                })
+                            </script>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="https://segmentfault.com/ask">
+                                        提问题
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://segmentfault.com/submit">
+                                        发头条
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://segmentfault.com/write">
+                                        写文章
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://segmentfault.com/record">
+                                        记笔记
+                                    </a>
+                                </li>
+                                <li class="divider" role="separator">
+                                </li>
+                                <li>
+                                    <a href="https://segmentfault.com/user/draft">
+                                        草稿箱
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="opts__item dropdown hoverDropdown write-btns visible-md-inline-block">
+                        <a class="dropdownBtn" data-toggle="dropdown" href="https://segmentfault.com/ask">
+                            <i aria-hidden="true" class="fa fa-plus">
+                            </i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right ">
+                            <li>
+                                <a href="https://segmentfault.com/ask">
+                                    提问题
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://segmentfault.com/submit">
+                                    发头条
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://segmentfault.com/write">
+                                    写文章
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://segmentfault.com/record">
+                                    记笔记
+                                </a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="https://segmentfault.com/user/draft">
+                                    草稿箱
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="opts__item message has-unread hidden-sm ml10"  id="dLabel">
+                        <a class="dropdown-toggle-message" href="javascript:void(0);">
+                                        <span class="sr-only">
+                                            消息
+                                        </span>
+                            <i class="layui-icon layui-icon-notice" style="font-size: 20px"></i>
+                        </a>
+                    </li>
+                    <li class="opts__item letter has-unread hidden-sm">
+                        <a class="dropdown-toggle-letter" href="javascript:void(0);" id="lLabel">
+                            <i class="layui-icon layui-icon-chat" style="font-size: 20px"></i>
+                            <span class="has-unread__count">1</span>
+                        </a>
+                    </li>
+                    <style>
+                        @media (max-width: 1200px) {
+                            .trialCenter-wrapper {
+                                display: none !important;
+                            }
+                        }
+                    </style>
+                    <li class="opts__item user dropdown hoverDropdown ml0" id="aab">
+                        <a class="avatar-* dropdownBtn user-avatar" data-toggle="dropdown" src="https://avatar-static.segmentfault.com/159/699/1596994257-5c943ea0b02e8_big64" th:style="'background-image: url('+${session.LoginUser==null?'https://avatar-static.segmentfault.com/159/699/1596994257-5c943ea0b02e8_big64':'http://localhost:8080/yunforum/image/'+session.LoginUser[0].head}+');'">
+                        </a>
+                        <script>
+                            $('body').on('click',function(e){
+                                var target = $(e.target);
+                                // 如果#overlay或者#btn下面还有子元素，可使用
+                                // !target.is('#btn *')
+                                if(target.is('#aab *')){
+                                    $('#dds').prop("class","dropdown-avatar-menu")
+                                }else{
+                                    $('#dds').prop("class","dropdown-avatar-menu hidden")
+                                }
+                            })
+                        </script>
+                        <div id="dds" class="dropdown-avatar-menu hidden">
+                            <div class="menu-score">
+                                            <span class="score pull-left ml20 mr10">
+                                                0 声望
+                                            </span>
+                                <div class="">
+                                                <span class="badge badge--o badge--sf badge--gold">
+                                                    <i class="badge__icon">
+                                                    </i>
+                                                </span>
+                                    <span class="profile__sidebar--award-badge-count">
+                                                    0
+                                                </span>
+                                    <span class="badge badge--o badge--sf badge--silver">
+                                                    <i class="badge__icon">
+                                                    </i>
+                                                </span>
+                                    <span class="profile__sidebar--award-badge-count">
+                                                    0
+                                                </span>
+                                    <span class="badge badge--o badge--sf badge--bronze">
+                                                    <i class="badge__icon">
+                                                    </i>
+                                                </span>
+                                    <span class="profile__sidebar--award-badge-count">
+                                                    1
+                                                </span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="container-fluid">
+                                <div class="menu-list row">
+                                    <div class="col-md-6 col-xs-6 pl0 pr0">
+                                        <ul>
+                                            <li class="message-response visible-xs">
+                                                <a href="https://segmentfault.com/user/notifications" id="messageCount-response">
+                                                    通知提醒
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://segmentfault.com/u/jianao/notes">
+                                                    我的笔记
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://segmentfault.com/u/jianao/bookmarks">
+                                                    我的收藏
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://segmentfault.com/user/invited">
+                                                    受邀回答
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://segmentfault.com/experts">
+                                                    付费问答
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 pl0 pr0">
+                                        <ul>
+                                            <li class="letter-response visible-xs">
+                                                <a href="https://segmentfault.com/user/messages" id="letterCount-response">
+                                                    私信消息
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://segmentfault.com/u/jianao">
+                                                    我的主页
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://segmentfault.com/u/jianao/about">
+                                                    我的档案
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://segmentfault.com/user/finance">
+                                                    我的资产
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://segmentfault.com/user/settings">
+                                                    个人设置
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://segmentfault.com/api/user/logout?_=06e96beae137f919d04adeb1ba5fb5d4">
+                                                    退出
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="menu-footer">
+                                <a class="js__action--complain" href="javascript:void(0);">
+                                                        <span>
+                                                            用户申诉
+                                                        </span>
+                                </a>
+                                ·
+                                <a href="https://segmentfault.com/g/1570000009280187">
+                                                        <span>
+                                                            建议反馈
+                                                        </span>
+                                </a>
+                                ·
+                                <a href="https://segmentfault.com/user/invitation">
+                                                        <span>
+                                                            邀请朋友
+                                                        </span>
+                                </a>
+                            </div>
+                            </hr>
+                            </hr>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -214,11 +684,12 @@
 
     </div>
 
+
     <div class="container mt15" style="position:relative">
         <div class="row">
             <div class="col-xs-12 col-md-9 main ">
                 <ol class="breadcrumb mb15">
-                    <li><a href="https://segmentfault.com/blogs">专栏</a></li>
+                    <li><a href="http://localhost:8080/yunforum/specials/blogs">专栏</a></li>
                     <li><a href="https://segmentfault.com/blog/flutter-io" th:text="${list.username}"></a></li>
                     <li class="active">文章详情</li>
                 </ol>
@@ -246,13 +717,12 @@
                                                     <img src="../../a_files/rp.svg" class="mr5"><span
                                                         style="color:#BF7158" class="mr10">120</span>
                                                     发布于
-                                                    <a href="" th:text="${list.lablename}"></a>
+                                                    <a href="" th:text="${list.perspdescribe}"></a>
                                                     <span class="hidden-xs">
-                                                    <button type="button"
+                                                    <input type="button" th:id="${list.perspid}"
                                                             class="btn btn-xs btn-success follow-article ml10"
                                                             data-do="follow" data-type="blog"
-                                                            data-id="1200000017940515">关注专栏
-                                                       </button>
+                                                                        data-id="1200000017940515" onclick="guanzhuzhuanlan(this)" th:value="关注专栏"/>
                                                 </span>
                                                 </div>
                                                 <span style="display: block">
@@ -276,7 +746,7 @@
                                                     <a class="tag" href="https://segmentfault.com/t/flutter/blogs"
                                                        data-toggle="popover" data-img="" data-placement="top"
                                                        data-original-title="flutter" data-id="1040000014898996"
-                                                       th:text="${list.username}">
+                                                       th:text="${list.lablename}">
                                                     </a>
                                                 </li>
                                             </ul>
@@ -363,9 +833,6 @@
                     <button type="button" id="mainLike" data-id="1190000018425629" class="btn btn-success btn-lg mr15 ">
                         <span id="mainLikeText">赞</span>&nbsp;&nbsp;<span class="seprator">|</span>&nbsp;&nbsp;
                         <span id="mainLikeNum">14 </span></button>
-                    <button type="button" id="mainBookmark" data-type="article" data-id="1190000018425629"
-                            class="btn btn-default btn-lg "><span id="mainBookmarkText">收藏</span>&nbsp;&nbsp;<span
-                            class="seprator">|</span>&nbsp;&nbsp;<span id="mainBookmarkNum">7</span></button>
                 </div>
                 <script type="text/javascript">
                     OA_show(3);
@@ -411,12 +878,12 @@
                 <div id="paradigm-article-related" th:each="q:${querya}">
                     <div class="recommend-post mb30">
                         <ul class="widget-links">
-                           <!-- th:href="@{'/latype/t/'+${l.lableid}}"-->
+
                             <li><a th:href="@{'/specials/a/'+${q.specialid}}"
                                    th:title="${q.title}"
-                                   target="_blank" th:text="${q.title}"><!--OpenResty Web框架lor发布0.1.0稳定版--></a>
-                                <span class="text-muted" th:text="${q.username}"><!--sumory--></span>
-                                <!--th:href="@{'/latype/t/'+${list.lableid}}"-->
+                                   target="_blank" th:text="${q.title}"></a>
+                                <span class="text-muted" th:text="${q.username}"></span>
+
                                 <a class="tag" taget="_blank" th:href="@{'/latype/t/'+${q.lableid}}" th:text="${q.lablename}"><!--mvc--></a>
                             </li>
 
@@ -469,33 +936,7 @@
 
             <div class="col-md-3 side hidden-sm hidden-xs mt30" style="height: 4460px;">
 
-                <div class="mb25 hidden-md hidden-sm hidden-xs">
-                    <img src="../../a_files/20190308.png" alt="Planets" usemap="#gridsMap" width="255" height="136">
-                    <map name="gridsMap" id="gridsMap">
-                        <area shape="rect" target="_blank" onmouseover="SFGridAd.d(this)" onmouseout="SFGridAd.e(this)"
-                              onclick="SFGridAd.c(1750000018316599)" coords="221,0,255,34"
-                              href="https://www.3tee.cn/index.html?source=segmentfault"
-                              stitle="纯浏览器视频通讯（WebRTC），快速嵌入，浙江大华股份等都在用">
-                        <area shape="rect" target="_blank" onmouseover="SFGridAd.d(this)" onmouseout="SFGridAd.e(this)"
-                              onclick="SFGridAd.c(1750000018316831)" coords="102,68,153,85"
-                              href="https://www.fundebug.com/?utm_source=sf_lattice_ad" stitle="一行代码搞定BUG监控">
-                        <area shape="rect" target="_blank" onmouseover="SFGridAd.d(this)" onmouseout="SFGridAd.e(this)"
-                              onclick="SFGridAd.c(1750000018391184)" coords="170,34,187,51"
-                              href="http://lidamao.com/?refer=sf" stitle="特师文集,徐徐德味">
-                        <area shape="rect" target="_blank" onmouseover="SFGridAd.d(this)" onmouseout="SFGridAd.e(this)"
-                              onclick="SFGridAd.c(1750000018404262)" coords="119,34,136,51"
-                              href="https://github.com/d2-projects/d2-admin" stitle="开源中台前端脚手架">
-                        <area shape="rect" target="_blank" onmouseover="SFGridAd.d(this)" onmouseout="SFGridAd.e(this)"
-                              onclick="SFGridAd.c(1750000018407655)" coords="17,51,51,85" href="https://enhancer.io/"
-                              stitle="写SQL就能完成系统开发，简单，快速，强大！">
-                        <area shape="rect" target="_blank" onmouseover="SFGridAd.d(this)" onmouseout="SFGridAd.e(this)"
-                              onclick="SFGridAd.c(1750000018414920)" coords="68,102,119,119"
-                              href="https://fapiao.easyapi.com/" stitle="EasyAPI发票管理，让您的产品网站、电商平台立支持开具电子发票功能">
-                    </map>
-                    <div style="text-align: center;"><a style="text-align:center; color:#9E9E9E; font-size:12px"
-                                                        href="https://segmentfault.com/sponsor">想在上方展示你的广告？</a></div>
-                    <script async="" src="../../a_files/20190308.js.下载"></script>
-                </div>
+
 
                 <style>
                     .job-recommend-area a:not(:last-of-type) {
@@ -507,72 +948,7 @@
                         text-decoration: none;
                     }
                 </style>
-                <div class="hidden-md">
-                    <div class="job-recommend">
-                        <h3 class="job-title">推广链接</h3>
-                        <div class="job-recommend-area">
-                            <script type="text/javascript">
-                                OA_show(7);
-                                OA_show(9);
-                                OA_show(10);
-                                OA_show(15);
-                                OA_show(16);
-                            </script>
-                            <a href="https://sponsor.segmentfault.com/ck.php?oaparams=2__bannerid=56__zoneid=7__cb=eb38d772f7__oadest=https%3A%2F%2Fsegmentfault.com%2Fls%2F1650000011318558"
-                               target="_blank"><strong>大神的PHP 进阶之路</strong><br>
-                                <small style="color: #999">亿级 PV 项目的架构梳理，性能提升实战</small>
-                            </a>
-                            <div id="beacon_eb38d772f7"
-                                 style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img
-                                    src="../../a_files/lg(3).php" width="0" height="0" alt=""
-                                    style="width: 0px; height: 0px;"></div>
-                            <a href="https://sponsor.segmentfault.com/ck.php?oaparams=2__bannerid=57__zoneid=9__cb=f1222c828a__oadest=https%3A%2F%2Fsegmentfault.com%2Fls%2F1650000011387052"
-                               target="_blank"><strong> Java 微服务实践课</strong><br>
-                                <small style="color: #999">上千人学习过的微服务实栈课</small>
-                            </a>
-                            <div id="beacon_f1222c828a"
-                                 style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img
-                                    src="../../a_files/lg(4).php" width="0" height="0" alt=""
-                                    style="width: 0px; height: 0px;"></div>
-                            <div id="beacon_d3a122628e"
-                                 style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img
-                                    src="../../a_files/lg(5).php" width="0" height="0" alt=""
-                                    style="width: 0px; height: 0px;"></div>
-                            <div id="beacon_b9b7fcfc3d"
-                                 style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img
-                                    src="../../a_files/lg(6).php" width="0" height="0" alt=""
-                                    style="width: 0px; height: 0px;"></div>
-                            <div id="beacon_4795529871"
-                                 style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img
-                                    src="../../a_files/lg(7).php" width="0" height="0" alt=""
-                                    style="width: 0px; height: 0px;"></div>
 
-                        </div>
-                    </div>
-                    <style>
-                        .job-recommend {
-                            margin-bottom: 30px;
-                        }
-
-                        .job-title {
-                            font-size: 14px;
-                            color: #017E66;
-                            font-weight: 500;
-                            background: #BFE6D7;
-                            margin: 0;
-                            padding-top: 6px;
-                            padding-bottom: 6px;
-                            text-align: center;
-                        }
-
-                        .job-recommend-area {
-                            padding: 13px;
-                            border: 3px solid #EBF7F3;
-                            border-top: none;
-                        }
-                    </style>
-
-                </div>
 
 
                 <div class="hidden-md ad-should-be-fixed stuckMenu"
@@ -610,30 +986,6 @@
 
                     </div>
                 </div>
-                <div class="post-nav hidden-xs side-outline hidden-sm"
-                     style="display: block; position: sticky; top: 238px; margin-top: 0px;">
-                    <div class="panel panel-default widget-outline">
-                        <div class="panel-heading">目录</div>
-                        <div class="panel-body">
-                            <div class="nav-body" style="overflow: scroll; top: 0px; height: 367px;">
-                                <div class="highlight-title" style="display: none;"></div>
-                                <ul class="articleIndex">
-                                    <li><a href="https://segmentfault.com/a/1190000018425629#articleHeader0">Flutter
-                                        1.2</a></li>
-                                    <li><a href="https://segmentfault.com/a/1190000018425629#articleHeader1">新的调试工具</a>
-                                    </li>
-                                    <li><a href="https://segmentfault.com/a/1190000018425629#articleHeader2">下一步工作</a>
-                                    </li>
-                                    <li><a href="https://segmentfault.com/a/1190000018425629#articleHeader3">Flutter
-                                        Create: 您能使用 5K 的 Dart 代码做些什么？</a></li>
-                                    <li><a href="https://segmentfault.com/a/1190000018425629#articleHeader4">结语</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
             </div><!-- /.side -->
         </div>
     </div>
@@ -1171,6 +1523,28 @@
             </div>
             <p class="text-muted text-center mb15">登录即表示你同意网站的<a href="/tos" target="_blank">《服务条款》</a></p></div>
     </div>
+</script>
+<script th:inline="javascript">
+    function guanzhuzhuanlan(obj){
+        if([[${session.LoginUser}]]==null){
+            alert("你还没有登陆");
+            window.location.href=("../../logins");
+        }else{
+            $.ajax({
+                data:{"perspid":obj.id},
+                url:'../attentionspe',
+                dataType:"json",
+                type:'post',
+                success: function(data){
+                    if(data==1){
+                        $("#"+obj.id).val("已关注");
+                    }else{
+                        $("#"+obj.id).val("关注专栏");
+                    }
+                }
+            })
+        }
+    }
 </script>
 <script id="bindPhoneModal" type="text/template">
     <div class="bg-white bindphone-model">

@@ -31,8 +31,8 @@ public interface SpecialDao {
      * @param specialid
      * @return
      */
-    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time,la.lablename from " +
-            "special sp left join user_info us on sp.userid=us.userid left join lable la on sp.lableid=la.lableid  where sp.specialid =#{specialid}")
+    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time,la.lablename,per.perspdescribe,per.perspid from\n" +
+            "special sp left join user_info us on sp.userid=us.userid left join lable la on sp.lableid=la.lableid left join perspecial per on sp.perspid =per.perspid  where sp.specialid =#{param1}")
     public List<Map<String,Object>> queryByid(Integer specialid);
 
     @Select("select count(*) dz,s.specialid,s.lableid,s.title,s.content,s.time,us.username,a.status\n" +
