@@ -11,7 +11,7 @@ import java.util.List;
 public class User_infoService {
     @Autowired
     User_infoDao ud;
-    public List<Userinfo> queryByUserId(Integer userId){
-        return  ud.queryByUserId(userId);
+    public List<Userinfo> queryByUserId(Integer userId,String search){
+        return  ud.queryByUserId(userId,search);
     }
 }

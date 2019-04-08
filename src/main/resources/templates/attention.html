@@ -32,6 +32,7 @@
     <link rel="stylesheet" th:href="@{/css/responsive.css}"/>
     <script type='text/javascript' th:src="@{/js/hm.js}"></script>
     <script type='text/javascript' th:src="@{/js/fl.js}"></script>
+    <script th:src="@{/js/jquery-3.3.1.js}"></script>
 </head>
 <body data-mod="group" class="group-detail ">
 <img id="icon4weChat" style="height: 0;width: 0;" data-src="https://cdn.segmentfault.com/v-5c8b4d77/global/img/touch-icon-512.png">
@@ -559,7 +560,7 @@
         <div class="row">
             <ol class="breadcrumb ml15 mb15">
                 <li><a th:href="@{'../../circle/circle'}">圈子</a></li>
-                <li><a th:href="@{'../../circle/q/'+${clablename}}" th:text="${clablename}"></a></li>
+                <li><a th:href="@{'../../circle/q/'+${clablename}}" th:text="${clablename}" id="clablename"></a></li>
                 <li class="active">成员列表</li>
             </ol>
             <div class="col-md-9 col-xs-12 mb20">
@@ -600,9 +601,11 @@
                 </div>
             </div>
             <div class="col-md-3 col-xs-12">
-                <div class="input-group mb20"><input type="text" class="form-control group-user-search-ipt"
-                                                     placeholder="搜索圈子成员" value=""><span class="input-group-btn"><button
-                        class="btn btn-default group-user-search" type="button">搜索</button></span></div>
+                <div class="input-group mb20">
+                    <input type="text" class="form-control group-user-search-ipt" placeholder="搜索圈子成员" id="searchtext" value="">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default group-user-search" type="button" onclick="sea()">搜索</button></span>
+                </div>
             </div>
         </div>
     </div>
@@ -761,10 +764,28 @@
 <div id="fixedTools" class="hidden-xs hidden-sm">
     <a id="backtop" class="border-bottom hidden" href="https://segmentfault.com/g/1570000010557000/users#">回顶部</a>
 </div>
+<!--
 <script>
     window.serverTime = 1552872844000;
 </script>
 <script crossorigin=""th:src="@{/js/assets.js}"></script>
 <script th:src="@{/js/ads.min.js}"type="text/javascript"></script>
+-->
+<script type="text/javascript">
+    /*模糊搜索*/
+   function sea() {
+      $.ajax(
+           {data:{'searchtext':$("#searchtext").val()},
+               dataType:"json",
+               success: function(data){
+
+               },
+               type:'post',
+               url:'../../circle/attention/'+$("#clablename").text()
+           }
+       )
+
+   }
+</script>
 </body>
 </html>

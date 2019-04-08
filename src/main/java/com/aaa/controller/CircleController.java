@@ -102,7 +102,7 @@ public class CircleController {
         for (int i = 0; i < lc.size(); i++) {
             Map<String, Object> circle = new HashMap<String, Object>();
             /*这个是获得用户的一些信息*/
-            List<Userinfo> lus = us.queryByUserId(lc.get(i).getUserid());
+            List<Userinfo> lus = us.queryByUserId(lc.get(i).getUserid(),null);
             //System.out.println(lus);
             /*这个是获取评论信息的*/
             List<Review> lr = rs.queryByComposeid(lc.get(i).getCircleid());
@@ -119,7 +119,7 @@ public class CircleController {
             if (lr.size() == 0) {
                 circle.put("rcount", 0);
             } else {
-                List<Userinfo> lui = us.queryByUserId(lr.get(0).getUserid());
+                List<Userinfo> lui = us.queryByUserId(lr.get(0).getUserid(),null);
                 circle.put("rname", lui.get(0).getUsername());
                 /*circle.put("rtime", lr.get(0).getTime());*/
                 circle.put("rcount", lr.size());
@@ -194,13 +194,13 @@ public class CircleController {
         map.put("synopsis", lc.get(0).getSynopsis());
         map.put("foundtime", lc.get(0).getFoundtime());
         map.put("cpic", lc.get(0).getCpic());
-        map.put("user_infos", us.queryByUserId(lc.get(0).getUserid()).get(0));
+        map.put("user_infos", us.queryByUserId(lc.get(0).getUserid(),null).get(0));
         map.put("integer", clqs.queryCount(lc.get(0).getClableid(), 1));
         page = page == null ? 1:page;
         List<Circle> circles = cs.queryByClableid2(lc.get(0).getClableid(),(page-1)*10);
         for (int i = 0; i < circles.size(); i++) {
             List<Review> lr = rs.queryByComposeid(circles.get(i).getCircleid());
-            List<Userinfo> user_infos = us.queryByUserId(circles.get(i).getUserid());
+            List<Userinfo> user_infos = us.queryByUserId(circles.get(i).getUserid(),null);
             Map<String, Object> cir = new HashMap<String, Object>();
             cir.put("head", user_infos.get(0).getHead());
             cir.put("title", circles.get(i).getTitle());
@@ -212,7 +212,7 @@ public class CircleController {
                 cir.put("rcount", 0);
             } else {
                 /*Review{reviewid=3, composeid=25, type=3, content='闪怂的第一次评论25的内容', userid=1, time=Fri Mar 29 10:57:13 CST 2019}*/
-                List<Userinfo> lui = us.queryByUserId(lr.get(0).getUserid());
+                List<Userinfo> lui = us.queryByUserId(lr.get(0).getUserid(),null);
                 System.out.println(lui.toString());
                 cir.put("rname", lui.get(0).getUsername());
                 cir.put("rtime", lr.get(0).getTime());
@@ -245,13 +245,14 @@ public class CircleController {
     }
 
     @RequestMapping(value = "attention/{clablename}")
-    public String attention(Model mv, @PathVariable String clablename,Integer page){
+    public String attention(Model mv, @PathVariable String clablename,Integer page,String searchtext){
         List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
         List<Map<String,Object>> aw = new ArrayList<Map<String,Object>>();
         List<Clable> lc = cls.queryByClablename(clablename);
         List<Clique> lcq = clqs.queryByClableid(lc.get(0).getClableid());
         for (int i = 0; i < lcq.size() ; i++) {
-            List<Userinfo> user_infos = us.queryByUserId(lcq.get(i).getUserid());
+            List<Userinfo> user_infos = us.queryByUserId(lcq.get(i).getUserid(),searchtext);
+            if(user_infos.size() == 0)break;
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("userid",user_infos.get(0).getUserid());
             map.put("username",user_infos.get(0).getUsername());
@@ -275,6 +276,7 @@ public class CircleController {
         }
         mv.addAttribute("a",aw);*/
         System.out.println(resultList.toString());
+        System.out.println(clablename.toString());
         mv.addAttribute("list",resultList);
         mv.addAttribute("clablename",clablename);
         return "attention";
@@ -289,11 +291,12 @@ public class CircleController {
         List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
         List<Map<String, Object>> review = new ArrayList<Map<String, Object>>();
         List<Map<String, Object>> replie = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> lmc = new ArrayList<Map<String, Object>>();
         List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
         Integer userid = null == loginUser? 0:loginUser.get(0).getUserid();
         List<Circle> circles = cs.queryByCircleid(circleid);
         List<Clable> clables = cls.queryByClableid(circles.get(0).getClableid());
-        List<Userinfo> user_infos = us.queryByUserId(circles.get(0).getUserid());
+        List<Userinfo> user_infos = us.queryByUserId(circles.get(0).getUserid(),null);
         List<Review> reviews = rs.queryByComposeid(circleid);
         if(reviews.size() == 0){
             /*说明没有评论*/
@@ -301,7 +304,7 @@ public class CircleController {
            /* System.out.println("显示评论数据"+reviews.toString());*/
             for (int i = 0; i < reviews.size(); i++) {
                 Map<String, Object> mr = new HashMap<String, Object>();
-                List<Userinfo> lu = us.queryByUserId(reviews.get(i).getUserid());
+                List<Userinfo> lu = us.queryByUserId(reviews.get(i).getUserid(),null);
                 List<Reply> replies = rps.queryByReviewid(reviews.get(i).getReviewid());
                 if(replies.size() != 0){
                     for (int j = 0; j < replies.size(); j++) {
@@ -313,8 +316,9 @@ public class CircleController {
                         ms.put("queryone",queryone);
                         ms.put("reviewid",replies.get(j).getReviewid());
                         ms.put("content",replies.get(j).getContent());
-                        List<Userinfo> lu1 = us.queryByUserId(replies.get(j).getFrom_userid());
-                        List<Userinfo> lu2 = us.queryByUserId(replies.get(j).getTo_userid());
+                        ms.put("from_userid",replies.get(j).getFrom_userid());
+                        List<Userinfo> lu1 = us.queryByUserId(replies.get(j).getFrom_userid(),null);
+                        List<Userinfo> lu2 = us.queryByUserId(replies.get(j).getTo_userid(),null);
                        /* System.out.println("用户"+lu2);*/
                         ms.put("from_username",lu1.get(0).getUsername());
                         ms.put("to_username",lu2.get(0).getUsername());
@@ -348,6 +352,13 @@ public class CircleController {
         map.put("title",circles.get(0).getTitle());
         map.put("circleid",circles.get(0).getCircleid());
         resultList.add(map);
+        List<Circle> circles1 = cs.queryByClableid2(clables.get(0).getClableid(), 0);
+        for (int i = 0; i < circles1.size(); i++) {
+            Map<String, Object> mc = new HashMap<String, Object>();
+            mc.put("title",circles1.get(i).getTitle());
+            mc.put("circleid",circles1.get(i).getCircleid());
+            lmc.add(mc);
+        }
         mv.addAttribute("list",resultList);
         System.out.println(resultList.toString());
         mv.addAttribute("review",review);
@@ -355,10 +366,14 @@ public class CircleController {
         mv.addAttribute("clablename",clables.get(0).getClablename());
         mv.addAttribute("count",review.size()+replie.size());
         mv.addAttribute("aaa", ForFlie.readFile(circles.get(0).getContent()));
+        mv.addAttribute("lmc", lmc);
         return  "show";
     }
     @RequestMapping(value = "write/{circleid}")
-    public String indexs(Model mv, @PathVariable Integer circleid){
+    public String indexs(Model mv, @PathVariable Integer circleid,HttpSession session){
+        List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
+        Integer userid = null == loginUser? 0:loginUser.get(0).getUserid();
+        if(userid == 0)return "redirect:../../logins";
         List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
         List<Map<String, Object>> clm = new ArrayList<Map<String, Object>>();
             List<Circletype> circletypes = cts.queryAll();

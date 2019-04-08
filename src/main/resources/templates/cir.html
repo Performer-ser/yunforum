@@ -643,7 +643,7 @@
                         <div class="group__discuss-list">
                             <div class="group__discuss-item" th:each="nets:${circ}">
                                 <a class="group__discuss-avatar" th:href="@{'/circle/personal/'+${nets['userid']}}" target="_blank">
-                                <img  class="avatar-40" th:src="@{${nets['head']}}"></a>
+                                <img  class="avatar-40" th:src="@{'yunforum/'+${nets['head']}}"></a>
                                 <div class="group__discuss-box">
                                     <span class="group__discuss-title" style="max-width:500px">
                                         <a th:href="@{'/circle/show/'+${nets['circleid']}}" th:text="${nets['title']}"></a>
