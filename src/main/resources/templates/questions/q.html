@@ -366,6 +366,7 @@
                             </a>
                         </li>
                     </ul>
+<<<<<<< Updated upstream
                     <form action="https://segmentfault.com/search" class="header-search hidden-sm hidden-xs pull-right">
                         <button class="btn btn-link">
                                         <span class="sr-only">
@@ -376,6 +377,8 @@
                         </button>
                         <input class="form-control" id="searchBox" name="q" placeholder="搜索问题或关键字" type="text" value=""/>
                     </form>
+=======
+>>>>>>> Stashed changes
                 </div>
             </div>
             <!--登陆注册-->
@@ -647,7 +650,7 @@
     <div class="post-topheader">
         <div class="container">
             <ol class="breadcrumb mb15">
-                <li><a href="https://segmentfault.com/questions">问答</a></li>
+                <li><a href="#" onClick="javascript :history.back(-1);">问答</a></li>
                 <li class="active">问答详情</li>
             </ol>
         </div>
@@ -670,7 +673,7 @@
                     <div class="post-topheader__info mb15">
                         <h1 class="h2 post-topheader__info--title" id="questionTitle" data-id="1010000018604298"> <a href="https://segmentfault.com/q/1010000018604298" th:text="${list[0].title}"></a> </h1>
                         <ul class="taglist--inline inline-block question__title--tag mr10" th:each="qs:${list[0].lablenames}">
-                            <li class="tagPopup mb5"> <a class="tag" href="https://segmentfault.com/t/javascript" data-toggle="popover" data-img="https://avatar-static.segmentfault.com/195/823/1958237468-1040000000089436_huge256" data-placement="top" data-original-title="javascript" data-id="1040000000089436" th:text="${qs}"> javascript </a> </li>
+                            <li class="tagPopup mb5"> <a class="tag" th:href="@{'/questions/queryLableByLablename/'+${qs}}" data-toggle="popover" data-img="https://avatar-static.segmentfault.com/195/823/1958237468-1040000000089436_huge256" data-placement="top" data-original-title="javascript" data-id="1040000000089436" th:text="${qs}"> javascript </a> </li>
                         </ul>
                         <span th:text="${list[0].bro}"></span> 次浏览
                     </div>
@@ -923,62 +926,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="widget-invite mt30">
-                    <p> <span class="text-muted">不知道答案？你还可以</span> <a href="https://segmentfault.com/q/1010000018604298#" class="btn btn-default btn-sm inviteBtn ml5" data-title="JS在字符串中加入特殊符号" data-url="http://sfau.lt/bNbqdZu" data-id="1010000018604298">邀请回答</a> <a class="qa-detail__invent-switch pull-right" href="javascript:;"> <i class="fa fa-refresh"></i> 换一组 </a> </p>
-                    <div class="qa-detail__invent">
-                        <div class="row">
-                            <div class="col-md-6 qa-detail__invent-item">
-                                <img src="../../question/q_files/955800330-5b4d5802b45d5_big64" />
-                                <div class="qa-detail__invent-info">
-                                    <a class="qa-detail__invent-name" target="_blank" href="https://segmentfault.com/u/wangwenlin">小蜗牛</a>
-                                    <span class="qa-detail__invent-desc"> javascript 标签下有 76 个回答</span>
-                                </div>
-                                <button class="btn btn-default btn-xs
-qa-detail__invent-btn
-" data-id="1030000007475072" data-slug="wangwenlin"> 邀请回答</button>
-                            </div>
-                            <div class="col-md-6 qa-detail__invent-item">
-                                <img src="../../question/q_files/3463920479-5c25bfb55157b_big64" />
-                                <div class="qa-detail__invent-info">
-                                    <a class="qa-detail__invent-name" target="_blank" href="https://segmentfault.com/u/moddx">moddx</a>
-                                    <span class="qa-detail__invent-desc"> javascript 标签下有 21 个回答</span>
-                                </div>
-                                <button class="btn btn-default btn-xs
-qa-detail__invent-btn
-" data-id="1030000007765343" data-slug="moddx"> 邀请回答</button>
-                            </div>
-                            <div class="col-md-6 qa-detail__invent-item">
-                                <img src="../../question/q_files/1222908597-5692044f6b297_big64" />
-                                <div class="qa-detail__invent-info">
-                                    <a class="qa-detail__invent-name" target="_blank" href="https://segmentfault.com/u/lxchuan12">若川</a>
-                                    <span class="qa-detail__invent-desc"> javascript 标签下有 175 个回答</span>
-                                </div>
-                                <button class="btn btn-default btn-xs
-qa-detail__invent-btn
-" data-id="1030000004068910" data-slug="lxchuan12"> 邀请回答</button>
-                            </div>
-                            <div class="col-md-6 qa-detail__invent-item">
-                                <img src="../../question/q_files/1717563857-5baf8aa8a97b5_big64" />
-                                <div class="qa-detail__invent-info">
-                                    <a class="qa-detail__invent-name" target="_blank" href="https://segmentfault.com/u/markbzhang">张炳</a>
-                                    <span class="qa-detail__invent-desc"> javascript 标签下有 13 个回答</span>
-                                </div>
-                                <button class="btn btn-default btn-xs
-qa-detail__invent-btn
-" data-id="1030000012974968" data-slug="markbzhang"> 邀请回答</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <h4 class="pt20 border-top mb15 mt30">你可能感兴趣的</h4>
-                <div class="mt15 block">
-                    <script type="text/javascript">
-                        OA_show(4);
-                    </script>
-                    <div id="beacon_e47c88bc95" style="position: absolute; left: 0px; top: 0px; visibility: hidden;">
-                        <img src="../../question/q_files/lg(2).php" width="0" height="0" alt="" style="width: 0px; height: 0px;" />
-                    </div>
-                </div>
+
             </div>
             <!-- /.main -->
             <div class="col-xs-12 col-md-3 side" style="height: 1588px;">
@@ -998,40 +946,6 @@ qa-detail__invent-btn
                     .job-recommend-area a:not(:last-of-type) {margin-bottom:10px; display: block}
                     .job-recommend-area a:hover {text-decoration: none;}
                 </style>
-                <div class="job-recommend">
-                    <h3 class="job-title">推广链接</h3>
-                    <div class="job-recommend-area">
-                        <div class="block">
-                            <script type="text/javascript">
-                                OA_show(7);
-                                OA_show(9);
-                                OA_show(10);
-                                OA_show(15);
-                                OA_show(16);
-                            </script>
-                            <a href="https://sponsor.segmentfault.com/ck.php?oaparams=2__bannerid=56__zoneid=7__cb=4b860409d8__oadest=https%3A%2F%2Fsegmentfault.com%2Fls%2F1650000011318558" target="_blank"><strong>大神的PHP 进阶之路</strong><br /> <small style="color: #999">亿级 PV 项目的架构梳理，性能提升实战</small></a>
-                            <div id="beacon_4b860409d8" style="position: absolute; left: 0px; top: 0px; visibility: hidden;">
-                                <img src="../../question/q_files/lg(3).php" width="0" height="0" alt="" style="width: 0px; height: 0px;" />
-                            </div>
-                            <a href="https://sponsor.segmentfault.com/ck.php?oaparams=2__bannerid=111__zoneid=9__cb=adfe716dc3__oadest=https%3A%2F%2Fdwz.cn%2F9w7Sxc4P" target="_blank"><strong>Android 进阶之路</strong><br /> <small style="color: #999"><span style="color: #F7A700">8 个月带你蜕变成为高级工程师！</span></small></a>
-                            <div id="beacon_adfe716dc3" style="position: absolute; left: 0px; top: 0px; visibility: hidden;">
-                                <img src="../../question/q_files/lg(4).php" width="0" height="0" alt="" style="width: 0px; height: 0px;" />
-                            </div>
-                            <a href="https://sponsor.segmentfault.com/ck.php?oaparams=2__bannerid=47__zoneid=10__cb=3a64cfaec0__oadest=https%3A%2F%2Fsegmentfault.com%2Fls%2F1650000016221751" target="_blank"><strong>Vue 技术栈开发实战</strong><br /> <small style="color: #999">iView 核心开发者带你掌握 Vue 精髓</small></a>
-                            <div id="beacon_3a64cfaec0" style="position: absolute; left: 0px; top: 0px; visibility: hidden;">
-                                <img src="../../question/q_files/lg(5).php" width="0" height="0" alt="" style="width: 0px; height: 0px;" />
-                            </div>
-                            <a href="https://sponsor.segmentfault.com/ck.php?oaparams=2__bannerid=108__zoneid=15__cb=9765ab2554__oadest=https%3A%2F%2Fcloud.baidu.com%2Fcampaign%2Fpurchase-2019%2Findex.html%3Ftrack%3Dcp%3Adsp%7Cpf%3Apc%7Cpp%3Achui-sifou-huodong-19caigouji-BCC-wentixiangqingyecelanwenzilian-190313%7Cpu%3Awentixiangqingyecelan-wenzilian%7Cci%3A2019cgj%7Ckw%3A2107391" target="_blank"><strong>百度云开年采购 1 折起</strong><br /> <small style="color: #999"><span style="color: #F7A700">1 核 1G 一年只需 100.8 元！</span></small></a>
-                            <div id="beacon_9765ab2554" style="position: absolute; left: 0px; top: 0px; visibility: hidden;">
-                                <img src="../../question/q_files/lg(6).php" width="0" height="0" alt="" style="width: 0px; height: 0px;" />
-                            </div>
-                            <a href="https://sponsor.segmentfault.com/ck.php?oaparams=2__bannerid=53__zoneid=16__cb=732b2087c0__oadest=https%3A%2F%2Fsegmentfault.com%2Fls%2F1650000016424063" target="_blank"><strong>iView 实战系列课程</strong><br /> <small style="color: #999"><span style="color: #F7A700">[限时优惠]</span> 知名开源组件库作者讲授</small></a>
-                            <div id="beacon_732b2087c0" style="position: absolute; left: 0px; top: 0px; visibility: hidden;">
-                                <img src="../../question/q_files/lg(7).php" width="0" height="0" alt="" style="width: 0px; height: 0px;" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <style>
                     .job-recommend {margin-bottom: 30px;}
                     .job-title {
@@ -1050,165 +964,14 @@ qa-detail__invent-btn
                         border-top: none;
                     }
                 </style>
-                <!--     <div data-api="/api/news/hottest">
-                            <script type="text/template">
-                                <div class="widget_headline widget-box mt20 mb30">
-                                    <h2 class="h4 widget-box__title">热门头条</h2>
-                                    <ul class="taglist--block pl20" >
-                                        <% _.each(data,function(d){ %>
-                                        <li class="">
-                                            <a href="<%- d.url %>" data-id="<%- d.id %>"
-                                               data-original-title="<%= d.name %>"><%= d.title %></a>
-                                            <p class=""><span class="mr5 color_F5A623"><%- d.VotesWord %> 赞</span> | <span class="ml5"><%- d.comments %> 评论</span></p>
-                                        </li>
-                                        <% }) %>
-                                        <a href="/news" target="_blank" class="f12" >更多头条内容→</a>
-                                    </ul>
-
-                                </div>
-                            </script>
-                        </div>
-                     -->
-                <div style="position:sticky; top:15px">
-                    <div class="mb30 block">
-                        <script type="text/javascript">
-                            OA_show(1);
-                        </script>
-                        <a href="https://sponsor.segmentfault.com/ck.php?oaparams=2__bannerid=110__zoneid=1__cb=a8fba449cf__oadest=https%3A%2F%2Fai.oreilly.com.cn%2Fai-cn" target="_blank"><img src="../../question/q_files/7dd705cbfb739b4d5c2f467cc07e7dc9.png" width="255" height="213" alt="" title="" border="0" /></a>
-                        <div id="beacon_a8fba449cf" style="position: absolute; left: 0px; top: 0px; visibility: hidden;">
-                            <img src="../../question/q_files/lg(8).php" width="0" height="0" alt="" style="width: 0px; height: 0px;" />
-                        </div>
-                    </div>
-                    <!--     <div data-type="widget" data-api="/api/bookmarkArchive/hots" data-api-overwrite="/api/bookmarkArchive/1010000018604298/related">
-                                  <script type="text/template">
-                                      <div class="widget-box widget-box--bookmark no-border">
-                                          <h4 class="widget-box__title">相关收藏夹 <a id="widgetBookmarkRefresh" class="userstab pull-right"
-                                                                                    href="javascript:;">换一组</a></h4>
-                                          <ul class="widget-links list-unstyled media">
-                                              <% _.each(data,function(d){ %>
-                                              <li class="widget-links__item">
-                                                  <img class="pull-left pattern pattern-<%= d.id%19 %> mr10" src="https://static.segmentfault.com/v-5c8b4d77/global/img/pattern/<%= d.id%10 ? d.id%10 : 10 %>.svg" width="32">
-                                                  <div class="media-body">
-                                                      <a target="_blank" class="ellipsis mr0" href="<%- d.url %>"><%= d.name %></a>
-                                                      <p class="mb0">
-                                                          <span><%- d.num %></span> 个条目 <span class="division">|</span> <span><%- d.followers %></span> 人关注
-                                                      </p>
-                                                  </div>
-                                              </li>
-                                              <% }) %>
-                                          </ul>
-                                      </div>
-                                  </script>
-                              </div>
-                           -->
-                    <div id="paradigm-question-related">
-                        <div class="recommend-post widget-box no-border">
-                            <h4 class="h4 widget-box__title">相似问题</h4>
-                            <ul class="widget-links">
-                                <li><a href="http://segmentfault.com/q/1010000006715341/" title="CSS 特殊符号" target="_blank">CSS 特殊符号</a></li>
-                                <li><a href="http://segmentfault.com/q/1010000007768323/a-1020000007769046" title="js 特殊符号处理" target="_blank">js 特殊符号处理</a></li>
-                                <li><a href="http://segmentfault.com/q/1010000007554392" title="js 字符串中加入逗号" target="_blank">js 字符串中加入逗号</a></li>
-                                <li><a href="http://segmentfault.com/q/1010000006091571" title="使用express设置cookie时，怎么使字符串内特殊符号不被encode？" target="_blank">使用express设置cookie时，怎么使字符串内特殊符号不被encode？</a></li>
-                                <li><a href="http://segmentfault.com/q/1010000012109853/" title="怎么用JavaScript显示特殊符号 ，如 &amp;" target="_blank">怎么用JavaScript显示特殊符号 ，如 &amp;</a></li>
-                                <li>找不到问题？可以 <a href="https://segmentfault.com/ask" target="_blank">创建新问题</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="widget-share__full" data-text="JS在字符串中加入特殊符号" data-url="https://segmentfault.com/q/1010000018604298?share_user=1030000018341974" data-shorturl="http://sfau.lt/bNbqdZu">
-                        <div style="margin-bottom:10px;">
-                            分享扩散：
-                        </div>
-                        <div class="widget-share-network sharer-0" style="display: block;">
-                            <ul class="sn-inline">
-                                <li data-network="weibo"><a href="javascript:void(0);" class="entypo-weibo icon-sn-weibo share-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="分享至新浪微博">新浪微博</a></li>
-                                <li data-network="wechart"><a href="javascript:void(0);" class="entypo-wechart icon-sn-weixin share-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="分享至微信">微信</a></li>
-                                <li data-network="twitter"><a href="javascript:void(0);" class="entypo-twitter icon-sn-twitter share-3" data-toggle="tooltip" data-placement="top" title="" data-original-title="分享至 Twitter">Twitter</a></li>
-                                <li data-network="facebook"><a href="javascript:void(0);" class="entypo-facebook icon-sn-facebook share-4" data-toggle="tooltip" data-placement="top" title="" data-original-title="分享至 Facebook">Facebook</a></li>
-                            </ul>
-                        </div>
-                        <a type="button" class="btn btn-sm shareMore btn-sn-more" data-toggle="popover" data-placement="top" data-url="https://segmentfault.com/q/1010000018604298?share_user=1030000018341974" data-shorturl="http://sfau.lt/bNbqdZu"><span class="icon-sn-dotted" data-original-title="" title=""></span><strong class="visible-xs-inline">•••</strong></a>
-                    </div>
-                </div>
-            </div>
-            <!-- /.side -->
-        </div>
-    </div>
-</div>
-<div id="shareToWeiboModal" class="modal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true">&times;</span><span class="sr-only">Close</span> </button>
-                <h4 class="modal-title">分享</h4>
-            </div>
-            <div class="modal-body">
-                <p class="sfModal-content"> 分享到微博？ </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default dont-likeweibo" data-dismiss="modal">取消</button>
-                <a href="https://segmentfault.com/q/1010000018604298" id="shareLink" class="btn btn-primary done-btn" target="_blank" onclick="$('#shareToWeiboModal').modal('hide')">分享</a>
-            </div>
         </div>
     </div>
 </div>
 <script>
     window.config = {"like_question":[1,5,"\u95ee\u9898\u88ab\u6295\u8d5e\u540c\u7968"],"hate_question":[2,-2,"\u95ee\u9898\u88ab\u6295\u53cd\u5bf9\u7968"],"like_answer":[5,10,"\u56de\u7b54\u88ab\u6295\u8d5e\u540c\u7968"],"hate_answer":[6,-2,"\u56de\u7b54\u88ab\u6295\u53cd\u5bf9\u7968"],"answer_question":[7,1,"\u56de\u7b54\u95ee\u9898"],"like_comment":[8,0,"\u8bc4\u8bba\u88ab\u8d5e\u540c"],"bookmark_question":[11,1,"\u95ee\u9898\u88ab\u6536\u85cf"],"accept_answer":[13,15,"\u56de\u7b54\u88ab\u91c7\u7eb3"],"delete_answer":[14,-5,"\u56de\u7b54\u88ab\u5220\u9664\uff08\u5305\u62ec\u81ea\u5df1\u5220\u9664\uff09"],"ignore_answer":[15,-1,"\u56de\u7b54\u88ab\u5ffd\u7565"],"question_answer":[16,0,"\u95ee\u9898\u88ab\u4ed6\u4eba\u56de\u7b54"],"invite_user":[17,0,"\u9080\u8bf7\u7528\u6237"],"like_article":[18,5,"\u6587\u7ae0\u88ab\u70b9\u8d5e"],"write_article":[20,0,"\u53d1\u5e03\u65b0\u6587\u7ae0"],"bookmark_article":[21,3,"\u6587\u7ae0\u88ab\u6536\u85cf"],"oppose_answer":[24,-1,"\u53cd\u5bf9\u4ed6\u4eba\u7b54\u6848"],"accept_answer_reward":[25,2,"\u91c7\u7eb3\u4ed6\u4eba\u7b54\u6848"],"user_register":[26,1,"\u65b0\u7528\u6237\u6fc0\u6d3b"],"report":[27,-100,"\u5185\u5bb9\u88ab\u6210\u529f\u4e3e\u62a5 6 \u6b21"],"like_share":[28,0,"\u5934\u6761\u88ab\u70b9\u8d5e"],"sign_live":[29,1,"\u4ed8\u8d39\u62a5\u540d\u8bb2\u5ea7"],"live_sign":[30,1,"\u8bb2\u5ea7\u88ab\u62a5\u540d"],"publish_live":[31,5,"\u53d1\u5e03\u8bb2\u5ea7"],"finish_live":[32,10,"\u8bb2\u5ea7\u5982\u671f\u5f00\u64ad\uff0c\u5e76\u5df2\u7ed3\u675f"],"like_question_payment":[33,5,"\u95ee\u9898\u88ab\u6295\u8d5e\u540c\u7968"],"hate_question_payment":[34,-2,"\u95ee\u9898\u88ab\u6295\u53cd\u5bf9\u7968"],"like_grapevine":[35,0,"\u5c0f\u9053\u6d88\u606f\u88ab\u70b9\u8d5e"],"like_live_score":[36,0,"\u8bc4\u5206\u70b9\u8d5e"],"sign_live_series":[37,1,"\u4ed8\u8d39\u62a5\u540d\u7cfb\u5217\u8bb2\u5ea7"],"live_series_sign":[38,1,"\u7cfb\u5217\u8bb2\u5ea7\u88ab\u62a5\u540d"]}
 </script>
-<div id="delete-modal" class="modal widget-911" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title radio-del question-close-only">关闭<span class="type-911">问题</span>（请谨慎操作）</h4>
-                <h4 class="modal-title radio-del question-delete-only">删除<span class="type-911">问题</span>（请谨慎操作）</h4>
-                <h4 class="modal-title radio-del answer-delete-only">删除<span class="type-911">回答</span>（请谨慎操作）</h4>
-                <h4 class="modal-title radio-del answer-ignore-only">忽略<span class="type-911">回答</span></h4>
-            </div>
-            <div class="modal-body">
-                <p> <strong class="required radio-del question-close-only">关闭理由：</strong> <strong class="required radio-del question-delete-only answer-delete-only">删除理由：</strong> <strong class="required radio-del answer-ignore-only">忽略理由：</strong> </p>
-                <div id="reportDescription">
-                    <div class="radio-del radio all">
-                        <label> <input type="radio" name="descRadio" value="推广（招聘、广告、SEO 等）方面的内容" /> 推广（招聘、广告、SEO 等）方面的内容 </label>
-                    </div>
-                    <div class="radio-del radio question-close-only">
-                        <label> <input type="radio" name="descRadio" value="与已有问题重复" /> 与已有问题重复（请编辑该提问指向已有相同问题） </label>
-                    </div>
-                    <div class="radio-del radio answer-ignore-only">
-                        <label> <input type="radio" name="descRadio" value="答非所问，不符合答题要求" /> 答非所问，不符合答题要求 </label>
-                    </div>
-                    <div class="radio-del radio answer-ignore-only">
-                        <label> <input type="radio" name="descRadio" value="宜作评论而非答案" /> 宜作评论而非答案 </label>
-                    </div>
-                    <div class="radio-del radio all">
-                        <label> <input type="radio" name="descRadio" value="带有人身攻击、辱骂、仇恨等违反条款的内容" /> 带有人身攻击、辱骂、仇恨等违反条款的内容 </label>
-                    </div>
-                    <div class="radio-del radio question-close-only">
-                        <label> <input type="radio" name="descRadio" value="无法获得确切结果的问题" /> 无法获得确切结果的问题 </label>
-                    </div>
-                    <div class="radio-del radio question-close-only">
-                        <label> <input type="radio" name="descRadio" value="非开发直接相关的问题" /> 非开发直接相关的问题 </label>
-                    </div>
-                    <div class="radio-del radio question-close-only question-delete-only">
-                        <label> <input type="radio" name="descRadio" value="非技术提问的讨论型问题" /> 非技术提问的讨论型问题 </label>
-                    </div>
-                    <div class="radio-del radio all btwRadio">
-                        <label> <input type="radio" name="descRadio" value="" /> 其他原因（请补充说明） </label>
-                    </div>
-                    <div class="btw" style="display:none;">
-                        <p class="mt20"><strong>补充说明：</strong></p>
-                        <textarea class="form-control" rows="3" name="description" id="deleteDesc"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-danger" id="submit-delete">提交</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
+
+
 <!-- /.modal -->
 <div class="modal widget-911" id="911" tabindex="-1">
     <div class="modal-dialog">
@@ -1239,9 +1002,7 @@ qa-detail__invent-btn
 </div>
 <!-- /.modal -->
 
-<div id="fixedTools" class="hidden-xs hidden-sm">
-    <a id="backtop" class="border-bottom" href="https://segmentfault.com/q/1010000018604298#">回顶部</a>
-</div>
+
 <script id="bindPhoneModal" type="text/template">
     <div class="bg-white bindphone-model">
         <div class="alert alert-warning" role="alert">
