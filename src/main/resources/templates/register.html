@@ -21,7 +21,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href=""/>
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href=""/>
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href=""/>
-    <script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="./js/jquery-3.3.1.js"></script>
     <style>
         html, body, #app {
             height: 100%;
@@ -37,13 +37,11 @@
     <meta name="keywords" content="云论网"/>
     <meta name="description" content="云论网"/>
     <!--vue-ssr-qyerresources-->
-    <link rel="preload" href="../static/register_files/app.7d45d4ded8b32a550841.js.下载" as="script"/>
+    <link rel="preload" href="../yunforum/register_files/app.7d45d4ded8b32a550841.js.下载" as="script"/>
     <link rel="prefetch" href=""/>
-    <link rel="prefetch" href="../static/register_files/1.12ed08cecff068c5e80c.js.下载"/>
-    <link rel="prefetch" href="../static/register_files/2.ba5d4519a8d23c9dae3f.js.下载"/>
-    <link rel="prefetch" href="./register_files/3.43de8eaafe1dec56701a.js.下载"/>
-    <link rel="prefetch" href=""/>
-    <link rel="prefetch" href=""/>
+    <link rel="prefetch" href="../yunforum/register_files/1.12ed08cecff068c5e80c.js.下载"/>
+    <link rel="prefetch" href="../yunforum/register_files/2.ba5d4519a8d23c9dae3f.js.下载"/>
+    <link rel="prefetch" href="../yunforum/register_files/3.43de8eaafe1dec56701a.js.下载"/>
     <link rel="prefetch" href=""/>
     <link rel="prefetch" href=""/>
     <link rel="prefetch" href=""/>
@@ -87,7 +85,9 @@
     <link rel="prefetch" href=""/>
     <link rel="prefetch" href=""/>
     <link rel="prefetch" href=""/>
-    <link rel="prefetch" href="../static/register_files/50.06b48626d04ea9951987.js.下载"/>
+    <link rel="prefetch" href=""/>
+    <link rel="prefetch" href=""/>
+    <link rel="prefetch" href="../yunforum/register_files/50.06b48626d04ea9951987.js.下载"/>
     <link rel="prefetch" href=""/>
     <link rel="prefetch" href=""/>
     <style data-vue-ssr-id="18046027:0 9614d8c6:0 9614d8c6:1 948f2c88:0 ff5999a4:0 c95fea60:0 62c1777f:0 9c29424a:0 c76444dc:0 8929b60e:0">.clear {
@@ -527,7 +527,7 @@
         height: 100%;
         min-width: 960px;
         min-height: 765px;
-        background: url(../static/login_files/login.jpg) top/cover no-repeat
+        background: url(../yunforum/register_files/login.jpg) top/cover no-repeat
     }
 
     .login-container .login-wrapper {
@@ -1493,10 +1493,10 @@
         -webkit-transform: translateY(100%);
         transform: translateY(100%)
     }</style>
-    <script charset="utf-8" src="../static/register_files/1.12ed08cecff068c5e80c.js.下载"></script>
-    <script charset="utf-8" src="../static/register_files/2.ba5d4519a8d23c9dae3f.js.下载"></script>
+    <script charset="utf-8" src="../yunforum/register_files/1.12ed08cecff068c5e80c.js.下载"></script>
+    <script charset="utf-8" src="../yunforum/register_files/2.ba5d4519a8d23c9dae3f.js.下载"></script>
     <script charset="utf-8" src=""></script>
-    <script charset="utf-8" src="../static/register_files/50.06b48626d04ea9951987.js.下载"></script>
+    <script charset="utf-8" src="../yunforum/register_files/50.06b48626d04ea9951987.js.下载"></script>
     <style type="text/css">.q-layer {
         position: absolute;
         z-index: 200;
@@ -3035,7 +3035,7 @@
             <div class="login-container">
                 <div class="login-wrapper">
                     <div class="login-logo">
-                        <img src="../static/register_files/login_logo2.41bd0a52.png" alt="云论"/>
+                        <!--<img alt="云论"/>-->云论
                         <span class="title">注册</span>
                     </div>
                     <div class="login-section">
@@ -3050,16 +3050,15 @@
                                         <div class="qui-select q-country-code" style="width:78px;z-index:10;">
                                             <span class="qui-select-text"
                                                   style="height:40px;line-height:40px;">86</span>
-                                            <!---->
                                         </div>
-                                        <label class="hide">手机号</label>
+                                        <!--<label class="hide">手机号</label>-->
                                         <input type="text" id="phone" name="phone" onblur="sj()" maxlength="11"
-                                               title="手机号" placeholder="输入手机号码" value="" class="input input-phone"/>
+                                               title="手机号" placeholder="输入手机号码" value="" class="input input-phone" style="position: relative; top:-45px;left:90px;"/>
                                     </div>
                                     <div class="input-tip">
-            <span id="sjs" class="tip-error" style="display: none;"><i class="frame-iconfont frame-icon-tip"></i><span
-                    id="haha">输入正确的手机号</span>
-                <!----></span>
+                                         <span id="sjs" class="tip-error" style="display: none;"><i class="frame-iconfont frame-icon-tip"></i>
+                                             <span id="haha">输入正确的手机号</span>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="q-login-form-control">
@@ -3071,9 +3070,9 @@
                                         <!-- 验证码 -->
                                         <input type="text" id="yzm" name="yzm" onblur="yanyzm()" maxlength="4"
                                                title="短信验证码" placeholder="请输入验证码" class="input input-valid"/>
-                                        <button onclick="fyzm()" class="btn-valid"><span
-                                                style="display:;">发送验证码</span><span
-                                                style="display:none;">重新发送(60s)</span></button>
+                                        <button onclick="fyzm()" class="btn-valid" style="position: relative;top:-40px;left:200px;">
+                                            <span style="">发送验证码</span>
+                                            <span style="display:none;">重新发送(60s)</span></button>
                                     </div>
                                     <div class="input-tip">
                                         <span id="yz" class="tip-error" style="display:none;"><i
@@ -3116,7 +3115,7 @@
                                 </div>
                             </div>
                             <div class="q-login-bottom">
-                                <span class="fl"> 已有云论帐号？<a href="logins">登录</a></span>
+                                <span class="fl"> 已有云论帐号？<a href="logins#">登录</a></span>
                                 <span class="fr"> <a href="https://www.qyer.com/htmlpages/exemption.html"
                                                      target="_blank"
                                                      data-bn-ipg="web-register-layer-statement"></a></span>
@@ -3130,7 +3129,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="qui-loginFeedback">
+                <!--<div class="qui-loginFeedback">
                     <div title="登录意见反馈" class="icon js-btn"></div>
                     <div class="cnt">
                         <form method="post">
@@ -3142,8 +3141,8 @@
                             <button type="button" class="btn js-submitBtn">提交</button>
                         </form>
                     </div>
-                    <!---->
-                </div>
+                    &lt;!&ndash;&ndash;&gt;
+                </div>-->
             </div>
         </div>
         <div class="q-footer">
@@ -3181,9 +3180,7 @@
                                                             $("#sjs").css('display', 'block')
                                                             $("#haha").html("账号已经存在")
                                                             exi = 0;
-                                                            /* $("#phone").html('')
-                                                            $("#haha").html("账号已经存在") */
-                                                            /* return; */
+
                                                         }
                                                         else if (data == '') {
                                                             $("#sjs").css('display', 'none')
@@ -3212,7 +3209,6 @@
                                                 data: {phone: phone},
                                                 dataType: "json",
                                                 success: function (data) {
-
                                                     yzm = data;
 
                                                 }
@@ -3282,17 +3278,15 @@
                                                         //alert(data);
                                                         // window.location.href = 'zhu';
                                                         if (data != 0) {
-                                                            alert("注册成功!");
+                                                            alert("注册成功");
                                                             $('#phone').val("");
                                                             $('#pwd').val("");
                                                             $('#upwds').val("");
                                                             $('#yzm').val("");
-                                                            return 'logins'
+                                                            return 'logins#'
                                                         }
                                                     }
                                                 });
-
-
                                             }
                                         }
                                     </script>

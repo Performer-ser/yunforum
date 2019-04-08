@@ -29,6 +29,7 @@
     <link th:href="@{/sifou/user.css}" rel="stylesheet">
     <link th:href="@{/sifou/responsive.css}" rel="stylesheet">
     <script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}"></script>
+    <link rel="stylesheet" th:href="@{/lib/layui/css/layui.css}" media="all"/>
     </link>
     </link>
     </link>
@@ -61,14 +62,14 @@
 <div class="global-nav sf-header sf-header--index">
     <div class="bottom-nav visible-xs visible-sm hidden">
         <div class="opts">
-            <a class="opts-group " href="https://segmentfault.com/">
+            <a class="opts-group " href="http://localhost:8080/yunforum/specials/query">
                 <i aria-hidden="true" class="fa fa-home">
                 </i>
                 <span>
                                 首页
                             </span>
             </a>
-            <a class="opts-group " href="https://segmentfault.com/questions">
+            <a class="opts-group " href="http://localhost:8080/yunforum/questions/questions">
                 <i aria-hidden="true" class="fa fa-comments">
                 </i>
                 <span>
@@ -80,13 +81,6 @@
                 </i>
                 <span>
                                 专栏
-                            </span>
-            </a>
-            <a class="opts-group " href="https://segmentfault.com/lives">
-                <i aria-hidden="true" class="fa fa-play-circle">
-                </i>
-                <span>
-                                讲堂
                             </span>
             </a>
             <div class="opts-group">
@@ -271,11 +265,6 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://segmentfault.com/submit">
-                                发头条
-                            </a>
-                        </li>
-                        <li>
                             <a href="https://segmentfault.com/write">
                                 写文章
                             </a>
@@ -283,13 +272,6 @@
                         <li>
                             <a href="https://segmentfault.com/record">
                                 记笔记
-                            </a>
-                        </li>
-                        <li class="divider">
-                        </li>
-                        <li>
-                            <a href="https://segmentfault.com/user/draft">
-                                草稿箱
                             </a>
                         </li>
                     </ul>
@@ -309,12 +291,12 @@
                 <div>
                     <ul class="menu list-inline pull-left hidden-xs">
                         <li class="menu__item">
-                            <a class="" href="https://segmentfault.com/">
+                            <a class="" href="http://localhost:8080/yunforum/specials/query">
                                 首页
                             </a>
                         </li>
                         <li class="menu__item">
-                            <a class="" href="https://segmentfault.com/questions">
+                            <a class="" href="http://localhost:8080/yunforum/questions/questions">
                                 问答
                             </a>
                         </li>
@@ -324,12 +306,7 @@
                             </a>
                         </li>
                         <li class="menu__item">
-                            <a class=" " href="https://segmentfault.com/lives">
-                                讲堂
-                            </a>
-                        </li>
-                        <li class="menu__item">
-                            <a class="" href="https://segmentfault.com/groups">
+                            <a class="" href="http://localhost:8080/yunforum/circle/circle">
                                 圈子
                             </a>
                         </li>
@@ -407,22 +384,42 @@
                                         <span class="sr-only">
                                             搜索
                                         </span>
-                            <span class="glyphicon glyphicon-search">
-                                        </span>
+                            <i class="layui-icon layui-icon-search" style="font-size: 15px;"></i>
+                            </span>
                         </button>
                         <input class="form-control" id="searchBox" name="q" placeholder="搜索问题或关键字" type="text" value=""/>
                     </form>
                 </div>
             </div>
-            <div class="col-sm-4 col-md-3 col-lg-3 text-right">
+            <!--登陆注册-->
+            <div class="col-sm-4 col-md-3 col-lg-3 text-right" id="loginAndRegister" th:if="${session.LoginUser==null}">
+                <ul class="opts list-inline hidden-xs">
+                    <li class="opts__item"><a href="http://localhost:8080/yunforum/logins" style="margin-bottom:2px;">立即登录</a> <a class="SFLogin ml10 btn-signup" href="register" onclick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">免费注册</a> </li>
+                </ul>
+            </div>
+
+
+            <div class="col-sm-4 col-md-3 col-lg-3 text-right" id="LoginThan" th:if="${session.LoginUser!=null}">
                 <ul class="opts list-inline hidden-xs">
                     <li class="opts__item dropdown hoverDropdown write-btns visible-lg-inline-block">
-                        <div class="btn-group">
+                        <div id="dsd" class="btn-group" >
                             <button aria-expanded="false" aria-haspopup="true" class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
                                 创建
                                 <span class="caret">
                                             </span>
                             </button>
+                            <script>
+                                $('body').on('click',function(e){
+                                    var target = $(e.target);
+                                    // 如果#overlay或者#btn下面还有子元素，可使用
+                                    // !target.is('#btn *')
+                                    if(target.is('#dsd *')){
+                                        $('#dsd').prop("class","btn-group open")
+                                    }else{
+                                        $('#dsd').prop("class","btn-group")
+                                    }
+                                })
+                            </script>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="https://segmentfault.com/ask">
@@ -489,134 +486,19 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="opts__item message has-unread hidden-sm ml10">
-                        <a class="dropdown-toggle-message" href="https://segmentfault.com/user/notifications" id="dLabel">
+                    <li class="opts__item message has-unread hidden-sm ml10"  id="dLabel">
+                        <a class="dropdown-toggle-message" href="javascript:void(0);">
                                         <span class="sr-only">
                                             消息
                                         </span>
-                            <span class="fa fa-bell-o" id="messageCount">
-                                        </span>
+                            <i class="layui-icon layui-icon-notice" style="font-size: 20px"></i>
                         </a>
-                        <div class="opts__item--message  hide">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <ul class="nav nav-tabs nav-tabs-message">
-                                        <li class="active" role="presentation">
-                                            <a aria-controls="home" aria-expanded="true" data-toggle="tab" href="https://segmentfault.com/u/minnanitkong/answers#messageGeneral" id="home-tab" role="tab">
-                                                <i class="fa fa-bullhorn">
-                                                </i>
-                                                <span class="notice-dot hide notice-dot-general">
-                                                            </span>
-                                            </a>
-                                        </li>
-                                        <li class="" role="presentation">
-                                            <a aria-controls="home" aria-expanded="true" data-toggle="tab" href="https://segmentfault.com/u/minnanitkong/answers#messageComment" id="home-tab" role="tab">
-                                                <i aria-hidden="true" class="fa fa-commenting-o">
-                                                </i>
-                                                <span class="notice-dot hide notice-dot-comment">
-                                                            </span>
-                                            </a>
-                                        </li>
-                                        <li class="" role="presentation">
-                                            <a aria-controls="home" aria-expanded="true" data-toggle="tab" href="https://segmentfault.com/u/minnanitkong/answers#messageRanked" id="home-tab" role="tab">
-                                                <i class="fa fa-thumbs-o-up">
-                                                </i>
-                                                <span class="notice-dot hide notice-dot-ranked">
-                                                            </span>
-                                            </a>
-                                        </li>
-                                        <li class="" role="presentation">
-                                            <a aria-controls="home" aria-expanded="true" data-toggle="tab" href="https://segmentfault.com/u/minnanitkong/answers#messageFollowed" id="home-tab" role="tab">
-                                                <i class="fa fa-user-plus">
-                                                </i>
-                                                <span class="notice-dot hide notice-dot-followed">
-                                                            </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="messageGeneral" role="tabpanel">
-                                        </div>
-                                        <div class="tab-pane" id="messageComment" role="tabpanel">
-                                        </div>
-                                        <div class="tab-pane" id="messageRanked" role="tabpanel">
-                                        </div>
-                                        <div class="tab-pane" id="messageFollowed" role="tabpanel">
-                                        </div>
-                                    </div>
-                                    <p class="opts__item--message-loading follow-tips">
-                                        loading
-                                    </p>
-                                </div>
-                                <div class="panel-footer">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <a class="message-ingore-all hide" href="javascript:;">
-                                                            <span class="glyphicon glyphicon-ok-sign">
-                                                            </span>
-                                                全部标记为已读
-                                            </a>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <a class="opts__item--message-view-all" href="https://segmentfault.com/user/notifications">
-                                                查看全部
-                                                »
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </li>
                     <li class="opts__item letter has-unread hidden-sm">
-                        <a class="dropdown-toggle-letter" href="https://segmentfault.com/user/messages" id="dLabel">
-                                        <span class="sr-only">
-                                            私信
-                                        </span>
-                            <span class="fa fa-envelope-o" id="letterCount">
-                                        </span>
+                        <a class="dropdown-toggle-letter" href="javascript:void(0);" id="lLabel">
+                            <i class="layui-icon layui-icon-chat" style="font-size: 20px"></i>
+                            <span class="has-unread__count">1</span>
                         </a>
-                        <div class="opts__item--letter hide">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <ul class="nav nav-tabs nav-tabs-letter">
-                                        <li class="active" role="presentation">
-                                                        <span class="opts__item--letter-heading">
-                                                            最近的私信
-                                                        </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="tab-content">
-                                        <div id="messageInbox">
-                                        </div>
-                                    </div>
-                                    <p class="opts__item--letter-loading follow-tips">
-                                        loading
-                                    </p>
-                                </div>
-                                <div class="panel-footer">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <a class="message-ingore-all hide" href="javascript:;">
-                                                            <span class="glyphicon glyphicon-ok-sign">
-                                                            </span>
-                                                全部标记为已读
-                                            </a>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <a class="opts__item--message-view-all" href="https://segmentfault.com/user/messages">
-                                                查看全部
-                                                »
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </li>
                     <style>
                         @media (max-width: 1200px) {
@@ -625,10 +507,22 @@
                             }
                         }
                     </style>
-                    <li class="opts__item user dropdown hoverDropdown ml0">
-                        <a class="avatar-* dropdownBtn user-avatar" data-toggle="dropdown" href="https://segmentfault.com/u/jianao" src="https://avatar-static.segmentfault.com/159/699/1596994257-5c943ea0b02e8_big64" style="background-image: url('https://avatar-static.segmentfault.com/159/699/1596994257-5c943ea0b02e8_big64')">
+                    <li class="opts__item user dropdown hoverDropdown ml0" id="aab">
+                        <a class="avatar-* dropdownBtn user-avatar" data-toggle="dropdown" src="https://avatar-static.segmentfault.com/159/699/1596994257-5c943ea0b02e8_big64" th:style="'background-image: url('+${session.LoginUser==null?'https://avatar-static.segmentfault.com/159/699/1596994257-5c943ea0b02e8_big64':'http://localhost:8080/yunforum/image/'+session.LoginUser[0].head}+');'">
                         </a>
-                        <div class="dropdown-avatar-menu hidden">
+                        <script>
+                            $('body').on('click',function(e){
+                                var target = $(e.target);
+                                // 如果#overlay或者#btn下面还有子元素，可使用
+                                // !target.is('#btn *')
+                                if(target.is('#aab *')){
+                                    $('#dds').prop("class","dropdown-avatar-menu")
+                                }else{
+                                    $('#dds').prop("class","dropdown-avatar-menu hidden")
+                                }
+                            })
+                        </script>
+                        <div id="dds" class="dropdown-avatar-menu hidden">
                             <div class="menu-score">
                                             <span class="score pull-left ml20 mr10">
                                                 0 声望
@@ -896,21 +790,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2">
-                    <div class="mb15 ">
-                        <a class="btn mr10 btn-success userfollow mt10" data-id="1030000007460810">
-                            加关注
-                        </a>
-                        <a class="btn btn-default mt10" data-userid="1030000007460810" data-username="前端小智" href="javascript:void(0);" id="courier" style="width:68px">
-                            发私信
-                        </a>
-                    </div>
+                    <div class="mb15 "><a class="btn mr10 btn-success userfollow mt10" data-id="1030000007460810">
+                        加关注
+                    </a><a class="btn btn-default  mt10" href="javascript:void(0);" id="courier" data-username="前端小智"
+                           data-userid="1030000007460810" style="width:68px">发私信</a></div>
                     <div class="profile__heading-info row">
                         <div class="col-md-6 col-xs-6" style="border-right: 1px solid #eee;">
                             <a href="https://segmentfault.com/u/minnanitkong/users/following">
                                             <span>
                                                 关注了
                                             </span>
-                                <span class="h5">
+                                <span class="h5" th:text="${map.guanzhu}">
                                                 17 人
                                             </span>
                             </a>
@@ -920,7 +810,7 @@
                                             <span>
                                                 粉丝
                                             </span>
-                                <span class="h5">
+                                <span class="h5" th:text="${map.fensi}">
                                                 4121 人
                                             </span>
                             </a>
@@ -933,66 +823,31 @@
                         </li>
                         <li>
                             <a href="https://segmentfault.com/u/minnanitkong">
-                                            <span>
-                                                他的主页
+                                            <span th:text="${session.LoginUser!=null && map.userid==session.LoginUser[0].getUserid()}?'我的主页':'他的主页'">
                                             </span>
                             </a>
                         </li>
                         <li class="active">
                             <a href="https://segmentfault.com/u/minnanitkong/answers">
-                                            <span>
-                                                他的回答
+                                            <span th:text="${session.LoginUser!=null && map.userid==session.LoginUser[0].getUserid()}?'我的回答':'他的回答'">
                                             </span>
-                                <span class="count">
-                                                78
+                                <span class="count" th:text="${map.anwser}!=null?${map.anwser}:''">
                                             </span>
                             </a>
                         </li>
                         <li>
                             <a href="https://segmentfault.com/u/minnanitkong/questions">
-                                            <span>
-                                                他的提问
+                                            <span th:text="${session.LoginUser!=null && map.userid==session.LoginUser[0].getUserid()}?'我的提问':'他的提问'">
                                             </span>
-                                <span class="count">
+                                <span class="count" th:text="${map.question}!=null?${map.question}:''">
                                             </span>
                             </a>
                         </li>
                         <li>
                             <a href="https://segmentfault.com/u/minnanitkong/articles">
-                                            <span>
-                                                他的文章
+                                            <span th:text="${session.LoginUser!=null && map.userid==session.LoginUser[0].getUserid()}?'我的文章':'他的文章'">
                                             </span>
-                                <span class="count">
-                                                97
-                                            </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://segmentfault.com/u/minnanitkong/lives">
-                                            <span>
-                                                他的讲座
-                                            </span>
-                                <span class="count">
-                                                2
-                                            </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://segmentfault.com/u/minnanitkong/notes">
-                                            <span>
-                                                他的笔记
-                                            </span>
-                                <span class="count">
-                                            </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://segmentfault.com/u/minnanitkong/posts">
-                                            <span>
-                                                他的分享
-                                            </span>
-                                <span class="count">
-                                                6
+                                <span class="count" th:text="${map.question}!=null?${map.wenzhang}:''">
                                             </span>
                             </a>
                         </li>
@@ -1083,7 +938,7 @@
                     <div class="text-center">
                         <ul class="pagination">
                             <li th:each="aa:${a}" th:classappend="${aa.page}==${aa.ass}?'active':''">
-                                <a th:text="${aa.ass}" th:href="@{'/questions/answers?page='+${aa.ass}}">
+                                <a th:text="${aa.ass}" th:href="@{'/questions/answers?page='+${aa.ass}+'&userid='+${map.userid}}">
                                 </a>
                             </li>
                             <!--<li>-->

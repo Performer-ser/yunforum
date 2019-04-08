@@ -62,7 +62,6 @@ public class UserinfoController {
         JuheDemo.getRequest2(phone,times);
         System.out.println(times);
         return times;
-
     }
     @RequestMapping("queryPage")
     @ResponseBody

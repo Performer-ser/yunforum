@@ -10,5 +10,7 @@ import java.util.List;
 public interface CircletypeDao {
     @Select("select * from circletype")
     public List<Circletype> queryAll();
+    @Select("select * from circletype where typeid = #{param1}")
+    public List<Circletype> queryByTypeid(Integer typeid);
 
 }

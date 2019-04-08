@@ -10,10 +10,12 @@ public class Userinfo {
     private String phone;
     private String address;
     private String idcard;
+    private String head;
     private String truename;
     private Integer rank;
     private Date createuser;
     private Integer userstatus;
+    private String signature;
     private String pwd;
 
     public Integer getUserid() {
@@ -72,6 +74,14 @@ public class Userinfo {
         this.idcard = idcard;
     }
 
+    public String getHead() {
+        return head;
+    }
+
+    public void setHead(String head) {
+        this.head = head;
+    }
+
     public String getTruename() {
         return truename;
     }
@@ -104,11 +114,39 @@ public class Userinfo {
         this.userstatus = userstatus;
     }
 
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
     public String getPwd() {
         return pwd;
     }
 
     public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    public Userinfo() {
+    }
+
+    public Userinfo(Integer userid, String username, Integer sex, Date birthday, String phone, String address, String idcard, String head, String truename, Integer rank, Date createuser, Integer userstatus, String signature, String pwd) {
+        this.userid = userid;
+        this.username = username;
+        this.sex = sex;
+        this.birthday = birthday;
+        this.phone = phone;
+        this.address = address;
+        this.idcard = idcard;
+        this.head = head;
+        this.truename = truename;
+        this.rank = rank;
+        this.createuser = createuser;
+        this.userstatus = userstatus;
+        this.signature = signature;
         this.pwd = pwd;
     }
 
@@ -122,10 +160,12 @@ public class Userinfo {
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", idcard='" + idcard + '\'' +
+                ", head='" + head + '\'' +
                 ", truename='" + truename + '\'' +
                 ", rank=" + rank +
                 ", createuser=" + createuser +
                 ", userstatus=" + userstatus +
+                ", signature='" + signature + '\'' +
                 ", pwd='" + pwd + '\'' +
                 '}';
     }

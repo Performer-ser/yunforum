@@ -9,6 +9,15 @@ public class Special {
     private String content;
     private Integer userid;
     private Date time;
+    private Integer perspid;
+
+    public Integer getPerspid() {
+        return perspid;
+    }
+
+    public void setPerspid(Integer perspid) {
+        this.perspid = perspid;
+    }
 
     public Integer getSpecialid() {
         return specialid;
@@ -67,6 +76,7 @@ public class Special {
                 ", content='" + content + '\'' +
                 ", userid=" + userid +
                 ", time=" + time +
+                ", perspid=" + perspid +
                 '}';
     }
 }

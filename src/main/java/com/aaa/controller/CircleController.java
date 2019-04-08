@@ -3,6 +3,7 @@ package com.aaa.controller;
 import com.aaa.entity.*;
 import com.aaa.service.*;
 import com.aaa.util.ForFlie;
+import com.aaa.util.TabUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +34,8 @@ public class CircleController {
     CliqueService clqs;
     @Autowired
     ReplyService rps;
+    @Autowired
+    AdmireService as;
 
     @RequestMapping("queryLimit")
     @ResponseBody
@@ -49,16 +52,57 @@ public class CircleController {
     }
 
     @RequestMapping("circle")
-    public String testss(Model model) {
+    public String testss(Model model,String tab,HttpSession session) {
         List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
-        /*这个是圈子的信息*/
-        List<Circle> lc = cs.diffTime();
-        //System.out.println(lc);
-        //System.out.println(lc.get(0).getUserid());
+        List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
+        /*这个是圈子的信息查询出最近10条*/
+        List<Circle> lc = null;
+        tab = tab==null? "sdf":tab;
+        switch (tab){
+            case "joined":
+                if(null == loginUser){
+                    return "logins";
+                }
+                List<Clique> cliques = clqs.queryByUserid(loginUser.get(0).getUserid());
+                //创建Integer数组
+                Integer[] clableids = new Integer[cliques.size()];
+                for (int i = 0; i < cliques.size(); i++) {
+                    //查询出圈子id
+                    clableids[i] = cliques.get(i).getClableid();
+                }
+                lc = cs.diffTimeBy(clableids);
+                break;
+            case "tech":
+                /*根据圈子的类型去查询出*/
+                /*List<Clable> clables = cls.queryByTypeid(1);
+                Integer[] clable = new Integer[clables.size()];
+                for (int i = 0; i < clables.size(); i++) {
+                    clable[i] = clables.get(i).getClableid();
+                }
+                lc = cs.diffTimeBy(clable);
+                System.out.println("技术"+lc.toString());*/
+                lc = TabUtil.tabul(cls.queryByTypeid(1), cls.queryByTypeid(1).size(), cs);
+                break;
+            case "creative":
+                lc = TabUtil.tabul(cls.queryByTypeid(2), cls.queryByTypeid(2).size(), cs);
+                break;
+            case "fun":
+                lc = TabUtil.tabul(cls.queryByTypeid(3), cls.queryByTypeid(3).size(), cs);
+                break;
+            case "jobs":
+                lc = TabUtil.tabul(cls.queryByTypeid(4), cls.queryByTypeid(4).size(), cs);
+                break;
+            case "other":
+                lc = TabUtil.tabul(cls.queryByTypeid(5), cls.queryByTypeid(5).size(), cs);
+                break;
+            default:
+                lc = cs.diffTime();
+                break;
+        }
         for (int i = 0; i < lc.size(); i++) {
             Map<String, Object> circle = new HashMap<String, Object>();
             /*这个是获得用户的一些信息*/
-            List<User_info> lus = us.queryByUserId(lc.get(i).getUserid());
+            List<Userinfo> lus = us.queryByUserId(lc.get(i).getUserid());
             //System.out.println(lus);
             /*这个是获取评论信息的*/
             List<Review> lr = rs.queryByComposeid(lc.get(i).getCircleid());
@@ -71,18 +115,20 @@ public class CircleController {
             circle.put("content", lc.get(i).getContent());
             circle.put("circleid",lc.get(i).getCircleid());
             circle.put("clablename", lcs.get(0).getClablename());
+            circle.put("cname",lc.get(i).getTime());
             if (lr.size() == 0) {
                 circle.put("rcount", 0);
             } else {
-                List<User_info> lui = us.queryByUserId(lr.get(0).getUserid());
+                List<Userinfo> lui = us.queryByUserId(lr.get(0).getUserid());
                 circle.put("rname", lui.get(0).getUsername());
-                circle.put("rtime", lr.get(0).getTime());
+                /*circle.put("rtime", lr.get(0).getTime());*/
                 circle.put("rcount", lr.size());
             }
             resultList.add(circle);
         }
         /*System.out.println(resultList.toString());*/
         model.addAttribute("circ", resultList);
+        model.addAttribute("tab", tab);
         System.out.println(resultList.toString());
         return "cir";
     }
@@ -134,8 +180,9 @@ public class CircleController {
     }*/
     /*<a th:href="@{'/q/'+${l.questionid}}" th:text="${l.title}"></a>*/
     @RequestMapping(value = "q/{clablename}")
-    public String queryByQuestionid(Model mv, @PathVariable String clablename) {
+    public String queryByQuestionid(Model mv, @PathVariable String clablename,Integer page) {
         List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+        List<Map<String,Object>> aw=new ArrayList<Map<String,Object>>();
         List<Clable> lc = cls.queryByClablename(clablename);/*圈子名称*/
         /* Integer clableid = lc.get(0).getClableid();*//*圈子id*//*
         String synopsis = lc.get(0).getSynopsis();*//*圈子简介*//*
@@ -149,11 +196,11 @@ public class CircleController {
         map.put("cpic", lc.get(0).getCpic());
         map.put("user_infos", us.queryByUserId(lc.get(0).getUserid()).get(0));
         map.put("integer", clqs.queryCount(lc.get(0).getClableid(), 1));
-        List<Circle> circles = cs.queryByClableid(lc.get(0).getClableid());
+        page = page == null ? 1:page;
+        List<Circle> circles = cs.queryByClableid2(lc.get(0).getClableid(),(page-1)*10);
         for (int i = 0; i < circles.size(); i++) {
-            System.out.println("圈子信息"+lc.toString());
             List<Review> lr = rs.queryByComposeid(circles.get(i).getCircleid());
-            List<User_info> user_infos = us.queryByUserId(circles.get(i).getUserid());
+            List<Userinfo> user_infos = us.queryByUserId(circles.get(i).getUserid());
             Map<String, Object> cir = new HashMap<String, Object>();
             cir.put("head", user_infos.get(0).getHead());
             cir.put("title", circles.get(i).getTitle());
@@ -164,12 +211,22 @@ public class CircleController {
             if (lr.size() == 0) {
                 cir.put("rcount", 0);
             } else {
-                List<User_info> lui = us.queryByUserId(lr.get(i).getUserid());
-                cir.put("rname", lui.get(i).getUsername());
-                cir.put("rtime", lr.get(i).getTime());
+                /*Review{reviewid=3, composeid=25, type=3, content='闪怂的第一次评论25的内容', userid=1, time=Fri Mar 29 10:57:13 CST 2019}*/
+                List<Userinfo> lui = us.queryByUserId(lr.get(0).getUserid());
+                System.out.println(lui.toString());
+                cir.put("rname", lui.get(0).getUsername());
+                cir.put("rtime", lr.get(0).getTime());
                 cir.put("rcount", lr.size());
             }
             resultList.add(cir);
+        }
+        Double wq=Double.valueOf(cs.querycountByClableid(lc.get(0).getClableid()));
+        Double c=Math.ceil(wq/10);
+        for (int j=0;j<c;j++){
+            Map<String,Object> m=new HashMap<>();
+            m.put("ass",j+1);
+            m.put("page",page);
+            aw.add(m);
         }
         map.put("reviews", rs.queryByComposeid(lc.get(0).getClableid()));
         /*Integer integer = clqs.queryCount(lc.get(0).getClableid(), 0);*//*多少人关注*//*
@@ -183,16 +240,18 @@ public class CircleController {
         System.out.println(map.toString());
         mv.addAttribute("cir", resultList);
         System.out.println(resultList.toString());
+        mv.addAttribute("a",aw);
         return "general";
     }
 
-    @RequestMapping(value = "attention/{clablenameden}")
-    public String attention(Model mv, @PathVariable String clablename){
+    @RequestMapping(value = "attention/{clablename}")
+    public String attention(Model mv, @PathVariable String clablename,Integer page){
         List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+        List<Map<String,Object>> aw = new ArrayList<Map<String,Object>>();
         List<Clable> lc = cls.queryByClablename(clablename);
         List<Clique> lcq = clqs.queryByClableid(lc.get(0).getClableid());
         for (int i = 0; i < lcq.size() ; i++) {
-            List<User_info> user_infos = us.queryByUserId(lcq.get(i).getUserid());
+            List<Userinfo> user_infos = us.queryByUserId(lcq.get(i).getUserid());
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("userid",user_infos.get(0).getUserid());
             map.put("username",user_infos.get(0).getUsername());
@@ -205,8 +264,19 @@ public class CircleController {
             map.put("ctime",cliques.get(0).getCtime());
             resultList.add(map);
         }
+        /*page = page == null ? 1:page;
+        Double wq=Double.valueOf(cs.querycountByClableid(lc.get(0).getClableid()));
+        Double c=Math.ceil(wq/10);
+        for (int j=0;j<c;j++){
+            Map<String,Object> m=new HashMap<>();
+            m.put("ass",j+1);
+            m.put("page",page);
+            aw.add(m);
+        }
+        mv.addAttribute("a",aw);*/
         System.out.println(resultList.toString());
         mv.addAttribute("list",resultList);
+        mv.addAttribute("clablename",clablename);
         return "attention";
     }
     @RequestMapping(value = "personal/{userid}")
@@ -215,13 +285,15 @@ public class CircleController {
         return  "personal";
     }
     @RequestMapping(value = "show/{circleid}")
-    public String attention(Model mv, @PathVariable Integer circleid){
+    public String attention(Model mv, @PathVariable Integer circleid,HttpSession session){
         List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
         List<Map<String, Object>> review = new ArrayList<Map<String, Object>>();
         List<Map<String, Object>> replie = new ArrayList<Map<String, Object>>();
+        List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
+        Integer userid = null == loginUser? 0:loginUser.get(0).getUserid();
         List<Circle> circles = cs.queryByCircleid(circleid);
         List<Clable> clables = cls.queryByClableid(circles.get(0).getClableid());
-        List<User_info> user_infos = us.queryByUserId(circles.get(0).getUserid());
+        List<Userinfo> user_infos = us.queryByUserId(circles.get(0).getUserid());
         List<Review> reviews = rs.queryByComposeid(circleid);
         if(reviews.size() == 0){
             /*说明没有评论*/
@@ -229,16 +301,21 @@ public class CircleController {
            /* System.out.println("显示评论数据"+reviews.toString());*/
             for (int i = 0; i < reviews.size(); i++) {
                 Map<String, Object> mr = new HashMap<String, Object>();
-                List<User_info> lu = us.queryByUserId(reviews.get(i).getUserid());
+                List<Userinfo> lu = us.queryByUserId(reviews.get(i).getUserid());
                 List<Reply> replies = rps.queryByReviewid(reviews.get(i).getReviewid());
                 if(replies.size() != 0){
                     for (int j = 0; j < replies.size(); j++) {
                         Map<String, Object> ms = new HashMap<String, Object>();
+                        Integer query = as.queryCount(replies.get(j).getReplyid(), 4);
+                        ms.put("likenumByReply",query);
+                        ms.put("replyid",replies.get(j).getReplyid());
+                        Integer queryone = as.queryone(replies.get(j).getReplyid(), 4, userid);
+                        ms.put("queryone",queryone);
                         ms.put("reviewid",replies.get(j).getReviewid());
                         ms.put("content",replies.get(j).getContent());
-                        List<User_info> lu1 = us.queryByUserId(replies.get(j).getFrom_userid());
-                        List<User_info> lu2 = us.queryByUserId(replies.get(j).getTo_userid());
-                        System.out.println("用户"+lu2);
+                        List<Userinfo> lu1 = us.queryByUserId(replies.get(j).getFrom_userid());
+                        List<Userinfo> lu2 = us.queryByUserId(replies.get(j).getTo_userid());
+                       /* System.out.println("用户"+lu2);*/
                         ms.put("from_username",lu1.get(0).getUsername());
                         ms.put("to_username",lu2.get(0).getUsername());
                         ms.put("recoverytime",replies.get(j).getRecoverytime());
@@ -249,9 +326,12 @@ public class CircleController {
                 }
                /* System.out.println("回复表根据id"+replies.toString());*/
                 mr.put("reviewid",reviews.get(i).getReviewid());
+                mr.put("likenum",as.queryCount(reviews.get(i).getReviewid(), 3));
                 mr.put("username",lu.get(0).getUsername());
                 mr.put("userid",lu.get(0).getUserid());
                 mr.put("head",lu.get(0).getHead());
+                Integer queryone = as.queryone(reviews.get(i).getReviewid(), 3, userid);
+                mr.put("queryone",queryone);
                 mr.put("count",reviews.get(i).getContent());
                 mr.put("time",reviews.get(i).getTime());
                 mr.put("num",reviews.size());
@@ -272,6 +352,7 @@ public class CircleController {
         System.out.println(resultList.toString());
         mv.addAttribute("review",review);
         mv.addAttribute("replie",replie);
+        mv.addAttribute("clablename",clables.get(0).getClablename());
         mv.addAttribute("count",review.size()+replie.size());
         mv.addAttribute("aaa", ForFlie.readFile(circles.get(0).getContent()));
         return  "show";
@@ -306,28 +387,33 @@ public class CircleController {
     }
     @RequestMapping("addByReview")
     public String addByReview(Model mv, String text, HttpSession session,Integer circleid){
+        List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
+        Integer userid = null == loginUser? 0:loginUser.get(0).getUserid();
+        if(userid == 0)return "logins";
         Review r = new Review();
         r.setContent(text);
         r.setComposeid(circleid);
         /*从session中获取获取用户的id*/
-        r.setUserid(1);
+        r.setUserid(userid);
         rs.addByReview(r);
         return "redirect:/circle/show/"+circleid;
     }
     @RequestMapping("addByReply")
     public String addByReply(Model mv, String text, HttpSession session,Integer reviewid,Integer touserid,Integer circleid){
-        System.out.println("内容"+text);
+        /*System.out.println("内容"+text);
         System.out.println("内容"+reviewid);
         System.out.println("内容"+touserid);
-        System.out.println("内容"+circleid);
+        System.out.println("内容"+circleid);*/
+        List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
+        Integer userid = null == loginUser? 0:loginUser.get(0).getUserid();
+        if(userid == 0)return "logins";
         Reply r = new Reply();
         r.setContent(text);
         /*从session中获取对象*/
-        r.setFrom_userid(2);
+        r.setFrom_userid(userid);
         r.setTo_userid(touserid);
         r.setReviewid(reviewid);
         rps.addByReply(r);
         return "redirect:/circle/show/"+circleid;
     }
-
 }

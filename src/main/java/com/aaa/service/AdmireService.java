@@ -23,4 +23,7 @@ public class AdmireService {
     public Integer queryone(Integer type_id, Integer type, Integer userid){
         return ad.queryone(type_id,type,userid);
     }
+    public Integer queryCount(Integer type_id, Integer type){
+        return ad.queryCount(type_id,type);
+    }
 }
