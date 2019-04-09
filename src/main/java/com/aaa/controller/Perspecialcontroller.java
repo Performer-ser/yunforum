@@ -51,12 +51,9 @@ public class Perspecialcontroller {
     @RequestMapping("add2")
     @ResponseBody
     public Integer add2(HttpSession session,Special spe, String lablename){
-        System.out.println("spe = " + spe);
         List<Userinfo> login=(List<Userinfo>) session.getAttribute("LoginUser");
         spe.setLableid(pes.querylablename(lablename).get(0).getLableid());
         System.out.println("lableName = " + lablename);
-                /*spe.setLableid(5)*/;
-        //spe.setUserid(1);
         spe.setUserid(login.get(0).getUserid());
         pes.addspe(spe);
        return 1;

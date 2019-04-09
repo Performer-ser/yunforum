@@ -105,7 +105,7 @@ public class CircleController {
             List<Userinfo> lus = us.queryByUserId(lc.get(i).getUserid(),null);
             //System.out.println(lus);
             /*这个是获取评论信息的*/
-            List<Review> lr = rs.queryByComposeid(lc.get(i).getCircleid());
+            List<Review> lr = rs.queryByComposeid(lc.get(i).getCircleid(),3);
             //System.out.println(lr);
             List<Clable> lcs = cls.queryByClableid(lc.get(i).getClableid());
             circle.put("username", lus.get(0).getUsername());
@@ -199,7 +199,7 @@ public class CircleController {
         page = page == null ? 1:page;
         List<Circle> circles = cs.queryByClableid2(lc.get(0).getClableid(),(page-1)*10);
         for (int i = 0; i < circles.size(); i++) {
-            List<Review> lr = rs.queryByComposeid(circles.get(i).getCircleid());
+            List<Review> lr = rs.queryByComposeid(circles.get(i).getCircleid(),3);
             List<Userinfo> user_infos = us.queryByUserId(circles.get(i).getUserid(),null);
             Map<String, Object> cir = new HashMap<String, Object>();
             cir.put("head", user_infos.get(0).getHead());
@@ -228,7 +228,7 @@ public class CircleController {
             m.put("page",page);
             aw.add(m);
         }
-        map.put("reviews", rs.queryByComposeid(lc.get(0).getClableid()));
+        map.put("reviews", rs.queryByComposeid(lc.get(0).getClableid(),3));
         /*Integer integer = clqs.queryCount(lc.get(0).getClableid(), 0);*//*多少人关注*//*
         List<Circle> circles = cs.queryByClableid(lc.get(0).getClableid());//圈子标签名称
         List<Review> reviews = rs.queryByComposeid(lc.get(0).getClableid());//评论*/
@@ -297,7 +297,7 @@ public class CircleController {
         List<Circle> circles = cs.queryByCircleid(circleid);
         List<Clable> clables = cls.queryByClableid(circles.get(0).getClableid());
         List<Userinfo> user_infos = us.queryByUserId(circles.get(0).getUserid(),null);
-        List<Review> reviews = rs.queryByComposeid(circleid);
+        List<Review> reviews = rs.queryByComposeid(circleid,3);
         if(reviews.size() == 0){
             /*说明没有评论*/
         }else{

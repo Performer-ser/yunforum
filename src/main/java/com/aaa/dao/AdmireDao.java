@@ -16,7 +16,7 @@ public interface AdmireDao {
     public int update(Integer type_id, Integer type, Integer userid,Integer status);
     @Insert("insert into admire(type_id,type,userid,status,time) values(#{type_id},#{type},#{userid},1,now())")
     public int insert(Integer type_id, Integer type, Integer userid);
-    @Select("select status from admire where userid=#{userid} and type=#{type} and type_id=#{type_id}")
+    @Select("select status from admire where userid=#{param3} and type=#{param2} and type_id=#{param1}")
     public Integer queryone(Integer type_id, Integer type, Integer userid);
     @Select("select count(*) count from admire where type=#{param2} and type_id=#{param1} and status=1")
     public Integer queryCount(Integer type_id, Integer type);

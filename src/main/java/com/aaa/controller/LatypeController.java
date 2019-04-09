@@ -1,11 +1,7 @@
 package com.aaa.controller;
 
-import com.aaa.entity.Lable;
-import com.aaa.entity.Latype;
-import com.aaa.entity.Userinfo;
-import com.aaa.service.LatypeService;
-import com.aaa.service.MessageService;
-import com.aaa.service.SpecialService;
+import com.aaa.entity.*;
+import com.aaa.service.*;
 import com.aaa.util.JsonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +26,14 @@ public class LatypeController {
     SpecialService ss;
     @Autowired
     MessageService ms;
+    @Autowired
+    ReviewService rs;
+    @Autowired
+    User_infoService us;
+    @Autowired
+    ReplyService rps;
+    @Autowired
+    AdmireService as;
 
 
     @RequestMapping("query")
@@ -60,26 +65,87 @@ public class LatypeController {
     public String queryBysid(Model m,@PathVariable Integer lableid,Integer latypeid){
         List<Map<String,Object>> list=lts.queryBysid(lableid);
         m.addAttribute("listss",list);
-        System.out.println(list);
         List<Lable> listlables=lts.querylables();
         m.addAttribute("listlables",listlables);
-        System.out.println(listlables);
         List<Map<String,Object>> queryxg=lts.queryxg((Integer)  list.get(0).get("latypeid"));
         m.addAttribute("queryxg",queryxg);
-        System.out.println(queryxg);
         return "t";
     }
 
 
-
-    @RequestMapping(value = "a/{specialid}")
+    /*@RequestMapping(value = "a/{specialid}")
     public String queryByid(Model m ,@PathVariable Integer specialid){
         Map<String,Object> list=ss.queryByid(specialid).get(0);
         m.addAttribute("list",list);
         List<Map<String,Object>> querya= ss.querya();
         m.addAttribute("querya",querya);
+
+        return "a";
+    }*/
+
+    @RequestMapping(value = "a/{specialid}")
+    public String queryByid(Model m ,@PathVariable Integer specialid,HttpSession session){
+        List<Map<String, Object>> list = ss.queryByid(specialid);
+        System.out.println("sdfdslist"+list.toString());
+        List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
+        List<Map<String, Object>> replie = new ArrayList<Map<String, Object>>();
+        Integer userid = null == loginUser? 0:loginUser.get(0).getUserid();
+        List<Map<String, Object>> review = new ArrayList<Map<String, Object>>();
+        m.addAttribute("list",list);
+        List<Map<String,Object>> querya= ss.querya();
+        List<Review> reviews = rs.queryByComposeid(specialid,2);
+        if(reviews.size() == 0){
+            /*说明没有评论*/
+        }else{
+            /* System.out.println("显示评论数据"+reviews.toString());*/
+            for (int i = 0; i < reviews.size(); i++) {
+                List<Reply> replies = rps.queryByReviewid(reviews.get(i).getReviewid());
+                Map<String, Object> mr = new HashMap<String, Object>();
+                List<Userinfo> lu = us.queryByUserId(reviews.get(i).getUserid(),null);
+                if(replies.size() != 0){
+                    for (int j = 0; j < replies.size(); j++) {
+                        Map<String, Object> ms = new HashMap<String, Object>();
+                        Integer query = as.queryCount(replies.get(j).getReplyid(), 2);
+                        ms.put("likenumByReply",query);
+                        ms.put("replyid",replies.get(j).getReplyid());
+                        System.out.println("sfgdhf"+replies.get(j).getReplyid());
+                        Integer queryone = as.queryone(replies.get(j).getReplyid(), 2, userid);
+                        ms.put("queryone",queryone);
+                        ms.put("reviewid",replies.get(j).getReviewid());
+                        ms.put("content",replies.get(j).getContent());
+                        ms.put("from_userid",replies.get(j).getFrom_userid());
+                        List<Userinfo> lu1 = us.queryByUserId(replies.get(j).getFrom_userid(),null);
+                        List<Userinfo> lu2 = us.queryByUserId(replies.get(j).getTo_userid(),null);
+                        /* System.out.println("用户"+lu2);*/
+                        ms.put("from_username",lu1.get(0).getUsername());
+                        ms.put("to_username",lu2.get(0).getUsername());
+                        ms.put("recoverytime",replies.get(j).getRecoverytime());
+                        replie.add(ms);
+                    }
+                    System.out.println("回复表中的内容"+replie.toString());
+                    System.out.println("回复表中的数量"+replie.size());
+                }
+                /* System.out.println("回复表根据id"+replies.toString());*/
+                mr.put("reviewid",reviews.get(i).getReviewid());
+                mr.put("likenum",as.queryCount(reviews.get(i).getReviewid(), 2));
+                mr.put("username",lu.get(0).getUsername());
+                mr.put("userid",lu.get(0).getUserid());
+                /*mr.put("head",lu.get(0).getHead());*/
+                Integer queryone = as.queryone(reviews.get(i).getReviewid(), 2, userid);
+                mr.put("queryone",queryone);
+                mr.put("count",reviews.get(i).getContent());
+                mr.put("time",reviews.get(i).getTime());
+                mr.put("num",reviews.size());
+                review.add(mr);
+            }
+        }
+        /*System.out.println("评论表中的数据"+review.toString());
+        System.out.println("评论表中的数量"+review.size());*/
+        m.addAttribute("querya",querya);
+        m.addAttribute("review",review);
+        m.addAttribute("replie",replie);
+        m.addAttribute("count",review.size()+replie.size());
         System.out.println(querya);
-        System.out.println(list);
         return "a";
     }
 

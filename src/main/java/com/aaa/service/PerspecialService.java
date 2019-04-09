@@ -30,8 +30,8 @@ public class PerspecialService {
         return pd.queryLable();
     }
     public void addspe(Special spe){
-        pd.addspe(spe);
-    }
+    pd.addspe(spe);
+}
     public List<Lable> querylablename(String lablename){
         return pd.querylablename(lablename);
     }

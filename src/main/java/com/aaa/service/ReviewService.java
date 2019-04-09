@@ -12,8 +12,8 @@ import java.util.Map;
 public class ReviewService {
     @Autowired
     ReviewDao rd;
-    public List<Review> queryByComposeid(Integer composeid){
-        return  rd.queryByComposeid(composeid);
+    public List<Review> queryByComposeid(Integer composeid,Integer type){
+        return  rd.queryByComposeid(composeid,type);
     }
     public List<Review> queryByUserid(Integer userid){
         return  rd.queryByUserid(userid);
