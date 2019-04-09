@@ -13,10 +13,10 @@ import java.util.Map;
 public interface QuestionDao {
     @Insert("insert into question(title,content,time) values(#{title},#{content},now())")
     public int add(Question q);
-
+    //查询问答根据时间倒序
     @Select("select u.username,q.questionid,q.title,q.content,q.userid,q.time,GROUP_CONCAT(b.lablename) lablename from user_info u left join question q on u.userid = q.userid left join lable b on FIND_IN_SET(b.lableid,q.lableid) group by u.username,q.questionid,q.title,q.content,q.userid,q.time order by time desc limit #{param1},15")
     public List<Map<String,Object>> queryQuestionsByQlable(Integer offset);
-
+    //根据问答的id查询问答详情
     @Select("select u.username,q.questionid,q.title,q.content,q.userid,q.time,GROUP_CONCAT(b.lablename) lablename from user_info u left join question q on u.userid = q.userid left join lable b on FIND_IN_SET(b.lableid,q.lableid) where q.questionid=#{param1} group by u.username,q.questionid,q.title,q.content,q.userid,q.time order by time desc")
     public List<Map<String,Object>> quesById(Integer qid);
 
@@ -44,10 +44,23 @@ public interface QuestionDao {
     @Select("select latypeid,latypename from latype")
     public List<Latype> queryLatype();
     ////查询标签及标签类型根据标签类型id
-    @Select("select a.latypeid,a.latypename,b.lableid,b.lablename,b.lablepic,b.describe from latype a left join lable b on a.latypeid = b.latypeid where a.latypename = #{param1}")
-    public List<Map<String,Object>> queryLableByLatypeid(String lname);
-
+    @Select("select *from lable")
+    public List<Lable> queryLableByLatypeid();
+    //查看标签详情根据标签名称得到标签id传到详情页面
+    @Select("select distinct lableid from lable where lablename =#{param1} limit 0,1")
+    public int queryLableByLablename(String lablename);
     //添加浏览数据
     @Insert("insert into browse(browseid,type,composeid,userid,browsetime) values(#{browseid},1,#{composeid},'1',SYSDATE())")
     public Integer addBrowse(Browse browse);
+    //查询问答的关注数量
+    @Select("select count(distinct userid) gz from attentionquestion where questionid=#{param1} ")
+    public Integer byAttentionQuestion(Integer questionid);
+    //添加问答数据
+    @Insert("INSERT INTO question(lableid,title,content,userid,time,reviewid) VALUES (#{lableid},#{title},#{content},#{userid},sysdate(),#{reviewid});")
+    public void addspe(Question que);
+    @Select("select * from lable where lablename=#{lablename}")
+    public List<Lable> querylablename(String lablename);
+    //添加回复
+    @Insert("insert into review VALUES(null,#{composeid},1,#{content},#{userid},SYSDATE())")
+    public Integer addByReview(Review r);
 }

@@ -3103,7 +3103,7 @@
                                     var c=$("#phone").val();
                                     var s=$("#upwd").val();
                                     console.log(c);
-                                    $.post("../../yunforum/users/login",{"phone":c,"pwd":s},function (data) {
+                                    $.post("/yunforum/users/login",{"phone":c,"pwd":s},function (data) {
                                         if(data==1){
                                             alert("登陆成功");
                                             window.location.href=document.referrer;

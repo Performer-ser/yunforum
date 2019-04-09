@@ -82,11 +82,15 @@ public class QuestionService {
         }
         return list;
     }
+    //根据问答的id查询问答详情
     public List<Map<String,Object>> quesById(Integer qid){
         return qd.quesById(qid);
     }
-    public Integer byAdmire(Integer qid){ return qd.byAdmire(qid); }
     //查询点赞数量
+    public Integer byAdmire(Integer qid){
+        return qd.byAdmire(qid);
+    }
+
     //查询评论回答数量
     public Integer byReview(Integer qid){
         return qd.byReview(qid);
@@ -108,11 +112,29 @@ public class QuestionService {
         return qd.queryLatype();
     }
     ////查询标签及标签类型根据标签类型id
-    public List<Map<String,Object>> queryLableByLatypeid(String lname){
-        return qd.queryLableByLatypeid(lname);
+    public List<Lable> queryLableByLatypeid(){
+        return qd.queryLableByLatypeid();
+    }
+    //查看标签详情根据标签名称得到标签id传到详情页面
+    public int queryLableByLablename(String lablename){
+        return qd.queryLableByLablename(lablename);
     }
     //添加浏览数据
     public Integer addBrowse(Browse browse){
         return qd.addBrowse(browse);
+    }
+    //查询问答的关注数量
+    public Integer byAttentionQuestion(Integer questionid){
+        return qd.byAttentionQuestion(questionid);
+    }
+    //添加问答书记
+    public void addspe(Question que){
+        qd.addspe(que);
+    }
+    public List<Lable> querylablename(String lablename){
+        return qd.querylablename(lablename);
+    }
+    public Integer addByReview(Review r){
+        return  qd.addByReview(r);
     }
 }
