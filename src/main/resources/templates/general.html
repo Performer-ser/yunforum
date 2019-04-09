@@ -639,7 +639,7 @@
                     <h3 class="group__detail--title" th:text="@{${list.clablename}}"></h3>
                 </a>
                 <h3 class="group__detail--title ml0">
-                    <button class="btn btn-success  group__detail--fee group__addgroup-btn SFLogin">关注圈子</button>
+                    <button class="btn btn-success  group__detail--fee group__addgroup-btn SFLogin" id="guanzhul" th:onclick="'javascript:guanzhuquanzi()'">关注圈子</button>
                 </h3>
                 <div class="group__detail--description">
                     <p th:text="@{${list.synopsis}}"></p>
@@ -863,8 +863,41 @@
 <div id="fixedTools" class="hidden-xs hidden-sm">
     <a id="backtop" class="hidden border-bottom" href="#">回顶部</a>
 </div>
-<script crossorigin th:src="@{/js/assets.js}"></script>
-<script crossorigin th:src="@{/js/detail.min.js}"></script>
-<script th:src="@{/js/ads.min.js}" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        var status = '[[${queryone}]]';
+       if(status == ""){
+            $("#guanzhul").html("关注圈子");
+        }else if(status == '0'){
+            $("#guanzhul").html("关注圈子");
+        }else{
+            $("#guanzhul").html("已关注");
+        }
+    });
+    function guanzhuquanzi(){
+        $.ajax({
+            data:{"clablename":'[[${list.clablename}]]'},
+            url:'../../person/circle',
+            dataType:"text",
+            type:'post',
+            success: function(data){
+                if(data == "logins"){
+                    window.location.href="../../logins";
+                }else if(data == "1"){
+                    if($("#guanzhul").html() == "关注圈子"){
+                        $("#guanzhul").html("已关注");
+                    }else{
+                        $("#guanzhul").html("关注圈子");
+                    }
+                }
+                /*if(data==1){
+                    $("#2").val("已关注");
+                }else{
+                    $("#2").val("关注圈子");
+                }*/
+            }
+        })
+    }
+</script>
 </body>
 </html>

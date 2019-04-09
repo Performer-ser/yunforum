@@ -1,6 +1,6 @@
 package com.aaa.controller;
 
-import com.aaa.entity.Admire;
+import com.aaa.entity.Clable;
 import com.aaa.entity.Userinfo;
 import com.aaa.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +28,10 @@ public class PersonController {
     AdmireService as;
     @Autowired
     MessageService ms;
+    @Autowired
+    CliqueService cs;
+    @Autowired
+    ClableService cls;
     @RequestMapping("queryPS")
     public String queryPS(Model model, HttpSession session,Integer  userid){
         List<Map<String,Object>> lm=ss.queryPS(userid);
@@ -130,6 +134,25 @@ public class PersonController {
             result=0;
         }
         return result;
+    }
+    @RequestMapping("circle")
+    @ResponseBody
+    public String circle(String clablename,HttpSession session){
+        List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
+        Integer userid = null == loginUser? 0:loginUser.get(0).getUserid();
+        if (userid == 0)return "logins";
+        List<Clable> lc = cls.queryByClablename(clablename);
+        Integer clableid = lc.get(0).getClableid();
+        Integer status = cs.queryone(userid,clableid);
+        Integer message = null;
+        if(status==null){
+            message=cs.add(clableid,userid);
+        }else if(status==0){
+            message=cs.update(clableid,userid,1);
+        }else{
+            message=cs.update(clableid,userid,0);
+        }
+        return message+"";
     }
     @RequestMapping("attentionque")
     @ResponseBody

@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Controller
 @RequestMapping("circle")
@@ -180,10 +178,16 @@ public class CircleController {
     }*/
     /*<a th:href="@{'/q/'+${l.questionid}}" th:text="${l.title}"></a>*/
     @RequestMapping(value = "q/{clablename}")
-    public String queryByQuestionid(Model mv, @PathVariable String clablename,Integer page) {
+    public String queryByQuestionid(Model mv, @PathVariable String clablename,Integer page,HttpSession session) {
         List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
         List<Map<String,Object>> aw=new ArrayList<Map<String,Object>>();
+        List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
+        Integer userid = null == loginUser? 0:loginUser.get(0).getUserid();
         List<Clable> lc = cls.queryByClablename(clablename);/*圈子名称*/
+        Integer queryone = null;
+        if(null != userid){
+            queryone = clqs.queryone(userid, lc.get(0).getClableid());
+        }
         /* Integer clableid = lc.get(0).getClableid();*//*圈子id*//*
         String synopsis = lc.get(0).getSynopsis();*//*圈子简介*//*
         Date foundtime = lc.get(0).getFoundtime();*//*圈子创建时间*//*
@@ -241,6 +245,7 @@ public class CircleController {
         mv.addAttribute("cir", resultList);
         System.out.println(resultList.toString());
         mv.addAttribute("a",aw);
+        mv.addAttribute("queryone",queryone);
         return "general";
     }
 
@@ -252,7 +257,7 @@ public class CircleController {
         List<Clique> lcq = clqs.queryByClableid(lc.get(0).getClableid());
         for (int i = 0; i < lcq.size() ; i++) {
             List<Userinfo> user_infos = us.queryByUserId(lcq.get(i).getUserid(),searchtext);
-            if(user_infos.size() == 0)break;
+            if(user_infos.size() == 0) break;
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("userid",user_infos.get(0).getUserid());
             map.put("username",user_infos.get(0).getUsername());
@@ -265,21 +270,46 @@ public class CircleController {
             map.put("ctime",cliques.get(0).getCtime());
             resultList.add(map);
         }
-        /*page = page == null ? 1:page;
-        Double wq=Double.valueOf(cs.querycountByClableid(lc.get(0).getClableid()));
-        Double c=Math.ceil(wq/10);
-        for (int j=0;j<c;j++){
-            Map<String,Object> m=new HashMap<>();
-            m.put("ass",j+1);
-            m.put("page",page);
-            aw.add(m);
-        }
-        mv.addAttribute("a",aw);*/
-        System.out.println(resultList.toString());
-        System.out.println(clablename.toString());
         mv.addAttribute("list",resultList);
         mv.addAttribute("clablename",clablename);
         return "attention";
+    }
+    @RequestMapping(value = "search/{clablename}")
+    @ResponseBody
+    public String search(@PathVariable String clablename,Integer page,String searchtext){
+        List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+        List<Clable> lc = cls.queryByClablename(clablename);
+        List<Clique> lcq = clqs.queryByClableid(lc.get(0).getClableid());
+        List<Userinfo> user_infos = us.queryByUserId(null,searchtext);
+        for (int i = 0; i < lcq.size() ; i++) {
+            if(user_infos.size() == 0) break;
+            if(lcq.get(i).getUserid() != user_infos.get(0).getUserid())break;
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("userid",user_infos.get(0).getUserid());
+            map.put("username",user_infos.get(0).getUsername());
+            map.put("head",user_infos.get(0).getHead());
+            List<Circle> circles = cs.queryByUserid(user_infos.get(0).getUserid());
+            map.put("topic",circles.size());
+            List<Review> reviews = rs.queryByUserid(user_infos.get(0).getUserid());
+            map.put("comments",reviews.size());
+            List<Clique> cliques = clqs.queryByUserid(user_infos.get(0).getUserid());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            map.put("ctime",sdf.format(cliques.get(0).getCtime()));
+            resultList.add(map);
+        }
+        System.out.println(resultList.toString());
+        String sea = "";
+        if(user_infos.size() != 0){
+            for (int i = 0; i < resultList.size(); i++) {
+                Map<String, Object> stringObjectMap = resultList.get(i);
+                sea += "<tr class=\"group__detail--member mt15\"><td><img src=\""+stringObjectMap.get("head")+"\" class=\"img-circle\" style=\"width:32px\">" +
+                        "<div class=\"member--info mt5\"><span class=\"user-member-name\"><a href=\"/circle/personal/"+stringObjectMap.get("userid")+"\">"+stringObjectMap.get("username")+"</a>" +
+                        "</span></div></td><td>"+stringObjectMap.get("topic")+"</td><td>"+stringObjectMap.get("comments")+"</td>" +
+                        "<td>"+stringObjectMap.get("ctime")+"</td><td></td></tr>";
+            }
+        }
+        System.out.println(sea.toString());
+        return sea.toString();
     }
     @RequestMapping(value = "personal/{userid}")
     public String personal(Model mv, @PathVariable Integer userid){
@@ -410,6 +440,7 @@ public class CircleController {
         r.setComposeid(circleid);
         /*从session中获取获取用户的id*/
         r.setUserid(userid);
+        r.setType(3);
         rs.addByReview(r);
         return "redirect:/circle/show/"+circleid;
     }
