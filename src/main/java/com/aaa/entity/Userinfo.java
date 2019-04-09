@@ -6,7 +6,7 @@ public class Userinfo {
     private Integer userid;
     private String username;
     private Integer sex;
-    private Date birthday;
+    private String birthday;
     private String phone;
     private String address;
     private String idcard;
@@ -17,6 +17,7 @@ public class Userinfo {
     private Integer userstatus;
     private String signature;
     private String pwd;
+
 
     public Integer getUserid() {
         return userid;
@@ -42,11 +43,11 @@ public class Userinfo {
         this.sex = sex;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -77,7 +78,6 @@ public class Userinfo {
     public String getHead() {
         return head;
     }
-
     public void setHead(String head) {
         this.head = head;
     }
@@ -130,40 +130,20 @@ public class Userinfo {
         this.pwd = pwd;
     }
 
-    public Userinfo() {
-    }
-
-    public Userinfo(Integer userid, String username, Integer sex, Date birthday, String phone, String address, String idcard, String head, String truename, Integer rank, Date createuser, Integer userstatus, String signature, String pwd) {
-        this.userid = userid;
-        this.username = username;
-        this.sex = sex;
-        this.birthday = birthday;
-        this.phone = phone;
-        this.address = address;
-        this.idcard = idcard;
-        this.head = head;
-        this.truename = truename;
-        this.rank = rank;
-        this.createuser = createuser;
-        this.userstatus = userstatus;
-        this.signature = signature;
-        this.pwd = pwd;
-    }
-
     @Override
     public String toString() {
         return "Userinfo{" +
                 "userid=" + userid +
                 ", username='" + username + '\'' +
                 ", sex=" + sex +
-                ", birthday=" + birthday +
+                ", birthday='" + birthday + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", idcard='" + idcard + '\'' +
                 ", head='" + head + '\'' +
                 ", truename='" + truename + '\'' +
                 ", rank=" + rank +
-                ", createuser=" + createuser +
+                ", createuser='" + createuser + '\'' +
                 ", userstatus=" + userstatus +
                 ", signature='" + signature + '\'' +
                 ", pwd='" + pwd + '\'' +

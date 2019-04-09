@@ -24,4 +24,5 @@ public class LableService {
     public int update(Lable lable){
         return ld.update(lable);
     }
+    public Lable queryById(Integer lableid){return ld.queryById(lableid);}
 }

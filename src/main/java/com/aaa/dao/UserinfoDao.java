@@ -43,4 +43,7 @@ public interface UserinfoDao {
     public List<Circle> queryCirPage(Integer userid, Integer page, Integer limit);
     @Select("select * from circle where userid =#{userid}")
     public List<Circle> queryCirAll( Integer userid);
+
+    @Update("update user_info set username=#{username},sex=#{sex},birthday=#{birthday},address=#{address},idcard=#{idcard},truename=#{truename},pwd=#{pwd},head=#{head} where userid=#{userid}")
+    public Integer userup(Userinfo u);
 }

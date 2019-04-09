@@ -34,4 +34,5 @@ public class UserinfoService {
     public List<Special> querySpeAll(Integer userid){return ud.querySpeAll(userid);}
     public List<Circle> queryCirPage(Integer userid, Integer page, Integer limit){return ud.queryCirPage(userid,page,limit);}
     public List<Circle> queryCirAll(Integer userid){return ud.queryCirAll(userid);}
+    public Integer userup(Userinfo u){return ud.userup(u);}
 }

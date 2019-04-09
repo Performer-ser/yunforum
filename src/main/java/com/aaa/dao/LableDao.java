@@ -14,4 +14,6 @@ public interface LableDao {
     public int add(Lable lable);
     @Update("update lable set `describe`=#{describe},lablepic=#{lablepic},lablename=#{lablename},latypeid=#{latypeid} where lableid=#{lableid}")
     public int update(Lable lable);
+    @Select("select * from lable where lableid=#{param1}")
+    public Lable queryById(Integer lableid);
 }

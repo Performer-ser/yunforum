@@ -19,4 +19,7 @@ public class LetterService {
     public Integer queryStatus(Integer fromid,Integer toid){return ld.queryStatus(fromid,toid);}
     public List<Map<String,Object>> queryDetial(Integer fromid,Integer toid){return ld.queryDetail(fromid,toid);}
     public int add(Integer fromid,Integer toid,String content){return ld.add(fromid,toid,content);}
+    public Integer upstatus(Integer fromid,Integer toid){return ld.upstatus(fromid,toid);}
+    public Integer updateAll(Integer toid){return ld.updateAll(toid);}
+    public Integer queryNo(Integer toid){return ld.queryNo(toid);}
 }

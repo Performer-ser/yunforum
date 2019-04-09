@@ -90,7 +90,7 @@ public class QuestionController {
         Integer userid = null == loginUser? 0:loginUser.get(0).getUserid();
         List<Map<String, Object>> review = new ArrayList<Map<String, Object>>();
         List<Map<String, Object>> replie = new ArrayList<Map<String, Object>>();
-        List<Review> reviews = rs.queryByComposeid(qid);
+        List<Review> reviews = rs.queryByComposeid(qid,1);
         if(reviews.size() == 0){
             /*说明没有评论*/
         }else{

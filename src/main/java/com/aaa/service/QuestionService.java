@@ -100,7 +100,7 @@ public class QuestionService {
         return qd.byBrowse(qid);
     }
     public Map<String,Object> queryTitle(Integer qid){return qd.queryTitle(qid);}
-    public List<Map<String,Object>> queryUser(Integer userid,Integer page){return qd.queryUser(userid,page);}
+    public List<Question> queryUser(Integer userid,Integer page){return qd.queryUser(userid,page);}
     public List<Map<String,Object>> queryUserAll(Integer userid){return qd.queryUserAll(userid);}
 
     //查看回答表及回答用户根据问答的
@@ -137,4 +137,5 @@ public class QuestionService {
     public Integer addByReview(Review r){
         return  qd.addByReview(r);
     }
+    public List<Review> queryAllAnwser(Integer userid){return qd.queryAllAnswer(userid);}
 }

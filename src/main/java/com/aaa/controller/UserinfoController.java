@@ -4,6 +4,7 @@ package com.aaa.controller;
 import com.aaa.entity.Circle;
 import com.aaa.entity.Special;
 import com.aaa.entity.Userinfo;
+import com.aaa.service.LetterService;
 import com.aaa.service.UserinfoService;
 /*import com.aaa.util.JuheDemo;*/
 import com.aaa.util.IdUtils;
@@ -28,6 +29,8 @@ import java.util.Map;
 public class UserinfoController {
     @Autowired
     UserinfoService us;
+    @Autowired
+    LetterService les;
 
     @RequestMapping("login")
     @ResponseBody
@@ -36,6 +39,7 @@ public class UserinfoController {
        List<Userinfo> list=us.login(user);
        if(list.size()==1){
            session.setAttribute("LoginUser",list);
+           session.setAttribute("sixin",les.queryNo(list.get(0).getUserid()));
            return 1;
        }else {
            return 0;

@@ -36,7 +36,7 @@ public interface QuestionDao {
     public List<Map<String,Object>> queryReviewByQuestionid(Integer qid);
     //分页查看个人问题
     @Select("select questionid,title,reviewid,time from question where userid=#{param1} limit #{param2},20")
-    public List<Map<String,Object>> queryUser(Integer userid,Integer page);
+    public List<Question> queryUser(Integer userid,Integer page);
     //查看个人全部问题
     @Select("select title,reviewid,time from question where userid=#{param1}")
     public List<Map<String,Object>> queryUserAll(Integer userid);
@@ -63,4 +63,7 @@ public interface QuestionDao {
     //添加回复
     @Insert("insert into review VALUES(null,#{composeid},1,#{content},#{userid},SYSDATE())")
     public Integer addByReview(Review r);
+    //查看个人全部回答
+    @Select("select * from review where userid=#{param1} and type=1")
+    public List<Review> queryAllAnswer(Integer userid);
 }

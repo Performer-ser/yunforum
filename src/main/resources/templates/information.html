@@ -41,7 +41,7 @@
         </div>
         <div class="layui-form-item">
         <label class="layui-form-label">身份证号:</label><label th:text="${lu.idcard}" class="layui-form-label"> </label>
-        <label class="layui-form-label" >真实姓名:</label><label th:text="${lu.truename}"class="layui-form-label"> </label>
+        <label class="layui-form-label" >个性签名:</label><label th:text="${lu.truename}"class="layui-form-label"> </label>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">注册时间:</label><label th:text="${lu.createuser}" class="layui-form-label"> </label>
@@ -56,8 +56,6 @@
         <li class="layui-this">他的问答</li>
         <li>他的文章</li>
         <li>他的圈子</li>
-        <li>声望记录</li>
-        <li>他的文件</li>
     </ul>
     <div class="layui-tab-content">
         <div class="layui-tab-item"></div>
@@ -66,8 +64,6 @@
             </table></div>
         <div class="layui-tab-item"><table class="layui-hide" id="demo2" lay-filter="test"></table></div>
         <div class="layui-tab-item"><table class="layui-hide" id="demo3" lay-filter="test"></table></div>
-        <div class="layui-tab-item">内容4</div>
-        <div class="layui-tab-item">内容5</div>
     </div>
 </div>
 <script type="text/javascript" th:inline="javascript">
@@ -80,7 +76,7 @@
         table.render({
             elem: '#demo'
             ,url: '/yunforum/users/queryQuesPage?userid='+[[${lu.userid}]]
-            ,width:854
+            ,width:633
             ,page:true
             ,left:100
             ,limit:3
@@ -97,7 +93,7 @@
         table.render({
             elem: '#demo2'
             ,url: '/yunforum/users/querySpePage?userid='+[[${lu.userid}]]
-            ,width:854
+            ,width:508
             ,page:true
             ,left:100
             ,limit:3
@@ -107,14 +103,13 @@
                     ,{field: 'lableid', title: '所属标签', width:125}
                     ,{field: 'title', title: '标题', width:125}
                     ,{field: 'time', title: '发表时间', width:125}
-                    ,{field: 'content', title: '内容', width:125}
                 ]
             ]
         });
         table.render({
             elem: '#demo3'
             ,url: '/yunforum/users/queryCirPage?userid='+[[${lu.userid}]]
-            ,width:854
+            ,width:508
             ,page:true
             ,left:100
             ,limit:3
@@ -124,7 +119,6 @@
                     ,{field: 'clableid', title: '所属圈子', width:125}
                     ,{field: 'title', title: '标题', width:125}
                     ,{field: 'time', title: '发表时间', width:125}
-                    ,{field: 'content', title: '内容', width:125}
                 ]
             ]
         });

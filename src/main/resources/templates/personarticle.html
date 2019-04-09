@@ -59,6 +59,11 @@
 <img data-src="https://static.segmentfault.com/v-5c8b4d77/global/img/touch-icon-512.png" id="icon4weChat" style="height: 0;width: 0;">
 <div id="gridMapHoverBox" style="position:absolute; border: 1px solid #009a61; z-index:99; font-size: 10px; background:#fff">
 </div>
+<body class="user-index " data-mod="user">
+<!--[if lt IE 9]><div class="alert alert-danger topframe" role="alert">你的浏览器实在<strong>太太太太太太旧了</strong>，放学别走，升级完浏览器再说 <a target="_blank" class="alert-link" href="http://browsehappy.com">立即升级</a></div><![endif]-->
+<img data-src="https://static.segmentfault.com/v-5c8b4d77/global/img/touch-icon-512.png" id="icon4weChat" style="height: 0;width: 0;">
+<div id="gridMapHoverBox" style="position:absolute; border: 1px solid #009a61; z-index:99; font-size: 10px; background:#fff">
+</div>
 <div class="global-nav sf-header sf-header--index">
     <div class="bottom-nav visible-xs visible-sm hidden">
         <div class="opts">
@@ -76,7 +81,7 @@
                                 问答
                             </span>
             </a>
-            <a class="opts-group " href="https://segmentfault.com/blogs">
+            <a class="opts-group " href="http://localhost:8080/yunforum/specials/blogs">
                 <i aria-hidden="true" class="fa fa-pencil-square">
                 </i>
                 <span>
@@ -269,11 +274,6 @@
                                 写文章
                             </a>
                         </li>
-                        <li>
-                            <a href="https://segmentfault.com/record">
-                                记笔记
-                            </a>
-                        </li>
                     </ul>
                 </li>
             </div>
@@ -301,7 +301,7 @@
                             </a>
                         </li>
                         <li class="menu__item">
-                            <a class="" href="https://segmentfault.com/blogs">
+                            <a class="" href="http://localhost:8080/yunforum/specials/blogs">
                                 专栏
                             </a>
                         </li>
@@ -310,68 +310,6 @@
                                 圈子
                             </a>
                         </li>
-                        <li class="menu__item menu__item--more dropdown"  onmouseover="f()" onmouseout="ff()">
-                            <a class="dropdown-toggle dropdownBtn" data-toggle="dropdown" href="https://segmentfault.com/u/minnanitkong/answers##">
-                                <script>
-                                    function f() {
-                                        $("#aaa").prop('class','dropdown-block');
-                                    } function ff() {
-                                        $("#aaa").prop('class','dropdown-block hidden');
-                                    }
-                                </script>
-                                发现
-                                <span class="caret" style="font-size: 14px;margin-left: 5px;">
-                                </span>
-                            </a>
-                            <div id="aaa" class="dropdown-block hidden">
-                                <ul class="dropdown-content-menu">
-                                    <li>
-                                        <a href="https://segmentfault.com/events">
-                                            活动
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://segmentfault.com/tags">
-                                            标签
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://segmentfault.com/groups?tab=jobs">
-                                            酷工作
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://segmentfault.com/users">
-                                            排行榜
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://segmentfault.com/badges">
-                                            徽章
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://segmentfault.com/notes">
-                                            笔记
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://docs.segmentfault.com/" target="_blank">
-                                            开发手册
-                                            <i class="ml10 fa fa-external-link-square" style="line-height: 20px;font-size: 12px;color: #F5A623;">
-                                            </i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://business.segmentfault.com/ads?utm_source=sf-header" target="_blank">
-                                            广告投放
-                                            <i class="ml10 fa fa-external-link-square" style="line-height: 20px;font-size: 12px;color: #F5A623;">
-                                            </i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
                         <li class="menu__item visible-sm-inline-block">
                             <a href="https://segmentfault.com/search">
                                             <span class="glyphicon glyphicon-search" style="vertical-align: middle;">
@@ -379,16 +317,21 @@
                             </a>
                         </li>
                     </ul>
-                    <form action="https://segmentfault.com/search" class="header-search hidden-sm hidden-xs pull-right">
-                        <button class="btn btn-link">
+                    <form action="../person/queryzi" class="header-search hidden-sm hidden-xs pull-right">
+                        <button class="btn btn-link" onclick="tijiao()">
                                         <span class="sr-only">
                                             搜索
                                         </span>
                             <i class="layui-icon layui-icon-search" style="font-size: 15px;"></i>
                             </span>
                         </button>
-                        <input class="form-control" id="searchBox" name="q" placeholder="搜索问题或关键字" type="text" value=""/>
+                        <input class="form-control" id="searchBox" name="zi" placeholder="搜索问题或关键字" type="text" value=""/>
                     </form>
+                    <script>
+                        function tijiao(){
+                            window.location('../person/queryzi?zi='+$("#searchBox").val());
+                        }
+                    </script>
                 </div>
             </div>
             <!--登陆注册-->
@@ -422,30 +365,13 @@
                             </script>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="https://segmentfault.com/ask">
+                                    <a th:href="'../questions/queryLatype'">
                                         提问题
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://segmentfault.com/submit">
-                                        发头条
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://segmentfault.com/write">
+                                    <a th:href="'../perspecial/perspecial'">
                                         写文章
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://segmentfault.com/record">
-                                        记笔记
-                                    </a>
-                                </li>
-                                <li class="divider" role="separator">
-                                </li>
-                                <li>
-                                    <a href="https://segmentfault.com/user/draft">
-                                        草稿箱
                                     </a>
                                 </li>
                             </ul>
@@ -495,9 +421,9 @@
                         </a>
                     </li>
                     <li class="opts__item letter has-unread hidden-sm">
-                        <a class="dropdown-toggle-letter" href="javascript:void(0);" id="lLabel">
+                        <a class="dropdown-toggle-letter" href="../letter/query" id="lLabel">
                             <i class="layui-icon layui-icon-chat" style="font-size: 20px"></i>
-                            <span class="has-unread__count">1</span>
+                            <span class="has-unread__count" th:if="${session.sixin!=0}" th:text="${session.sixin}"></span>
                         </a>
                     </li>
                     <style>
@@ -523,96 +449,37 @@
                             })
                         </script>
                         <div id="dds" class="dropdown-avatar-menu hidden">
-                            <div class="menu-score">
-                                            <span class="score pull-left ml20 mr10">
-                                                0 声望
-                                            </span>
-                                <div class="">
-                                                <span class="badge badge--o badge--sf badge--gold">
-                                                    <i class="badge__icon">
-                                                    </i>
-                                                </span>
-                                    <span class="profile__sidebar--award-badge-count">
-                                                    0
-                                                </span>
-                                    <span class="badge badge--o badge--sf badge--silver">
-                                                    <i class="badge__icon">
-                                                    </i>
-                                                </span>
-                                    <span class="profile__sidebar--award-badge-count">
-                                                    0
-                                                </span>
-                                    <span class="badge badge--o badge--sf badge--bronze">
-                                                    <i class="badge__icon">
-                                                    </i>
-                                                </span>
-                                    <span class="profile__sidebar--award-badge-count">
-                                                    1
-                                                </span>
-                                </div>
-                            </div>
-                            <hr>
                             <div class="container-fluid">
                                 <div class="menu-list row">
                                     <div class="col-md-6 col-xs-6 pl0 pr0">
                                         <ul>
-                                            <li class="message-response visible-xs">
-                                                <a href="https://segmentfault.com/user/notifications" id="messageCount-response">
-                                                    通知提醒
+                                            <li>
+                                                <a th:href="@{'/person/qqq?page=1&userid='+${session.LoginUser[0].userid}}">
+                                                    我的提问
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="https://segmentfault.com/u/jianao/notes">
-                                                    我的笔记
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="https://segmentfault.com/u/jianao/bookmarks">
-                                                    我的收藏
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="https://segmentfault.com/user/invited">
-                                                    受邀回答
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="https://segmentfault.com/experts">
-                                                    付费问答
+                                                <a th:href="@{'/person/answers?page=1&userid='+${session.LoginUser[0].userid}}">
+                                                    我的回答
                                                 </a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-xs-6 pl0 pr0">
                                         <ul>
-                                            <li class="letter-response visible-xs">
-                                                <a href="https://segmentfault.com/user/messages" id="letterCount-response">
-                                                    私信消息
+                                            <li>
+                                                <a th:href="@{'/person/queryPS?page=1&userid='+${session.LoginUser[0].userid}}">
+                                                    我的文章
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="https://segmentfault.com/u/jianao">
-                                                    我的主页
+                                                <a th:href="@{'/person/queryattla?userid='+${session.LoginUser[0].userid}}">
+                                                    我的关注
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="https://segmentfault.com/u/jianao/about">
-                                                    我的档案
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="https://segmentfault.com/user/finance">
-                                                    我的资产
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="https://segmentfault.com/user/settings">
-                                                    个人设置
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="https://segmentfault.com/api/user/logout?_=06e96beae137f919d04adeb1ba5fb5d4">
-                                                    退出
+                                                <a th:href="@{'/person/queryOne?userid='+${session.LoginUser[0].userid}}">
+                                                    信息修改
                                                 </a>
                                             </li>
                                         </ul>
@@ -654,106 +521,178 @@
     }
 </style>
 <div class="profile">
-    <header class="profile__heading">
-        <div class="container">
-            <div class="row" style="position: relative;">
-                <div class="col-md-2 col-sm-3 col-xs-3">
-                    <div class="profile__heading--avatar-warp"><a href="https://segmentfault.com/u/minnanitkong"><img
-                            class=" profile__heading--avatar avatar-160"
-                            src="./(1) 前端小智 的文章 - SegmentFault 思否_files/3929497632-5c75d206ad1a5_huge256"
-                            alt="前端小智"></a><input type="file" id="avatarFile" name="avatar" class="file hide"></div>
-                    <div class="profile__heading--social">
-                        <ul class="sn-inline profile__heading--social-item">
-                            <li><a href="http://weibo.com/3504102195" class="icon-sn-weibo" target="_blank"></a></li>
-                        </ul>
+    <div class="container">
+        <div class="row" style="position: relative;">
+            <div class="col-md-2 col-sm-3 col-xs-3">
+                <div class="profile__heading--avatar-warp">
+                    <a href="https://segmentfault.com/u/minnanitkong">
+                        <img th:alt="${map.person.username}"  class=" profile__heading--avatar avatar-160" height="160" th:src="@{'/image/'+${map.person.head}}"/>
+                    </a>
+                </div>
+                <div class="profile__heading--social">
+                    <ul class="sn-inline profile__heading--social-item">
+                        <li>
+                            <a class="icon-sn-weibo" href="http://weibo.com/3504102195" target="_blank">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-9 col-xs-9">
+                <h2 class="profile__heading--name" th:text="${map.person.username}">
+
+                </h2>
+                <small class="ml15" th:if="${session.LoginUser!=null && map.userid==session.LoginUser[0].getUserid()}">
+                    <a th:href="@{'/person/queryOne?userid='+${session.LoginUser[0].userid}}">
+                        修改我的档案
+                    </a>
+                </small>
+                <div class="profile__heading--other">
+
+                        <span class="profile__heading--other-item hide">
+                                        <i class="fa fa-map-marker">
+                                        </i>
+                                        <span class="profile__city">
+                                            厦门
+                                            <span class="profile__heading-edit btn btn-xs " data-type="city">
+                                                <i aria-hidden="true" class="fa fa-pencil ">
+                                                </i>
+                                                编辑
+                                            </span>
+                                        </span>
+                                    </span>
+
+                    <span class="profile__heading--other-item ">
+                                        <i aria-hidden="true" class="fa fa-graduation-cap">
+                                        </i>
+                                        <span class="profile__school" th:text="'地址 | '+${map.person.address==null?'未知':map.person.address}">
+                                        </span>
+                                    </span>
+                    <span class="profile__heading--other-item ">
+                                        <i aria-hidden="true" class="fa fa-briefcase">
+                                        </i>
+                                        <span class="profile__company" th:text="'创建时间 | '+${map.person.createuser==null?'未知':map.person.createuser}">
+                                        </span>
+                        </span>
+                </div>
+            </div>
+            <div class="profile__heading--desc col-md-5 col-sm-12 col-xs-12">
+                <div class="profile__heading--desc-heading">
+                                    <span class="profile__heading--desc-heading-dot-warp">
+                                        <span class="profile__heading-dot profile__heading-dot--red">
+                                        </span>
+                                        <span class="profile__heading-dot profile__heading-dot--yellow">
+                                        </span>
+                                        <span class="profile__heading-dot profile__heading-dot--green">
+                                        </span>
+                                    </span>
+                    <div class="pull-right">
+                                        <span class="profile__heading-edit btn btn-xs profile__heading--desc-heading-edit" data-type="desc">
+                                            <i aria-hidden="true" class="fa fa-pencil">
+                                            </i>
+                                            编辑
+                                        </span>
                     </div>
                 </div>
-                <div class="col-md-5 col-sm-9 col-xs-9">
-                    <h2 class="profile__heading--name">
-                        前端小智
-                        <small class="ml15"><a href="https://segmentfault.com/u/minnanitkong/about">查看完整档案</a></small>
-                    </h2>
-                    <div class="profile__heading--award"><a class="profile__rank-btn"
-                                                            href="https://segmentfault.com/u/minnanitkong/rank"><img
-                            src="./(1) 前端小智 的文章 - SegmentFault 思否_files/rp.svg"><span class="h4">19870</span><span
-                            class="profile__rank-btn-text">声望</span></a></div>
-                    <div class="profile__heading--other">
-                        <span class="profile__heading--other-item hide"><i class="fa fa-map-marker"></i><span
-                                class="profile__city">厦门<span class="profile__heading-edit   btn btn-xs "
-                                                              data-type="city"><i class="fa fa-pencil "
-                                                                                  aria-hidden="true"></i>编辑</span></span></span>
-                        <span class="profile__heading--other-item "><i class="fa fa-graduation-cap"
-                                                                       aria-hidden="true"></i><span
-                                class="profile__school">Plymouth<span class="profile__heading--other-item-fgx ">&nbsp;&nbsp;|&nbsp;&nbsp;</span>前端
-                                        <span class="profile__heading-edit   btn btn-xs " data-type="school"><i
-                                                class="fa fa-pencil " aria-hidden="true"></i>编辑</span></span></span>
-                        <span class="profile__heading--other-item "><i class="fa fa-briefcase"
-                                                                       aria-hidden="true"></i><span
-                                class="profile__company">大迁世界<span class="profile__heading--other-item-fgx ">&nbsp;&nbsp;|&nbsp;&nbsp;</span>Web前端攻城狮
-                                        <span class="profile__heading-edit   btn btn-xs " data-type="company"><i
-                                                class="fa fa-pencil " aria-hidden="true"></i>编辑</span></span></span>
-                        <span class="profile__heading--other-item "><i class="fa fa-link"></i><span
-                                class="profile__site"><a class="profile__heading--other-item-link" target="_blank"
-                                                         href="https://www.zhihu.com/people/wang-zhi-yi-38/posts">
-                                            www.zhihu.com/people/wang-zhi-yi-38/posts
-                                        </a><span class="profile__heading-edit  btn btn-xs " data-type="site"><i
-                                class="fa fa-pencil " aria-hidden="true"></i>编辑</span></span></span></div>
-                </div>
-                <div class="profile__heading--desc col-md-5 col-sm-12 col-xs-12">
-                    <div class="profile__heading--desc-heading"><span
-                            class="profile__heading--desc-heading-dot-warp"><span
-                            class="profile__heading-dot profile__heading-dot--red"></span><span
-                            class="profile__heading-dot profile__heading-dot--yellow"></span><span
-                            class="profile__heading-dot profile__heading-dot--green"></span></span>
-                        <div class="pull-right"><span data-type="desc"
-                                                      class="profile__heading-edit   btn btn-xs profile__heading--desc-heading-edit"><i
-                                class="fa fa-pencil" aria-hidden="true"></i>编辑</span></div>
-                    </div>
-                    <div class="profile__heading--desc-body">
-                        <div class="profile__desc"><p>自己的身份永远只有一个，就是学生，学习学习再学习!</p></div>
+                <div class="profile__heading--desc-body">
+                    <div class="profile__desc">
+                        <p th:text="${map.person.truename==null || map.person.truename==''?'这人很懒什么都没留下!--':map.person.truename}">
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
     <div class="wrap mt30">
         <div class="container">
             <div class="row">
                 <div class="col-md-2">
-                    <div class="mb15 "><a class="btn mr10 btn-success userfollow mt10" data-id="1030000007460810">
-                        加关注
-                    </a><a class="btn btn-default  mt10" href="javascript:void(0);" id="courier" data-username="前端小智"
+                    <div class="mb15 " th:if="${session.LoginUser==null || map.userid!=session.LoginUser[0].getUserid()}">
+                        <input type="button" class="btn mr10 btn-success userfollow mt10" th:id="${map.userid}" onclick="guanzhuba(this)" value="加关注"/>
+                        <script th:inline="javascript">
+                            function guanzhuba(obj){
+                                if([[${session.LoginUser}]]==null){
+                                    if(confirm("没有登录,是否登录")){
+                                        window.location="../logins"}
+                                }else{
+                                    $.ajax({
+                                        data:{"userid":obj.id},
+                                        url:'../person/attentionuser',
+                                        dataType:"json",
+                                        type:'post',
+                                        success: function(data){
+                                            if(data==1){
+                                                $("#"+obj.id).val("已关注");
+                                                var num=new Number($("#fensi").html());
+                                                $("#fensi").html(num+1);
+                                            }else{
+                                                $("#"+obj.id).val("加关注");
+                                                var num=new Number($("#fensi").html());
+                                                $("#fensi").html(num-1);
+                                            }
+                                        }
+                                    })
+                                }
+                            }
+                        </script>
+                        <a class="btn btn-default  mt10" th:href="'/yunforum/letter/details?fromid='+${map.userid}" id="courier" data-username="前端小智"
                            data-userid="1030000007460810" style="width:68px">发私信</a></div>
                     <div class="profile__heading-info row">
-                        <div class="col-md-6 col-xs-6" style="border-right: 1px solid #eee;"><a
-                                href="https://segmentfault.com/u/minnanitkong/users/following"><span>关注了</span><span
-                                class="h5">17 人</span></a></div>
-                        <div class="col-md-6 col-xs-6"><a href="https://segmentfault.com/u/minnanitkong/users/followed"><span>粉丝</span><span
-                                class="h5">4460 人</span></a></div>
+                        <div class="col-md-6 col-xs-6" style="border-right: 1px solid #eee;">
+                            <a href="https://segmentfault.com/u/minnanitkong/users/following">
+                                            <span>
+                                                关注了
+                                            </span>
+                                <span class="h5" id="guanzhu" th:text="${map.guanzhu}">
+                                            </span>
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            <a href="https://segmentfault.com/u/minnanitkong/users/followed">
+                                            <span>
+                                                粉丝
+                                            </span>
+                                <span class="h5" id="fensi" th:text="${map.fensi}">
+                                            </span>
+                            </a>
+                        </div>
                     </div>
                     <ul class="nav nav-pills nav-stacked profile__nav">
-                        <li role="separator" class="divider"><a></a></li>
-                        <li><a href="https://segmentfault.com/u/minnanitkong"><span>他的主页</span></a></li>
-                        <li><a href="https://segmentfault.com/u/minnanitkong/answers"><span>他的回答
-                                        </span><span class="count"> 78</span></a></li>
-                        <li><a href="https://segmentfault.com/u/minnanitkong/questions"><span>他的提问
-                                        </span><span class="count"></span></a></li>
-                        <li class="active"><a href="https://segmentfault.com/u/minnanitkong/articles"><span>他的文章
-                                        </span><span class="count"> 101</span></a></li>
-                        <li><a href="https://segmentfault.com/u/minnanitkong/lives"><span>他的讲座
-                                        </span><span class="count"> 2</span></a></li>
-                        <li><a href="https://segmentfault.com/u/minnanitkong/notes"><span>他的笔记
-                                        </span><span class="count"></span></a></li>
-                        <li><a href="https://segmentfault.com/u/minnanitkong/posts"><span>他的分享
-                                        </span><span class="count"> 6</span></a></li>
-                        <li><a href="https://segmentfault.com/u/minnanitkong/bookmarks"><span>他的收藏夹
-                                            </span><span class="count"> 2</span></a></li>
-                        <li role="separator" class="divider"><a></a></li>
-                        <li><a href="https://segmentfault.com/u/minnanitkong/activities"><span>个人动态</span></a></li>
-                        <li><a href="https://segmentfault.com/u/minnanitkong/tags"><span>标签得分</span></a></li>
-                        <li><a href="https://segmentfault.com/u/minnanitkong/badges"><span>获得徽章</span><span
-                                class="count"> 58</span></a></li>
-                        <li><a href="https://segmentfault.com/u/minnanitkong/rank"><span>声望记录</span></a></li>
+                        <li class="divider" role="separator">
+                            <a>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{'/person/answers?page=1&userid='+${map.userid}}">
+                                            <span th:text="${session.LoginUser!=null && map.userid==session.LoginUser[0].getUserid()}?'我的回答':'他的回答'">
+                                            </span>
+                                <span class="count" th:text="${map.anwser}!=null?${map.anwser}:''">
+                                            </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{'/person/qqq?page=1&userid='+${map.userid}}">
+                                            <span th:text="${session.LoginUser!=null && map.userid==session.LoginUser[0].getUserid()}?'我的提问':'他的提问'">
+                                            </span>
+                                <span class="count" th:text="${map.question}!=null?${map.question}:''">
+                                            </span>
+                            </a>
+                        </li>
+                        <li  class="active">
+                            <a th:href="@{'/person/queryPS?page=1&userid='+${map.userid}}">
+                                            <span th:text="${session.LoginUser!=null && map.userid==session.LoginUser[0].getUserid()}?'我的文章':'他的文章'">
+                                            </span>
+                                <span class="count" th:text="${map.question}!=null?${map.wenzhang}:''">
+                                            </span>
+                            </a>
+                        </li>
+                        <li th:if="${session.LoginUser!=null && map.userid==session.LoginUser[0].getUserid()}">
+                            <a th:href="@{'/person/queryattla?userid='+${session.LoginUser[0].userid}}">
+                                            <span>
+                                                我的关注
+                                            </span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-md-10 profile-mine"><h4 class="profile-mine__heading"><span>他的专栏</span></h4>
@@ -781,25 +720,13 @@
                                 <div class="col-md-1"><span class="label label-warning  " th:text="${l.dz}+'票'"></span></div>
                                 <div class="col-md-7 profile-mine__content--title-warp"><a
                                         class="profile-mine__content--title"
-                                        href="https://segmentfault.com/a/1190000018756503" th:text="l.title"></a>
+                                        th:href="@{'/specials/a/'+${l.perspid}}" th:text="${l.title}"></a>
                                 </div>
                                 <div class="col-md-2"><a href="https://segmentfault.com/blog/zsxuexi" th:text="${l.perspname}"></a></div>
                                 <div class="col-md-2"><span class="profile-mine__content--date" th:text="${l.time}"></span></div>
                             </div>
                         </li>
                     </ul>
-                    <div class="text-center">
-                        <ul class="pagination">
-                            <li class="active"><a href="javascript:void(0);">1</a></li>
-                            <li><a href="https://segmentfault.com/u/minnanitkong/articles?page=2">2</a></li>
-                            <li><a href="https://segmentfault.com/u/minnanitkong/articles?page=3">3</a></li>
-                            <li><a href="https://segmentfault.com/u/minnanitkong/articles?page=4">4</a></li>
-                            <li><a href="https://segmentfault.com/u/minnanitkong/articles?page=5">5</a></li>
-                            <li class="next"><a rel="next"
-                                                href="https://segmentfault.com/u/minnanitkong/articles?page=2">下一页</a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
                 <div class="col-md-3 followpage-right hidden"><span class="refresh-btn pull-right">换一批</span>
                     <p class="title">推荐关注</p>

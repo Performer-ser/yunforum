@@ -4,6 +4,7 @@ import com.aaa.entity.Letter;
 import com.aaa.entity.Userinfo;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 import java.util.Map;
@@ -21,4 +22,10 @@ public interface LetterDao {
     public List<Map<String,Object>> queryDetail(Integer fromid,Integer toid);
     @Insert("insert into letter(fromid,toid,content,time,status) values(#{param1},#{param2},#{param3},now(),0)")
     public int add(Integer fromid,Integer toid,String content);
+    @Update("update letter set status=1 where fromid=#{param1} and toid=#{param2}")
+    public Integer upstatus(Integer fromid,Integer toid);
+    @Update("update letter set status=1 where toid=#{param1}")
+    public Integer updateAll(Integer toid);
+    @Select("select count(*) from letter where toid=#{param2} and status=0")
+    public Integer queryNo(Integer toid);
 }

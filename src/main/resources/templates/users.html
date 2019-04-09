@@ -16,11 +16,6 @@
 <script th:src="@{/lib/layui/layui.js}" charset="utf-8"></script>
 <script type="text/html" id="barDemo" th:inline="javascript">
     <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="detail">详情</a>
-    {{# if (d.userstatus=== 1) { }}  
-    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="update">禁用</a>
-    {{# }else{ }}  
-    <a class="layui-btn layui-btn-xs" lay-event="update">解除禁用</a>
-    {{#} }}
 
 </script>
 <script th:inline="javascript">
@@ -40,11 +35,7 @@
                     ,{field: 'truename', title: '真实姓名', width:125}
                     ,{field: 'createuser', title: '注册时间', width:125}
                     ,{field: 'userstatus', title: '用户状态', width:125,templet:function(d){
-                    if(d.userstatus==0){
-                        return "<font color='red'>已禁用</font>";
-                    }else{
                         return "<font color='#7cfc00'>正常</font>"
-                    }
                 }}
                     ,{ width:220, align:'center', toolbar: '#barDemo',title:'操作'}
                 ]
