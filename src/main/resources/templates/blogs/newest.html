@@ -540,16 +540,13 @@
                                             <a  th:href="@{'/specials/a/'+${list.specialid}}" th:text="${list.lablename}"><!--self.文章--></a></span>
                                     </li>
                                     <li class="bookmark " title="0 收藏" data-type="article" data-id="1190000018674409">
-                                        <span style="vertical-align:middle;"><small
-                                                class="glyphicon glyphicon-bookmark mr5"></small><span
-                                                class="blog--bookmark__text">收藏</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 发布日期 <span th:text="${list.time}"></span>
                                         </span>
 
                                     </li>
                                 </ul>
-                                <a th:href="@{'/specials/a/'+${list.specialid}}"><p class="excerpt wordbreak hidden-xs" th:text="${list.content}"><!--Linux基金会欢迎LVFS（Linux Vendor Firmware
-                                    Service，Linux供应商固件服务）加入作为一个新项目。LVFS是一个安全的网站，允许硬件供应商上传固件更新。它被所有主要Linux发行版用于为客户端提供元数据，例如fwu...--></p></a>
+                                <!--<a th:href="@{'/specials/a/'+${list.specialid}}"><p class="excerpt wordbreak hidden-xs" th:text="${list.content}">&lt;!&ndash;Linux基金会欢迎LVFS（Linux Vendor Firmware
+                                    Service，Linux供应商固件服务）加入作为一个新项目。LVFS是一个安全的网站，允许硬件供应商上传固件更新。它被所有主要Linux发行版用于为客户端提供元数据，例如fwu...&ndash;&gt;</p></a>-->
                             </div>
                         </section>
                     </div>

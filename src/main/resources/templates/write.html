@@ -55,7 +55,7 @@
                     onchange="javascript:if(this.value == -1){window.location='../perspecial/add'};">
                 <option value="0" disabled="" selected="">请选择专栏(申请专栏)</option>
                 <th:block th:each="l:${list}">
-                    <option th:value="${l.perspid}" th:text="${l.perspdescribe}"><!--开发实战相关--></option>
+                    <option th:value="${l.perspid}" th:text="${l.perspname}"><!--开发实战相关--></option>
                 </th:block>
                 <!--<option value="2">编程题目相关</option>-->
                 <option value="-1">+申请专栏</option>
@@ -121,7 +121,7 @@
             path: "../../yunforum/editormd/lib/",
             imageUpload: true,
             imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-            imageUploadURL: "../../write/pic",
+            imageUploadURL: "../../yunforum/write/pic",
             saveHTMLToTextarea: true
         });
     });
@@ -187,7 +187,7 @@
                     'title': $("#myTitle").val(),
                     'perspid': $("#issueTemplateId").val(),
                     'lablename': $(".sf-typeHelper-item").prop('firstChild').nodeValue,
-                    'content': $(".markdown-body.editormd-preview-container").children("p").html()
+                    'content': $("#editormd").val()
                 },
                 type: 'post',
                 success: function (data) {

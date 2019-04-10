@@ -13,15 +13,15 @@ import java.util.Map;
 @Mapper
 public interface SpecialDao {
 
-    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time from special sp left join user_info us on sp.userid=us.userid where lableid=#{param1}")
+    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time,us.userid from special sp left join user_info us on sp.userid=us.userid where lableid=#{param1}")
     public List<Map<String,Object>> query(Integer slableid);
-    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time from special sp left join user_info us on sp.userid=us.userid")
+    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time,us.userid from special sp left join user_info us on sp.userid=us.userid")
     public List<Map<String,Object>> querycenter();
     /**
      * 倒序查询最新内容
      * @return
      */
-    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time from special sp left join user_info us on sp.userid=us.userid order by time desc")
+    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time,us.userid from special sp left join user_info us on sp.userid=us.userid order by time desc")
     public List<Map<String,Object>> query1();
     @Select("select * from lable")
     public List<Lable> querySlable();
@@ -31,13 +31,37 @@ public interface SpecialDao {
      * @param specialid
      * @return
      */
-    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time,la.lablename,per.perspdescribe,per.perspname,per.perspid from\n" +
+    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time,la.lablename,per.perspdescribe,per.perspname,per.perspid,us.userid from\n" +
             "special sp left join user_info us on sp.userid=us.userid left join lable la on sp.lableid=la.lableid left join perspecial per on sp.perspid =per.perspid  where sp.specialid =#{param1}")
     public List<Map<String,Object>> queryByid(Integer specialid);
 
-    @Select("select count(*) dz,s.specialid,s.lableid,s.title,s.content,s.time,us.username,a.status\n" +
+    /**
+     * 根据文章id查询专栏id（判断是否关注）
+     * @param specialid
+     * @return
+     */
+    @Select("select perspid from special  where specialid=#{param1}")
+    public List<Map<String,Object>> queryZLid(Integer specialid);
+
+    /**
+     * 根据登录用户id和专栏id查询是否关注
+     * @param uid
+     * @param zlid
+     * @return
+     */
+    @Select("select * from attspecial where userid=#{param1} and perspid=#{param2}")
+    public List<Map<String,Object>> querGuanZhu(Integer uid,Integer zlid);
+
+    /**
+     * 标签是否关注
+     * @return
+     */
+    @Select("select * from attentionlable where userid=#{param1} and lableid=#{param2}")
+    public List<Map<String,Object>> queryBiaoqian(Integer uid,Integer lableid);
+
+    @Select("select count(*) dz,s.specialid,s.lableid,s.title,s.content,s.time,us.username,a.status,us.userid\n" +
             "from admire a left join special s on a.type_id = s.specialid left join user_info us on s.userid=us.userid\n" +
-            "where  a.status = 1  and a.type =2 group by s.specialid,s.lableid,s.title,s.content,s.userid,s.time,us.username,a.status order by dz desc")
+            "where  a.status = 1  and a.type =2 group by s.specialid,s.lableid,s.title,s.content,s.userid,s.time,us.username,a.status,us.userid order by dz desc")
     public List<Map<String,Object>> querydz();
 
 

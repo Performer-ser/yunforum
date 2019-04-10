@@ -560,7 +560,7 @@
                         </a>
 
                         <div class="tag__info--follow ml10">
-                            <input type="button" th:id="${listss[0].lableid}" class="btn btn-success btn-xs tagfollowBtn  "
+                            <input type="button" th:id="${listss[0].lableid}" class="btn btn-success btn-xs tagfollowBtn xxxx"
                                     data-id="1040000000089449" onclick="guanzhubiaoqian(this)" th:value="关注标签">
                             </input>
 
@@ -647,7 +647,7 @@
                                                 <!-- 算法-数据结构--> </a></li>
                                         </ul>
                                     </div>
-                                    <p class="news__item-meta"><a href="https://segmentfault.com/u/crabapple"><img class="avatars-img" src="../../t_files/269459806-5c20ea4a5d010_small" width="18" height="18" /></a><a class="" href="https://segmentfault.com/u/crabapple" th:text="${li.username}">
+                                    <p class="news__item-meta"><a th:href="@{'/person/answers?page=1&userid='+${li.userid}}"><img class="avatars-img" src="../../t_files/269459806-5c20ea4a5d010_small" width="18" height="18" /></a><a class="" th:href="@{'/person/answers?page=1&userid='+${li.userid}}" th:text="${li.username}">
                                         <!--赵栩彬--></a><span class="dot">&middot;</span><span th:text="${li.time}">
      <!--1 小时前--></span><span class="dot">&middot;</span><span class="text-info"><a th:href="@{'/latype/a/'+${li.specialid}}">评论</a></span><span class="dot">&middot;</span><a class="text-article" href="http://localhost:8080/yunforum/specials/blogs" target="_blank">专栏</a></p>
                                 </div>
@@ -833,22 +833,43 @@
         style="display: none; width: 0px; height: 0px;" src="../../t_files/saved_resource(3).html"></iframe>
 
 <script  th:inline="javascript">
+    $(function (){
+        if([[${session.LoginUser}]]==null) {
+            $(".xxxx").attr("value","关注标签");
+        }else{
+            var lableid=[[${lableid}]];
+            console.log(lableid)
+            $.ajax({
+                data: {"lableid":lableid },
+                url: '../clickbiaoqian',
+                dataType: "json",
+                type: 'post',
+                success: function (data) {
+                    if(data==1){
+                        $(".xxxx").attr("value","已关注");
+                    }else{
+                        $(".xxxx").attr("value","关注标签");
+                    }
+                }
+            })
+        }
+    })
 
-    function guanzhubiaoqian(){
+    function guanzhubiaoqian(obj){
         if([[${session.LoginUser}]]==null){
-            alert("你还没有登陆");
-            window.location.href=("../../logins");
+            if(confirm("没有登录,是否登录")){
+                window.location="../../logins"}
         }else {
             $.ajax({
-                data:{"lableid":1},
+                data:{"lableid":obj.id},
                 url:'../attentionlab',
                 dataType:"json",
                 type:'post',
                 success: function(data){
                     if(data==1){
-                        $("#1").val("已关注");
+                        $("#"+obj.id).val("已关注");
                     }else{
-                        $("#1").val("关注标签");
+                        $("#"+obj.id).val("关注标签");
                     }
                 }
             })

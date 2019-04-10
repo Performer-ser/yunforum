@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
+import java.rmi.MarshalledObject;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +43,28 @@ public class SpecialService {
         return list;
     }
 
+    /**
+     * 根据文章id查询专栏id（判断是否关注）
+     * @param specialid
+     * @return
+     */
+    public List<Map<String,Object>> queryZLid(Integer specialid){
+        return sd.queryZLid(specialid);
+    }
+
+    /**
+     * 根据登录用户id和专栏id查询是否关注
+     * @param uid
+     * @param zlid
+     * @return
+     */
+    public List<Map<String,Object>> querGuanZhu(Integer uid,Integer zlid){
+        return sd.querGuanZhu(uid,zlid);
+    }
+
+    public List<Map<String,Object>> queryBiaoqian(Integer uid,Integer lableid){
+        return sd.queryBiaoqian(uid,lableid);
+    }
     public Map<String,Object> centers(Integer slableid){
         Map<String, Object> list = new HashMap<String, Object>();
         list.put("list",sd.querySlable());

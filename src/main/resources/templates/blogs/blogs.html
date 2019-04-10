@@ -531,40 +531,23 @@
                     <div class="stream-list blog-stream" th:each="list:${list}">
                         <a th:href="@{'/specials/a/'+${list.specialid}}" class="news-img"></a>
                         <section class="stream-list__item">
-
                             <div class="summary"><h4><a
-                                    th:href="@{'/specials/a/'+${list.specialid}}" th:text="${list.title}"><!--使用 Phan 为你的 PHP 项目保驾护航 -
-                                代码静态扫描--></a></h4>
+                                    th:href="@{'/specials/a/'+${list.specialid}}" th:text="${list.title}"></a></h4>
                                 <ul class="author list-inline">
-                                    <li><a th:href="@{'/specials/a/'+${list.specialid}}"><!--<img
-                                            class="avatar-24 mr10 hidden-xs"
-                                            src="../blogs_files/2576193079-546ac03edd62f_small" th:alt="${list.username}">--></a><span
+                                    <li><a th:href="@{'/specials/a/'+${list.specialid}}"></a><span
                                             style="vertical-align:middle;"><a
-                                            th:href="@{'/specials/a/'+${list.specialid}}" th:text="${list.username}"><!--周梦康--></a>
-
-                    发布于
-                                            <a href="" th:text="${list.lablename}"><!--周梦康--></a></span></li>
-                                    <li class="bookmark " title="9 收藏" data-type="article" data-id="1190000018631994">
-                                        <span style="vertical-align:middle;"><small
-                                                class="glyphicon glyphicon-bookmark mr5"></small><span
-                                                class="blog--bookmark__text">9 收藏</span></span></li>
+                                            th:href="@{'/specials/a/'+${list.specialid}}" th:text="${list.username}"></a>
+                                            发布于
+                                            <a href="" th:text="${list.lablename}"></a></span></li>
                                 </ul>
                                 <a th:href="@{'/specials/a/'+${list.specialid}}"> <p class="excerpt wordbreak hidden-xs" th:text="${list.content}"></p></a></div>
                         </section>
-
                     </div>
                     <div class="text-center">
                         <ul class="pagination">
-                           <!-- <li class="active"><a href="javascript:void(0);">1</a></li>
-                            <li><a href="https://segmentfault.com/blogs?page=2">2</a></li>-->
                             <li><a th:href="@{'/specials/blogs?pageNum='+${(pageNum-1)>0?(pageNum-1) : 1 }}">上一页</a></li>
                             <li class="disabled"><span>…</span></li>
                             <li><a th:href="@{'/specials/blogs?pageNum='+${pageNum+1}}">下一页</a></li>
-                           <!-- <li><a href="https://segmentfault.com/blogs?page=3">3</a></li>
-                            <li><a href="https://segmentfault.com/blogs?page=4">4</a></li>-->
-                            <!--<li><a href="https://segmentfault.com/blogs?page=5">5</a></li>
-                            <li class="disabled"><span>…</span></li>
-                            <li class="next"><a rel="next" href="https://segmentfault.com/blogs?page=2">下一页</a></li>-->
                         </ul>
                     </div>
                 </div><!-- /.main__board --></div><!-- /.main -->

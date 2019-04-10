@@ -49,8 +49,6 @@ public class LatypeController {
         List<Lable> list1=lts.querylable();
         m.addAttribute("list2",list2);
         m.addAttribute("list1",list1);
-        System.out.println("list2="+list2);
-        System.out.println("list1="+list1);
         return "tags";
     }
 
@@ -72,16 +70,18 @@ public class LatypeController {
         return "t";
     }
 
+    @RequestMapping("clickbiaoqian")
+    @ResponseBody
+    public Integer queryBiaoqian(Integer lableid,HttpSession session){
+        List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
+        List<Map<String, Object>> list=ss.querGuanZhu(loginUser.get(0).getUserid(),lableid);
+        if(list.size()>0){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 
-    /*@RequestMapping(value = "a/{specialid}")
-    public String queryByid(Model m ,@PathVariable Integer specialid){
-        Map<String,Object> list=ss.queryByid(specialid).get(0);
-        m.addAttribute("list",list);
-        List<Map<String,Object>> querya= ss.querya();
-        m.addAttribute("querya",querya);
-
-        return "a";
-    }*/
 
     @RequestMapping(value = "a/{specialid}")
     public String queryByid(Model m ,@PathVariable Integer specialid,HttpSession session){
@@ -145,10 +145,20 @@ public class LatypeController {
         m.addAttribute("review",review);
         m.addAttribute("replie",replie);
         m.addAttribute("count",review.size()+replie.size());
-        System.out.println(querya);
         return "a";
     }
 
+    @RequestMapping("clickGuanZhu")
+    @ResponseBody
+    public Integer clickGuanZhu(Integer zlid,HttpSession session){
+        List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
+        List<Map<String, Object>> list=ss.querGuanZhu(loginUser.get(0).getUserid(),zlid);
+        if(list.size()>0){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 
 
     @RequestMapping("querys")

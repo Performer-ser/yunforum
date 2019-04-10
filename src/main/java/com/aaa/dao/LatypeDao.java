@@ -24,7 +24,7 @@ public interface LatypeDao {
     /**
      * 根据标签ID查询出于与此标签有关的内容
      */
-    @Select("select la.lableid,la.latypeid,la.lablename,la.describe,sp.specialid,sp.lableid slableid,sp.title,sp.content,us.username,sp.time from lable la left join special sp" +
+    @Select("select la.lableid,la.latypeid,la.lablename,la.describe,sp.specialid,sp.lableid slableid,sp.title,sp.content,us.userid,us.username,sp.time from lable la left join special sp" +
             " on la.lableid= sp.lableid left join user_info us on sp.userid= us.userid where la.lableid =#{param1}")
     public List<Map<String,Object>> queryBysid(Integer lableid);
 

@@ -58,21 +58,23 @@ public class SpecialController {
         HttpSession session = request.getSession();
         List<Userinfo> lists=(List<Userinfo>)session.getAttribute("LoginUser");
         m.addAttribute("userlist",lists);
-        System.out.println("---------------------------------------------*-*-*----------------------------");
         return "indexss";
     }
     @RequestMapping("querydz")
     public String querydz(Model m){
         List<Map<String,Object>> list= ss.querydz();
         m.addAttribute("list",list);
-        System.out.println(list);
         return "hottest";
     }
 
     @RequestMapping(value = "a/{specialid}")
     public String queryByid(Model m ,@PathVariable Integer specialid,HttpSession session){
+
+        List<Map<String, Object>> zlidlist= ss.queryZLid(specialid);
+        Integer zlid=(Integer)zlidlist.get(0).get("perspid");
+        m.addAttribute("zlid",zlid);
         List<Map<String, Object>> list = ss.queryByid(specialid);
-        System.out.println("sdfdslist"+list.toString());
+
         List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
         List<Map<String, Object>> replie = new ArrayList<Map<String, Object>>();
         Integer userid = null == loginUser? 0:loginUser.get(0).getUserid();
@@ -135,6 +137,19 @@ public class SpecialController {
         return "a";
     }
 
+    @RequestMapping("clickGuanZhu")
+    @ResponseBody
+    public Integer clickGuanZhu(Integer zlid,HttpSession session){
+        List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
+        List<Map<String, Object>> list=ss.querGuanZhu(loginUser.get(0).getUserid(),zlid);
+
+        if(list.size()>0){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
     @RequestMapping("addByReview")
     public String addByReview(Model mv, String text, HttpSession session,Integer specialid){
         List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
@@ -177,7 +192,7 @@ public class SpecialController {
        }
        List<Map<String,Object>> list=ss.queryblogs(pageNum);
        m.addAttribute("list",list);
-       System.out.println(list);
+
        m.addAttribute("pageNum",pageNum);
        return "blogs/blogs";
    }
@@ -197,8 +212,7 @@ public class SpecialController {
        List<Map<String,Object>> list= ss.queryhottests(pageNum);
        m.addAttribute("list",list);
        m.addAttribute("pageNum",pageNum);
-       return "blogs" +
-               "/hottests";
+       return "blogs/hottests";
    }
    @RequestMapping("newest")
     public String ccc(Model m,Integer pageNum){

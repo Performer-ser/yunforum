@@ -36,6 +36,13 @@
     <script type="text/javascript" src="../../a_files/spcjs.php"></script>
     <script type="text/javascript" src="../../a_files/spc.php"></script>
     <script type="text/javascript" src="../../a_files/fl.js.下载"></script>
+    <link rel="stylesheet" th:href="@{/editormd/css/editormd.preview.min.css}" />
+    <link rel="stylesheet" th:href="@{/editormd/css/editormd.css}" />
+    <script th:src="@{/editormd/examples/js/jquery.min.js}"></script>
+    <!-- 因为我们使用了dark主题，所以在容器div上加上dark的主题类，实现我们自定义的代码样式 -->
+    <script th:src="@{/editormd/lib/marked.min.js}"></script>
+    <script th:src="@{/editormd/lib/prettify.min.js}"></script>
+    <script th:src="@{/editormd/editormd.min.js}"></script>
     <script charset="utf-8" id="ParadigmSDK" src="../../a_files/ParadigmSDK_v2.js.下载" data="216" defsi="594"></script>
     <script>
         ParadigmSDK.init("46e957bd9dea4acdaa15b4b64aff728f");
@@ -546,15 +553,19 @@
                                             </div>
                                             <div class="article__authorright">
                                                 <div class="article__authormeta">
-                                                    <a href="https://segmentfault.com/u/flutter" class="mr5"><strong th:each="list:${list}"
-                                                            th:text="${list['username']}"></strong></a>
-                                                    <img src="../../a_files/rp.svg" class="mr5"><span
-                                                        style="color:#BF7158" class="mr10">120</span>
+
+                                                    <th:block th:each="list:${list}">
+                                                    <a th:href="@{'/person/answers?page=1&userid='+${list['userid']}}" class="mr5">
+                                                        <strong th:text="${list['username']}"></strong>
+                                                    </a>
+                                                    </th:block>
+                                                    <img src="../../a_files/rp.svg" class="mr5">
+                                                    <span style="color:#BF7158" class="mr10">120</span>
                                                     发布于
                                                     <a href="" th:each="list:${list}" th:text="${list['perspname']}"></a>
                                                     <span class="hidden-xs">
                                                     <input type="button" th:each="list:${list}"  th:id="${list['perspid']}"
-                                                            class="btn btn-xs btn-success follow-article ml10"
+                                                            class="btn btn-xs btn-success follow-article ml10 xxxx"
                                                             data-do="follow" data-type="blog"
                                                                         data-id="1200000017940515" onclick="guanzhuzhuanlan(this)" th:value="关注专栏"/>
                                                 </span>
@@ -575,12 +586,12 @@
                                             <a href=""
                                                class="blog-type-common blog-type-1-before" target="_blank"
                                                data-content="原创"></a>
-                                            <ul class="taglist--inline inline-block article__title--tag mr10">
+                                            <ul class="taglist--inline inline-block article__title--tag mr10" >
                                                 <li class="tagPopup mb5">
-                                                    <a class="tag" href="https://segmentfault.com/t/flutter/blogs"
+                                                    <a class="tag" th:href="@{'/specials/a/'+${list.specialid}}"
                                                        data-toggle="popover" data-img="" data-placement="top"
-                                                       data-original-title="flutter" data-id="1040000014898996" th:each="list:${list}"
-                                                       th:text="${list['lablename']}">
+                                                       data-original-title="flutter" data-id="1040000014898996"
+                                                       th:each="list:${list}" th:text="${list['lablename']}">
                                                     </a>
                                                 </li>
                                             </ul>
@@ -606,9 +617,20 @@
                         <i class="fa fa-arrow-up item hidden"></i>
                     </div>
                 </div>
-                <div class="article fmt article__content" data-id="1190000018425629" data-license="cc">
-                    <p  th:each="list:${list}" th:text="${list['content']}"></p>
+                <div id="test-editormd" >
+                    <textarea></textarea>
                 </div>
+                <script type="text/javascript" th:inline="javascript">
+                    testEditor = editormd.markdownToHTML("test-editormd", {
+                        markdown:[[${list[0].content}]],
+                        htmlDecode      : "style,script,iframe",  // you can filter tags decode
+                        emoji           : true,
+                        taskList        : true,
+                        tex             : true,  // 默认不解析
+                        flowChart       : true,  // 默认不解析
+                        sequenceDiagram : true,  // 默认不解析
+                    });
+                </script>
                 <div class="clearfix mt10">
                     <ul class="article-operation list-inline pull-left mt15">
                         <li><a target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img
@@ -655,41 +677,11 @@
                                     class="visible-xs-inline">•••</strong></a></div>
                     </div>
                 </div>
-                <!--<div class="mt10 text-center mb30">
-                    <button type="button" id="mainLike" data-id="1190000018425629" class="btn btn-success btn-lg mr15 ">
-                        <span id="mainLikeText">赞</span>&nbsp;&nbsp;<span class="seprator">|</span>&nbsp;&nbsp;
-                        <span id="mainLikeNum">14 </span></button>
-                </div>-->
+
                 <script type="text/javascript">
                     OA_show(3);
                 </script>
-                <!--<div style="text-align: center; line-height: 0; background: #EEE">
-                    <script async="" src="../../a_files/f(1).txt"></script>
-                    &lt;!&ndash; 中部横幅广告位 &ndash;&gt;
-                    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
-                         data-ad-client="ca-pub-6330872677300335" data-ad-slot="5598290435"
-                         data-adsbygoogle-status="done">
-                        <ins id="aswift_1_expand"
-                             style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent;">
-                            <ins id="aswift_1_anchor"
-                                 style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent;">
-                                <iframe width="728" height="90" frameborder="0" marginwidth="0" marginheight="0"
-                                        vspace="0" hspace="0" allowtransparency="true" scrolling="no"
-                                        allowfullscreen="true"
-                                        onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}"
-                                        id="aswift_1" name="aswift_1"
-                                        style="left:0;position:absolute;top:0;border:0px;width:728px;height:90px;"
-                                        src="../../a_files/saved_resource(1).html"></iframe>
-                            </ins>
-                        </ins>
-                    </ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                    <div id="beacon_7a19e28ac2" style="position: absolute; left: 0px; top: 0px; visibility: hidden;">
-                        <img src="../../a_files/lg(1).php" width="0" height="0" alt="" style="width: 0px; height: 0px;">
-                    </div>
-                </div>-->
+
                 <h4 class="pt20 mb15 mt0 border-top">你可能感兴趣的</h4>
                 <div class="mb15 block">
                     <script type="text/javascript">
@@ -1113,10 +1105,31 @@
 </footer>
 
 <script th:inline="javascript">
+    $(function (){
+        if([[${session.LoginUser}]]==null) {
+            $(".xxxx").attr("value","关注专栏");
+        }else{
+            var  zlid=[[${zlid}]];
+            console.log(zlid)
+            $.ajax({
+                data: {"zlid":zlid },
+                url: '../clickGuanZhu',
+                dataType: "json",
+                type: 'post',
+                success: function (data) {
+                    if(data==1){
+                        $(".xxxx").attr("value","已关注");
+                    }else{
+                        $(".xxxx").attr("value","关注专栏");
+                    }
+                }
+            })
+        }
+    })
     function guanzhuzhuanlan(obj){
         if([[${session.LoginUser}]]==null){
-            alert("你还没有登陆");
-            window.location.href=("../../logins");
+            if(confirm("没有登录,是否登录")){
+                window.location="../../logins"}
         }else{
             $.ajax({
                 data:{"perspid":obj.id},

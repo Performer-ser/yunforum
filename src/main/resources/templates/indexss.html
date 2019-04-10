@@ -625,8 +625,10 @@
                                     <div class="news__item-meta">
                                         <span class="pr20 votes-operation " data-id="1190000018398978" data-type="article"><span class="wrap"><i class="fa fa-thumbs-up "></i></span><span class="votes-num  "></span><span class="dot ">&middot;</span><span class="votes-word">赞</span></span>
                                         <span class="bookmark-operation pr20 hidden" data-id="1190000018398978" data-type="article"><i class="fa fa-bookmark pr5"></i><span class="bookmark-word">收藏</span></span>
-                                        <span class="author pr20"><a href="https://segmentfault.com/u/humphry" th:text="${list.username}"></a><span class="dot">&middot;</span><p th:text="${list.time}"></p></span>
+                                        <span class="author pr20"><a th:href="@{'/person/answers?page=1&userid='+${list.userid}}" th:text="${list.username}"></a><span class="dot">&middot;</span><p th:text="${list.time}"></p></span>
                                     </div>
+
+
                                 </div>
                             </div>
                         </li>
@@ -681,7 +683,7 @@
                                     <div class="news__item-meta">
                                         <span class="pr20 votes-operation " data-id="1190000018398978" data-type="article"><span class="wrap"><i class="fa fa-thumbs-up "></i></span><span class="votes-num  ">11</span><span class="dot ">&middot;</span><span class="votes-word">赞</span></span>
                                         <span class="bookmark-operation pr20 hidden" data-id="1190000018398978" data-type="article"><i class="fa fa-bookmark pr5"></i><span class="bookmark-word">收藏</span></span>
-                                        <span class="author pr20"><a href="https://segmentfault.com/u/humphry" th:text="${list.username}"></a><span class="dot">&middot;</span></span>
+                                        <span class="author pr20"><a th:href="@{'/person/answers?page=1&userid='+${list.userid}}" th:text="${list.username}"></a><span class="dot">&middot;</span></span>
                                     </div>
                                 </div>
                             </div>
