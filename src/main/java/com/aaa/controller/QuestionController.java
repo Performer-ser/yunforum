@@ -91,6 +91,7 @@ public class QuestionController {
         List<Map<String, Object>> review = new ArrayList<Map<String, Object>>();
         List<Map<String, Object>> replie = new ArrayList<Map<String, Object>>();
         List<Review> reviews = rs.queryByComposeid(qid,1);
+
         if(reviews.size() == 0){
             /*说明没有评论*/
         }else{
@@ -197,6 +198,7 @@ public class QuestionController {
             q.put("lablenames",ls);
             System.out.println(q.get("lablenames"));
         }
+
         List<Map<String, Object>> lists = qs.queryReviewByQuestionid(qid);
         model.addAttribute("lists",lists);
         model.addAttribute("list",list);
@@ -307,7 +309,31 @@ public class QuestionController {
         }
         return result;
     }
+    @RequestMapping(value = "addAmire/{id}")
+    public String addAdmire(HttpSession session,Admire a,@PathVariable Integer id){
+        List<Userinfo> login=(List<Userinfo>) session.getAttribute("LoginUser");
+        if(login==null){
+            return "redirect:../../logins";
+        }else{
+            a.setType_id(id);
+            a.setUserid(login.get(0).getUserid());
+            qs.addAdmire(a);
 
+            return "redirect:/questions/q/"+id;
+        }
+    }
+
+    @RequestMapping("GuanZhu")
+    @ResponseBody
+    public Integer clickGuanZhu(Integer qid,HttpSession session){
+        List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
+        List<Map<String, Object>> list=qs.Guanzhu(loginUser.get(0).getUserid(),qid);
+        if(list.size()>0){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 
 
 }

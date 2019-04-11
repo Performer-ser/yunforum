@@ -104,7 +104,7 @@
             path: "../../yunforum/editormd/lib/",
             imageUpload: true,
             imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-            imageUploadURL: "../../write/pic",
+            imageUploadURL: "../../yunforum/write/pic",
             saveHTMLToTextarea: true
         });
     });
@@ -169,7 +169,7 @@
                 data: {
                     'title': $("#myTitle").val(),
                     'lablename': $(".sf-typeHelper-item").prop('firstChild').nodeValue,
-                    'content': $(".markdown-body.editormd-preview-container").children("p").html()
+                    'content':$("#editormd").val()
                 },
                 type: 'post',
                 success: function (data) {

@@ -138,4 +138,12 @@ public class QuestionService {
         return  qd.addByReview(r);
     }
     public List<Review> queryAllAnwser(Integer userid){return qd.queryAllAnswer(userid);}
+    //添加点赞表数据
+    public Integer addAdmire(Admire a){
+        return qd.addAdmire(a);
+    }
+    //查看是否关注
+    public List<Map<String,Object>> Guanzhu(Integer uid,Integer qid){
+        return qd.Guanzhu(uid,qid);
+    }
 }

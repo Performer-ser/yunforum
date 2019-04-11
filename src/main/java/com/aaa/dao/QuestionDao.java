@@ -4,6 +4,7 @@ import com.aaa.entity.*;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 import java.util.Map;
@@ -21,13 +22,13 @@ public interface QuestionDao {
     public List<Map<String,Object>> quesById(Integer qid);
 
     //查询点赞表
-    @Select("select count(*) dizan from admire a where a.type = 1 and a.status = 1 and type_id=#{param1}")
+    @Select("select count(distinct a.userid) dizan from admire a where a.type = 1 and a.status = 1 and type_id=#{param1}")
     public Integer byAdmire(Integer qid);
     //查看回答表
     @Select("select count(*) huida from review r where r.type = 1 and r.composeid = #{param1}")
     public Integer byReview(Integer qid);
     //查看浏览表
-    @Select("select count(*) from browse b where b.type =1 and b.composeid = #{parma1}")
+    @Select("select count(distinct userid) ll from browse where type =1 and composeid = #{parma1}")
     public Integer byBrowse(Integer qid);
     @Select("select title,reviewid from question where questionid=#{param1}")
     public Map<String,Object> queryTitle(Integer questionid);
@@ -66,4 +67,13 @@ public interface QuestionDao {
     //查看个人全部回答
     @Select("select * from review where userid=#{param1} and type=1")
     public List<Review> queryAllAnswer(Integer userid);
+    //添加点赞表数据
+    @Insert("insert into admire values(null,#{type_id},1,#{userid},1,sysdate())")
+    public Integer addAdmire(Admire a);
+    //添加采纳 到问答表的reviewid列
+    @Update("update question set reviewid = 2 where questionid = 102 and userid = 2")
+    public Integer addCaina();
+    //c查看是否关注
+    @Select("select * from attentionquestion where userid = #{param1} and questionid =#{param2}")
+    public List<Map<String,Object>> Guanzhu(Integer uid,Integer qid);
 }

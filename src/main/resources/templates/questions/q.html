@@ -33,6 +33,13 @@
     <script type="text/javascript" src="../../question/q_files/fl.js.下载"></script>
     <script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}"></script>
     <link rel="stylesheet" th:href="@{/lib/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/editormd/css/editormd.preview.min.css}" />
+    <link rel="stylesheet" th:href="@{/editormd/css/editormd.css}" />
+    <script th:src="@{/editormd/examples/js/jquery.min.js}"></script>
+    <!-- 因为我们使用了dark主题，所以在容器div上加上dark的主题类，实现我们自定义的代码样式 -->
+    <script th:src="@{/editormd/lib/marked.min.js}"></script>
+    <script th:src="@{/editormd/lib/prettify.min.js}"></script>
+    <script th:src="@{/editormd/editormd.min.js}"></script>
     <script charset="utf-8" id="ParadigmSDK" src="../../question/q_files/ParadigmSDK_v2.js.下载" data="325" defsi="586"></script>
     <script>
         ParadigmSDK.init("46e957bd9dea4acdaa15b4b64aff728f");
@@ -545,7 +552,7 @@
                 <div></div>
                 <article class="widget-question__item">
                     <div class="post-col">
-                        <div class="widget-vote  btn btn-default   active">
+                        <div class="widget-vote  btn btn-default   active" id="bs">
                             <!--<button type="button" onfocus="bianse" onblur="shise()" class="like" data-id="1010000018604298" data-type="question" data-do="like" data-toggle="tooltip" data-placement="top" title="" data-original-title="问题对人有帮助，内容完整，我也想知道答案">
                                 <span class="sr-only">问题对人有帮助，内容完整，我也想知道答案</span>
                             </button>
@@ -553,21 +560,35 @@
                             <button type="button" onfocus="bianse" onblur="shise()" class="hate" data-id="1010000018604298" data-type="question" data-do="hate" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="问题没有实际价值，缺少关键内容，没有改进余地">
                                 <span class="sr-only">问题没有实际价值，缺少关键内容，没有改进余地</span>
                             </button>-->
-                            <img src="../question/ico/dz.png">
+                            <a th:href="@{'/questions/addAmire/'+${list[0].questionid}}">
+                                <img src="../../question/ico/dz.png" type="button" onclick="bianse()"/>
+                            </a>
+
                             <span class="count" th:text="${list[0].nums}"></span>
-                            <img src="../question/ico/xx.png">
                         </div>
                         <!-- end .widget-vote -->
                     </div>
                     <div class="post-offset">
-                        <div class="question fmt" data-id="1010000018604298">
-                            <p th:text="${list[0].content}"></p>
+                        <div id="test-editormd" >
+                            <textarea></textarea>
                         </div>
+                        <script type="text/javascript" th:inline="javascript">
+                            testEditor = editormd.markdownToHTML("test-editormd", {
+                                markdown:[[${list[0].content}]],
+                                htmlDecode      : "style,script,iframe",  // you can filter tags decode
+                                emoji           : true,
+                                taskList        : true,
+                                tex             : true,  // 默认不解析
+                                flowChart       : true,  // 默认不解析
+                                sequenceDiagram : true,  // 默认不解析
+                            });
+                        </script>
                         <div class="row">
                             <div class="post-opt col-md-8">
                                 <ul class="list-inline mb0">
                                     <li>
-                                        <input type="button" th:id="${list[0].questionid}" class="btn btn-success btn-xs" data-id="1010000018604298" data-do="follow" data-type="question" data-original-title="" title="" onclick="guanzhuwenda(this)" th:value="'关注'+'|'+${list[0].atten}"/>
+                                        <input type="button" th:id="${list[0].questionid}" class="btn btn-success btn-xs xxxx"  data-do="follow" data-type="question" data-original-title="" title="" onclick="guanzhuwenda(this)" th:value="关注"/>
+                                        <!--<span type="button" class="btn btn-success btn-xs" th:text="${list[0].atten}"></span>-->
                                     </li>
                                     <li class="dropdown js__content-ops pl0 pr15" data-module="question" data-typetext="问题" data-id="1010000018604298"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                                         <ul class="dropdown-menu dropdown-menu-left">
@@ -577,10 +598,10 @@
                                 </ul>
                             </div>
                             <div class="question__author col-md-4" style="display:flex">
-                                <a href="https://segmentfault.com/u/incess"><img src="../../question/q_files/user-64.png" class="avatar-40 mr10 " data-toggle="popover" data-slug="incess" data-id="1030000012376369" /></a>
+                                <a th:href="@{'/person/answers?page=1&userid='+${list[0].userid}}"><img src="../../question/q_files/user-64.png" class="avatar-40 mr10 " data-toggle="popover" data-slug="incess" data-id="1030000012376369" /></a>
                                 <div style="display:flex; flex-direction:column">
                                     <div class="mb3">
-                                        <a href="https://segmentfault.com/u/incess" class="mr5"><strong th:text="${list[0].username}"></strong></a>
+                                        <a th:href="@{'/person/answers?page=1&userid='+${list[0].userid}}" class="mr5"><strong th:text="${list[0].username}"></strong></a>
                                     </div>
                                     <span style="font-size:13px; color:#999" th:text="${list[0].details}"></span>
                                 </div>
@@ -626,6 +647,9 @@
                     <div class="comments-container">
                         <div class="comments-list">
                             <div class="comments-item" th:id="'ping'+${nets['reviewid']}" th:each="nets:${review}">
+                                <div class="pull-left" ><!--th:if="${session.LoginUser[0].getUserid}==${list[0].userid}"-->
+                                    <img  class="avatar-32 " src="../../question/ico/wcn.png" alt="" onclick="change()">
+                                </div>
                                 <div class="pull-left">
                                     <a th:href="@{'/questions/personal/'+${nets['userid']}}" target="_blank">
                                         <img class="avatar-32 " th:src="@{${nets['head']}}" alt="">
@@ -641,7 +665,7 @@
                                             </a>
                                         </div>
                                         <strong>
-                                            <a target="_blank" th:href="@{'/circle/personal/'+${nets['userid']}}"
+                                            <a target="_blank" th:href="@{'/person/answers?page=1&userid='+${nets['userid']}}"
                                                th:text="${nets['username']}" id="userid"  style="color: #009a61;"></a>
                                         </strong>
                                         <span class="comments-isAuthor hide"></span>
@@ -758,19 +782,46 @@
         </div>
     </div>
     <script language="javascript">
-        function bianse(event){
-            var e = window.enent;
-            var obj = e.srcElement;
-            obj.style.background="#FFFF66";
+
+        var bool = true;
+        function  change(){
+            var deng = document.images;
+            if(bool){
+                deng[0].src="../../question/ico/wcn.png";
+                bool = false;
+            }else{
+                deng[0].src="../../question/ico/ycn.png";
+                bool = true;
+            }
         }
-        function shise(event){
-            var e = window.enent;
-            var obj = e.srcElement;
-            obj.style.background="#FFFFFF";
+        function bianse(){
+            var bs = document.getElementById('bs');
+            bs.style.backgroundColor="#FFFF66";
         }
     </script>
 
     <script th:inline="javascript">
+        $(function (){
+            if([[${session.LoginUser}]]==null) {
+                $(".xxxx").attr("value","关注");
+            }else{
+                var  qid=[[${list[0].questionid}]];
+                console.log(zlid)
+                $.ajax({
+                    data: {"qid":qid },
+                    url: '../Guanzhu',
+                    dataType: "json",
+                    type: 'post',
+                    success: function (data) {
+                        if(data==1){
+                            $(".xxxx").attr("value","已关注");
+                        }else{
+                            $(".xxxx").attr("value","关注");
+                        }
+                    }
+                })
+            }
+        })
         function guanzhuwenda(obj){
             if([[${session.LoginUser}]]==null){
                 if(confirm("没有登录,是否登录")){
@@ -819,13 +870,14 @@
             $("input[name='reviewid']").val(reviewid);
         }
 
-        function zan(reviewid) {
+        /*function zan(reviewid) {
             $.ajax(
                 {data:{'type_id':reviewid,'type':3},
                     dataType:"json",
                     success: function(data){
                         if(data["status"]==-1){
-                            window.location.href="../../logins";
+                            if(confirm("没有登录,是否登录")){
+                                window.location="../../logins"}
                         }else if(data["status"]==1){
                             $("#zan"+reviewid).removeClass("comments-zan");
                             $("#zan"+reviewid).children(".comments-zan-text").text("已赞");
@@ -842,7 +894,7 @@
                     url:'../../admire/update'
                 }
             )
-        }
+        }*/
         function huifu(replyid) {
             $.ajax(
                 {data:{'type_id':replyid,'type':4},
