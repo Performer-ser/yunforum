@@ -2,6 +2,7 @@ package com.aaa.service;
 
 import com.aaa.dao.CircleDao;
 import com.aaa.entity.Circle;
+import com.aaa.entity.Clable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,5 +52,14 @@ public class CircleService {
     }
     public List<Circle> queryByClableid2(Integer clableid,Integer page){
         return cd.queryByClableid2(clableid,page);
+    }
+    public Integer addcl(Clable c){
+        return  cd.addcl(c);
+    }
+    public int update(Clable c){
+        return  cd.update(c);
+    }
+    public int delete(Integer id){
+        return cd.delete(id);
     }
 }

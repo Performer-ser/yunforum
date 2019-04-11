@@ -53,7 +53,7 @@ public class WriteController{
     public Map<String,Object> pic(@RequestParam("editormd-image-file") MultipartFile files, HttpServletRequest request, HttpServletResponse response) throws  IOException {
         String originalFilename = files.getOriginalFilename();
         String randomIdByUUID = IdUtils.getRandomIdByUUID();
-        String fileName="D:\\S3\\ggg\\segmentfault.com\\text";
+        String fileName="E:\\S3\\ggg\\segmentfault.com\\text";
         File file=new File(fileName);
         if(!file.exists()){
             file.mkdirs();

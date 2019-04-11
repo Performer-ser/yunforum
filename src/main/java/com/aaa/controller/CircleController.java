@@ -3,6 +3,7 @@ package com.aaa.controller;
 import com.aaa.entity.*;
 import com.aaa.service.*;
 import com.aaa.util.ForFlie;
+import com.aaa.util.JsonMapper;
 import com.aaa.util.TabUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -42,11 +44,10 @@ public class CircleController {
     }
 
     @RequestMapping("query")
-    @ResponseBody
-    public List<Circle> queryAll() {
-        System.out.println(cs.queryAll().size());
-        System.out.println(cs.queryAll().get(0));
-        return cs.queryAll();
+    public String query(Model model){
+        List<Circletype> circletypes = cts.queryAll();
+        model.addAttribute("lct",circletypes);
+        return "./cq";
     }
 
     @RequestMapping("circle")
@@ -72,13 +73,6 @@ public class CircleController {
                 break;
             case "tech":
                 /*根据圈子的类型去查询出*/
-                /*List<Clable> clables = cls.queryByTypeid(1);
-                Integer[] clable = new Integer[clables.size()];
-                for (int i = 0; i < clables.size(); i++) {
-                    clable[i] = clables.get(i).getClableid();
-                }
-                lc = cs.diffTimeBy(clable);
-                System.out.println("技术"+lc.toString());*/
                 lc = TabUtil.tabul(cls.queryByTypeid(1), cls.queryByTypeid(1).size(), cs);
                 break;
             case "creative":
@@ -127,11 +121,21 @@ public class CircleController {
         /*System.out.println(resultList.toString());*/
         model.addAttribute("circ", resultList);
         model.addAttribute("tab", tab);
-        System.out.println(resultList.toString());
         return "cir";
     }
 
-
+    @RequestMapping("querys")
+    @ResponseBody
+    public String querys(){
+        List<Sleft> slefts = cls.queryByselct();
+        Map<String,Object> map=new HashMap<>();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",0);
+        map.put("data",slefts);
+        String json= JsonMapper.mapToJson(map);
+        return json;
+    }
     /* 跳转页面*/
     @RequestMapping("find")
     public String find(Model model) {
@@ -139,31 +143,22 @@ public class CircleController {
         List<Map<String, Object>> pci = new ArrayList<Map<String, Object>>();
         /*圈子类型*/
         List<Circletype> lcts = cts.queryAll();
-        System.out.println("圈子类型" + lcts.toString());
         for (int i = 0; i < lcts.size(); i++) {
             /*圈子标签*/
             List<Clable> lc = cls.queryByTypeid(lcts.get(i).getTid());
-            System.out.println("圈子标签" + lc.toString());
             for (int j = 0; j < lc.size(); j++) {
                 Map<String, Object> clable = new HashMap<String, Object>();
                 List<Circle> lci = cs.queryByClableid(lc.get(j).getClableid());
-                System.out.println("clid" + lc.get(j).getClableid());
-                System.out.println(cs.querycountByClableid(lc.get(j).getClableid()).toString());
-                System.out.println("圈子中的帖子" + lci.toString());
                 clable.put("clablename", lc.get(j).getClablename());
                 clable.put("cpic", lc.get(j).getCpic());
                 clable.put("count", cs.querycountByClableid(lc.get(j).getClableid()));
                 clable.put("tname", lcts.get(i).getTname());
-                System.out.println("map" + clable.toString());
                 pci.add(clable);
             }
             Map<String, Object> tname = new HashMap<String, Object>();
             tname.put("tname", lcts.get(i).getTname());
-            System.out.println("圈子分类" + tname.toString());
             resultList.add(tname);
         }
-        System.out.println("list中的值" + resultList);
-        System.out.println("pci的list中的值" + pci);
         model.addAttribute("clable", resultList);
         model.addAttribute("pci", pci);
         return "find";
@@ -241,9 +236,7 @@ public class CircleController {
         return "questions/q";*/
         /*8.5 3.5*/
         mv.addAttribute("list", map);
-        System.out.println(map.toString());
         mv.addAttribute("cir", resultList);
-        System.out.println(resultList.toString());
         mv.addAttribute("a",aw);
         mv.addAttribute("queryone",queryone);
         return "general";
@@ -461,5 +454,20 @@ public class CircleController {
         r.setReviewid(reviewid);
         rps.addByReply(r);
         return "redirect:/circle/show/"+circleid;
+    }
+    @RequestMapping("add")
+    @ResponseBody
+    public int add(Clable clable){
+        return cs.addcl(clable);
+    }
+    @RequestMapping("update")
+    @ResponseBody
+    public int update(Clable clable){
+        return cs.update(clable);
+    }
+    @RequestMapping("delete")
+    @ResponseBody
+    public int delete(Integer clableid){
+        return cs.delete(clableid);
     }
 }
