@@ -33,9 +33,9 @@ public class LatypeService {
     public List<Lable> querylables(){
         return ld.querylables();
     }
-    public List<Map<String, Object>> queryxg(Integer latypeid){
+    /*public List<Map<String, Object>> queryxg(Integer latypeid){
         return ld.queryxg(latypeid);
-    }
+    }*/
 
     /**
      * 根据标签ID查询内容
@@ -64,5 +64,13 @@ public class LatypeService {
     }
     public int delete(Integer id){
         return ld.delete(id);
+    }
+
+    public List<Map<String,Object>> queryBQid(Integer specialid){
+        return ld.queryBQid(specialid);
+    }
+
+    public List<Map<String,Object>> queryBiaoqian(Integer uid,Integer lableid){
+        return ld.queryBiaoqian(uid,lableid);
     }
 }

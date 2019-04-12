@@ -28,7 +28,6 @@ public interface LatypeDao {
             " on la.lableid= sp.lableid left join user_info us on sp.userid= us.userid where la.lableid =#{param1}")
     public List<Map<String,Object>> queryBysid(Integer lableid);
 
-
     @Insert("insert latype (latypename) values(#{latypename})")
     public int add(Latype latype);
     @Update("update latype set latypename=#{latypename} where latypeid=#{latypeid}")
@@ -40,17 +39,17 @@ public interface LatypeDao {
      */
     @Select("select sp.title,us.username,la.lablename from special sp left join user_info us on sp.userid= us.userid left join lable la on sp.lableid=la.lableid where sp.specialid <6 order by sp.time desc")
     public List<Map<String,Object>> querya();
-    @Select("select lt.latypename,la.lablename,la.lableid from latype lt left join lable la on lt.latypeid=la.latypeid where la.latypeid=#{param1}")
+    /*@Select("select lt.latypename,la.lablename,la.lableid from latype lt left join lable la on lt.latypeid=la.latypeid where la.latypeid=#{param1}")
     public List<Map<String,Object>> queryxg(Integer  latypeid);
+*/
+    @Select("select lableid from special  where specialid=#{param1}")
+    public List<Map<String,Object>> queryBQid(Integer specialid);
     /**
-     * t页面的关注
-     *//*
-    @Insert("insert into attentiongz(attentiongzid,userid,lableid) values(#{attentiongzid},#{userid},#{lableid})")
-    public int addattentiongz(int attentiongzid,int userid,int lableid);
-    *//**
-     * t页面取消关注
-     *//*
-    @Delete("delete from attentiongz where attentiongzid=#{param1}")
-    public int delattentiongz(Integer attentiongzid);*/
+     * 标签是否关注
+     * @return
+     */
+    @Select("select * from attentionlable where userid=#{param1} and lableid=#{param2}")
+    public List<Map<String,Object>> queryBiaoqian(Integer uid,Integer lableid);
+
 
 }

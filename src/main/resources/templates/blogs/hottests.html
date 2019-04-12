@@ -532,13 +532,13 @@
                     <div class="stream-list blog-stream" th:each="list:${list}">
                         <a th:href="@{'/specials/a/'+${list.specialid}}" class="news-img"></a>
                         <section class="stream-list__item">
-                            <div class="blog-rank stream__item">
+                            <!--<div class="blog-rank stream__item">
                                 <div data-id="1190000018634744" class="stream__item-zan   btn btn-default mt0"><span
                                         class="stream__item-zan-icon"></span><span
                                         class="stream__item-zan-number" th:text="${list.dz}"></span></div>
-                            </div>
-                            <div class="summary"><h4><a
-                                    th:href="@{'/specials/a/'+${list.specialid}}" th:text="${list.title}"><!--前端面试题 &#45;&#45; Vue--></a></h4>
+                            </div>-->
+                            <div class="summary"><a
+                                    th:href="@{'/specials/a/'+${list.specialid}}" th:text="${list.title}" style="font-size: 18px;" ><!--前端面试题 &#45;&#45; Vue--></a>
                                 <ul class="author list-inline">
                                     <li><a th:href="@{'/specials/a/'+${list.specialid}}"><!--<img
                                             class="avatar-24 mr10 hidden-xs"
@@ -547,7 +547,7 @@
                                             th:href="@{'/specials/a/'+${list.specialid}}" th:text="${list.username}"><!--游荡de蝌蚪--></a>
                     
                     发布于
-                                            <a th:href="@{'/specials/a/'+${list.specialid}}" th:text="${list.lablename}"><!--前端爬坑--></a></span></li>
+                                            <a th:href="@{'/specials/a/'+${list.specialid}}" th:text="${list.perspname}"><!--前端爬坑--></a></span></li>
                                 </ul>
                                 <a th:href="@{'/specials/a/'+${list.specialid}}"><p class="excerpt wordbreak hidden-xs" th:text="${list.content}"></p></a></div>
                         </section>

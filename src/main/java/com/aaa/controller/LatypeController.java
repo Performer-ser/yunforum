@@ -61,12 +61,14 @@ public class LatypeController {
      */
     @RequestMapping(value = "t/{lableid}")
     public String queryBysid(Model m,@PathVariable Integer lableid,Integer latypeid){
+        List<Map<String, Object>> bqidlist= lts.queryBQid(lableid);
+        m.addAttribute("bqid",lableid);
         List<Map<String,Object>> list=lts.queryBysid(lableid);
         m.addAttribute("listss",list);
         List<Lable> listlables=lts.querylables();
         m.addAttribute("listlables",listlables);
-        List<Map<String,Object>> queryxg=lts.queryxg((Integer)  list.get(0).get("latypeid"));
-        m.addAttribute("queryxg",queryxg);
+        /*List<Map<String,Object>> queryxg=lts.queryxg((Integer)list.get(0).get("latypeid"));
+        m.addAttribute("queryxg",queryxg);*/
         return "t";
     }
 
@@ -74,7 +76,7 @@ public class LatypeController {
     @ResponseBody
     public Integer queryBiaoqian(Integer lableid,HttpSession session){
         List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
-        List<Map<String, Object>> list=ss.querGuanZhu(loginUser.get(0).getUserid(),lableid);
+        List<Map<String, Object>> list=lts.queryBiaoqian(loginUser.get(0).getUserid(),lableid);
         if(list.size()>0){
             return 1;
         }else{
@@ -85,6 +87,9 @@ public class LatypeController {
 
     @RequestMapping(value = "a/{specialid}")
     public String queryByid(Model m ,@PathVariable Integer specialid,HttpSession session){
+        List<Map<String, Object>> zlidlist= ss.queryZLid(specialid);
+        Integer zlid=(Integer)zlidlist.get(0).get("perspid");
+        m.addAttribute("zlid",zlid);
         List<Map<String, Object>> list = ss.queryByid(specialid);
         System.out.println("sdfdslist"+list.toString());
         List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
@@ -108,7 +113,7 @@ public class LatypeController {
                         Integer query = as.queryCount(replies.get(j).getReplyid(), 2);
                         ms.put("likenumByReply",query);
                         ms.put("replyid",replies.get(j).getReplyid());
-                        System.out.println("sfgdhf"+replies.get(j).getReplyid());
+                        /*System.out.println("sfgdhf"+replies.get(j).getReplyid());*/
                         Integer queryone = as.queryone(replies.get(j).getReplyid(), 2, userid);
                         ms.put("queryone",queryone);
                         ms.put("reviewid",replies.get(j).getReviewid());
@@ -122,8 +127,8 @@ public class LatypeController {
                         ms.put("recoverytime",replies.get(j).getRecoverytime());
                         replie.add(ms);
                     }
-                    System.out.println("回复表中的内容"+replie.toString());
-                    System.out.println("回复表中的数量"+replie.size());
+                    /*System.out.println("回复表中的内容"+replie.toString());
+                    System.out.println("回复表中的数量"+replie.size());*/
                 }
                 /* System.out.println("回复表根据id"+replies.toString());*/
                 mr.put("reviewid",reviews.get(i).getReviewid());
@@ -147,6 +152,7 @@ public class LatypeController {
         m.addAttribute("count",review.size()+replie.size());
         return "a";
     }
+
 
     @RequestMapping("clickGuanZhu")
     @ResponseBody
@@ -203,6 +209,7 @@ public class LatypeController {
         return result;
     }
 
+
     @RequestMapping("attentionlab")
     @ResponseBody
     public int attentionlab(Integer lableid,HttpSession session){
@@ -216,5 +223,6 @@ public class LatypeController {
         }
         return result;
     }
+
 
 }
