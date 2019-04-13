@@ -531,13 +531,13 @@
                         <section class="stream-list__item">
 
                             <div class="summary">
-                                <h4><a th:href="@{'/specials/a/'+${list.specialid}}" th:text="${list.title}"><!--LVFS项目公告和介绍--></a></h4>
+                                <h4><a th:href="@{'/specials/a/'+${list.specialid}}" th:text="${list.title}" style="font-size: 18px;"><!--LVFS项目公告和介绍--></a></h4>
                                 <ul class="author list-inline">
                                     <li><a  th:href="@{'/specials/a/'+${list.specialid}}"></a>
                                         <span style="vertical-align:middle;"><a
                                                 th:href="@{'/specials/a/'+${list.specialid}}" th:text="${list.username}"><!--Donald--></a>
                                                 发布于
-                                            <a  th:href="@{'/specials/a/'+${list.specialid}}" th:text="${list.lablename}"><!--self.文章--></a></span>
+                                            <a  th:href="@{'/specials/a/'+${list.specialid}}" th:text="${list.perspname}"><!--self.文章--></a></span>
                                     </li>
                                     <li class="bookmark " title="0 收藏" data-type="article" data-id="1190000018674409">
                                                 发布日期 <span th:text="${list.time}"></span>

@@ -3,7 +3,7 @@ package com.aaa.util;
 import java.io.*;
 
 public class ForFlie {
-    private static String path = "D:\\S3\\ggg\\segmentfault.com\\text\\";
+    private static String path = "E:\\S3\\ggg\\segmentfault.com\\text\\";
 
     //文件路径+名称
     private static String filenameTemp;
@@ -110,7 +110,7 @@ public class ForFlie {
         StringBuilder wenben=new StringBuilder();
         try{
             String encoding = "UTF-8";
-            File files = new File("D:\\S3\\ggg\\segmentfault.com\\text\\"+filename+".txt");
+            File files = new File("E:\\S3\\ggg\\segmentfault.com\\text\\"+filename+".txt");
             if (files.isFile() && files.exists()) { //判断文件是否存在
                 InputStreamReader read = new InputStreamReader(
                         new FileInputStream(files), encoding);//考虑到编码格式

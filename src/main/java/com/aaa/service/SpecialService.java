@@ -62,9 +62,7 @@ public class SpecialService {
         return sd.querGuanZhu(uid,zlid);
     }
 
-    public List<Map<String,Object>> queryBiaoqian(Integer uid,Integer lableid){
-        return sd.queryBiaoqian(uid,lableid);
-    }
+
     public Map<String,Object> centers(Integer slableid){
         Map<String, Object> list = new HashMap<String, Object>();
         list.put("list",sd.querySlable());

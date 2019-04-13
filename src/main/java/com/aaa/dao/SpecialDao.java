@@ -52,12 +52,7 @@ public interface SpecialDao {
     @Select("select * from attspecial where userid=#{param1} and perspid=#{param2}")
     public List<Map<String,Object>> querGuanZhu(Integer uid,Integer zlid);
 
-    /**
-     * 标签是否关注
-     * @return
-     */
-    @Select("select * from attentionlable where userid=#{param1} and lableid=#{param2}")
-    public List<Map<String,Object>> queryBiaoqian(Integer uid,Integer lableid);
+
 
     @Select("select count(*) dz,s.specialid,s.lableid,s.title,s.content,s.time,us.username,a.status,us.userid\n" +
             "from admire a left join special s on a.type_id = s.specialid left join user_info us on s.userid=us.userid\n" +
@@ -70,7 +65,7 @@ public interface SpecialDao {
      * @param offset
      * @return
      */
-    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time,la.lablename from special sp left join user_info us on sp.userid=us.userid left join lable la on sp.lableid=la.lableid limit #{param1},5")
+    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time,la.lablename,per.perspname from special sp left join user_info us on sp.userid=us.userid left join lable la on sp.lableid=la.lableid left join perspecial per on sp.perspid=per.perspid limit #{param1},5")
     public List<Map<String,Object>> queryblogs(Integer offset);
 
     /**
@@ -78,10 +73,10 @@ public interface SpecialDao {
      * @param offset
      * @return
      */
-    @Select("select count(*) dz,s.specialid,s.lableid,s.title,s.content,s.time,us.username,a.status,la.lablename\n" +
+    @Select("select count(*) dz,s.specialid,s.lableid,s.title,s.content,s.time,us.username,a.status,la.lablename,per.perspname\n" +
             " from admire a left join special s on a.type_id = s.specialid left join user_info us on s.userid=us.userid left join \n" +
-            " lable la on s.lableid=la.lableid\n" +
-            " where  a.status = 1  and a.type =2 group by s.specialid,s.lableid,s.title,s.content,s.userid,s.time,us.username,a.status,la.lablename  order by dz desc limit #{param1},5")
+            " lable la on s.lableid=la.lableid left join perspecial per on s.perspid=per.perspid\n" +
+            " where  a.status = 1  and a.type =2 group by s.specialid,s.lableid,s.title,s.content,s.userid,s.time,us.username,a.status,la.lablename,per.perspname  order by dz desc limit #{param1},5")
     public List<Map<String,Object>> queryhottests(Integer offset);
 
     /**
@@ -89,7 +84,7 @@ public interface SpecialDao {
      * @param offset
      * @return
      */
-    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time,la.lablename from special sp left join user_info us on sp.userid=us.userid left join lable la on sp.lableid=la.lableid order by sp.time desc limit #{param1},5")
+    @Select("select sp.specialid,sp.title,sp.content,us.username,sp.time,la.lablename,per.perspname from special sp left join user_info us on sp.userid=us.userid left join lable la on sp.lableid=la.lableid left join perspecial per on sp.perspid=per.perspid order by sp.time desc limit #{param1},5")
     public List<Map<String,Object>> querynewest(Integer offset);
     /**
      * a页面

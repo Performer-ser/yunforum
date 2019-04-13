@@ -2,6 +2,7 @@ package com.aaa.service;
 
 import com.aaa.dao.ClableDao;
 import com.aaa.entity.Clable;
+import com.aaa.entity.Sleft;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,9 @@ public class ClableService {
     }
     public List<Clable> queryAll(){
         return  cd.queryAll();
+    }
+    public List<Sleft> queryByselct(){
+        return cd.queryByselct();
     }
     public List<Clable> queryByTypeid(Integer typeid){
         return cd.queryByTypeid(typeid);

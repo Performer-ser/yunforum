@@ -96,7 +96,7 @@ public class SpecialController {
                         Integer query = as.queryCount(replies.get(j).getReplyid(), 2);
                         ms.put("likenumByReply",query);
                         ms.put("replyid",replies.get(j).getReplyid());
-                        System.out.println("sfgdhf"+replies.get(j).getReplyid());
+                        /*System.out.println("sfgdhf"+replies.get(j).getReplyid());*/
                         Integer queryone = as.queryone(replies.get(j).getReplyid(), 2, userid);
                         ms.put("queryone",queryone);
                         ms.put("reviewid",replies.get(j).getReviewid());
@@ -110,8 +110,8 @@ public class SpecialController {
                         ms.put("recoverytime",replies.get(j).getRecoverytime());
                         replie.add(ms);
                     }
-                    System.out.println("回复表中的内容"+replie.toString());
-                    System.out.println("回复表中的数量"+replie.size());
+                   /* System.out.println("回复表中的内容"+replie.toString());
+                    System.out.println("回复表中的数量"+replie.size());*/
                 }
                 /* System.out.println("回复表根据id"+replies.toString());*/
                 mr.put("reviewid",reviews.get(i).getReviewid());
