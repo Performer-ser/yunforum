@@ -142,8 +142,20 @@ public class QuestionService {
     public Integer addAdmire(Admire a){
         return qd.addAdmire(a);
     }
-    //查看是否关注
-    public List<Map<String,Object>> Guanzhu(Integer uid,Integer qid){
-        return qd.Guanzhu(uid,qid);
+    public List<Map<String,Object>> queryQuestionid(Integer qid){
+        return qd.queryQuestionid(qid);
     }
+    //查看是否关注
+    public List<Map<String,Object>> Guanzhu(Integer uid,Integer queryqid){
+        return qd.Guanzhu(uid,queryqid);
+    }
+    //添加采纳 到问答表的reviewid列
+    public Integer addCaina(Integer reviewid,Integer questionid){
+        return qd.addCaina(reviewid,questionid);
+    }
+    //查看是否采纳
+    public List<Map<String,Object>> queryCaina(Integer uid,Integer rid){
+        return qd.queryCaina(uid,rid);
+    }
+
 }

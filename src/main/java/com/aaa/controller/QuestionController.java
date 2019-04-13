@@ -85,6 +85,9 @@ public class QuestionController {
     }
     @RequestMapping(value="q/{qid}")
     public String quesById(Model model,@PathVariable Integer qid,HttpSession session){
+        List<Map<String, Object>> queryqidlist = qs.queryQuestionid(qid);
+        Integer queryqid =(Integer)queryqidlist.get(0).get("questionid");
+        model.addAttribute("queryqid",queryqid);
         List<Map<String, Object>> list = qs.quesById(qid);
         List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
         Integer userid = null == loginUser? 0:loginUser.get(0).getUserid();
@@ -312,28 +315,33 @@ public class QuestionController {
     @RequestMapping(value = "addAmire/{id}")
     public String addAdmire(HttpSession session,Admire a,@PathVariable Integer id){
         List<Userinfo> login=(List<Userinfo>) session.getAttribute("LoginUser");
-        if(login==null){
-            return "redirect:../../logins";
-        }else{
-            a.setType_id(id);
-            a.setUserid(login.get(0).getUserid());
-            qs.addAdmire(a);
+        a.setType_id(id);
+        a.setUserid(login.get(0).getUserid());
+        qs.addAdmire(a);
 
-            return "redirect:/questions/q/"+id;
-        }
+        return "redirect:/questions/q/"+id;
     }
 
     @RequestMapping("GuanZhu")
     @ResponseBody
-    public Integer clickGuanZhu(Integer qid,HttpSession session){
+    public Integer clickGuanZhu(Integer queryqid,HttpSession session){
         List<Userinfo> loginUser = (List<Userinfo>) session.getAttribute("LoginUser");
-        List<Map<String, Object>> list=qs.Guanzhu(loginUser.get(0).getUserid(),qid);
+        List<Map<String, Object>> list=qs.Guanzhu(loginUser.get(0).getUserid(),queryqid);
         if(list.size()>0){
             return 1;
         }else{
             return 0;
         }
     }
+    @RequestMapping("Caina")
+    @ResponseBody
+    public Integer queryCaina(Integer reviewid,Integer questionid){
+        return qs.addCaina(reviewid,questionid);
+    }
+    /*//添加采纳 到问答表的reviewid列
+    public Integer addCaina(Integer reviewid,Integer questionid,Integer userid){
+
+    }*/
 
 
 }

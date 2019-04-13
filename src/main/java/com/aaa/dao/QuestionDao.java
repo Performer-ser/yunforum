@@ -18,7 +18,7 @@ public interface QuestionDao {
     @Select("select u.username,q.questionid,q.title,q.content,q.userid,q.time,GROUP_CONCAT(b.lablename) lablename from user_info u left join question q on u.userid = q.userid left join lable b on FIND_IN_SET(b.lableid,q.lableid) group by u.username,q.questionid,q.title,q.content,q.userid,q.time order by time desc limit #{param1},15")
     public List<Map<String,Object>> queryQuestionsByQlable(Integer offset);
     //根据问答的id查询问答详情
-    @Select("select u.username,q.questionid,q.title,q.content,q.userid,q.time,GROUP_CONCAT(b.lablename) lablename from user_info u left join question q on u.userid = q.userid left join lable b on FIND_IN_SET(b.lableid,q.lableid) where q.questionid=#{param1} group by u.username,q.questionid,q.title,q.content,q.userid,q.time order by time desc")
+    @Select("select u.username,q.questionid,q.reviewid,q.title,q.content,q.userid,q.time,GROUP_CONCAT(b.lablename) lablename from user_info u left join question q on u.userid = q.userid left join lable b on FIND_IN_SET(b.lableid,q.lableid) where q.questionid=#{param1} group by u.username,q.questionid,q.reviewid,q.title,q.content,q.userid,q.time order by time desc")
     public List<Map<String,Object>> quesById(Integer qid);
 
     //查询点赞表
@@ -57,7 +57,7 @@ public interface QuestionDao {
     @Select("select count(distinct userid) gz from attentionquestion where questionid=#{param1} ")
     public Integer byAttentionQuestion(Integer questionid);
     //添加问答数据
-    @Insert("INSERT INTO question(lableid,title,content,userid,time,reviewid) VALUES (#{lableid},#{title},#{content},#{userid},sysdate(),#{reviewid});")
+    @Insert("INSERT INTO question(lableid,title,content,userid,time,reviewid) VALUES (#{lableid},#{title},#{content},#{userid},sysdate(),0);")
     public void addspe(Question que);
     @Select("select * from lable where lablename=#{lablename}")
     public List<Lable> querylablename(String lablename);
@@ -70,10 +70,17 @@ public interface QuestionDao {
     //添加点赞表数据
     @Insert("insert into admire values(null,#{type_id},1,#{userid},1,sysdate())")
     public Integer addAdmire(Admire a);
-    //添加采纳 到问答表的reviewid列
-    @Update("update question set reviewid = 2 where questionid = 102 and userid = 2")
-    public Integer addCaina();
+    //根据登陆用户查看是否关注过问题
+    @Select("select questionid from question where questionid = #{param1}")
+    public List<Map<String,Object>> queryQuestionid(Integer qid);
     //c查看是否关注
     @Select("select * from attentionquestion where userid = #{param1} and questionid =#{param2}")
-    public List<Map<String,Object>> Guanzhu(Integer uid,Integer qid);
+    public List<Map<String,Object>> Guanzhu(Integer uid,Integer queryqid);
+    //添加采纳 到问答表的reviewid列
+    @Update("update question set reviewid = #{param1} where questionid = #{param2}")
+    public Integer addCaina(Integer reviewid,Integer questionid);
+
+    //查看是否采纳
+    @Select("select * from review where userid = #{param1} and reviewid = #{param2}")
+    public List<Map<String,Object>> queryCaina(Integer uid,Integer rid);
 }
