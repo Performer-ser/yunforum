@@ -34,8 +34,9 @@ public class Perspecialcontroller {
         return 1;
     }
     @RequestMapping("perspecial")
-    public String queryPerspecial(Model m){
-       List<Perspecial> list= pes.queryPerspecial();
+    public String queryPerspecial(Model m,HttpSession session,Integer userid){
+        List<Userinfo> login=(List<Userinfo>) session.getAttribute("LoginUser");
+       List<Perspecial> list= pes.queryPerspecial(login.get(0).getUserid());
        m.addAttribute("list",list);
         List<Latype> list1 = pes.queryLatype();
 

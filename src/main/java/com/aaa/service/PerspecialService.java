@@ -18,8 +18,8 @@ public class PerspecialService {
     public void add(Perspecial per){
         pd.add(per);
     }
-    public List<Perspecial> queryPerspecial(){
-        return pd.queryPerspecial();
+    public List<Perspecial> queryPerspecial(Integer userid){
+        return pd.queryPerspecial(userid);
     }
 
     public List<Latype> queryLatype(){

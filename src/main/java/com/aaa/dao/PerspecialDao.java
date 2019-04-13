@@ -14,8 +14,8 @@ public interface PerspecialDao {
     @Insert("insert into perspecial(perspid,perspname,perspdescribe,userid,time) values" +
             "(#{perspid},#{perspname},#{perspdescribe},#{userid},sysdate())")
     public void add(Perspecial per);
-    @Select("select * from Perspecial")
-    public List<Perspecial> queryPerspecial();
+    @Select("select * from Perspecial where userid=#{param1}")
+    public List<Perspecial> queryPerspecial(Integer userid);
 
     @Select("select * from latype")
     public List<Latype> queryLatype();
